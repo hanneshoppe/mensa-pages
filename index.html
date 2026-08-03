@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mensa Menüs</title>
+<title>Mensa Menus</title>
 <style>
   :root {
     --bg: #f7f5f2;
@@ -180,7 +180,7 @@
 </head>
 <body>
 <header>
-  <h1 id="titleText">Mensa Menüs</h1>
+  <h1 id="titleText">Mensa Menus</h1>
   <div class="date-line" id="dateLine"></div>
   <div class="controls">
     <div class="toggle-group" role="group" aria-label="Language">
@@ -280,8 +280,8 @@ const STRINGS = {
   },
 };
 
-const dataCache = {}; // lang -> facilities array
-let cachedIds = null;
+const facilitiesPromises = {}; // lang -> Promise<facilities array>
+let idsPromise = null;
 
 function pad(n) { return String(n).padStart(2, '0'); }
 
@@ -296,7 +296,7 @@ function isoWeekday(d) {
 
 function getStateFromUrl() {
   const params = new URLSearchParams(window.location.search);
-  const lang = params.get('lang') === 'en' ? 'en' : 'de';
+  const lang = params.get('lang') === 'de' ? 'de' : 'en';
   const view = params.get('view') === 'list' ? 'list' : 'cards';
   return { lang, view };
 }
@@ -313,6 +313,38 @@ async function getFacilityIds() {
   const text = await res.text();
   const ids = [...text.matchAll(/[?&]id=(\d+)/g)].map(m => m[1]);
   return [...new Set(ids)];
+}
+
+function getFacilityIdsCached() {
+  if (!idsPromise) idsPromise = getFacilityIds();
+  return idsPromise;
+}
+
+// Memoized per language, so both languages can be fetched concurrently at
+// startup and switching the language toggle never needs to wait on a fetch.
+function getFacilitiesData(lang, todayStr, tomorrowStr, todayIso) {
+  if (!facilitiesPromises[lang]) {
+    facilitiesPromises[lang] = (async () => {
+      const ids = await getFacilityIdsCached();
+      const results = await Promise.all(ids.map(async id => {
+        try {
+          const [info, rota] = await Promise.all([
+            CookpitClient.getFacility(id, lang),
+            CookpitClient.getWeeklyRota(id, lang, todayStr, tomorrowStr),
+          ]);
+          if (!info) return null;
+          const dayEntry = findTodayEntry(rota, todayStr, todayIso);
+          return { id, name: info['facility-name'] || `Mensa ${id}`, url: info['facility-url'], dayEntry };
+        } catch (err) {
+          return null;
+        }
+      }));
+      const facilities = results.filter(Boolean);
+      facilities.sort((a, b) => facilityPriority(a.name) - facilityPriority(b.name));
+      return facilities;
+    })();
+  }
+  return facilitiesPromises[lang];
 }
 
 // Picks today's day-of-week entry out of the weekly-rota-array response.
@@ -446,47 +478,22 @@ async function loadAndRender(state) {
   document.getElementById('dateLine').textContent =
     today.toLocaleDateString(strings.dateLocale, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
-  if (dataCache[state.lang]) {
-    renderFacilities(dataCache[state.lang], strings);
-    applyView(state);
-    return;
-  }
-
   app.innerHTML = '';
   app.append(el('div', 'loading', strings.loading));
-
-  if (!cachedIds) {
-    try {
-      cachedIds = await getFacilityIds();
-    } catch (err) {
-      app.innerHTML = '';
-      app.append(el('div', 'error-note', strings.loadError));
-      return;
-    }
-  }
 
   const tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
   const todayStr = formatDate(today);
   const tomorrowStr = formatDate(tomorrow);
   const todayIso = isoWeekday(today);
 
-  const results = await Promise.all(cachedIds.map(async id => {
-    try {
-      const [info, rota] = await Promise.all([
-        CookpitClient.getFacility(id, state.lang),
-        CookpitClient.getWeeklyRota(id, state.lang, todayStr, tomorrowStr),
-      ]);
-      if (!info) return null;
-      const dayEntry = findTodayEntry(rota, todayStr, todayIso);
-      return { id, name: info['facility-name'] || `Mensa ${id}`, url: info['facility-url'], dayEntry };
-    } catch (err) {
-      return null;
-    }
-  }));
-
-  const facilities = results.filter(Boolean);
-  facilities.sort((a, b) => facilityPriority(a.name) - facilityPriority(b.name));
-  dataCache[state.lang] = facilities;
+  let facilities;
+  try {
+    facilities = await getFacilitiesData(state.lang, todayStr, tomorrowStr, todayIso);
+  } catch (err) {
+    app.innerHTML = '';
+    app.append(el('div', 'error-note', strings.loadError));
+    return;
+  }
 
   renderFacilities(facilities, strings);
   applyView(state);
@@ -498,6 +505,12 @@ function main() {
   updateToggleButtons(state);
   applyView(state);
   loadAndRender(state);
+
+  // Fetch the other language in the background too, so toggling never waits on a fetch.
+  const today = new Date();
+  const tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
+  const otherLang = state.lang === 'en' ? 'de' : 'en';
+  getFacilitiesData(otherLang, formatDate(today), formatDate(tomorrow), isoWeekday(today)).catch(() => {});
 
   document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => {
     if (state.lang === btn.dataset.lang) return;

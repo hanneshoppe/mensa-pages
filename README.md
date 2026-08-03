@@ -30,7 +30,8 @@ step, no backend). At load time it:
 
 API responses are cached in `localStorage` for 5 minutes (the API itself
 sends no `Cache-Control`/`ETag`), so reloading the page doesn't refetch on
-every visit.
+every visit. Both languages are fetched concurrently on page load, so the
+language toggle never has to wait on a request.
 
 ## Usage
 
@@ -47,10 +48,10 @@ Then open `http://localhost:8000/`.
 
 Both are reflected in and settable via the URL query string:
 
-- `?lang=de` / `?lang=en` — language (default `de`)
+- `?lang=de` / `?lang=en` — language (default `en`)
 - `?view=cards` / `?view=list` — image-grid cards or a compact list
 
-Example: `http://localhost:8000/?lang=en&view=list`
+Example: `http://localhost:8000/?lang=de&view=list`
 
 ## Adding more facilities
 
