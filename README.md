@@ -4,6 +4,11 @@ A single static page that shows today's menus from ETH Zürich's Hönggerberg
 canteens (food market, FUSION, …) on one screen, instead of clicking through
 separate pages per facility.
 
+Live at [mensa.h97.eu](https://mensa.h97.eu).
+
+> **This entire site — including this README — is 100% vibecoded with
+> [Claude](https://claude.com/claude-code).** No line was hand-written.
+
 ## How it works
 
 `index.html` is a self-contained, dependency-free page (HTML/CSS/JS, no build
@@ -47,3 +52,10 @@ Example: `http://localhost:8000/?lang=en&view=list`
 
 Add another menu-plan URL to `websites.txt` (same `offerDay.html?id=…` format
 as the existing ones) — the page picks up new facility IDs automatically.
+
+## Deployment
+
+Hosted on GitHub Pages, serving straight from `main` / root — pushing to
+`main` redeploys automatically. The `CNAME` file pins the custom domain,
+`mensa.h97.eu`, which needs a DNS `CNAME` record pointing at
+`hanneshoppe.github.io`.
