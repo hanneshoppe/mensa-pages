@@ -198,8 +198,62 @@
 </main>
 
 <script>
-const API_BASE = 'https://idapps.ethz.ch/cookpit-pub-services/v1/';
-const CLIENT_ID = 'ethz-wcms';
+// Client for ETH's public Cookpit menu API (the same one ethz.ch's own menu
+// pages call). Responses are cached in localStorage since the API sends no
+// Cache-Control/ETag of its own.
+const CookpitClient = (() => {
+  const BASE_URL = 'https://idapps.ethz.ch/cookpit-pub-services/v1/';
+  const CLIENT_ID = 'ethz-wcms';
+  const CACHE_TTL_MS = 5 * 60 * 1000;
+
+  function cacheGet(key) {
+    try {
+      const raw = localStorage.getItem(key);
+      if (!raw) return null;
+      const { timestamp, data } = JSON.parse(raw);
+      if (Date.now() - timestamp > CACHE_TTL_MS) return null;
+      return data;
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function cacheSet(key, data) {
+    try {
+      localStorage.setItem(key, JSON.stringify({ timestamp: Date.now(), data }));
+    } catch (err) {
+      // Storage unavailable (private browsing, quota, …) — just skip caching.
+    }
+  }
+
+  async function getJson(url, cacheKey) {
+    const cached = cacheGet(cacheKey);
+    if (cached) return cached;
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const data = await res.json();
+    cacheSet(cacheKey, data);
+    return data;
+  }
+
+  function getFacility(id, lang) {
+    const url = `${BASE_URL}facilities/${id}?client-id=${CLIENT_ID}&lang=${lang}`;
+    return getJson(url, `mensa:facility:${id}:${lang}`);
+  }
+
+  function getWeeklyRota(id, lang, validAfter, validBefore) {
+    const url = `${BASE_URL}weeklyrotas?client-id=${CLIENT_ID}&lang=${lang}&rs-first=0&rs-size=50` +
+      `&valid-after=${validAfter}&valid-before=${validBefore}&facility=${id}`;
+    return getJson(url, `mensa:rota:${id}:${lang}:${validAfter}`);
+  }
+
+  function imageUrl(meal) {
+    if (!meal['image-url']) return null;
+    return `${meal['image-url']}?client-id=${CLIENT_ID}`;
+  }
+
+  return { getFacility, getWeeklyRota, imageUrl };
+})();
 
 // Facilities we prioritize first, matched case-insensitively against facility-name.
 const PRIORITY_ORDER = ['food market', 'fusion'];
@@ -261,21 +315,6 @@ async function getFacilityIds() {
   return [...new Set(ids)];
 }
 
-async function fetchFacilityInfo(id, lang) {
-  const url = `${API_BASE}facilities/${id}?client-id=${CLIENT_ID}&lang=${lang}`;
-  const res = await fetch(url);
-  if (!res.ok) return null;
-  return res.json();
-}
-
-async function fetchWeeklyRota(id, lang, todayStr, tomorrowStr) {
-  const url = `${API_BASE}weeklyrotas?client-id=${CLIENT_ID}&lang=${lang}&rs-first=0&rs-size=50` +
-    `&valid-after=${todayStr}&valid-before=${tomorrowStr}&facility=${id}`;
-  const res = await fetch(url);
-  if (!res.ok) return null;
-  return res.json();
-}
-
 // Picks today's day-of-week entry out of the weekly-rota-array response.
 function findTodayEntry(rotaData, todayStr, todayIso) {
   if (!rotaData || !rotaData['weekly-rota-array']) return null;
@@ -294,11 +333,6 @@ function classifyMeal(meal) {
   return 'O';
 }
 
-function mealImageUrl(meal) {
-  if (!meal['image-url']) return null;
-  return `${meal['image-url']}?client-id=${CLIENT_ID}`;
-}
-
 function el(tag, className, children) {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -315,7 +349,7 @@ function renderMealCard(meal) {
   const badge = classifyMeal(meal);
   const card = el('div', 'card');
 
-  const imgUrl = mealImageUrl(meal);
+  const imgUrl = CookpitClient.imageUrl(meal);
   if (imgUrl) {
     const img = document.createElement('img');
     img.src = imgUrl;
@@ -439,8 +473,8 @@ async function loadAndRender(state) {
   const results = await Promise.all(cachedIds.map(async id => {
     try {
       const [info, rota] = await Promise.all([
-        fetchFacilityInfo(id, state.lang),
-        fetchWeeklyRota(id, state.lang, todayStr, tomorrowStr),
+        CookpitClient.getFacility(id, state.lang),
+        CookpitClient.getWeeklyRota(id, state.lang, todayStr, tomorrowStr),
       ]);
       if (!info) return null;
       const dayEntry = findTodayEntry(rota, todayStr, todayIso);

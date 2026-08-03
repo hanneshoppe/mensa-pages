@@ -28,6 +28,10 @@ step, no backend). At load time it:
    - `V-` — vegetarian
    - `V` — vegan
 
+API responses are cached in `localStorage` for 5 minutes (the API itself
+sends no `Cache-Control`/`ETag`), so reloading the page doesn't refetch on
+every visit.
+
 ## Usage
 
 Serve the folder over HTTP (fetching `websites.txt` needs `http://`/`https://`,
