@@ -109,6 +109,9 @@
     background: var(--border);
     display: block;
   }
+  .card img.contain {
+    object-fit: contain;
+  }
   .card-body {
     padding: 10px 12px 12px;
     display: flex;
@@ -439,6 +442,7 @@ function renderMealCard(meal) {
     img.src = imgUrl;
     img.alt = meal.name || '';
     img.loading = 'lazy';
+    if (meal.__containImage) img.classList.add('contain');
     card.append(img);
   }
 
@@ -475,7 +479,7 @@ function renderFacility(name, url, dayEntry, strings, lang, easterEgg) {
 
   if (easterEgg && (name || '').toLowerCase().includes('fusion')) {
     const cards = el('div', 'cards');
-    cards.append(renderMealCard({ ...EASTER_EGG_CONTENT[lang], 'meal-class-array': [], __rawImage: EASTER_EGG_IMAGE }));
+    cards.append(renderMealCard({ ...EASTER_EGG_CONTENT[lang], 'meal-class-array': [], __rawImage: EASTER_EGG_IMAGE, __containImage: true }));
     section.append(cards);
     return section;
   }
