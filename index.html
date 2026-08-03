@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mensa Menüs</title>
+<style>
+  :root {
+    --bg: #f7f5f2;
+    --card-bg: #ffffff;
+    --text: #1f2320;
+    --muted: #6b7168;
+    --border: #e4e0da;
+    --accent: #2f5233;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px 16px 64px;
+  }
+  header {
+    max-width: 1100px;
+    margin: 0 auto 28px;
+  }
+  h1 {
+    margin: 0 0 4px;
+    font-size: 1.6rem;
+  }
+  .date-line {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .controls {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .toggle-group {
+    display: inline-flex;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .toggle-btn {
+    border: none;
+    background: var(--card-bg);
+    color: var(--text);
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  .toggle-btn + .toggle-btn {
+    border-left: 1px solid var(--border);
+  }
+  .toggle-btn.active {
+    background: var(--accent);
+    color: #fff;
+  }
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  section.facility h2 {
+    margin: 0 0 2px;
+    font-size: 1.25rem;
+  }
+  section.facility h2 a {
+    color: var(--text);
+    text-decoration: none;
+  }
+  section.facility h2 a:hover {
+    text-decoration: underline;
+  }
+  .meal-time-label {
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 14px 0 8px;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: var(--border);
+    display: block;
+  }
+  .card-body {
+    padding: 10px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .card-title-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .card-title {
+    font-weight: 600;
+    font-size: 0.98rem;
+    line-height: 1.25;
+  }
+  .badge {
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 999px;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .badge-O { background: #a35d3a; }
+  .badge-V- { background: #7ea364; }
+  .badge-V { background: #3f7d3f; }
+  .card-desc {
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.35;
+    white-space: pre-line;
+  }
+  .empty-note, .error-note {
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+  .error-note { color: #a33; }
+  .loading {
+    color: var(--muted);
+    text-align: center;
+    padding: 40px 0;
+  }
+
+  /* List view: same markup, row layout instead of a card grid */
+  #app.list-view .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  #app.list-view .card {
+    flex-direction: row;
+    align-items: center;
+  }
+  #app.list-view .card img {
+    width: 64px;
+    height: 64px;
+    aspect-ratio: 1;
+    flex-shrink: 0;
+  }
+  #app.list-view .card-body {
+    padding: 8px 12px;
+    flex: 1;
+    min-width: 0;
+  }
+  #app.list-view .card-desc {
+    white-space: normal;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1 id="titleText">Mensa Menüs</h1>
+  <div class="date-line" id="dateLine"></div>
+  <div class="controls">
+    <div class="toggle-group" role="group" aria-label="Language">
+      <button type="button" class="toggle-btn" data-lang="de">DE</button>
+      <button type="button" class="toggle-btn" data-lang="en">EN</button>
+    </div>
+    <div class="toggle-group" role="group" aria-label="View">
+      <button type="button" class="toggle-btn" data-view="cards">Cards</button>
+      <button type="button" class="toggle-btn" data-view="list">List</button>
+    </div>
+  </div>
+</header>
+<main id="app">
+  <div class="loading">Loading…</div>
+</main>
+
+<script>
+const API_BASE = 'https://idapps.ethz.ch/cookpit-pub-services/v1/';
+const CLIENT_ID = 'ethz-wcms';
+
+// Facilities we prioritize first, matched case-insensitively against facility-name.
+const PRIORITY_ORDER = ['food market', 'fusion'];
+
+const VEGAN_LABELS = ['Vegan'];
+const VEGETARIAN_LABELS = ['Vegetarisch', 'Vegetarian'];
+
+const STRINGS = {
+  de: {
+    title: 'Mensa Menüs',
+    loading: 'Lade Menüs…',
+    noMenuToday: 'Heute keine Menüs verfügbar.',
+    loadError: 'Konnte websites.txt nicht laden.',
+    noFacilities: 'Keine Mensen gefunden.',
+    dateLocale: 'de-CH',
+  },
+  en: {
+    title: 'Mensa Menus',
+    loading: 'Loading menus…',
+    noMenuToday: 'No menus available today.',
+    loadError: 'Could not load websites.txt.',
+    noFacilities: 'No canteens found.',
+    dateLocale: 'en-GB',
+  },
+};
+
+const dataCache = {}; // lang -> facilities array
+let cachedIds = null;
+
+function pad(n) { return String(n).padStart(2, '0'); }
+
+function formatDate(d) {
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
+// ISO weekday: Monday=1 ... Sunday=7, matching the API's day-of-week-code.
+function isoWeekday(d) {
+  return ((d.getDay() + 6) % 7) + 1;
+}
+
+function getStateFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const lang = params.get('lang') === 'en' ? 'en' : 'de';
+  const view = params.get('view') === 'list' ? 'list' : 'cards';
+  return { lang, view };
+}
+
+function updateUrl(state) {
+  const params = new URLSearchParams(window.location.search);
+  params.set('lang', state.lang);
+  params.set('view', state.view);
+  history.replaceState(null, '', `${window.location.pathname}?${params.toString()}`);
+}
+
+async function getFacilityIds() {
+  const res = await fetch('websites.txt');
+  const text = await res.text();
+  const ids = [...text.matchAll(/[?&]id=(\d+)/g)].map(m => m[1]);
+  return [...new Set(ids)];
+}
+
+async function fetchFacilityInfo(id, lang) {
+  const url = `${API_BASE}facilities/${id}?client-id=${CLIENT_ID}&lang=${lang}`;
+  const res = await fetch(url);
+  if (!res.ok) return null;
+  return res.json();
+}
+
+async function fetchWeeklyRota(id, lang, todayStr, tomorrowStr) {
+  const url = `${API_BASE}weeklyrotas?client-id=${CLIENT_ID}&lang=${lang}&rs-first=0&rs-size=50` +
+    `&valid-after=${todayStr}&valid-before=${tomorrowStr}&facility=${id}`;
+  const res = await fetch(url);
+  if (!res.ok) return null;
+  return res.json();
+}
+
+// Picks today's day-of-week entry out of the weekly-rota-array response.
+function findTodayEntry(rotaData, todayStr, todayIso) {
+  if (!rotaData || !rotaData['weekly-rota-array']) return null;
+  for (const rota of rotaData['weekly-rota-array']) {
+    if (todayStr < rota['valid-from'] || todayStr > rota['valid-to']) continue;
+    const day = (rota['day-of-week-array'] || []).find(d => d['day-of-week-code'] === todayIso);
+    if (day) return day;
+  }
+  return null;
+}
+
+function classifyMeal(meal) {
+  const classes = (meal['meal-class-array'] || []).map(c => c['desc-short']);
+  if (classes.some(c => VEGAN_LABELS.includes(c))) return 'V';
+  if (classes.some(c => VEGETARIAN_LABELS.includes(c))) return 'V-';
+  return 'O';
+}
+
+function mealImageUrl(meal) {
+  if (!meal['image-url']) return null;
+  return `${meal['image-url']}?client-id=${CLIENT_ID}`;
+}
+
+function el(tag, className, children) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (children) {
+    for (const child of Array.isArray(children) ? children : [children]) {
+      if (child == null) continue;
+      node.append(child.nodeType ? child : document.createTextNode(child));
+    }
+  }
+  return node;
+}
+
+function renderMealCard(meal) {
+  const badge = classifyMeal(meal);
+  const card = el('div', 'card');
+
+  const imgUrl = mealImageUrl(meal);
+  if (imgUrl) {
+    const img = document.createElement('img');
+    img.src = imgUrl;
+    img.alt = meal.name || '';
+    img.loading = 'lazy';
+    card.append(img);
+  }
+
+  const titleRow = el('div', 'card-title-row', [
+    el('div', 'card-title', meal.name || ''),
+    el('span', `badge badge-${badge}`, badge),
+  ]);
+
+  const body = el('div', 'card-body', [
+    titleRow,
+    meal.description ? el('div', 'card-desc', meal.description) : null,
+  ]);
+
+  card.append(body);
+  return card;
+}
+
+function renderFacility(name, url, dayEntry, strings) {
+  const section = el('section', 'facility');
+
+  const heading = document.createElement('h2');
+  if (url) {
+    const link = document.createElement('a');
+    link.href = url;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = name;
+    heading.append(link);
+  } else {
+    heading.textContent = name;
+  }
+  section.append(heading);
+
+  const openingHours = dayEntry && dayEntry['opening-hour-array'];
+  if (!openingHours || openingHours.length === 0) {
+    section.append(el('div', 'empty-note', strings.noMenuToday));
+    return section;
+  }
+
+  for (const oh of openingHours) {
+    for (const mealTime of oh['meal-time-array'] || []) {
+      section.append(el('div', 'meal-time-label', mealTime.name));
+      const cards = el('div', 'cards');
+      for (const line of mealTime['line-array'] || []) {
+        if (line.meal) cards.append(renderMealCard(line.meal));
+      }
+      section.append(cards);
+    }
+  }
+
+  return section;
+}
+
+function facilityPriority(name) {
+  const lower = (name || '').toLowerCase();
+  const idx = PRIORITY_ORDER.findIndex(p => lower.includes(p));
+  return idx === -1 ? PRIORITY_ORDER.length : idx;
+}
+
+function renderFacilities(facilities, strings) {
+  const app = document.getElementById('app');
+  app.innerHTML = '';
+  if (facilities.length === 0) {
+    app.append(el('div', 'error-note', strings.noFacilities));
+    return;
+  }
+  for (const f of facilities) {
+    app.append(renderFacility(f.name, f.url, f.dayEntry, strings));
+  }
+}
+
+function applyView(state) {
+  document.getElementById('app').classList.toggle('list-view', state.view === 'list');
+}
+
+function updateToggleButtons(state) {
+  document.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('active', b.dataset.lang === state.lang));
+  document.querySelectorAll('[data-view]').forEach(b => b.classList.toggle('active', b.dataset.view === state.view));
+}
+
+async function loadAndRender(state) {
+  const strings = STRINGS[state.lang];
+  const app = document.getElementById('app');
+  document.documentElement.lang = state.lang;
+  document.title = strings.title;
+  document.getElementById('titleText').textContent = strings.title;
+
+  const today = new Date();
+  document.getElementById('dateLine').textContent =
+    today.toLocaleDateString(strings.dateLocale, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+  if (dataCache[state.lang]) {
+    renderFacilities(dataCache[state.lang], strings);
+    applyView(state);
+    return;
+  }
+
+  app.innerHTML = '';
+  app.append(el('div', 'loading', strings.loading));
+
+  if (!cachedIds) {
+    try {
+      cachedIds = await getFacilityIds();
+    } catch (err) {
+      app.innerHTML = '';
+      app.append(el('div', 'error-note', strings.loadError));
+      return;
+    }
+  }
+
+  const tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
+  const todayStr = formatDate(today);
+  const tomorrowStr = formatDate(tomorrow);
+  const todayIso = isoWeekday(today);
+
+  const results = await Promise.all(cachedIds.map(async id => {
+    try {
+      const [info, rota] = await Promise.all([
+        fetchFacilityInfo(id, state.lang),
+        fetchWeeklyRota(id, state.lang, todayStr, tomorrowStr),
+      ]);
+      if (!info) return null;
+      const dayEntry = findTodayEntry(rota, todayStr, todayIso);
+      return { id, name: info['facility-name'] || `Mensa ${id}`, url: info['facility-url'], dayEntry };
+    } catch (err) {
+      return null;
+    }
+  }));
+
+  const facilities = results.filter(Boolean);
+  facilities.sort((a, b) => facilityPriority(a.name) - facilityPriority(b.name));
+  dataCache[state.lang] = facilities;
+
+  renderFacilities(facilities, strings);
+  applyView(state);
+}
+
+function main() {
+  const state = getStateFromUrl();
+  updateUrl(state);
+  updateToggleButtons(state);
+  applyView(state);
+  loadAndRender(state);
+
+  document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => {
+    if (state.lang === btn.dataset.lang) return;
+    state.lang = btn.dataset.lang;
+    updateUrl(state);
+    updateToggleButtons(state);
+    loadAndRender(state);
+  }));
+
+  document.querySelectorAll('[data-view]').forEach(btn => btn.addEventListener('click', () => {
+    if (state.view === btn.dataset.view) return;
+    state.view = btn.dataset.view;
+    updateUrl(state);
+    updateToggleButtons(state);
+    applyView(state);
+  }));
+}
+
+main();
+</script>
+</body>
+</html>
