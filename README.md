@@ -35,6 +35,10 @@ step, no backend). At load time it:
    the description/image/price alone. Sold-out cards stay visible, grayed
    out, at the bottom of the list.
 
+   Where the API provides prices, they're shown per customer group (e.g.
+   student / internal / external), using the API's own already-localized
+   group labels.
+
 API responses are cached in `localStorage` for 5 minutes (the API itself
 sends no `Cache-Control`/`ETag`), so reloading the page doesn't refetch on
 every visit. Both languages are fetched concurrently on page load, so the

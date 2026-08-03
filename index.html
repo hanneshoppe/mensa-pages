@@ -144,6 +144,12 @@
     line-height: 1.35;
     white-space: pre-line;
   }
+  .card-price {
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-top: 2px;
+  }
   .empty-note, .error-note {
     color: var(--muted);
     font-size: 0.9rem;
@@ -252,6 +258,7 @@ const CookpitClient = (() => {
   }
 
   function imageUrl(meal) {
+    if (meal.__rawImage) return meal.__rawImage;
     if (!meal['image-url']) return null;
     return `${meal['image-url']}?client-id=${CLIENT_ID}`;
   }
@@ -266,6 +273,13 @@ const VEGAN_LABELS = ['Vegan'];
 const VEGETARIAN_LABELS = ['Vegetarisch', 'Vegetarian'];
 const SOLD_OUT_LABELS = ['Ausverkauft', 'Sold Out'];
 const DIET_ORDER = { V: 0, 'V-': 1, O: 2 };
+
+// Hidden easter egg for FUSION, enabled via ?ea=1.
+const EASTER_EGG_IMAGE = 'https://cdn.creazilla.com/cliparts/60279/sad-face-clipart-md.png';
+const EASTER_EGG_CONTENT = {
+  de: { name: 'Nichts Gutes', description: 'hier gehen Träume und Ziele zum sterben hin' },
+  en: { name: 'Nothing Good', description: 'dying hopes and dreams' },
+};
 
 const STRINGS = {
   de: {
@@ -304,7 +318,8 @@ function getStateFromUrl() {
   const params = new URLSearchParams(window.location.search);
   const lang = params.get('lang') === 'de' ? 'de' : 'en';
   const view = params.get('view') === 'list' ? 'list' : 'cards';
-  return { lang, view };
+  const easterEgg = params.get('ea') === '1';
+  return { lang, view, easterEgg };
 }
 
 function updateUrl(state) {
@@ -390,6 +405,17 @@ function sortedLines(lines) {
     });
 }
 
+// "CHF 8.50 / 12.50 / 15.50 (stud. / int. / ext.)" — using the API's own
+// already-localized customer-group labels rather than inventing our own.
+function formatPrices(meal) {
+  const prices = meal['meal-price-array'] || [];
+  if (prices.length === 0) return null;
+  const sorted = [...prices].sort((a, b) => a['customer-group-position'] - b['customer-group-position']);
+  const amounts = sorted.map(p => p.price.toFixed(2)).join(' / ');
+  const labels = sorted.map(p => p['customer-group-desc-short']).join(' / ');
+  return `CHF ${amounts} (${labels})`;
+}
+
 function el(tag, className, children) {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -424,13 +450,14 @@ function renderMealCard(meal) {
   const body = el('div', 'card-body', [
     titleRow,
     meal.description ? el('div', 'card-desc', meal.description) : null,
+    formatPrices(meal) ? el('div', 'card-price', formatPrices(meal)) : null,
   ]);
 
   card.append(body);
   return card;
 }
 
-function renderFacility(name, url, dayEntry, strings) {
+function renderFacility(name, url, dayEntry, strings, lang, easterEgg) {
   const section = el('section', 'facility');
 
   const heading = document.createElement('h2');
@@ -445,6 +472,13 @@ function renderFacility(name, url, dayEntry, strings) {
     heading.textContent = name;
   }
   section.append(heading);
+
+  if (easterEgg && (name || '').toLowerCase().includes('fusion')) {
+    const cards = el('div', 'cards');
+    cards.append(renderMealCard({ ...EASTER_EGG_CONTENT[lang], 'meal-class-array': [], __rawImage: EASTER_EGG_IMAGE }));
+    section.append(cards);
+    return section;
+  }
 
   const openingHours = dayEntry && dayEntry['opening-hour-array'];
   if (!openingHours || openingHours.length === 0) {
@@ -472,7 +506,7 @@ function facilityPriority(name) {
   return idx === -1 ? PRIORITY_ORDER.length : idx;
 }
 
-function renderFacilities(facilities, strings) {
+function renderFacilities(facilities, strings, lang, easterEgg) {
   const app = document.getElementById('app');
   app.innerHTML = '';
   if (facilities.length === 0) {
@@ -480,7 +514,7 @@ function renderFacilities(facilities, strings) {
     return;
   }
   for (const f of facilities) {
-    app.append(renderFacility(f.name, f.url, f.dayEntry, strings));
+    app.append(renderFacility(f.name, f.url, f.dayEntry, strings, lang, easterEgg));
   }
 }
 
@@ -521,7 +555,7 @@ async function loadAndRender(state) {
     return;
   }
 
-  renderFacilities(facilities, strings);
+  renderFacilities(facilities, strings, state.lang, state.easterEgg);
   applyView(state);
 }
 
