@@ -22,11 +22,18 @@ step, no backend). At load time it:
 3. Picks out today's date client-side (the dates embedded in `websites.txt`
    are only there to identify which facility each URL points at — they're
    not used to decide "today").
-4. Renders each facility's dishes, sorted with "food market" first and
-   "fusion" second, each dish tagged:
+4. Renders each facility's dishes, facilities sorted with "food market" first
+   and "fusion" second; dishes within each facility sorted vegan → vegetarian
+   → omnivore (alphabetically within each), then "Choose 5" (build-your-own),
+   then sold-out items last of all, each dish tagged:
    - `O` — omnivore (default: contains meat/fish, or unclassified)
    - `V-` — vegetarian
    - `V` — vegan
+
+   The API has no dedicated "sold out" field — it just overwrites the dish's
+   `name` with the localized string "Ausverkauft"/"Sold Out" while leaving
+   the description/image/price alone. Sold-out cards stay visible, grayed
+   out, at the bottom of the list.
 
 API responses are cached in `localStorage` for 5 minutes (the API itself
 sends no `Cache-Control`/`ETag`), so reloading the page doesn't refetch on

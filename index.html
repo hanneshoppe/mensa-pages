@@ -98,6 +98,10 @@
     display: flex;
     flex-direction: column;
   }
+  .card.sold-out {
+    opacity: 0.55;
+    filter: grayscale(70%);
+  }
   .card img {
     width: 100%;
     aspect-ratio: 4 / 3;
@@ -260,6 +264,8 @@ const PRIORITY_ORDER = ['food market', 'fusion'];
 
 const VEGAN_LABELS = ['Vegan'];
 const VEGETARIAN_LABELS = ['Vegetarisch', 'Vegetarian'];
+const SOLD_OUT_LABELS = ['Ausverkauft', 'Sold Out'];
+const DIET_ORDER = { V: 0, 'V-': 1, O: 2 };
 
 const STRINGS = {
   de: {
@@ -365,6 +371,25 @@ function classifyMeal(meal) {
   return 'O';
 }
 
+// Vegan, then vegetarian, then omnivore — except "Choose 5" (build-your-own,
+// same name in every language) always sorts after those, and sold-out items
+// always sort last of all, below "Choose 5" too.
+function mealSortKey(meal) {
+  const dietRank = DIET_ORDER[classifyMeal(meal)];
+  if (SOLD_OUT_LABELS.includes(meal.name)) return 20 + dietRank;
+  if (meal.name === 'Choose 5') return 10 + dietRank;
+  return dietRank;
+}
+
+function sortedLines(lines) {
+  return (lines || [])
+    .filter(line => line.meal)
+    .sort((a, b) => {
+      const rankDiff = mealSortKey(a.meal) - mealSortKey(b.meal);
+      return rankDiff !== 0 ? rankDiff : a.meal.name.localeCompare(b.meal.name);
+    });
+}
+
 function el(tag, className, children) {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -379,7 +404,8 @@ function el(tag, className, children) {
 
 function renderMealCard(meal) {
   const badge = classifyMeal(meal);
-  const card = el('div', 'card');
+  const soldOut = SOLD_OUT_LABELS.includes(meal.name);
+  const card = el('div', soldOut ? 'card sold-out' : 'card');
 
   const imgUrl = CookpitClient.imageUrl(meal);
   if (imgUrl) {
@@ -430,8 +456,8 @@ function renderFacility(name, url, dayEntry, strings) {
     for (const mealTime of oh['meal-time-array'] || []) {
       section.append(el('div', 'meal-time-label', mealTime.name));
       const cards = el('div', 'cards');
-      for (const line of mealTime['line-array'] || []) {
-        if (line.meal) cards.append(renderMealCard(line.meal));
+      for (const line of sortedLines(mealTime['line-array'])) {
+        cards.append(renderMealCard(line.meal));
       }
       section.append(cards);
     }
