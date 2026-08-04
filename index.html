@@ -311,7 +311,7 @@ const STRINGS = {
   },
 };
 
-const facilitiesPromises = {}; // lang -> Promise<facilities array>
+const facilitiesPromises = {}; // lang -> Promise<{facilities, fromSnapshot}>
 let idsPromise = null;
 
 function pad(n) { return String(n).padStart(2, '0'); }
@@ -352,31 +352,76 @@ function getFacilityIdsCached() {
   return idsPromise;
 }
 
+// A scheduled GitHub Action pre-fetches today's menus server-side and
+// appends a snapshot line to data/<date>.jsonl every ~30 min, so the page
+// can render from one fast static request instead of waiting on ETH's API
+// (~1s per call) on every visit. Snapshot entries are already in
+// {id, name, url, dayEntry} shape, so they need no further processing.
+async function getStaticSnapshot(todayStr) {
+  try {
+    const res = await fetch(`data/${todayStr}.jsonl`);
+    if (!res.ok) return null;
+    const lines = (await res.text()).split('\n').filter(Boolean);
+    if (lines.length === 0) return null;
+    return JSON.parse(lines[lines.length - 1]);
+  } catch (err) {
+    return null;
+  }
+}
+
+function sortFacilities(entries) {
+  const facilities = entries.filter(Boolean);
+  facilities.sort((a, b) => facilityPriority(a.name) - facilityPriority(b.name));
+  return facilities;
+}
+
+async function fetchFacilitiesLive(lang, todayStr, tomorrowStr, todayIso) {
+  const ids = await getFacilityIdsCached();
+  return Promise.all(ids.map(async id => {
+    try {
+      const [info, rota] = await Promise.all([
+        CookpitClient.getFacility(id, lang),
+        CookpitClient.getWeeklyRota(id, lang, todayStr, tomorrowStr),
+      ]);
+      if (!info) return null;
+      const dayEntry = findTodayEntry(rota, todayStr, todayIso);
+      return { id, name: info['facility-name'] || `Mensa ${id}`, url: info['facility-url'], dayEntry };
+    } catch (err) {
+      return null;
+    }
+  }));
+}
+
 // Memoized per language, so both languages can be fetched concurrently at
 // startup and switching the language toggle never needs to wait on a fetch.
+// Reports whether the static snapshot was used, so the caller can decide to
+// double-check against live data in the background.
 function getFacilitiesData(lang, todayStr, tomorrowStr, todayIso) {
   if (!facilitiesPromises[lang]) {
     facilitiesPromises[lang] = (async () => {
-      const ids = await getFacilityIdsCached();
-      const results = await Promise.all(ids.map(async id => {
-        try {
-          const [info, rota] = await Promise.all([
-            CookpitClient.getFacility(id, lang),
-            CookpitClient.getWeeklyRota(id, lang, todayStr, tomorrowStr),
-          ]);
-          if (!info) return null;
-          const dayEntry = findTodayEntry(rota, todayStr, todayIso);
-          return { id, name: info['facility-name'] || `Mensa ${id}`, url: info['facility-url'], dayEntry };
-        } catch (err) {
-          return null;
-        }
-      }));
-      const facilities = results.filter(Boolean);
-      facilities.sort((a, b) => facilityPriority(a.name) - facilityPriority(b.name));
-      return facilities;
+      const snapshot = await getStaticSnapshot(todayStr);
+      const snapshotFacilities = snapshot && snapshot.facilities && snapshot.facilities[lang];
+      const entries = snapshotFacilities || await fetchFacilitiesLive(lang, todayStr, tomorrowStr, todayIso);
+      return { facilities: sortFacilities(entries), fromSnapshot: Boolean(snapshotFacilities) };
     })();
   }
   return facilitiesPromises[lang];
+}
+
+// The static snapshot can be up to ~30 min stale. After the fast initial
+// render, quietly re-check against the live API and only touch the DOM if
+// something actually changed (e.g. an item sold out since the last run).
+async function refreshInBackground(state, lang, todayStr, tomorrowStr, todayIso, renderedFacilities) {
+  let fresh;
+  try {
+    fresh = sortFacilities(await fetchFacilitiesLive(lang, todayStr, tomorrowStr, todayIso));
+  } catch (err) {
+    return;
+  }
+  if (state.lang !== lang) return; // language changed while this was in flight
+  if (JSON.stringify(fresh) === JSON.stringify(renderedFacilities)) return;
+  renderFacilities(fresh, STRINGS[lang], lang, state.easterEgg);
+  applyView(state);
 }
 
 // Picks today's day-of-week entry out of the weekly-rota-array response.
@@ -558,9 +603,9 @@ async function loadAndRender(state) {
   const tomorrowStr = formatDate(tomorrow);
   const todayIso = isoWeekday(today);
 
-  let facilities;
+  let facilities, fromSnapshot;
   try {
-    facilities = await getFacilitiesData(state.lang, todayStr, tomorrowStr, todayIso);
+    ({ facilities, fromSnapshot } = await getFacilitiesData(state.lang, todayStr, tomorrowStr, todayIso));
   } catch (err) {
     app.innerHTML = '';
     app.append(el('div', 'error-note', strings.loadError));
@@ -569,6 +614,10 @@ async function loadAndRender(state) {
 
   renderFacilities(facilities, strings, state.lang, state.easterEgg);
   applyView(state);
+
+  if (fromSnapshot) {
+    refreshInBackground(state, state.lang, todayStr, tomorrowStr, todayIso, facilities);
+  }
 }
 
 function main() {

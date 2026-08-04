@@ -1,0 +1,70 @@
+name: Fetch menu snapshot
+
+on:
+  schedule:
+    # 08:00-14:00 Europe/Zurich, every 30 min. Cron is UTC-only, so this
+    # tracks CEST (UTC+2) and runs an hour early local time during CET
+    # (winter). ponytail: accepted drift, split into a second winter cron
+    # if that ever actually matters.
+    - cron: '0,30 6-11 * * *'
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: fetch-menu-snapshot
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch today's menus and append a snapshot line
+        run: |
+          set -euo pipefail
+
+          BASE='https://idapps.ethz.ch/cookpit-pub-services/v1'
+          CLIENT_ID='ethz-wcms'
+          TODAY=$(TZ=Europe/Zurich date +%Y-%m-%d)
+          TOMORROW=$(TZ=Europe/Zurich date -d '+1 day' +%Y-%m-%d)
+          ISOWD=$(TZ=Europe/Zurich date +%u)
+          FETCHED_AT=$(date -u +%FT%TZ)
+          IDS=$(grep -oP '[?&]id=\K\d+' websites.txt | sort -u)
+
+          mkdir -p data
+          TMP=$(mktemp -d)
+
+          # Per facility: fetch its info + full weekly rota, then narrow the
+          # rota down to just today's day-entry (matching the client's
+          # findTodayEntry) so we archive one day's menu, not a redundant
+          # copy of the whole week on every run.
+          for lang in en de; do
+            : > "$TMP/$lang.jsonl"
+            for id in $IDS; do
+              info=$(curl -sf "$BASE/facilities/$id?client-id=$CLIENT_ID&lang=$lang" || echo null)
+              rota=$(curl -sf "$BASE/weeklyrotas?client-id=$CLIENT_ID&lang=$lang&rs-first=0&rs-size=50&valid-after=$TODAY&valid-before=$TOMORROW&facility=$id" || echo null)
+              jq -n -c --arg id "$id" --argjson info "$info" --argjson rota "$rota" \
+                --arg today "$TODAY" --argjson isowd "$ISOWD" '
+                ([$rota["weekly-rota-array"][]? | select($today >= ."valid-from" and $today <= ."valid-to")][0]) as $week
+                | ([$week["day-of-week-array"][]? | select(."day-of-week-code" == $isowd)][0]) as $day
+                | {id: $id, name: ($info["facility-name"] // ("Mensa " + $id)), url: $info["facility-url"], dayEntry: ($day // null)}
+              ' >> "$TMP/$lang.jsonl"
+            done
+            jq -s '.' "$TMP/$lang.jsonl" > "$TMP/$lang.json"
+          done
+
+          jq -n -c --arg fetchedAt "$FETCHED_AT" --slurpfile en "$TMP/en.json" --slurpfile de "$TMP/de.json" \
+            '{fetchedAt: $fetchedAt, facilities: {en: $en[0], de: $de[0]}}' >> "data/$TODAY.jsonl"
+
+          rm -rf "$TMP"
+
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add data/
+          if ! git diff --staged --quiet; then
+            git commit -m "Menu snapshot for $TODAY"
+            git push
+          fi
