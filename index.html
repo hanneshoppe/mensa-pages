@@ -176,8 +176,9 @@
     align-items: center;
   }
   #app.list-view .card img {
-    width: 64px;
-    align-self: stretch;
+    width: auto;
+    height: 84px;
+    aspect-ratio: 4 / 3;
     flex-shrink: 0;
   }
   #app.list-view .card-body {
@@ -185,8 +186,16 @@
     flex: 1;
     min-width: 0;
   }
+  #app.list-view .card-title {
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   #app.list-view .card-desc {
-    white-space: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 </style>
 </head>
