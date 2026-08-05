@@ -56,15 +56,25 @@ jobs:
             jq -s '.' "$TMP/$lang.jsonl" > "$TMP/$lang.json"
           done
 
-          jq -n -c --arg fetchedAt "$FETCHED_AT" --slurpfile en "$TMP/en.json" --slurpfile de "$TMP/de.json" \
-            '{fetchedAt: $fetchedAt, facilities: {en: $en[0], de: $de[0]}}' >> "data/$TODAY.jsonl"
+          NEW=$(jq -n -c --arg fetchedAt "$FETCHED_AT" --slurpfile en "$TMP/en.json" --slurpfile de "$TMP/de.json" \
+            '{fetchedAt: $fetchedAt, facilities: {en: $en[0], de: $de[0]}}')
 
           rm -rf "$TMP"
+
+          # Skip the append (and commit) entirely if the menu content is
+          # unchanged from the last snapshot line, ignoring fetchedAt so a
+          # bare timestamp bump doesn't count as a change.
+          SNAPSHOT="data/$TODAY.jsonl"
+          LAST=$([ -f "$SNAPSHOT" ] && tail -n 1 "$SNAPSHOT" || true)
+          if [ -n "$LAST" ] && [ "$(jq -c '.facilities' <<<"$LAST")" = "$(jq -c '.facilities' <<<"$NEW")" ]; then
+            echo "No menu changes since last snapshot, skipping."
+            exit 0
+          fi
+
+          echo "$NEW" >> "$SNAPSHOT"
 
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           git add data/
-          if ! git diff --staged --quiet; then
-            git commit -m "Menu snapshot for $TODAY"
-            git push
-          fi
+          git commit -m "Menu snapshot for $TODAY"
+          git push
