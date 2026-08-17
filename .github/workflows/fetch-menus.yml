@@ -2,12 +2,12 @@ name: Fetch menu snapshot
 
 on:
   schedule:
-    # 08:00-14:00 Europe/Zurich, every 30 min. Cron is UTC-only, so this
-    # tracks CEST (UTC+2) and runs an hour early local time during CET
-    # (winter). ponytail: accepted drift, split into a second winter cron
-    # if that ever actually matters.
-    - cron: '0,30 6-11 * * *'
-    - cron: '0 12 * * *'
+    # 08:00-14:00 Europe/Zurich, every 30 min, Mon-Fri only. Cron is
+    # UTC-only, so this tracks CEST (UTC+2) and runs an hour early local
+    # time during CET (winter). ponytail: accepted drift, split into a
+    # second winter cron if that ever actually matters.
+    - cron: '0,30 6-11 * * 1-5'
+    - cron: '0 12 * * 1-5'
   workflow_dispatch:
 
 concurrency:
