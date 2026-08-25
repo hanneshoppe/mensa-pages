@@ -110,6 +110,27 @@ lands. The output is a pure function of its inputs — its `dataAsOf` is the
 newest `fetchedAt` in the archive, not the time the script ran — so an
 unchanged archive produces a byte-identical file and no spurious commit.
 
+Alongside it, `data/dishes.csv` is the tidy analysis layer: one flat row per
+(date, facility, dish), so `pandas.read_csv('data/dishes.csv')` replaces a
+four-level traversal of the raw JSONL plus the dedup, sold-out handling and
+language join that every consumer would otherwise reimplement. Columns cover
+the dish (`line`, `name_en`, `name_de`, `diet`), its timing (`first_seen_at`,
+`last_seen_at`, `sold_out_at`), one `price_<group>` per customer group, and
+the nutrition fields.
+
+`sold_out_at` is what the 5-minute cadence buys. The API has no sold-out
+field — it overwrites the dish's `name` with "Ausverkauft"/"Sold Out" — so
+the name is gone in exactly the snapshot worth timestamping, and the event is
+attributed back through `line-id` to whichever dish held that counter earlier
+*the same date* (`line-id` identifies the counter, not the dish, and is
+reused across days). One blind spot follows from this: a dish already showing
+the placeholder in the day's first snapshot never appears under its real name
+and cannot be identified at all.
+
+The dish ledger carries a DE/EN toggle (`?lang=de`) that swaps dish names via
+`nameDe`, joined from the German side already stored in every snapshot — so
+it costs no extra API calls. The rest of the page stays English.
+
 Two things the numbers deliberately do not do:
 
 - **No diet is inferred from a dish name.** The `vegan`/`vegetarian`/`fish`/
@@ -143,6 +164,9 @@ Both are reflected in and settable via the URL query string:
 - `?view=cards` / `?view=list` — image-grid cards or a compact list
 
 Example: `http://localhost:8000/?lang=de&view=list`
+
+`stats.html` honours `?lang=` too, where it swaps dish names only — its
+headings and labels stay English. `?view=` does not apply there.
 
 ## Adding more facilities
 
