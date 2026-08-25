@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mensa Stats</title>
+<style>
+  :root {
+    --bg: #f7f5f2;
+    --card-bg: #ffffff;
+    --text: #1f2320;
+    --muted: #6b7168;
+    --border: #e4e0da;
+    --accent: #2f5233;
+    /* Categorical series slots — validated (fixed hue order, CVD-safe adjacent
+       pairs, ≥3:1 contrast except s4/s5 which rely on the text-color-label
+       relief rule below). Never reassign a slot by rank or cycle it. */
+    --s1: #2a78d6;
+    --s2: #eb6834;
+    --s3: #1baf7a;
+    --s4: #eda100;
+    --s5: #e87ba4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1a19;
+      --card-bg: #242422;
+      --text: #ffffff;
+      --muted: #c3c2b7;
+      --border: #3a3a37;
+      --accent: #3f6b45;
+      --s1: #3987e5;
+      --s2: #d95926;
+      --s3: #199e70;
+      --s4: #c98500;
+      --s5: #d55181;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px 16px 64px;
+  }
+  header {
+    max-width: 1100px;
+    margin: 0 auto 28px;
+  }
+  h1 {
+    margin: 0 0 4px;
+    font-size: 1.6rem;
+  }
+  .date-line {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .back-link {
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-decoration: none;
+  }
+  .back-link:hover { text-decoration: underline; }
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .toggle-group {
+    display: inline-flex;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .toggle-btn {
+    border: none;
+    background: var(--card-bg);
+    color: var(--text);
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  .toggle-btn + .toggle-btn {
+    border-left: 1px solid var(--border);
+  }
+  .toggle-btn.active {
+    background: var(--accent);
+    color: #fff;
+  }
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .loading, .empty-note, .error-note {
+    color: var(--muted);
+    text-align: center;
+    padding: 40px 0;
+  }
+  .empty-note { font-style: italic; text-align: left; padding: 8px 0; }
+  .error-note { color: #a33; }
+
+  section.stat-section h2 {
+    margin: 0 0 6px;
+    font-size: 1.25rem;
+  }
+  .section-note {
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: 0 0 16px;
+    max-width: 70ch;
+  }
+
+  /* Shared legend, reused by the diet-mix and price-spread sections. */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 10px 0 16px;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-swatch {
+    width: 11px;
+    height: 11px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  /* Buttons — same visual language as index.html's .toggle-btn. */
+  .btn {
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    color: var(--text);
+    padding: 5px 12px;
+    font-size: 0.82rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .btn:hover { border-color: var(--accent); }
+
+  /* --- Diet mix --- */
+  .diet-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 5px 0;
+  }
+  .diet-row.overall {
+    border-top: 1px solid var(--border);
+    margin-top: 6px;
+    padding-top: 13px;
+    font-weight: 600;
+  }
+  .diet-row-label {
+    width: 140px;
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .diet-bar {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    gap: 2px;
+    height: 28px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--border);
+  }
+  .diet-seg {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2px;
+    overflow: hidden;
+  }
+  .diet-seg-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    padding: 0 4px;
+    pointer-events: none;
+  }
+  .diet-row-total {
+    width: 64px;
+    flex-shrink: 0;
+    text-align: right;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  /* Shown next to a facility's name wherever its coverage is narrower than
+     the overall date range (e.g. a canteen that opened partway through). */
+  .coverage-note { color: var(--muted); font-weight: 400; font-size: 0.78em; }
+  @media (max-width: 480px) {
+    .diet-row { flex-wrap: wrap; }
+    .diet-row-label { width: 100%; }
+    .diet-row-total { width: auto; margin-left: auto; }
+  }
+
+  table.data-table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.82rem;
+  }
+  table.data-table th, table.data-table td {
+    text-align: left;
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  table.data-table th { color: var(--muted); font-weight: 600; }
+  .table-wrap { overflow-x: auto; }
+
+  /* --- Price spread --- */
+  .price-axis-caption {
+    color: var(--muted);
+    font-size: 0.78rem;
+    margin-bottom: 2px;
+  }
+  .price-grid {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    column-gap: 12px;
+    align-items: center;
+  }
+  .price-axis-row { margin-bottom: 8px; }
+  .price-axis-svg { width: 100%; height: 20px; display: block; overflow: visible; }
+  .price-axis-tick-label {
+    position: absolute;
+    top: 6px;
+    font-size: 0.7rem;
+    color: var(--muted);
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+  .price-axis-ticks { position: relative; height: 14px; }
+  .price-facility { margin-bottom: 14px; }
+  .price-facility h3 {
+    margin: 0 0 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  .price-group-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .price-mark-wrap {
+    position: relative;
+    height: 30px;
+  }
+  .price-row-svg { width: 100%; height: 26px; display: block; overflow: visible; }
+  .price-median-label {
+    position: absolute;
+    top: -13px;
+    transform: translateX(-50%);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .price-median-label.edge-start { transform: translateX(0); }
+  .price-median-label.edge-end { transform: translateX(-100%); }
+
+  /* --- Tooltip (shared by diet segments and price marks) --- */
+  #tooltip {
+    position: fixed;
+    z-index: 50;
+    background: var(--text);
+    color: var(--bg);
+    font-size: 0.78rem;
+    line-height: 1.4;
+    padding: 6px 10px;
+    border-radius: 6px;
+    pointer-events: none;
+    max-width: 240px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.08s;
+  }
+  #tooltip.visible { visibility: visible; opacity: 1; }
+  #tooltip .tt-strong { font-weight: 700; }
+
+  /* --- Dish ledger --- */
+  .ledger-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+  }
+  .ledger-controls select {
+    font-size: 0.82rem;
+    padding: 4px 6px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    color: var(--text);
+  }
+  th.sortable { cursor: pointer; user-select: none; }
+  th.sortable:hover { color: var(--text); }
+  th.sortable .sort-arrow { color: var(--accent); }
+  .diet-badge { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+  .diet-badge-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .muted-dash { color: var(--muted); }
+  .pred-range { color: var(--muted); font-size: 0.85em; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Mensa Stats</h1>
+  <div class="date-line" id="dateLine"></div>
+  <div class="controls">
+    <div class="toggle-group" role="group" aria-label="Language">
+      <button type="button" class="toggle-btn" data-lang="de">DE</button>
+      <button type="button" class="toggle-btn" data-lang="en">EN</button>
+    </div>
+    <a class="back-link" href="index.html">&larr; Back to menus</a>
+  </div>
+</header>
+<main id="app">
+  <div class="loading">Loading…</div>
+</main>
+
+<div id="tooltip"></div>
+
+<script>
+// Same tiny DOM-builder pattern as index.html: el() for HTML nodes. svgEl()
+// is its SVG-namespace counterpart, needed because SVG tags can't be made
+// with document.createElement.
+function el(tag, className, children) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (children) {
+    for (const child of Array.isArray(children) ? children : [children]) {
+      if (child == null) continue;
+      node.append(child.nodeType ? child : document.createTextNode(child));
+    }
+  }
+  return node;
+}
+
+const SVG_NS = 'http://www.w3.org/2000/svg';
+function svgEl(tag, attrs, children) {
+  const node = document.createElementNS(SVG_NS, tag);
+  if (attrs) for (const k in attrs) node.setAttribute(k, attrs[k]);
+  if (children) for (const child of Array.isArray(children) ? children : [children]) {
+    if (child != null) node.append(child);
+  }
+  return node;
+}
+
+const DIET_KEYS = ['vegan', 'vegetarian', 'fish', 'meat', 'unclassified'];
+const DIET_LABELS = { vegan: 'Vegan', vegetarian: 'Vegetarian', fish: 'Fish', meat: 'Meat', unclassified: 'Unclassified' };
+const DIET_COLOR_VAR = { vegan: '--s1', vegetarian: '--s2', fish: '--s3', meat: '--s4', unclassified: '--s5' };
+
+// Known groups get first claim on the stable color slots, in this order;
+// anything the API adds later is unknown and gets appended (first-seen) after
+// them, so students/internal/external never repaint when a group is added.
+const PRICE_GROUPS_KNOWN = ['students', 'internal', 'external'];
+const PRICE_GROUP_LABELS = { students: 'Students', internal: 'Internal', external: 'External' };
+const COLOR_SLOTS = ['--s1', '--s2', '--s3', '--s4', '--s5'];
+
+// Union of customer-group keys actually present in the data (facilities +
+// overall), ordered as: known groups first (filtered to those present), then
+// any unknown groups in first-seen order. Computed once per render so the
+// legend, axis domain, and per-facility rows all agree on the same order.
+function computePriceGroups(stats) {
+  const seen = new Set();
+  const firstSeenOrder = [];
+  for (const prices of [...stats.facilities.map(f => f.prices), stats.overall.prices]) {
+    if (!prices) continue;
+    for (const k of Object.keys(prices)) {
+      if (!seen.has(k)) { seen.add(k); firstSeenOrder.push(k); }
+    }
+  }
+  const known = PRICE_GROUPS_KNOWN.filter(g => seen.has(g));
+  const unknown = firstSeenOrder.filter(g => !PRICE_GROUPS_KNOWN.includes(g));
+  return [...known, ...unknown];
+}
+
+// Color + label lookups keyed to one groups list, so a color slot is always
+// assigned by index into that list — never cycled — and past slot 5 falls
+// back to a neutral color (the direct label + legend still carry identity).
+function priceGroupMaps(groups) {
+  const colorVars = {}, labels = {};
+  groups.forEach((g, i) => {
+    colorVars[g] = i < COLOR_SLOTS.length ? COLOR_SLOTS[i] : '--muted';
+    labels[g] = PRICE_GROUP_LABELS[g] || g;
+  });
+  return { colorVars, labels };
+}
+
+function displayName(f) { return f.name === 'all' ? 'All facilities' : f.name; }
+
+// A facility that joined (or left) partway through the archive has a
+// firstSeen/lastSeen narrower than the overall date range — surface that so
+// it doesn't read as equivalent to a facility with full coverage.
+function coverageNote(f, dateRange) {
+  if (f.firstSeen === dateRange.from && f.lastSeen === dateRange.to) return null;
+  return `${f.days} days · ${f.firstSeen}→${f.lastSeen}`;
+}
+
+// ---- tooltip (shared hover/focus layer for diet segments + price marks) ----
+const tooltipEl = document.getElementById('tooltip');
+
+function showTooltip(x, y, lines) {
+  tooltipEl.innerHTML = '';
+  for (const line of lines) {
+    tooltipEl.append(el('div', line.strong ? 'tt-strong' : null, line.text));
+  }
+  tooltipEl.classList.add('visible');
+  // Position first, then clamp against the viewport so it never clips off
+  // the container edge (a chart near the right/bottom edge of the page).
+  tooltipEl.style.left = `${x}px`;
+  tooltipEl.style.top = `${y}px`;
+  const rect = tooltipEl.getBoundingClientRect();
+  let left = x + 12, top = y + 12;
+  if (left + rect.width > window.innerWidth - 8) left = x - rect.width - 12;
+  if (top + rect.height > window.innerHeight - 8) top = y - rect.height - 12;
+  tooltipEl.style.left = `${Math.max(4, left)}px`;
+  tooltipEl.style.top = `${Math.max(4, top)}px`;
+}
+
+function hideTooltip() {
+  tooltipEl.classList.remove('visible');
+}
+
+// Wires pointer + keyboard-focus hover to a shared tooltip, so mouse and
+// keyboard users get the same detail (interaction.md: "same on focus as hover").
+function attachTooltip(node, linesFn) {
+  node.addEventListener('pointermove', e => showTooltip(e.clientX, e.clientY, linesFn()));
+  node.addEventListener('pointerleave', hideTooltip);
+  node.addEventListener('focus', () => {
+    const rect = node.getBoundingClientRect();
+    showTooltip(rect.left, rect.bottom, linesFn());
+  });
+  node.addEventListener('blur', hideTooltip);
+}
+
+function renderLegend(keys, labelMap, colorVarMap) {
+  const legend = el('div', 'legend');
+  for (const k of keys) {
+    const swatch = el('span', 'legend-swatch');
+    swatch.style.background = `var(${colorVarMap[k]})`;
+    legend.append(el('div', 'legend-item', [swatch, labelMap[k]]));
+  }
+  return legend;
+}
+
+// ---------------------------------------------------------------------------
+// Section 1 — diet mix: a horizontal stacked bar per facility (+ one for the
+// combined "overall" row), part-to-whole composition of vegan/vegetarian/
+// fish/meat/unclassified dish-days.
+// ---------------------------------------------------------------------------
+
+function dietRow(f, isOverall, dateRange) {
+  const total = f.dishDays;
+  const bar = el('div', 'diet-bar');
+  bar.setAttribute('role', 'img');
+  bar.setAttribute('aria-label',
+    `${displayName(f)} diet mix: ` + DIET_KEYS.map(k => `${DIET_LABELS[k]} ${f.diet[k]}`).join(', '));
+
+  for (const k of DIET_KEYS) {
+    const count = f.diet[k];
+    if (count <= 0) continue;
+    const pct = total ? (count / total * 100) : 0;
+    const seg = el('div', 'diet-seg');
+    seg.style.flexGrow = count;
+    seg.style.background = `var(${DIET_COLOR_VAR[k]})`;
+    seg.tabIndex = 0;
+    seg.setAttribute('aria-label', `${DIET_LABELS[k]}: ${count} dishes, ${pct.toFixed(1)}%`);
+    seg.append(el('span', 'diet-seg-label', `${count} (${Math.round(pct)}%)`));
+    attachTooltip(seg, () => [
+      { text: DIET_LABELS[k] },
+      { text: `${count} dishes · ${pct.toFixed(1)}% of ${displayName(f)}`, strong: true },
+    ]);
+    bar.append(seg);
+  }
+
+  const cov = coverageNote(f, dateRange);
+  const label = el('div', 'diet-row-label', displayName(f));
+  if (cov) label.append(el('span', 'coverage-note', ` · ${cov}`));
+
+  return el('div', isOverall ? 'diet-row overall' : 'diet-row', [
+    label,
+    bar,
+    el('div', 'diet-row-total', `${total}`),
+  ]);
+}
+
+// Direct labels are mandatory, but a label wider than its own segment must
+// not be clipped (marks-and-anatomy.md) — hide it and let the tooltip/legend/
+// table carry the value instead. Needs actual layout, so it runs post-render.
+function fitDietLabels(container) {
+  container.querySelectorAll('.diet-seg').forEach(seg => {
+    const label = seg.querySelector('.diet-seg-label');
+    if (!label) return;
+    label.style.display = '';
+    label.hidden = label.scrollWidth + 6 > seg.clientWidth;
+  });
+}
+
+function dietTable(rows) {
+  const headCells = ['Facility', 'Days', 'Dishes', ...DIET_KEYS.map(k => DIET_LABELS[k])];
+  const thead = el('thead', null, el('tr', null, headCells.map(h => el('th', null, h))));
+  const tbody = el('tbody');
+  for (const f of rows) {
+    const total = f.dishDays;
+    tbody.append(el('tr', null, [
+      el('td', null, displayName(f)),
+      el('td', null, String(f.days)),
+      el('td', null, String(total)),
+      ...DIET_KEYS.map(k => {
+        const c = f.diet[k];
+        const pct = total ? Math.round(c / total * 100) : 0;
+        return el('td', null, `${c} (${pct}%)`);
+      }),
+    ]));
+  }
+  const table = el('table', 'data-table', [thead, tbody]);
+  return el('div', 'table-wrap', table);
+}
+
+function renderDietSection(stats) {
+  const section = el('section', 'stat-section');
+  section.append(el('h2', null, 'Diet mix'));
+  section.append(el('p', 'section-note',
+    'Share of dish-days by diet classification, per facility. Diet tags come straight from the API\'s ' +
+    'meal-class field, filled in by hand by the kitchens, never inferred from the dish name — about 10% ' +
+    'of dish-days carry no tag at all (Unclassified), meaning genuinely unknown, not "other", and that ' +
+    'includes ordinary dishes, not just build-your-own counters. Where a dish carries several tags, the ' +
+    'most plant-based one wins (vegan > vegetarian > fish > meat), matching the badge the menu page ' +
+    'already shows for it. "All facilities" pools whichever canteens were open at the time, so it shifts ' +
+    'whenever one opens or closes — compare facilities individually rather than reading it as a trend.'));
+  section.append(renderLegend(DIET_KEYS, DIET_LABELS, DIET_COLOR_VAR));
+
+  const rows = [...stats.facilities, stats.overall];
+  if (rows.every(f => f.dishDays === 0)) {
+    section.append(el('div', 'empty-note', 'No dishes recorded in this range yet.'));
+    return section;
+  }
+  for (const f of stats.facilities) section.append(dietRow(f, false, stats.dateRange));
+  section.append(dietRow(stats.overall, true, stats.dateRange));
+
+  const tableBox = el('div', null, dietTable(rows));
+  tableBox.hidden = true;
+  const toggle = el('button', 'btn', 'Show table');
+  toggle.type = 'button';
+  toggle.addEventListener('click', () => {
+    tableBox.hidden = !tableBox.hidden;
+    toggle.textContent = tableBox.hidden ? 'Show table' : 'Hide table';
+  });
+  const toggleWrap = el('div', null, toggle);
+  toggleWrap.style.marginTop = '12px';
+  section.append(toggleWrap, tableBox);
+  return section;
+}
+
+// ---------------------------------------------------------------------------
+// Section 2 — price spread: one box-plot-style range mark per customer group,
+// per facility, all sharing one x-scale so facilities stay comparable.
+// ---------------------------------------------------------------------------
+
+function computePriceDomain(facilities, groups) {
+  let min = Infinity, max = -Infinity;
+  for (const f of facilities) {
+    for (const g of groups) {
+      const p = f.prices && f.prices[g];
+      if (!p) continue;
+      min = Math.min(min, p.min);
+      max = Math.max(max, p.max);
+    }
+  }
+  if (!isFinite(min)) return null;
+  const pad = (max - min) * 0.06 || 1;
+  return { min: Math.max(0, min - pad), max: max + pad };
+}
+
+function xPct(value, domain) {
+  return (value - domain.min) / (domain.max - domain.min) * 100;
+}
+
+// Picks a "nice" tick step (1/2/5/10 x a power of ten) rather than dividing
+// the range into arbitrary decimals.
+function niceStep(rough) {
+  const mag = Math.pow(10, Math.floor(Math.log10(rough)));
+  const norm = rough / mag;
+  const step = norm < 1.5 ? 1 : norm < 3 ? 2 : norm < 7 ? 5 : 10;
+  return step * mag;
+}
+
+function niceTicks(domain, targetCount) {
+  const step = niceStep((domain.max - domain.min) / targetCount) || 1;
+  const start = Math.ceil(domain.min / step) * step;
+  const ticks = [];
+  for (let v = start; v <= domain.max + 1e-9; v += step) ticks.push(Math.round(v * 100) / 100);
+  return ticks;
+}
+
+function priceAxis(domain) {
+  const ticks = niceTicks(domain, 5);
+  const svg = svgEl('svg', { viewBox: '0 0 100 4', preserveAspectRatio: 'none', class: 'price-axis-svg' },
+    svgEl('line', { x1: 0, y1: 0, x2: 100, y2: 0, stroke: 'var(--border)', 'stroke-width': 1, 'vector-effect': 'non-scaling-stroke' }));
+  const tickWrap = el('div', 'price-axis-ticks');
+  for (const t of ticks) {
+    const label = el('span', 'price-axis-tick-label', `${t.toFixed(2)}`);
+    label.style.left = `${xPct(t, domain)}%`;
+    tickWrap.append(label);
+  }
+  return el('div', 'price-grid price-axis-row', [el('div'), el('div', null, [svg, tickWrap])]);
+}
+
+// Nudges the median value label's anchor so it doesn't run off the left/
+// right edge of its own chart near the domain extremes.
+function clampLabel(labelEl, pct) {
+  labelEl.classList.remove('edge-start', 'edge-end');
+  if (pct < 8) labelEl.classList.add('edge-start');
+  else if (pct > 92) labelEl.classList.add('edge-end');
+}
+
+function priceRow(group, stat, domain, colorVar, label) {
+  const y = 13, half = 7;
+  const xMin = xPct(stat.min, domain), xMax = xPct(stat.max, domain);
+  const xP25 = xPct(stat.p25, domain), xP75 = xPct(stat.p75, domain);
+  const xMed = xPct(stat.median, domain);
+
+  const svg = svgEl('svg', { viewBox: '0 0 100 26', preserveAspectRatio: 'none', class: 'price-row-svg' }, [
+    svgEl('line', { x1: xMin, y1: y, x2: xMax, y2: y, stroke: `var(${colorVar})`, 'stroke-width': 2, 'stroke-linecap': 'round', 'vector-effect': 'non-scaling-stroke' }),
+    svgEl('rect', { x: xP25, y: y - half, width: Math.max(xP75 - xP25, 0.4), height: half * 2, rx: 1, fill: `var(${colorVar})`, 'fill-opacity': 0.35, stroke: `var(${colorVar})`, 'stroke-width': 2, 'vector-effect': 'non-scaling-stroke' }),
+    svgEl('line', { x1: xMed, y1: y - half, x2: xMed, y2: y + half, stroke: 'var(--text)', 'stroke-width': 2, 'vector-effect': 'non-scaling-stroke' }),
+  ]);
+
+  const medLabel = el('span', 'price-median-label', stat.median.toFixed(2));
+  medLabel.style.left = `${xMed}%`;
+  clampLabel(medLabel, xMed);
+
+  const wrap = el('div', 'price-mark-wrap', [svg, medLabel]);
+  wrap.tabIndex = 0;
+  wrap.setAttribute('aria-label',
+    `${label}: min ${stat.min.toFixed(2)}, p25 ${stat.p25.toFixed(2)}, median ${stat.median.toFixed(2)}, p75 ${stat.p75.toFixed(2)}, max ${stat.max.toFixed(2)}, n=${stat.n}`);
+  attachTooltip(wrap, () => [
+    { text: `${label} (n=${stat.n})` },
+    { text: `min ${stat.min.toFixed(2)} · p25 ${stat.p25.toFixed(2)} · median ${stat.median.toFixed(2)} · p75 ${stat.p75.toFixed(2)} · max ${stat.max.toFixed(2)}`, strong: true },
+  ]);
+
+  return el('div', 'price-grid', [el('div', 'price-group-label', label), wrap]);
+}
+
+function renderPriceSection(stats) {
+  const section = el('section', 'stat-section');
+  section.append(el('h2', null, 'Price spread per customer group'));
+  section.append(el('p', 'section-note', 'Min–max range, interquartile box, and median price per facility and customer group. Every chart shares the same CHF scale so facilities are directly comparable.'));
+
+  const groups = computePriceGroups(stats);
+  const domain = computePriceDomain(stats.facilities, groups);
+  if (!domain) {
+    section.append(el('div', 'empty-note', 'No price data in this range yet.'));
+    return section;
+  }
+
+  const { colorVars, labels } = priceGroupMaps(groups);
+  section.append(renderLegend(groups, labels, colorVars));
+  section.append(el('div', 'price-axis-caption', 'Price (CHF)'));
+  section.append(priceAxis(domain));
+
+  let any = false;
+  for (const f of stats.facilities) {
+    const rowGroups = groups.filter(g => f.prices && f.prices[g]);
+    if (rowGroups.length === 0) continue;
+    any = true;
+    const cov = coverageNote(f, stats.dateRange);
+    const heading = el('h3', null, displayName(f));
+    if (cov) heading.append(el('span', 'coverage-note', ` · ${cov}`));
+    const block = el('div', 'price-facility', heading);
+    for (const g of rowGroups) block.append(priceRow(g, f.prices[g], domain, colorVars[g], labels[g]));
+    section.append(block);
+  }
+  if (!any) section.append(el('div', 'empty-note', 'No price data in this range yet.'));
+  return section;
+}
+
+// ---------------------------------------------------------------------------
+// Section 3 — dish ledger: every dish seen, with a next-serving prediction
+// once it has recurred enough to support one.
+// ---------------------------------------------------------------------------
+
+function predictionCell(pred) {
+  if (!pred) return el('span', 'muted-dash', '—');
+  const sigma = pred.sigmaWeekdays;
+  const main = sigma == null ? pred.nextDate : `${pred.nextDate} ±${sigma.toFixed(1)} weekdays`;
+  return el('span', null, [main, el('span', 'pred-range', ` (${pred.earliest}–${pred.latest})`)]);
+}
+
+function dietBadge(diet) {
+  const dot = el('span', 'diet-badge-dot');
+  dot.style.background = `var(${DIET_COLOR_VAR[diet] || '--muted'})`;
+  return el('span', 'diet-badge', [dot, DIET_LABELS[diet] || diet]);
+}
+
+const DISH_COLUMNS = [
+  { key: 'name', label: 'Dish' },
+  { key: 'facility', label: 'Facility' },
+  { key: 'diet', label: 'Diet' },
+  { key: 'count', label: 'Times seen' },
+  { key: 'firstSeen', label: 'First seen' },
+  { key: 'lastSeen', label: 'Last seen' },
+  { key: 'meanGapWeekdays', label: 'Mean gap (weekdays)' },
+  { key: 'nextDate', label: 'Next predicted serving' },
+];
+
+// nameDe falls back to the English name server-side (always non-empty), so
+// this only needs to guard against an older stats.json predating the field.
+function dishDisplayName(d, lang) {
+  return lang === 'de' ? (d.nameDe || d.name) : d.name;
+}
+
+function sortValue(dish, key, lang) {
+  if (key === 'nextDate') return dish.prediction ? dish.prediction.nextDate : null;
+  if (key === 'name') return dishDisplayName(dish, lang);
+  return dish[key];
+}
+
+function compareDishes(a, b, key, dir, lang) {
+  const av = sortValue(a, key, lang), bv = sortValue(b, key, lang);
+  if (av == null && bv == null) return 0;
+  if (av == null) return 1;   // nulls always sort last, regardless of direction
+  if (bv == null) return -1;
+  const base = typeof av === 'string' ? av.localeCompare(bv) : av - bv;
+  return base * dir;
+}
+
+function buildDishTable(rows, sortKey, sortDir, lang, onSort) {
+  const headRow = el('tr', null, DISH_COLUMNS.map(col => {
+    const th = el('th', 'sortable', [col.label, col.key === sortKey ? el('span', 'sort-arrow', sortDir === 1 ? ' ▲' : ' ▼') : null]);
+    th.addEventListener('click', () => onSort(col.key));
+    return th;
+  }));
+  const tbody = el('tbody');
+  if (rows.length === 0) {
+    const cell = el('td', null, 'No dishes match this filter.');
+    cell.colSpan = DISH_COLUMNS.length;
+    tbody.append(el('tr', null, cell));
+  }
+  for (const d of rows) {
+    tbody.append(el('tr', null, [
+      el('td', null, dishDisplayName(d, lang)),
+      el('td', null, d.facility),
+      el('td', null, dietBadge(d.diet)),
+      el('td', null, String(d.count)),
+      el('td', null, d.firstSeen),
+      el('td', null, d.lastSeen),
+      el('td', null, d.meanGapWeekdays == null ? el('span', 'muted-dash', '—') : d.meanGapWeekdays.toFixed(1)),
+      el('td', null, predictionCell(d.prediction)),
+    ]));
+  }
+  return el('table', 'data-table', [el('thead', null, headRow), tbody]);
+}
+
+// Set by renderDishSection so the language toggle can re-render just this
+// table (preserving its sort/filter state) without touching the other
+// sections, which don't show dish names at all.
+let rerenderDishTable = null;
+
+function renderDishSection(stats, state) {
+  const section = el('section', 'stat-section');
+  section.append(el('h2', null, 'Dish ledger & next serving'));
+  section.append(el('p', 'section-note',
+    'Gaps between servings are counted in weekdays (canteens are closed weekends). ' +
+    'A prediction needs at least 3 sightings before a standard deviation even exists — with the ' +
+    'current archive almost nothing qualifies yet. This column fills in on its own as dishes recur.'));
+
+  const facilities = [...new Set(stats.dishes.map(d => d.facility))].sort();
+  const facilitySelect = el('select', null, [
+    el('option', null, 'All facilities'),
+    ...facilities.map(f => el('option', null, f)),
+  ]);
+  facilitySelect.value = 'All facilities';
+  const onlyPredicted = el('input');
+  onlyPredicted.type = 'checkbox';
+  const controls = el('div', 'ledger-controls', [
+    el('label', null, [onlyPredicted, ' Only predicted']),
+    el('label', null, ['Facility: ', facilitySelect]),
+  ]);
+  section.append(controls);
+
+  const tableWrap = el('div', 'table-wrap');
+  section.append(tableWrap);
+
+  let sortKey = 'count', sortDir = -1; // default: count desc, as delivered
+  function rerender() {
+    let rows = stats.dishes.filter(d =>
+      (!onlyPredicted.checked || d.prediction) &&
+      (facilitySelect.value === 'All facilities' || d.facility === facilitySelect.value));
+    rows = rows.slice().sort((a, b) => compareDishes(a, b, sortKey, sortDir, state.lang));
+    tableWrap.replaceChildren(buildDishTable(rows, sortKey, sortDir, state.lang, key => {
+      sortDir = (sortKey === key) ? -sortDir : -1;
+      sortKey = key;
+      rerender();
+    }));
+  }
+  onlyPredicted.addEventListener('change', rerender);
+  facilitySelect.addEventListener('change', rerender);
+  rerender();
+  rerenderDishTable = rerender;
+  return section;
+}
+
+// ---------------------------------------------------------------------------
+
+// Always Europe/Zurich wall-clock, DST included. The zone is pinned rather
+// than using the viewer's own, so the label means the same thing wherever
+// it's read — but the offset follows the real CEST/CET switchover instead
+// of being frozen at +2, and the printed abbreviation says which one it is.
+function formatDataAsOf(iso) {
+  if (!iso) return 'unknown time';
+  const d = new Date(iso);
+  if (isNaN(d)) return iso;
+  // en-GB for the zone abbreviation: it yields "CEST"/"CET", where en-CA
+  // and en-US both degrade to "GMT+2". Date order is irrelevant — the parts
+  // are reassembled into ISO below.
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/Zurich', hourCycle: 'h23',
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', timeZoneName: 'short',
+  }).formatToParts(d).reduce((a, x) => (a[x.type] = x.value, a), {});
+  return `${parts.year}-${parts.month}-${parts.day} ${parts.hour}:${parts.minute} ${parts.timeZoneName}`;
+}
+
+function renderHeader(stats) {
+  const r = stats.dateRange;
+  document.getElementById('dateLine').textContent =
+    `Covering ${r.from} to ${r.to} (${r.days} days) — data as of ${formatDataAsOf(stats.dataAsOf)}`;
+}
+
+function debounce(fn, ms) {
+  let t;
+  return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
+}
+
+// Same ?lang= convention as index.html: default 'en', reflected into the URL.
+// Scoped to dish names only here, so there's no view/easter-egg state to carry.
+function getStateFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return { lang: params.get('lang') === 'de' ? 'de' : 'en' };
+}
+
+function updateUrl(state) {
+  const params = new URLSearchParams(window.location.search);
+  params.set('lang', state.lang);
+  history.replaceState(null, '', `${window.location.pathname}?${params.toString()}`);
+}
+
+function updateToggleButtons(state) {
+  document.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('active', b.dataset.lang === state.lang));
+}
+
+async function main() {
+  const state = getStateFromUrl();
+  updateUrl(state);
+  updateToggleButtons(state);
+  document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => {
+    if (state.lang === btn.dataset.lang) return;
+    state.lang = btn.dataset.lang;
+    updateUrl(state);
+    updateToggleButtons(state);
+    if (rerenderDishTable) rerenderDishTable();
+  }));
+
+  const app = document.getElementById('app');
+  let stats;
+  try {
+    const res = await fetch('data/stats.json');
+    if (!res.ok) throw new Error('missing');
+    stats = await res.json();
+  } catch (err) {
+    app.innerHTML = '';
+    app.append(el('div', 'error-note', "Stats aren't available yet — data/stats.json hasn't been generated."));
+    return;
+  }
+
+  renderHeader(stats);
+  app.innerHTML = '';
+  app.append(renderDietSection(stats));
+  app.append(renderPriceSection(stats));
+  app.append(renderDishSection(stats, state));
+
+  // Label-fit and edge-clamp checks need real layout, so they run after the
+  // browser has actually painted the new DOM, and again on resize.
+  const relayout = () => { fitDietLabels(app); };
+  requestAnimationFrame(relayout);
+  window.addEventListener('resize', debounce(relayout, 150));
+}
+
+main();
+</script>
+</body>
+</html>

@@ -35,10 +35,18 @@
   }
   .controls {
     display: flex;
+    align-items: center;
     gap: 16px;
     margin-top: 12px;
     flex-wrap: wrap;
   }
+  .stats-link {
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-decoration: none;
+    margin-left: auto;
+  }
+  .stats-link:hover { text-decoration: underline; }
   .toggle-group {
     display: inline-flex;
     border: 1px solid var(--border);
@@ -212,6 +220,7 @@
       <button type="button" class="toggle-btn" data-view="cards">Cards</button>
       <button type="button" class="toggle-btn" data-view="list">List</button>
     </div>
+    <a class="stats-link" href="stats.html">Stats</a>
   </div>
 </header>
 <main id="app">

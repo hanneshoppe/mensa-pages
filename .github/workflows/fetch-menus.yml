@@ -2,12 +2,18 @@ name: Fetch menu snapshot
 
 on:
   schedule:
-    # 08:00-14:00 Europe/Zurich, every 30 min, Mon-Fri only. Cron is
-    # UTC-only, so this tracks CEST (UTC+2) and runs an hour early local
-    # time during CET (winter). ponytail: accepted drift, split into a
-    # second winter cron if that ever actually matters.
-    - cron: '0,30 6-11 * * 1-5'
-    - cron: '0 12 * * 1-5'
+    # Target window: 05:00-15:00 Europe/Zurich, every 5 min, Mon-Fri.
+    # Cron is UTC-only and cannot follow DST, so instead of guessing the
+    # offset this fires over the UNION of both seasons (03:00-14:55 UTC,
+    # i.e. CEST 05:00-16:55 / CET 04:00-15:55) and the step below trims to
+    # the real local window with a TZ=Europe/Zurich check. That is exact
+    # across both DST switchovers, at the cost of ~24 no-op runs a day
+    # which exit before making any API call.
+    # 5 min is GitHub's floor for scheduled workflows, and a best-effort
+    # one - runs are delayed under load, so treat the real resolution as
+    # "5 min or worse". The unchanged-snapshot check below is what keeps
+    # the runs from becoming an equal number of commits.
+    - cron: '*/5 3-14 * * 1-5'
   workflow_dispatch:
 
 concurrency:
@@ -26,9 +32,22 @@ jobs:
         run: |
           set -euo pipefail
 
+          # Trim the union-window cron to the real 05:00-15:00 Europe/Zurich
+          # window. 10# forces base 10 so a leading-zero hour like 0800 is
+          # not read as octal.
+          LOCAL_HM=$(TZ=Europe/Zurich date +%H%M)
+          if [ "$((10#$LOCAL_HM))" -lt 500 ] || [ "$((10#$LOCAL_HM))" -gt 1500 ]; then
+            echo "$(TZ=Europe/Zurich date +%H:%M) Zurich is outside 05:00-15:00, skipping."
+            echo "SNAPSHOT_CHANGED=false" >> "$GITHUB_ENV"
+            exit 0
+          fi
+
           BASE='https://idapps.ethz.ch/cookpit-pub-services/v1'
           CLIENT_ID='ethz-wcms'
           TODAY=$(TZ=Europe/Zurich date +%Y-%m-%d)
+          # Written now, before the possible early exit below, so later
+          # steps in this job can still see it via $GITHUB_ENV.
+          echo "TODAY=$TODAY" >> "$GITHUB_ENV"
           TOMORROW=$(TZ=Europe/Zurich date -d '+1 day' +%Y-%m-%d)
           ISOWD=$(TZ=Europe/Zurich date +%u)
           FETCHED_AT=$(date -u +%FT%TZ)
@@ -61,20 +80,35 @@ jobs:
 
           rm -rf "$TMP"
 
-          # Skip the append (and commit) entirely if the menu content is
-          # unchanged from the last snapshot line, ignoring fetchedAt so a
-          # bare timestamp bump doesn't count as a change.
+          # Skip the append entirely if the menu content is unchanged from
+          # the last snapshot line, ignoring fetchedAt so a bare timestamp
+          # bump doesn't count as a change. SNAPSHOT_CHANGED gates the two
+          # steps below: no new snapshot line means no stats rebuild and no
+          # commit, so a quiet day costs one API sweep and nothing else.
           SNAPSHOT="data/$TODAY.jsonl"
           LAST=$([ -f "$SNAPSHOT" ] && tail -n 1 "$SNAPSHOT" || true)
           if [ -n "$LAST" ] && [ "$(jq -c '.facilities' <<<"$LAST")" = "$(jq -c '.facilities' <<<"$NEW")" ]; then
             echo "No menu changes since last snapshot, skipping."
+            echo "SNAPSHOT_CHANGED=false" >> "$GITHUB_ENV"
             exit 0
           fi
 
           echo "$NEW" >> "$SNAPSHOT"
+          echo "SNAPSHOT_CHANGED=true" >> "$GITHUB_ENV"
 
+      # The `hashFiles` clause is a self-heal: if data/stats.json ever goes
+      # missing it gets rebuilt on the next run rather than waiting for a
+      # menu change to happen to trigger one.
+      - name: Rebuild stats.json
+        if: env.SNAPSHOT_CHANGED == 'true' || hashFiles('data/stats.json') == ''
+        run: python3 tools/build_stats.py
+
+      - name: Commit and push if anything changed
+        if: env.SNAPSHOT_CHANGED == 'true' || hashFiles('data/stats.json') == ''
+        run: |
+          set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           git add data/
-          git commit -m "Menu snapshot for $TODAY $(TZ=Europe/Zurich date +%H:%M)"
+          git diff --cached --quiet || git commit -m "Menu snapshot for $TODAY $(TZ=Europe/Zurich date '+%H:%M %Z')"
           git push

@@ -1,0 +1,1835 @@
+{
+  "dataAsOf": "2026-08-25T09:15:06Z",
+  "dateRange": {
+    "from": "2026-08-05",
+    "to": "2026-08-25",
+    "days": 15
+  },
+  "facilities": [
+    {
+      "name": "Mendokoro",
+      "days": 15,
+      "dishDays": 75,
+      "firstSeen": "2026-08-05",
+      "lastSeen": "2026-08-25",
+      "diet": {
+        "vegan": 0,
+        "vegetarian": 45,
+        "fish": 0,
+        "meat": 30,
+        "unclassified": 0
+      },
+      "prices": {
+        "external": {
+          "n": 75,
+          "min": 15.5,
+          "p25": 15.5,
+          "median": 17.5,
+          "p75": 18.8,
+          "max": 18.8,
+          "mean": 17.22
+        },
+        "internal": {
+          "n": 75,
+          "min": 12.5,
+          "p25": 12.5,
+          "median": 14.5,
+          "p75": 15.8,
+          "max": 15.8,
+          "mean": 14.22
+        },
+        "students": {
+          "n": 75,
+          "min": 10.5,
+          "p25": 10.5,
+          "median": 12.5,
+          "p75": 13.8,
+          "max": 13.8,
+          "mean": 12.22
+        }
+      }
+    },
+    {
+      "name": "food market",
+      "days": 15,
+      "dishDays": 114,
+      "firstSeen": "2026-08-05",
+      "lastSeen": "2026-08-25",
+      "diet": {
+        "vegan": 16,
+        "vegetarian": 29,
+        "fish": 4,
+        "meat": 45,
+        "unclassified": 20
+      },
+      "prices": {
+        "external": {
+          "n": 114,
+          "min": 7.5,
+          "p25": 14.5,
+          "median": 15.5,
+          "p75": 16.6,
+          "max": 19.5,
+          "mean": 15.77
+        },
+        "internal": {
+          "n": 114,
+          "min": 7.5,
+          "p25": 11.5,
+          "median": 12.5,
+          "p75": 13.6,
+          "max": 16.5,
+          "mean": 12.79
+        },
+        "students": {
+          "n": 114,
+          "min": 7.0,
+          "p25": 7.0,
+          "median": 8.5,
+          "p75": 9.9,
+          "max": 13.5,
+          "mean": 8.82
+        }
+      }
+    }
+  ],
+  "overall": {
+    "name": "all",
+    "days": 15,
+    "dishDays": 189,
+    "firstSeen": "2026-08-05",
+    "lastSeen": "2026-08-25",
+    "diet": {
+      "vegan": 16,
+      "vegetarian": 74,
+      "fish": 4,
+      "meat": 75,
+      "unclassified": 20
+    },
+    "prices": {
+      "external": {
+        "n": 189,
+        "min": 7.5,
+        "p25": 15.5,
+        "median": 15.5,
+        "p75": 17.5,
+        "max": 19.5,
+        "mean": 16.34
+      },
+      "internal": {
+        "n": 189,
+        "min": 7.5,
+        "p25": 12.5,
+        "median": 12.5,
+        "p75": 14.5,
+        "max": 16.5,
+        "mean": 13.36
+      },
+      "students": {
+        "n": 189,
+        "min": 7.0,
+        "p25": 8.5,
+        "median": 9.9,
+        "p75": 12.5,
+        "max": 13.8,
+        "mean": 10.17
+      }
+    }
+  },
+  "dishes": [
+    {
+      "name": "Chicken Tonkatsu Bowl",
+      "nameDe": "Chicken Tonkatsu Bowl",
+      "facility": "Mendokoro",
+      "diet": "meat",
+      "count": 15,
+      "firstSeen": "2026-08-05",
+      "lastSeen": "2026-08-25",
+      "dates": [
+        "2026-08-05",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-10",
+        "2026-08-11",
+        "2026-08-12",
+        "2026-08-13",
+        "2026-08-14",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25"
+      ],
+      "gapsWeekdays": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "meanGapWeekdays": 1.0,
+      "sdGapWeekdays": 0.0,
+      "prediction": {
+        "nextDate": "2026-08-26",
+        "sigmaWeekdays": 0.0,
+        "earliest": "2026-08-26",
+        "latest": "2026-08-26"
+      }
+    },
+    {
+      "name": "Choose 5",
+      "nameDe": "Choose 5",
+      "facility": "food market",
+      "diet": "unclassified",
+      "count": 15,
+      "firstSeen": "2026-08-05",
+      "lastSeen": "2026-08-25",
+      "dates": [
+        "2026-08-05",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-10",
+        "2026-08-11",
+        "2026-08-12",
+        "2026-08-13",
+        "2026-08-14",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25"
+      ],
+      "gapsWeekdays": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "meanGapWeekdays": 1.0,
+      "sdGapWeekdays": 0.0,
+      "prediction": {
+        "nextDate": "2026-08-26",
+        "sigmaWeekdays": 0.0,
+        "earliest": "2026-08-26",
+        "latest": "2026-08-26"
+      }
+    },
+    {
+      "name": "Cold Moiroka Ramen",
+      "nameDe": "Cold Moiroka Ramen",
+      "facility": "Mendokoro",
+      "diet": "vegetarian",
+      "count": 15,
+      "firstSeen": "2026-08-05",
+      "lastSeen": "2026-08-25",
+      "dates": [
+        "2026-08-05",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-10",
+        "2026-08-11",
+        "2026-08-12",
+        "2026-08-13",
+        "2026-08-14",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25"
+      ],
+      "gapsWeekdays": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "meanGapWeekdays": 1.0,
+      "sdGapWeekdays": 0.0,
+      "prediction": {
+        "nextDate": "2026-08-26",
+        "sigmaWeekdays": 0.0,
+        "earliest": "2026-08-26",
+        "latest": "2026-08-26"
+      }
+    },
+    {
+      "name": "Miso Ramen",
+      "nameDe": "Miso Ramen",
+      "facility": "Mendokoro",
+      "diet": "vegetarian",
+      "count": 15,
+      "firstSeen": "2026-08-05",
+      "lastSeen": "2026-08-25",
+      "dates": [
+        "2026-08-05",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-10",
+        "2026-08-11",
+        "2026-08-12",
+        "2026-08-13",
+        "2026-08-14",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25"
+      ],
+      "gapsWeekdays": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "meanGapWeekdays": 1.0,
+      "sdGapWeekdays": 0.0,
+      "prediction": {
+        "nextDate": "2026-08-26",
+        "sigmaWeekdays": 0.0,
+        "earliest": "2026-08-26",
+        "latest": "2026-08-26"
+      }
+    },
+    {
+      "name": "Pizza Margherita",
+      "nameDe": "Pizza Margherita",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "count": 15,
+      "firstSeen": "2026-08-05",
+      "lastSeen": "2026-08-25",
+      "dates": [
+        "2026-08-05",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-10",
+        "2026-08-11",
+        "2026-08-12",
+        "2026-08-13",
+        "2026-08-14",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25"
+      ],
+      "gapsWeekdays": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "meanGapWeekdays": 1.0,
+      "sdGapWeekdays": 0.0,
+      "prediction": {
+        "nextDate": "2026-08-26",
+        "sigmaWeekdays": 0.0,
+        "earliest": "2026-08-26",
+        "latest": "2026-08-26"
+      }
+    },
+    {
+      "name": "Shoyu Ramen",
+      "nameDe": "Shoyu Ramen",
+      "facility": "Mendokoro",
+      "diet": "vegetarian",
+      "count": 15,
+      "firstSeen": "2026-08-05",
+      "lastSeen": "2026-08-25",
+      "dates": [
+        "2026-08-05",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-10",
+        "2026-08-11",
+        "2026-08-12",
+        "2026-08-13",
+        "2026-08-14",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25"
+      ],
+      "gapsWeekdays": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "meanGapWeekdays": 1.0,
+      "sdGapWeekdays": 0.0,
+      "prediction": {
+        "nextDate": "2026-08-26",
+        "sigmaWeekdays": 0.0,
+        "earliest": "2026-08-26",
+        "latest": "2026-08-26"
+      }
+    },
+    {
+      "name": "Tori Ramen",
+      "nameDe": "Tori Ramen",
+      "facility": "Mendokoro",
+      "diet": "meat",
+      "count": 15,
+      "firstSeen": "2026-08-05",
+      "lastSeen": "2026-08-25",
+      "dates": [
+        "2026-08-05",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-10",
+        "2026-08-11",
+        "2026-08-12",
+        "2026-08-13",
+        "2026-08-14",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25"
+      ],
+      "gapsWeekdays": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "meanGapWeekdays": 1.0,
+      "sdGapWeekdays": 0.0,
+      "prediction": {
+        "nextDate": "2026-08-26",
+        "sigmaWeekdays": 0.0,
+        "earliest": "2026-08-26",
+        "latest": "2026-08-26"
+      }
+    },
+    {
+      "name": "Alpine Herbs Grilled Pork Steak",
+      "nameDe": "Alpenkr\u00e4uter Schweinssteak vom Grill",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-24",
+      "lastSeen": "2026-08-24",
+      "dates": [
+        "2026-08-24"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Alpine Macaroni",
+      "nameDe": "\u00c4lpler Magronen",
+      "facility": "food market",
+      "diet": "vegan",
+      "count": 1,
+      "firstSeen": "2026-08-20",
+      "lastSeen": "2026-08-20",
+      "dates": [
+        "2026-08-20"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Alpine R\u00f6sti with a Fried Egg",
+      "nameDe": "\u00c4lpler R\u00f6sti mit Spiegelei",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "count": 1,
+      "firstSeen": "2026-08-11",
+      "lastSeen": "2026-08-11",
+      "dates": [
+        "2026-08-11"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Baked Meat Tortellini",
+      "nameDe": "Tortellini carne al forno",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-21",
+      "lastSeen": "2026-08-21",
+      "dates": [
+        "2026-08-21"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Baked Pasta",
+      "nameDe": "Pasta al forno",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-07",
+      "lastSeen": "2026-08-07",
+      "dates": [
+        "2026-08-07"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Bangkok Beef Noodles",
+      "nameDe": "Bangkok Beef Noodles",
+      "facility": "food market",
+      "diet": "unclassified",
+      "count": 1,
+      "firstSeen": "2026-08-24",
+      "lastSeen": "2026-08-24",
+      "dates": [
+        "2026-08-24"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Banh Mi Hot Dog",
+      "nameDe": "Banh Mi Hot Dog",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-06",
+      "lastSeen": "2026-08-06",
+      "dates": [
+        "2026-08-06"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Barbecue in the \"Steinergarten\"",
+      "nameDe": "Grill im Steinergarten ",
+      "facility": "food market",
+      "diet": "vegan",
+      "count": 1,
+      "firstSeen": "2026-08-13",
+      "lastSeen": "2026-08-13",
+      "dates": [
+        "2026-08-13"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Beef Massaman",
+      "nameDe": "Beef Massaman",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-17",
+      "lastSeen": "2026-08-17",
+      "dates": [
+        "2026-08-17"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Beef Teriyaki",
+      "nameDe": "Beef Teriyaki",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-10",
+      "lastSeen": "2026-08-10",
+      "dates": [
+        "2026-08-10"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Berlin Currywurst",
+      "nameDe": "Berliner Currywurst",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-14",
+      "lastSeen": "2026-08-14",
+      "dates": [
+        "2026-08-14"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Black Pepper Chicken",
+      "nameDe": "Black Pepper Chicken",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-05",
+      "lastSeen": "2026-08-05",
+      "dates": [
+        "2026-08-05"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Black Pepper Udon",
+      "nameDe": "Black Pepper Udon",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-20",
+      "lastSeen": "2026-08-20",
+      "dates": [
+        "2026-08-20"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Breaded Mushrooms",
+      "nameDe": "Panierte Champignons",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "count": 1,
+      "firstSeen": "2026-08-18",
+      "lastSeen": "2026-08-18",
+      "dates": [
+        "2026-08-18"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Burrata and Cinque Pi",
+      "nameDe": "Burrata e Cinque Pi",
+      "facility": "food market",
+      "diet": "unclassified",
+      "count": 1,
+      "firstSeen": "2026-08-14",
+      "lastSeen": "2026-08-14",
+      "dates": [
+        "2026-08-14"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Cajun Chicken Pasta",
+      "nameDe": "Cajun Chicken Pasta",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-11",
+      "lastSeen": "2026-08-11",
+      "dates": [
+        "2026-08-11"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Cajun Pasta with Shrimp",
+      "nameDe": "Cajun Pasta mit Crevetten",
+      "facility": "food market",
+      "diet": "fish",
+      "count": 1,
+      "firstSeen": "2026-08-05",
+      "lastSeen": "2026-08-05",
+      "dates": [
+        "2026-08-05"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Cappelletti with Tomatoes & Mozzarella",
+      "nameDe": "Cappelletti Tomaten & Mozzarella",
+      "facility": "food market",
+      "diet": "unclassified",
+      "count": 1,
+      "firstSeen": "2026-08-05",
+      "lastSeen": "2026-08-05",
+      "dates": [
+        "2026-08-05"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Casarecce alla Nerano",
+      "nameDe": "Casarecce alla Nerano",
+      "facility": "food market",
+      "diet": "unclassified",
+      "count": 1,
+      "firstSeen": "2026-08-06",
+      "lastSeen": "2026-08-06",
+      "dates": [
+        "2026-08-06"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Cauliflower Gnocchi",
+      "nameDe": "Gnocchi Cauliflower",
+      "facility": "food market",
+      "diet": "vegan",
+      "count": 1,
+      "firstSeen": "2026-08-21",
+      "lastSeen": "2026-08-21",
+      "dates": [
+        "2026-08-21"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Cauliflower Wings",
+      "nameDe": "Blumenkohl Wings",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "count": 1,
+      "firstSeen": "2026-08-14",
+      "lastSeen": "2026-08-14",
+      "dates": [
+        "2026-08-14"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Chicken & Cheese Wrap",
+      "nameDe": "Chicken & Cheese Wrap",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-17",
+      "lastSeen": "2026-08-17",
+      "dates": [
+        "2026-08-17"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Chicken Cordon Bleu",
+      "nameDe": "Poulet Cordon Bleu",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-07",
+      "lastSeen": "2026-08-07",
+      "dates": [
+        "2026-08-07"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Chicken Cutlet",
+      "nameDe": "Pouletschnitzel",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-07",
+      "lastSeen": "2026-08-07",
+      "dates": [
+        "2026-08-07"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Chicken Thighs with Chili & Honey",
+      "nameDe": "Pouletschenkel mit Chili & Honig",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-18",
+      "lastSeen": "2026-08-18",
+      "dates": [
+        "2026-08-18"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Chow Mein",
+      "nameDe": "Chow Mein",
+      "facility": "food market",
+      "diet": "vegan",
+      "count": 1,
+      "firstSeen": "2026-08-17",
+      "lastSeen": "2026-08-17",
+      "dates": [
+        "2026-08-17"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Coconut-Crusted Pangasius",
+      "nameDe": "Pangasius im Kokosmantel",
+      "facility": "food market",
+      "diet": "fish",
+      "count": 1,
+      "firstSeen": "2026-08-14",
+      "lastSeen": "2026-08-14",
+      "dates": [
+        "2026-08-14"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Dal made from yellow peas",
+      "nameDe": "Dal aus gelben Erbsen",
+      "facility": "food market",
+      "diet": "vegan",
+      "count": 1,
+      "firstSeen": "2026-08-05",
+      "lastSeen": "2026-08-05",
+      "dates": [
+        "2026-08-05"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Delicatessen Meat Loaf",
+      "nameDe": "Delikatess Fleischk\u00e4se",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-07",
+      "lastSeen": "2026-08-07",
+      "dates": [
+        "2026-08-07"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Dragon Chicken Strips",
+      "nameDe": "Dragon Chicken Strips",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-21",
+      "lastSeen": "2026-08-21",
+      "dates": [
+        "2026-08-21"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "ETH Fitness Plate",
+      "nameDe": "Fitnessteller ETH",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-13",
+      "lastSeen": "2026-08-13",
+      "dates": [
+        "2026-08-13"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Emmental Sausage Schnitzel",
+      "nameDe": "Emmentaler Br\u00e4tschnitzel",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-13",
+      "lastSeen": "2026-08-13",
+      "dates": [
+        "2026-08-13"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Fancy Carbonara",
+      "nameDe": "Fancy Carbonara",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-18",
+      "lastSeen": "2026-08-18",
+      "dates": [
+        "2026-08-18"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Farfalle alla Norma",
+      "nameDe": "Farfalle alla norma",
+      "facility": "food market",
+      "diet": "vegan",
+      "count": 1,
+      "firstSeen": "2026-08-14",
+      "lastSeen": "2026-08-14",
+      "dates": [
+        "2026-08-14"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Fusilli Bolognese",
+      "nameDe": "Fusilli alla bolognese",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-24",
+      "lastSeen": "2026-08-24",
+      "dates": [
+        "2026-08-24"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Gnocchi with Giardinera",
+      "nameDe": "Gnocchi al Giardinera",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "count": 1,
+      "firstSeen": "2026-08-07",
+      "lastSeen": "2026-08-07",
+      "dates": [
+        "2026-08-07"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Gnocchi with Tomato Sauce",
+      "nameDe": "Gnocchi mit Tomatensauce",
+      "facility": "food market",
+      "diet": "unclassified",
+      "count": 1,
+      "firstSeen": "2026-08-10",
+      "lastSeen": "2026-08-10",
+      "dates": [
+        "2026-08-10"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Gourmet Italian Filet",
+      "nameDe": "Schlemmerfilet Italiano",
+      "facility": "food market",
+      "diet": "fish",
+      "count": 1,
+      "firstSeen": "2026-08-06",
+      "lastSeen": "2026-08-06",
+      "dates": [
+        "2026-08-06"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Grilled Bratwurst",
+      "nameDe": "Grill Bratwurst",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-21",
+      "lastSeen": "2026-08-21",
+      "dates": [
+        "2026-08-21"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Grilled Chicken & Cheese Wrap",
+      "nameDe": "Grilled Chicken & Cheese Wrap",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-17",
+      "lastSeen": "2026-08-17",
+      "dates": [
+        "2026-08-17"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Ground Meat with Horn-Shaped Pasta",
+      "nameDe": "G`hacktes mit H\u00f6rnli",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-13",
+      "lastSeen": "2026-08-13",
+      "dates": [
+        "2026-08-13"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Khao Mok Gai",
+      "nameDe": "Khao Mok Gai",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-25",
+      "lastSeen": "2026-08-25",
+      "dates": [
+        "2026-08-25"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Korean Mandu Dumplings",
+      "nameDe": "Korean Mandu Dumplings",
+      "facility": "food market",
+      "diet": "vegan",
+      "count": 1,
+      "firstSeen": "2026-08-18",
+      "lastSeen": "2026-08-18",
+      "dates": [
+        "2026-08-18"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Lasagna",
+      "nameDe": "Lasagne",
+      "facility": "food market",
+      "diet": "vegan",
+      "count": 1,
+      "firstSeen": "2026-08-10",
+      "lastSeen": "2026-08-10",
+      "dates": [
+        "2026-08-10"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Lumberjack Steak in the Rock Garden",
+      "nameDe": "Holzf\u00e4llersteak im Steingarten",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-10",
+      "lastSeen": "2026-08-10",
+      "dates": [
+        "2026-08-10"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Mapo Tofu",
+      "nameDe": "Mapo Tofu",
+      "facility": "food market",
+      "diet": "vegan",
+      "count": 1,
+      "firstSeen": "2026-08-24",
+      "lastSeen": "2026-08-24",
+      "dates": [
+        "2026-08-24"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Morel Pasta",
+      "nameDe": "Morchelpasta",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "count": 1,
+      "firstSeen": "2026-08-12",
+      "lastSeen": "2026-08-12",
+      "dates": [
+        "2026-08-12"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Omelet au Gratin",
+      "nameDe": "Gratinierte Omelette",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "count": 1,
+      "firstSeen": "2026-08-17",
+      "lastSeen": "2026-08-17",
+      "dates": [
+        "2026-08-17"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Oriental Naan",
+      "nameDe": "Oriental Naan",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-25",
+      "lastSeen": "2026-08-25",
+      "dates": [
+        "2026-08-25"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Pad Thai",
+      "nameDe": "Pad Thai",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-13",
+      "lastSeen": "2026-08-13",
+      "dates": [
+        "2026-08-13"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Pad Thai-Style Fried Rice",
+      "nameDe": "Gebratener Reis Pad Thai Style",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-13",
+      "lastSeen": "2026-08-13",
+      "dates": [
+        "2026-08-13"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Pasta with Broccoli",
+      "nameDe": "Pasta ai Broccoli",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "count": 1,
+      "firstSeen": "2026-08-18",
+      "lastSeen": "2026-08-18",
+      "dates": [
+        "2026-08-18"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Pasta with Chicken and Mushrooms",
+      "nameDe": "Pasta con Pollo e Funghi",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-17",
+      "lastSeen": "2026-08-17",
+      "dates": [
+        "2026-08-17"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Penne with Gorgonzola",
+      "nameDe": "Penne al Gorgonzola",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "count": 1,
+      "firstSeen": "2026-08-25",
+      "lastSeen": "2026-08-25",
+      "dates": [
+        "2026-08-25"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Planted, Viennese Style",
+      "nameDe": "Planted Wiener Art",
+      "facility": "food market",
+      "diet": "vegan",
+      "count": 1,
+      "firstSeen": "2026-08-06",
+      "lastSeen": "2026-08-06",
+      "dates": [
+        "2026-08-06"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Polpetta alla Bruschetta",
+      "nameDe": "Polpetta alla Bruschetta",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-20",
+      "lastSeen": "2026-08-20",
+      "dates": [
+        "2026-08-20"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Pulled Pork Burger",
+      "nameDe": "Pulled Pork Burger",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-19",
+      "lastSeen": "2026-08-19",
+      "dates": [
+        "2026-08-19"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Red Thai Curry",
+      "nameDe": "Rotes Thai Curry",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-19",
+      "lastSeen": "2026-08-19",
+      "dates": [
+        "2026-08-19"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Rigatoni with Porcini Mushrooms",
+      "nameDe": "Rigatoni ai Funghi Porcini",
+      "facility": "food market",
+      "diet": "vegan",
+      "count": 1,
+      "firstSeen": "2026-08-25",
+      "lastSeen": "2026-08-25",
+      "dates": [
+        "2026-08-25"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Rigatoni with Veal",
+      "nameDe": "Rigatoni al vitello",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-19",
+      "lastSeen": "2026-08-19",
+      "dates": [
+        "2026-08-19"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Samosa Chaat",
+      "nameDe": "Samosa Chaat",
+      "facility": "food market",
+      "diet": "vegan",
+      "count": 1,
+      "firstSeen": "2026-08-12",
+      "lastSeen": "2026-08-12",
+      "dates": [
+        "2026-08-12"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Sardinian Fregola",
+      "nameDe": "Fregola Sarda",
+      "facility": "food market",
+      "diet": "vegan",
+      "count": 1,
+      "firstSeen": "2026-08-11",
+      "lastSeen": "2026-08-11",
+      "dates": [
+        "2026-08-11"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Schnitzel \u00e0 la Meyer",
+      "nameDe": "Schnitzel \u00e0 la Meyer",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-20",
+      "lastSeen": "2026-08-20",
+      "dates": [
+        "2026-08-20"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Seitan Goulash",
+      "nameDe": "Seitan Gulasch",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "count": 1,
+      "firstSeen": "2026-08-21",
+      "lastSeen": "2026-08-21",
+      "dates": [
+        "2026-08-21"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Senthil's Best",
+      "nameDe": "Senthil`s Best",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-11",
+      "lastSeen": "2026-08-11",
+      "dates": [
+        "2026-08-11"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Spaghetti & Spicy Vegetarian Balls",
+      "nameDe": "Spaghetti & Spicy Vegetrian Balls",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "count": 1,
+      "firstSeen": "2026-08-10",
+      "lastSeen": "2026-08-10",
+      "dates": [
+        "2026-08-10"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Spiced Lentils by Pascal Haag",
+      "nameDe": "Gew\u00fcrzlinsen von Pascal Haag",
+      "facility": "food market",
+      "diet": "vegan",
+      "count": 1,
+      "firstSeen": "2026-08-20",
+      "lastSeen": "2026-08-20",
+      "dates": [
+        "2026-08-20"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Sweet Potatoes Dream",
+      "nameDe": "Sweet Potatoes Dream",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "count": 1,
+      "firstSeen": "2026-08-25",
+      "lastSeen": "2026-08-25",
+      "dates": [
+        "2026-08-25"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Taco - Arroz Rojo",
+      "nameDe": "Taco - Arroz Rojo",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-12",
+      "lastSeen": "2026-08-12",
+      "dates": [
+        "2026-08-12"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Tagliatelle with Spinach and Salmon",
+      "nameDe": "Tagliatelle al Spinachi e Salmone",
+      "facility": "food market",
+      "diet": "fish",
+      "count": 1,
+      "firstSeen": "2026-08-12",
+      "lastSeen": "2026-08-12",
+      "dates": [
+        "2026-08-12"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Tandoori Chickpeas & Sweet Potatoes",
+      "nameDe": "Tandoori Chickpeas & Sweet Potatoes",
+      "facility": "food market",
+      "diet": "vegan",
+      "count": 1,
+      "firstSeen": "2026-08-07",
+      "lastSeen": "2026-08-07",
+      "dates": [
+        "2026-08-07"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Teriyaki Beef Balls",
+      "nameDe": "Teriyaki Beef Balls",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-10",
+      "lastSeen": "2026-08-10",
+      "dates": [
+        "2026-08-10"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Teriyaki Chicken Balls",
+      "nameDe": "Teriyaki Chicken Balls",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-10",
+      "lastSeen": "2026-08-10",
+      "dates": [
+        "2026-08-10"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Thai Drunken Noodles",
+      "nameDe": "Thai Drunken Noodles",
+      "facility": "food market",
+      "diet": "vegan",
+      "count": 1,
+      "firstSeen": "2026-08-10",
+      "lastSeen": "2026-08-10",
+      "dates": [
+        "2026-08-10"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "The BLT Burger",
+      "nameDe": "The BLT Burger",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-05",
+      "lastSeen": "2026-08-05",
+      "dates": [
+        "2026-08-05"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "The Smoky Bacon Burger",
+      "nameDe": "The Smoky Bacon Burger",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-12",
+      "lastSeen": "2026-08-12",
+      "dates": [
+        "2026-08-12"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Tonkatsu Chicken Burger",
+      "nameDe": "Tonkatsu Chicken Burger",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-19",
+      "lastSeen": "2026-08-19",
+      "dates": [
+        "2026-08-19"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Tori Yakisoba Wok",
+      "nameDe": "Tori Yakisoba Wok",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-06",
+      "lastSeen": "2026-08-06",
+      "dates": [
+        "2026-08-06"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Turkey Cream Goulash",
+      "nameDe": "Truten Rahmgulasch",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-24",
+      "lastSeen": "2026-08-24",
+      "dates": [
+        "2026-08-24"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Vegan Cevapcici on a D\u00fcr\u00fcm Tortilla",
+      "nameDe": "Vegane Cevapcici auf D\u00fcr\u00fcm Tortilla",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "count": 1,
+      "firstSeen": "2026-08-19",
+      "lastSeen": "2026-08-19",
+      "dates": [
+        "2026-08-19"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Vegetable Meatballs",
+      "nameDe": "Gem\u00fcse K\u00f6tbullar",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "count": 1,
+      "firstSeen": "2026-08-13",
+      "lastSeen": "2026-08-13",
+      "dates": [
+        "2026-08-13"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Viennese Cream Goulash",
+      "nameDe": "Wiener Rahmgulasch",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-24",
+      "lastSeen": "2026-08-24",
+      "dates": [
+        "2026-08-24"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Zoodle, Zucchini, and Burrata",
+      "nameDe": "Zoodle Zucchini e Burrata",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "count": 1,
+      "firstSeen": "2026-08-19",
+      "lastSeen": "2026-08-19",
+      "dates": [
+        "2026-08-19"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Zurich-Style Sliced Beef",
+      "nameDe": "Geschnetzeltes Z\u00fcrcher Art",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-11",
+      "lastSeen": "2026-08-11",
+      "dates": [
+        "2026-08-11"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    }
+  ]
+}

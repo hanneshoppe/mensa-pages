@@ -26,7 +26,7 @@ step). At load time it:
 3. When it rendered from the snapshot, quietly re-checks the live API in the
    background and re-renders only if something actually changed (e.g. an
    item sold out since the snapshot was taken) — so the page stays fresh
-   between the Action's ~30-minute runs without a visible reload.
+   between the Action's 5-minute runs without a visible reload.
 4. Picks out today's date client-side (the dates embedded in `websites.txt`
    are only there to identify which facility each URL points at — they're
    not used to decide "today").
@@ -54,12 +54,29 @@ language toggle never has to wait on a request.
 
 ## Menu snapshots & history
 
-`.github/workflows/fetch-menus.yml` runs on a schedule (08:00–14:00
-Europe/Zurich, every 30 min) and on manual dispatch. Each run fetches every
-facility in both languages from the Cookpit API, narrows each facility's
-weekly rota down to just today's day-entry, and appends one JSON line to
-`data/<date>.jsonl` (creating the file on the day's first run), committing
-and pushing the result.
+`.github/workflows/fetch-menus.yml` runs on a schedule (05:00–15:00
+Europe/Zurich, every 5 min — GitHub's floor for scheduled workflows, and a
+best-effort one, so runs can be delayed under load) and on manual dispatch.
+Cron is UTC-only and cannot follow DST, so it fires over the union of both
+seasons and the job trims to the real local window with a
+`TZ=Europe/Zurich` check — exact across both switchovers, at the cost of a
+few no-op runs that exit before making any API call.
+Each run fetches every facility in both languages from the Cookpit API,
+narrows each facility's weekly rota down to just today's day-entry, and
+appends one JSON line to `data/<date>.jsonl` (creating the file on the day's
+first run).
+
+If the menu is byte-for-byte unchanged since the last snapshot line, the run
+stops there: no line is appended, `data/stats.json` is not rebuilt, and
+nothing is committed. So the scheduled runs cost one API sweep each and
+produce commits only when the menu actually moves.
+
+All timestamps shown to a human — commit messages and the stats page header
+— are Europe/Zurich wall-clock with the DST-correct abbreviation (CEST in
+summer, CET in winter; MESZ/MEZ in German). The `fetchedAt` values inside
+`data/*.jsonl`, and `sold_out_at`/`first_seen_at`/`last_seen_at` in
+`data/dishes.csv`, are raw **UTC** as the API returns them — add the offset
+when reading those directly.
 
 That gives two things for the price of one:
 
@@ -77,6 +94,35 @@ That gives two things for the price of one:
 
 Nothing prunes old files, so `data/` is a permanent, append-only archive —
 delete old dates by hand if it ever grows large enough to matter.
+
+## Statistics
+
+`stats.html` is a second self-contained page (linked from the header) showing
+what the archive adds up to: the diet mix per facility, the price spread per
+customer group, and a ledger of every dish seen with a predicted next
+serving.
+
+It reads a single precomputed `data/stats.json` rather than the daily files —
+aggregating ~20 growing JSONL files in the browser would get slower every
+day. `tools/build_stats.py` (stdlib-only, `--selftest` for its self-check)
+regenerates it from `data/*.jsonl`; the Action runs it whenever a snapshot
+lands. The output is a pure function of its inputs — its `dataAsOf` is the
+newest `fetchedAt` in the archive, not the time the script ran — so an
+unchanged archive produces a byte-identical file and no spurious commit.
+
+Two things the numbers deliberately do not do:
+
+- **No diet is inferred from a dish name.** The `vegan`/`vegetarian`/`fish`/
+  `meat` split comes only from the API's `meal-class-array`, which the
+  kitchens fill in by hand. ~10% of dish-days carry no tag at all; those are
+  counted as `unclassified` rather than guessed. Where a dish carries several
+  tags the most plant-based one wins, matching `classifyMeal()` in
+  `index.html` so the two pages never disagree about the same dish.
+- **No prediction below 3 sightings.** Gaps are counted in weekdays (the
+  canteens are shut at weekends, so a Fri→Mon gap is one serving day, not
+  three), and a next-serving estimate needs at least two gaps before a
+  standard deviation exists. Almost nothing qualifies yet; the column fills
+  in on its own as dishes recur.
 
 ## Usage
 
