@@ -402,7 +402,10 @@ async function getFacilityIds() {
 }
 
 function getFacilityIdsCached() {
-  if (!idsPromise) idsPromise = getFacilityIds();
+  // A rejected fetch must not stick around as a cached rejection forever —
+  // evict on failure so the next call actually retries instead of replaying
+  // the same error (this is what lets the midnight-rollover retry recover).
+  if (!idsPromise) idsPromise = getFacilityIds().catch(err => { idsPromise = null; throw err; });
   return idsPromise;
 }
 
@@ -462,13 +465,16 @@ async function fetchFacilitiesLive(lang, todayStr, tomorrowStr, todayIso, opts) 
 function getFacilitiesData(lang, todayStr, tomorrowStr, todayIso) {
   const key = `${todayStr}:${lang}`;
   if (!facilitiesPromises[key]) {
+    // Same eviction-on-reject as getFacilityIdsCached, and for the same
+    // reason: without it a transient failure at the midnight rollover would
+    // wedge this date's key as a permanently-cached rejection.
     facilitiesPromises[key] = (async () => {
       const snapshot = await getStaticSnapshot(todayStr);
       const snapshotFacilities = snapshot && snapshot.facilities && snapshot.facilities[lang];
       const entries = snapshotFacilities || await fetchFacilitiesLive(lang, todayStr, tomorrowStr, todayIso);
       const ids = await getFacilityIdsCached();
       return { facilities: sortFacilities(entries, ids), fromSnapshot: Boolean(snapshotFacilities) };
-    })();
+    })().catch(err => { delete facilitiesPromises[key]; throw err; });
   }
   return facilitiesPromises[key];
 }
@@ -661,7 +667,6 @@ async function loadAndRender(state) {
   document.getElementById('titleText').textContent = strings.title;
 
   const { now, todayStr, tomorrowStr, todayIso } = zurichDateContext();
-  renderedDateStr = todayStr;
   document.getElementById('dateLine').textContent =
     now.toLocaleDateString(strings.dateLocale, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Europe/Zurich' });
 
@@ -678,6 +683,11 @@ async function loadAndRender(state) {
     return;
   }
   if (token !== renderToken) return; // superseded by a newer render — discard
+
+  // Only mark this date as rendered once the DOM commit is actually going
+  // to happen — the error path above returns without reaching here, so a
+  // later visibilitychange still sees a stale renderedDateStr and retries.
+  renderedDateStr = todayStr;
 
   renderFacilities(facilities, strings, lang, state.easterEgg);
   applyView(state);

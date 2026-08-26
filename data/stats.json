@@ -147,6 +147,13 @@
       "nameDe": "Chicken Tonkatsu Bowl",
       "facility": "Mendokoro",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 16,
+        "unclassified": 0
+      },
       "count": 16,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-08-26",
@@ -199,6 +206,13 @@
       "nameDe": "Choose 5",
       "facility": "food market",
       "diet": "unclassified",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 16
+      },
       "count": 16,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-08-26",
@@ -251,6 +265,13 @@
       "nameDe": "Cold Moiroka Ramen",
       "facility": "Mendokoro",
       "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 16,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 16,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-08-26",
@@ -303,6 +324,13 @@
       "nameDe": "Miso Ramen",
       "facility": "Mendokoro",
       "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 16,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 16,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-08-26",
@@ -355,6 +383,13 @@
       "nameDe": "Pizza Margherita",
       "facility": "food market",
       "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 16,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 16,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-08-26",
@@ -407,6 +442,13 @@
       "nameDe": "Shoyu Ramen",
       "facility": "Mendokoro",
       "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 16,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 16,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-08-26",
@@ -459,6 +501,13 @@
       "nameDe": "Tori Ramen",
       "facility": "Mendokoro",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 16,
+        "unclassified": 0
+      },
       "count": 16,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-08-26",
@@ -511,6 +560,13 @@
       "nameDe": "Alpenkr\u00e4uter Schweinssteak vom Grill",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
@@ -527,6 +583,13 @@
       "nameDe": "\u00c4lpler Magronen",
       "facility": "food market",
       "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-20",
       "lastSeen": "2026-08-20",
@@ -543,6 +606,13 @@
       "nameDe": "\u00c4lpler R\u00f6sti mit Spiegelei",
       "facility": "food market",
       "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-11",
       "lastSeen": "2026-08-11",
@@ -559,6 +629,13 @@
       "nameDe": "Tortellini carne al forno",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-21",
       "lastSeen": "2026-08-21",
@@ -575,6 +652,13 @@
       "nameDe": "Pasta al forno",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-07",
       "lastSeen": "2026-08-07",
@@ -591,6 +675,13 @@
       "nameDe": "Bangkok Beef Noodles",
       "facility": "food market",
       "diet": "unclassified",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 1
+      },
       "count": 1,
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
@@ -607,6 +698,13 @@
       "nameDe": "Banh Mi Hot Dog",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-06",
       "lastSeen": "2026-08-06",
@@ -623,6 +721,13 @@
       "nameDe": "Grill im Steinergarten ",
       "facility": "food market",
       "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-13",
       "lastSeen": "2026-08-13",
@@ -639,6 +744,13 @@
       "nameDe": "Beef Massaman",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-17",
       "lastSeen": "2026-08-17",
@@ -655,6 +767,13 @@
       "nameDe": "Beef Teriyaki",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-10",
       "lastSeen": "2026-08-10",
@@ -671,6 +790,13 @@
       "nameDe": "Berliner Currywurst",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-14",
       "lastSeen": "2026-08-14",
@@ -687,6 +813,13 @@
       "nameDe": "Black Pepper Chicken",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-08-05",
@@ -703,6 +836,13 @@
       "nameDe": "Black Pepper Udon",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-20",
       "lastSeen": "2026-08-20",
@@ -719,6 +859,13 @@
       "nameDe": "Bowlicious",
       "facility": "food market",
       "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-26",
       "lastSeen": "2026-08-26",
@@ -735,6 +882,13 @@
       "nameDe": "Panierte Champignons",
       "facility": "food market",
       "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-18",
       "lastSeen": "2026-08-18",
@@ -751,6 +905,13 @@
       "nameDe": "Burrata e Cinque Pi",
       "facility": "food market",
       "diet": "unclassified",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 1
+      },
       "count": 1,
       "firstSeen": "2026-08-14",
       "lastSeen": "2026-08-14",
@@ -767,6 +928,13 @@
       "nameDe": "Cajun Chicken Pasta",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-11",
       "lastSeen": "2026-08-11",
@@ -783,6 +951,13 @@
       "nameDe": "Cajun Pasta mit Crevetten",
       "facility": "food market",
       "diet": "fish",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 1,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-08-05",
@@ -799,6 +974,13 @@
       "nameDe": "Cappelletti Tomaten & Mozzarella",
       "facility": "food market",
       "diet": "unclassified",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 1
+      },
       "count": 1,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-08-05",
@@ -815,6 +997,13 @@
       "nameDe": "Casarecce alla Nerano",
       "facility": "food market",
       "diet": "unclassified",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 1
+      },
       "count": 1,
       "firstSeen": "2026-08-06",
       "lastSeen": "2026-08-06",
@@ -831,6 +1020,13 @@
       "nameDe": "Gnocchi Cauliflower",
       "facility": "food market",
       "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-21",
       "lastSeen": "2026-08-21",
@@ -847,6 +1043,13 @@
       "nameDe": "Blumenkohl Wings",
       "facility": "food market",
       "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-14",
       "lastSeen": "2026-08-14",
@@ -863,6 +1066,13 @@
       "nameDe": "Cheeseburger",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-26",
       "lastSeen": "2026-08-26",
@@ -879,6 +1089,13 @@
       "nameDe": "Chicken & Cheese Wrap",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-17",
       "lastSeen": "2026-08-17",
@@ -895,6 +1112,13 @@
       "nameDe": "Poulet Cordon Bleu",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-07",
       "lastSeen": "2026-08-07",
@@ -911,6 +1135,13 @@
       "nameDe": "Pouletschnitzel",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-07",
       "lastSeen": "2026-08-07",
@@ -927,6 +1158,13 @@
       "nameDe": "Pouletschenkel mit Chili & Honig",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-18",
       "lastSeen": "2026-08-18",
@@ -943,6 +1181,13 @@
       "nameDe": "Chow Mein",
       "facility": "food market",
       "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-17",
       "lastSeen": "2026-08-17",
@@ -959,6 +1204,13 @@
       "nameDe": "Pangasius im Kokosmantel",
       "facility": "food market",
       "diet": "fish",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 1,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-14",
       "lastSeen": "2026-08-14",
@@ -975,6 +1227,13 @@
       "nameDe": "Dal aus gelben Erbsen",
       "facility": "food market",
       "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-08-05",
@@ -991,6 +1250,13 @@
       "nameDe": "Delikatess Fleischk\u00e4se",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-07",
       "lastSeen": "2026-08-07",
@@ -1007,6 +1273,13 @@
       "nameDe": "Dragon Chicken Strips",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-21",
       "lastSeen": "2026-08-21",
@@ -1023,6 +1296,13 @@
       "nameDe": "Fitnessteller ETH",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-13",
       "lastSeen": "2026-08-13",
@@ -1039,6 +1319,13 @@
       "nameDe": "Emmentaler Br\u00e4tschnitzel",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-13",
       "lastSeen": "2026-08-13",
@@ -1055,6 +1342,13 @@
       "nameDe": "Fancy Carbonara",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-18",
       "lastSeen": "2026-08-18",
@@ -1071,6 +1365,13 @@
       "nameDe": "Farfalle alla norma",
       "facility": "food market",
       "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-14",
       "lastSeen": "2026-08-14",
@@ -1087,6 +1388,13 @@
       "nameDe": "Fusilli alla bolognese",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
@@ -1103,6 +1411,13 @@
       "nameDe": "Gnocchi al Giardinera",
       "facility": "food market",
       "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-07",
       "lastSeen": "2026-08-07",
@@ -1119,6 +1434,13 @@
       "nameDe": "Gnocchi mit Tomatensauce",
       "facility": "food market",
       "diet": "unclassified",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 1
+      },
       "count": 1,
       "firstSeen": "2026-08-10",
       "lastSeen": "2026-08-10",
@@ -1135,6 +1457,13 @@
       "nameDe": "Schlemmerfilet Italiano",
       "facility": "food market",
       "diet": "fish",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 1,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-06",
       "lastSeen": "2026-08-06",
@@ -1151,6 +1480,13 @@
       "nameDe": "Grill Bratwurst",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-21",
       "lastSeen": "2026-08-21",
@@ -1167,6 +1503,13 @@
       "nameDe": "Grilled Chicken & Cheese Wrap",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-17",
       "lastSeen": "2026-08-17",
@@ -1183,6 +1526,13 @@
       "nameDe": "G`hacktes mit H\u00f6rnli",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-13",
       "lastSeen": "2026-08-13",
@@ -1199,6 +1549,13 @@
       "nameDe": "Khao Mok Gai",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-25",
       "lastSeen": "2026-08-25",
@@ -1215,6 +1572,13 @@
       "nameDe": "Korean Mandu Dumplings",
       "facility": "food market",
       "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-18",
       "lastSeen": "2026-08-18",
@@ -1231,6 +1595,13 @@
       "nameDe": "Lasagne",
       "facility": "food market",
       "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-10",
       "lastSeen": "2026-08-10",
@@ -1247,6 +1618,13 @@
       "nameDe": "Holzf\u00e4llersteak im Steingarten",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-10",
       "lastSeen": "2026-08-10",
@@ -1263,6 +1641,13 @@
       "nameDe": "Mapo Tofu",
       "facility": "food market",
       "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
@@ -1279,6 +1664,13 @@
       "nameDe": "Morchelpasta",
       "facility": "food market",
       "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-12",
       "lastSeen": "2026-08-12",
@@ -1295,6 +1687,13 @@
       "nameDe": "Gratinierte Omelette",
       "facility": "food market",
       "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-17",
       "lastSeen": "2026-08-17",
@@ -1311,6 +1710,13 @@
       "nameDe": "Oriental Naan",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-25",
       "lastSeen": "2026-08-25",
@@ -1327,6 +1733,13 @@
       "nameDe": "Pad Thai",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-13",
       "lastSeen": "2026-08-13",
@@ -1343,6 +1756,13 @@
       "nameDe": "Gebratener Reis Pad Thai Style",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-13",
       "lastSeen": "2026-08-13",
@@ -1359,6 +1779,13 @@
       "nameDe": "Pasta Portofino",
       "facility": "food market",
       "diet": "unclassified",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 1
+      },
       "count": 1,
       "firstSeen": "2026-08-26",
       "lastSeen": "2026-08-26",
@@ -1375,6 +1802,13 @@
       "nameDe": "Pasta ai Broccoli",
       "facility": "food market",
       "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-18",
       "lastSeen": "2026-08-18",
@@ -1391,6 +1825,13 @@
       "nameDe": "Pasta con Pollo e Funghi",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-17",
       "lastSeen": "2026-08-17",
@@ -1407,6 +1848,13 @@
       "nameDe": "Penne al Gorgonzola",
       "facility": "food market",
       "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-25",
       "lastSeen": "2026-08-25",
@@ -1423,6 +1871,13 @@
       "nameDe": "Planted Wiener Art",
       "facility": "food market",
       "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-06",
       "lastSeen": "2026-08-06",
@@ -1439,6 +1894,13 @@
       "nameDe": "Polpetta alla Bruschetta",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-20",
       "lastSeen": "2026-08-20",
@@ -1455,6 +1917,13 @@
       "nameDe": "Pulled Pork Burger",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-19",
       "lastSeen": "2026-08-19",
@@ -1471,6 +1940,13 @@
       "nameDe": "Rotes Thai Curry",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-19",
       "lastSeen": "2026-08-19",
@@ -1487,6 +1963,13 @@
       "nameDe": "Rigatoni ai Funghi Porcini",
       "facility": "food market",
       "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-25",
       "lastSeen": "2026-08-25",
@@ -1503,6 +1986,13 @@
       "nameDe": "Rigatoni mit Tomaten und Artischocken",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-26",
       "lastSeen": "2026-08-26",
@@ -1519,6 +2009,13 @@
       "nameDe": "Rigatoni al vitello",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-19",
       "lastSeen": "2026-08-19",
@@ -1535,6 +2032,13 @@
       "nameDe": "Samosa Chaat",
       "facility": "food market",
       "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-12",
       "lastSeen": "2026-08-12",
@@ -1551,6 +2055,13 @@
       "nameDe": "Fregola Sarda",
       "facility": "food market",
       "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-11",
       "lastSeen": "2026-08-11",
@@ -1567,6 +2078,13 @@
       "nameDe": "Schnitzel \u00e0 la Meyer",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-20",
       "lastSeen": "2026-08-20",
@@ -1583,6 +2101,13 @@
       "nameDe": "Seitan Gulasch",
       "facility": "food market",
       "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-21",
       "lastSeen": "2026-08-21",
@@ -1599,6 +2124,13 @@
       "nameDe": "Senthil`s Best",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-11",
       "lastSeen": "2026-08-11",
@@ -1615,6 +2147,13 @@
       "nameDe": "Spaghetti & Spicy Vegetrian Balls",
       "facility": "food market",
       "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-10",
       "lastSeen": "2026-08-10",
@@ -1631,6 +2170,13 @@
       "nameDe": "Gew\u00fcrzlinsen von Pascal Haag",
       "facility": "food market",
       "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-20",
       "lastSeen": "2026-08-20",
@@ -1647,6 +2193,13 @@
       "nameDe": "Sweet Potatoes Dream",
       "facility": "food market",
       "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-25",
       "lastSeen": "2026-08-25",
@@ -1663,6 +2216,13 @@
       "nameDe": "Taco - Arroz Rojo",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-12",
       "lastSeen": "2026-08-12",
@@ -1679,6 +2239,13 @@
       "nameDe": "Tagliatelle al Spinachi e Salmone",
       "facility": "food market",
       "diet": "fish",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 1,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-12",
       "lastSeen": "2026-08-12",
@@ -1695,6 +2262,13 @@
       "nameDe": "Tandoori Chickpeas & Sweet Potatoes",
       "facility": "food market",
       "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-07",
       "lastSeen": "2026-08-07",
@@ -1711,6 +2285,13 @@
       "nameDe": "Teriyaki Beef Balls",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-10",
       "lastSeen": "2026-08-10",
@@ -1727,6 +2308,13 @@
       "nameDe": "Teriyaki Chicken Balls",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-10",
       "lastSeen": "2026-08-10",
@@ -1743,6 +2331,13 @@
       "nameDe": "Thai Drunken Noodles",
       "facility": "food market",
       "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-10",
       "lastSeen": "2026-08-10",
@@ -1759,6 +2354,13 @@
       "nameDe": "The BLT Burger",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-08-05",
@@ -1775,6 +2377,13 @@
       "nameDe": "The Smoky Bacon Burger",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-12",
       "lastSeen": "2026-08-12",
@@ -1791,6 +2400,13 @@
       "nameDe": "Tonkatsu Chicken Burger",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-19",
       "lastSeen": "2026-08-19",
@@ -1807,6 +2423,13 @@
       "nameDe": "Tori Yakisoba Wok",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-06",
       "lastSeen": "2026-08-06",
@@ -1823,6 +2446,13 @@
       "nameDe": "Truten Rahmgulasch",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
@@ -1839,6 +2469,13 @@
       "nameDe": "Vegane Cevapcici auf D\u00fcr\u00fcm Tortilla",
       "facility": "food market",
       "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-19",
       "lastSeen": "2026-08-19",
@@ -1855,6 +2492,13 @@
       "nameDe": "Gem\u00fcse K\u00f6tbullar",
       "facility": "food market",
       "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-13",
       "lastSeen": "2026-08-13",
@@ -1871,6 +2515,13 @@
       "nameDe": "Wiener Rahmgulasch",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
@@ -1887,6 +2538,13 @@
       "nameDe": "Gelbes Thai Curry",
       "facility": "food market",
       "diet": "fish",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 1,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-26",
       "lastSeen": "2026-08-26",
@@ -1903,6 +2561,13 @@
       "nameDe": "Zoodle Zucchini e Burrata",
       "facility": "food market",
       "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-19",
       "lastSeen": "2026-08-19",
@@ -1919,6 +2584,13 @@
       "nameDe": "Geschnetzeltes Z\u00fcrcher Art",
       "facility": "food market",
       "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
       "count": 1,
       "firstSeen": "2026-08-11",
       "lastSeen": "2026-08-11",

@@ -143,9 +143,22 @@ reused across days). One blind spot follows from this: a dish already showing
 the placeholder in the day's first snapshot never appears under its real name
 and cannot be identified at all.
 
-The dish ledger carries a DE/EN toggle (`?lang=de`) that swaps dish names via
-`nameDe`, joined from the German side already stored in every snapshot — so
-it costs no extra API calls. The rest of the page stays English.
+The page is fully bilingual via `?lang=`, the same convention `index.html`
+uses, and the two pages carry the choice across the link between them in both
+directions. Dish names come from `nameDe`, joined from the German side already
+stored in every snapshot, so translation costs no extra API calls; everything
+else — headings, column labels, legends, filters, caveats — is translated in
+the page's own `STRINGS` table. Swiss orthography throughout: `ss`, never `ß`.
+
+Build-your-own counters ("Choose 5") are excluded from the statistics: they
+appear every single day and are not a dish. The exclusion happens **on the
+page, not in the generator**, so `dishes.csv` and the raw archive keep the
+complete record of what was actually offered. Each dish entry carries a
+`dietDays` histogram — its own dish-days broken down by diet, always all five
+keys, summing to `count` — so the page can subtract a dish from the aggregate
+using the exact buckets its dish-days landed in. Subtracting the dish's total
+from its *latest* classification would be wrong the moment a kitchen changed a
+tag, and could produce a negative bucket.
 
 Two things the numbers deliberately do not do:
 
@@ -188,6 +201,16 @@ headings and labels stay English. `?view=` does not apply there.
 
 Add another menu-plan URL to `websites.txt` (same `offerDay.html?id=…` format
 as the existing ones) — the page picks up new facility IDs automatically.
+
+**File order is canonical.** Both pages sort facilities by each id's position
+in `websites.txt`, so reordering the lines reorders the menu page and the
+stats page together. That replaced a hardcoded priority list that had already
+drifted out of sync, and it keys on facility id rather than display name —
+which matters, because the name differs between languages in this archive.
+Because the order is load-bearing, `tools/build_stats.py` treats an unreadable
+`websites.txt` as a hard error rather than quietly falling back to
+alphabetical: a silent fallback would reorder `stats.json`, commit that diff,
+then flip back on the next successful run.
 
 ## Deployment
 

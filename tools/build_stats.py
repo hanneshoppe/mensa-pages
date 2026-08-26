@@ -172,13 +172,21 @@ def ordered_groups(seen_order, known):
 
 def parse_websites_order(path):
     """Extract id= values out of websites.txt, first-occurrence order - the
-    canonical facility order (see WEBSITES_PATH). Returns [] if the file is
-    missing or unreadable, so callers degrade to alphabetical order instead
-    of crashing."""
+    canonical facility order (see WEBSITES_PATH). websites.txt is a
+    committed, required input sitting next to this script; if it can't be
+    read, something is badly wrong, so this raises rather than degrading to
+    alphabetical order. A silent fallback here would make a transient CI
+    read failure flip facilities[] order, which commits (a real diff), and
+    then flips back and commits again on the next successful run - exactly
+    the spurious-commit churn the commit-only-when-changed design exists to
+    prevent."""
     try:
         text = Path(path).read_text()
-    except OSError:
-        return []
+    except OSError as e:
+        raise OSError(
+            f"cannot read required facility-order file {path}: {e} - "
+            "websites.txt must be a committed, readable file (see WEBSITES_PATH)"
+        ) from e
     ids = []
     for line in text.splitlines():
         m = re.search(r"[?&]id=(\w+)", line)
@@ -377,6 +385,7 @@ def build_stats(data_dir, latest_de_name=None, price_groups=None, websites_path=
 
     by_dish_dates = defaultdict(list)  # (facility, dish) -> dates, ascending
     by_dish_latest_meal = {}  # (facility, dish) -> most recent meal seen
+    by_dish_diet = defaultdict(Counter)  # (facility, dish) -> Counter of each dish-day's own diet
 
     for (d, facility, dish), meal in sorted(day_dish.items()):
         diet = classify_diet(meal.get("meal-class-array"))
@@ -386,6 +395,7 @@ def build_stats(data_dir, latest_de_name=None, price_groups=None, websites_path=
         facility_diet[facility][diet] += 1
         overall_days.add(d)
         overall_diet[diet] += 1
+        by_dish_diet[(facility, dish)][diet] += 1
 
         for p in meal.get("meal-price-array") or []:
             group, price = p.get("customer-group-desc"), p.get("price")
@@ -458,6 +468,14 @@ def build_stats(data_dir, latest_de_name=None, price_groups=None, websites_path=
             "nameDe": (latest_de_name or {}).get((facility, dish)) or dish,
             "facility": facility,
             "diet": classify_diet(meal.get("meal-class-array")),
+            # Per-dish-day diet histogram, using each sighting's own
+            # classification (mirrors facility_diet above, tallied in the
+            # same loop so the two can't diverge) - not just this dish's
+            # latest "diet" above. Lets a consumer (e.g. stats.html
+            # excluding the Choose-5 build-your-own dish from the diet mix)
+            # subtract a dish's history from the exact bucket(s) it landed
+            # in, instead of assuming it's all under the latest diet.
+            "dietDays": {k: by_dish_diet[(facility, dish)].get(k, 0) for k in DIET_KEYS},
             "count": len(dates_seen),
             "firstSeen": dates_seen[0],
             "lastSeen": dates_seen[-1],
@@ -551,6 +569,7 @@ def demo():
     _test_empty_archive()
     _test_byte_repeatability()
     _test_facility_order_from_websites_txt()
+    _test_dish_diet_days_matches_history()
 
     print("demo: all assertions passed")
 
@@ -699,10 +718,37 @@ def _test_byte_repeatability():
         assert c1 == c2
 
 
+def _test_dish_diet_days_matches_history():
+    """Regression for the stats.html Choose-5 subtraction: a dish's
+    hand-maintained meal-class tag can change over time (vegan one day,
+    untagged the next). dietDays must tally each dish-day under its own
+    day's classification, not just the dish's latest one - so summing it
+    always equals count, with no bucket going negative when a consumer
+    subtracts a dish's history out of the diet mix."""
+    with tempfile.TemporaryDirectory() as td:
+        d = Path(td)
+        day1 = [{"fetchedAt": "2026-08-01T06:00:00Z", "facilities": {"en": _mk_facility(
+            "19", "food market",
+            [_mk_meal("1", "Choose 5", **{"meal-class-array": [{"desc": "Vegan"}]})])}}]
+        day2 = [{"fetchedAt": "2026-08-02T06:00:00Z", "facilities": {"en": _mk_facility(
+            "19", "food market", [_mk_meal("1", "Choose 5")])}}]  # untagged -> unclassified
+        _write_jsonl(d / "2026-08-01.jsonl", day1)
+        _write_jsonl(d / "2026-08-02.jsonl", day2)
+
+        rows, latest_de_name, price_groups = build_dish_rows(d)
+        stats = build_stats(d, latest_de_name, price_groups)
+        dish = next(x for x in stats["dishes"] if x["name"] == "Choose 5")
+        assert dish["diet"] == "unclassified"  # latest sighting only
+        assert dish["dietDays"] == {"vegan": 1, "vegetarian": 0, "fish": 0,
+                                     "meat": 0, "unclassified": 1}
+        assert sum(dish["dietDays"].values()) == dish["count"] == 2
+
+
 def _test_facility_order_from_websites_txt():
     """A fixture whose websites.txt order differs from alphabetical must
-    come out in file order, and a missing websites.txt must degrade to
-    alphabetical rather than crash."""
+    come out in file order, and a missing websites.txt must raise rather
+    than silently degrading to alphabetical order (see parse_websites_order
+    for why a silent degrade is the wrong call here)."""
     with tempfile.TemporaryDirectory() as td:
         d = Path(td)
         websites = d / "websites.txt"
@@ -724,10 +770,12 @@ def _test_facility_order_from_websites_txt():
         names = [f["name"] for f in stats["facilities"]]
         assert names == ["Zeta", "Alpha", "Unlisted"], names
 
-        stats_fallback = build_stats(d, latest_de_name, price_groups,
-                                      websites_path=d / "does-not-exist.txt")
-        names_fallback = [f["name"] for f in stats_fallback["facilities"]]
-        assert names_fallback == sorted(names_fallback)
+        try:
+            build_stats(d, latest_de_name, price_groups,
+                        websites_path=d / "does-not-exist.txt")
+            assert False, "missing websites.txt must raise, not degrade to alphabetical order"
+        except OSError:
+            pass
 
 
 if __name__ == "__main__":

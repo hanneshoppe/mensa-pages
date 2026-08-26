@@ -324,7 +324,7 @@
   <h1 id="titleText">Mensa Stats</h1>
   <div class="date-line" id="dateLine"></div>
   <div class="controls">
-    <div class="toggle-group" role="group" aria-label="Language">
+    <div class="toggle-group" id="langGroup" role="group">
       <button type="button" class="toggle-btn" data-lang="de">DE</button>
       <button type="button" class="toggle-btn" data-lang="en">EN</button>
     </div>
@@ -384,6 +384,7 @@ const CHOOSE_5_NAME = 'Choose 5';
 const STRINGS = {
   en: {
     title: 'Mensa Stats',
+    languageLabel: 'Language',
     backLinkLabel: 'Back to menus',
     loading: 'Loading stats…',
     loadError: "Stats aren't available yet — data/stats.json hasn't been generated.",
@@ -404,6 +405,8 @@ const STRINGS = {
       'whenever one opens or closes — compare facilities individually rather than reading it as a trend. ' +
       'Build-your-own counters (e.g. "Choose 5") are excluded from these totals — they aren\'t a dish.',
     dietEmptyNote: 'No dishes recorded in this range yet.',
+    dishesUnit: 'dishes',
+    ofWord: 'of',
     showTable: 'Show table',
     hideTable: 'Hide table',
     diet: { vegan: 'Vegan', vegetarian: 'Vegetarian', fish: 'Fish', meat: 'Meat', unclassified: 'Unclassified' },
@@ -431,6 +434,7 @@ const STRINGS = {
   },
   de: {
     title: 'Mensa-Statistik',
+    languageLabel: 'Sprache',
     backLinkLabel: 'Zurück zu den Menüs',
     loading: 'Lade Statistiken…',
     loadError: 'Statistiken sind noch nicht verfügbar — data/stats.json wurde noch nicht generiert.',
@@ -453,6 +457,8 @@ const STRINGS = {
       'Trend zu lesen. Build-your-own-Theken (z. B. "Choose 5") sind aus diesen Zahlen ausgeschlossen — sie ' +
       'sind kein Gericht.',
     dietEmptyNote: 'Noch keine Gerichte in diesem Zeitraum erfasst.',
+    dishesUnit: 'Gerichte',
+    ofWord: 'von',
     showTable: 'Tabelle anzeigen',
     hideTable: 'Tabelle ausblenden',
     diet: { vegan: 'Vegan', vegetarian: 'Vegetarisch', fish: 'Fisch', meat: 'Fleisch', unclassified: 'Unklassifiziert' },
@@ -533,10 +539,30 @@ function dietStatsExcludingChoose5(stats) {
   }
   if (choose5ByFacility.size === 0) return { facilities: stats.facilities, overall: stats.overall };
 
+  // entry.dietDays is the dish's own per-diet histogram (each day counted
+  // under *that day's* classification), so subtract it bucket-by-bucket.
+  // entry.diet is only the dish's *latest* classification — subtracting the
+  // whole count from that single bucket is wrong whenever the tag changed
+  // over the dish's history, so it's kept only as a fallback for an older
+  // stats.json that predates dietDays. Either way, clamp each bucket at
+  // zero (upstream data bug otherwise going negative) and shrink dishDays
+  // by exactly what was actually removed, so numerator and denominator
+  // stay in lockstep and percentages keep summing correctly.
   function subtract(f, entry) {
     const diet = { ...f.diet };
-    diet[entry.diet] -= entry.count;
-    return { ...f, diet, dishDays: f.dishDays - entry.count };
+    let removed = 0;
+    if (entry.dietDays) {
+      for (const k of DIET_KEYS) {
+        const take = Math.min(diet[k], entry.dietDays[k] || 0);
+        diet[k] -= take;
+        removed += take;
+      }
+    } else {
+      const take = Math.min(diet[entry.diet], entry.count);
+      diet[entry.diet] -= take;
+      removed = take;
+    }
+    return { ...f, diet, dishDays: f.dishDays - removed };
   }
   const facilities = stats.facilities.map(f => {
     const entry = choose5ByFacility.get(f.name);
@@ -600,32 +626,50 @@ function renderLegend(keys, labelMap, colorVarMap) {
 // fish/meat/unclassified dish-days.
 // ---------------------------------------------------------------------------
 
-function dietRow(f, isOverall, dateRange, strings, lang) {
+// Largest-remainder apportionment: round each share down, then hand the
+// leftover points to the segments with the biggest fractional remainder,
+// so the printed integers always sum to exactly 100 (independent rounding
+// otherwise drifts a point off, e.g. 16+29+5+45+6 = 101).
+function apportionPercentages(counts, total) {
+  if (!total) return counts.map(() => 0);
+  const exact = counts.map(c => c / total * 100);
+  const floors = exact.map(Math.floor);
+  const leftover = 100 - floors.reduce((a, b) => a + b, 0);
+  const byRemainder = exact
+    .map((v, i) => ({ i, frac: v - floors[i] }))
+    .sort((a, b) => b.frac - a.frac);
+  const result = floors.slice();
+  for (let k = 0; k < leftover; k++) result[byRemainder[k].i]++;
+  return result;
+}
+
+function dietRow(f, isOverall, dateRange, strings) {
   const total = f.dishDays;
-  const dishesWord = lang === 'de' ? 'Gerichte' : 'dishes';
-  const ofWord = lang === 'de' ? 'von' : 'of';
+  const dishesWord = strings.dishesUnit;
+  const ofWord = strings.ofWord;
+  const pcts = apportionPercentages(DIET_KEYS.map(k => f.diet[k]), total);
   const bar = el('div', 'diet-bar');
   bar.setAttribute('role', 'img');
   bar.setAttribute('aria-label',
     `${displayName(f, strings)} — ${strings.dietSectionTitle}: ` +
     DIET_KEYS.map(k => `${strings.diet[k]} ${f.diet[k]}`).join(', '));
 
-  for (const k of DIET_KEYS) {
+  DIET_KEYS.forEach((k, i) => {
     const count = f.diet[k];
-    if (count <= 0) continue;
+    if (count <= 0) return;
     const pct = total ? (count / total * 100) : 0;
     const seg = el('div', 'diet-seg');
     seg.style.flexGrow = count;
     seg.style.background = `var(${DIET_COLOR_VAR[k]})`;
     seg.tabIndex = 0;
     seg.setAttribute('aria-label', `${strings.diet[k]}: ${count} ${dishesWord}, ${pct.toFixed(1)}%`);
-    seg.append(el('span', 'diet-seg-label', `${count} (${Math.round(pct)}%)`));
+    seg.append(el('span', 'diet-seg-label', `${count} (${pcts[i]}%)`));
     attachTooltip(seg, () => [
       { text: strings.diet[k] },
       { text: `${count} ${dishesWord} · ${pct.toFixed(1)}% ${ofWord} ${displayName(f, strings)}`, strong: true },
     ]);
     bar.append(seg);
-  }
+  });
 
   const cov = coverageNote(f, dateRange, strings);
   const label = el('div', 'diet-row-label', displayName(f, strings));
@@ -656,15 +700,12 @@ function dietTable(rows, strings) {
   const tbody = el('tbody');
   for (const f of rows) {
     const total = f.dishDays;
+    const pcts = apportionPercentages(DIET_KEYS.map(k => f.diet[k]), total);
     tbody.append(el('tr', null, [
       el('td', null, displayName(f, strings)),
       el('td', null, String(f.days)),
       el('td', null, String(total)),
-      ...DIET_KEYS.map(k => {
-        const c = f.diet[k];
-        const pct = total ? Math.round(c / total * 100) : 0;
-        return el('td', null, `${c} (${pct}%)`);
-      }),
+      ...DIET_KEYS.map((k, i) => el('td', null, `${f.diet[k]} (${pcts[i]}%)`)),
     ]));
   }
   const table = el('table', 'data-table', [thead, tbody]);
@@ -687,8 +728,8 @@ function renderDietSection(stats, state) {
     section.append(el('div', 'empty-note', strings.dietEmptyNote));
     return section;
   }
-  for (const f of facilities) section.append(dietRow(f, false, stats.dateRange, strings, state.lang));
-  section.append(dietRow(overall, true, stats.dateRange, strings, state.lang));
+  for (const f of facilities) section.append(dietRow(f, false, stats.dateRange, strings));
+  section.append(dietRow(overall, true, stats.dateRange, strings));
 
   const tableBox = el('div', null, dietTable(rows, strings));
   tableBox.hidden = !state.dietTableVisible;
@@ -1028,6 +1069,7 @@ function updateUrl(state) {
 
 function updateToggleButtons(state) {
   document.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('active', b.dataset.lang === state.lang));
+  document.getElementById('langGroup').setAttribute('aria-label', STRINGS[state.lang].languageLabel);
 }
 
 // Carries the current language across to index.html, mirroring the fix on
