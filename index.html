@@ -256,9 +256,14 @@ const CookpitClient = (() => {
     }
   }
 
-  async function getJson(url, cacheKey) {
-    const cached = cacheGet(cacheKey);
-    if (cached) return cached;
+  // opts.force skips the cached read (but still writes the fresh response
+  // back to cache) — used by the background live re-check so it can't be
+  // answered by a stale, possibly-older-than-the-snapshot cache entry.
+  async function getJson(url, cacheKey, opts = {}) {
+    if (!opts.force) {
+      const cached = cacheGet(cacheKey);
+      if (cached) return cached;
+    }
     const res = await fetch(url);
     if (!res.ok) return null;
     const data = await res.json();
@@ -266,15 +271,15 @@ const CookpitClient = (() => {
     return data;
   }
 
-  function getFacility(id, lang) {
+  function getFacility(id, lang, opts) {
     const url = `${BASE_URL}facilities/${id}?client-id=${CLIENT_ID}&lang=${lang}`;
-    return getJson(url, `mensa:facility:${id}:${lang}`);
+    return getJson(url, `mensa:facility:${id}:${lang}`, opts);
   }
 
-  function getWeeklyRota(id, lang, validAfter, validBefore) {
+  function getWeeklyRota(id, lang, validAfter, validBefore, opts) {
     const url = `${BASE_URL}weeklyrotas?client-id=${CLIENT_ID}&lang=${lang}&rs-first=0&rs-size=50` +
       `&valid-after=${validAfter}&valid-before=${validBefore}&facility=${id}`;
-    return getJson(url, `mensa:rota:${id}:${lang}:${validAfter}`);
+    return getJson(url, `mensa:rota:${id}:${lang}:${validAfter}`, opts);
   }
 
   function imageUrl(meal) {
@@ -325,13 +330,47 @@ let idsPromise = null;
 
 function pad(n) { return String(n).padStart(2, '0'); }
 
-function formatDate(d) {
-  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+// This page shows ETH Zürich menus, so "today" always means Zurich's
+// calendar date — never the viewer's own timezone. Locale is irrelevant
+// here since parts are read by type, not by position (house pattern, see
+// stats.html's formatDataAsOf).
+function zurichDateParts(d) {
+  return new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/Zurich', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).formatToParts(d).reduce((a, x) => (a[x.type] = x.value, a), {});
+}
+
+function formatDate(parts) {
+  return `${parts.year}-${parts.month}-${parts.day}`;
+}
+
+// Advances a Zurich calendar date by one day. Uses Date.UTC purely as a
+// calendar calculator (not a real instant), so it advances the date exactly
+// once regardless of the 23-/25-hour days around a DST transition — adding
+// a fixed 24h in milliseconds would not be safe here.
+function nextDay(parts) {
+  const d = new Date(Date.UTC(Number(parts.year), Number(parts.month) - 1, Number(parts.day) + 1));
+  return { year: String(d.getUTCFullYear()), month: pad(d.getUTCMonth() + 1), day: pad(d.getUTCDate()) };
 }
 
 // ISO weekday: Monday=1 ... Sunday=7, matching the API's day-of-week-code.
-function isoWeekday(d) {
-  return ((d.getDay() + 6) % 7) + 1;
+// Computed from the Zurich calendar date (not the viewer's), via the same
+// Date.UTC-as-calendar trick as nextDay.
+function isoWeekday(parts) {
+  const day = new Date(Date.UTC(Number(parts.year), Number(parts.month) - 1, Number(parts.day))).getUTCDay();
+  return ((day + 6) % 7) + 1;
+}
+
+// Bundles the Zurich "today" needed everywhere: the snapshot filename, the
+// API's valid-after/valid-before range, and the weekday used to pick
+// today's rota entry — all derived from one Zurich calendar date so they
+// can never disagree. `now` is the instant they were derived from, for
+// callers that also want to display it.
+function zurichDateContext() {
+  const now = new Date();
+  const today = zurichDateParts(now);
+  const tomorrow = nextDay(today);
+  return { now, todayStr: formatDate(today), tomorrowStr: formatDate(tomorrow), todayIso: isoWeekday(today) };
 }
 
 function getStateFromUrl() {
@@ -351,6 +390,7 @@ function updateUrl(state) {
 
 async function getFacilityIds() {
   const res = await fetch('websites.txt');
+  if (!res.ok) throw new Error(`websites.txt fetch failed: ${res.status}`);
   const text = await res.text();
   const ids = [...text.matchAll(/[?&]id=(\d+)/g)].map(m => m[1]);
   return [...new Set(ids)];
@@ -384,13 +424,13 @@ function sortFacilities(entries) {
   return facilities;
 }
 
-async function fetchFacilitiesLive(lang, todayStr, tomorrowStr, todayIso) {
+async function fetchFacilitiesLive(lang, todayStr, tomorrowStr, todayIso, opts) {
   const ids = await getFacilityIdsCached();
   return Promise.all(ids.map(async id => {
     try {
       const [info, rota] = await Promise.all([
-        CookpitClient.getFacility(id, lang),
-        CookpitClient.getWeeklyRota(id, lang, todayStr, tomorrowStr),
+        CookpitClient.getFacility(id, lang, opts),
+        CookpitClient.getWeeklyRota(id, lang, todayStr, tomorrowStr, opts),
       ]);
       if (!info) return null;
       const dayEntry = findTodayEntry(rota, todayStr, todayIso);
@@ -423,7 +463,10 @@ function getFacilitiesData(lang, todayStr, tomorrowStr, todayIso) {
 async function refreshInBackground(state, lang, todayStr, tomorrowStr, todayIso, renderedFacilities) {
   let fresh;
   try {
-    fresh = sortFacilities(await fetchFacilitiesLive(lang, todayStr, tomorrowStr, todayIso));
+    // force: true — this check exists specifically to catch things that
+    // changed since the snapshot (e.g. a dish selling out), so it must never
+    // be answered by the same 5-minute cache the snapshot itself predates.
+    fresh = sortFacilities(await fetchFacilitiesLive(lang, todayStr, tomorrowStr, todayIso, { force: true }));
   } catch (err) {
     return;
   }
@@ -600,17 +643,12 @@ async function loadAndRender(state) {
   document.title = strings.title;
   document.getElementById('titleText').textContent = strings.title;
 
-  const today = new Date();
+  const { now, todayStr, tomorrowStr, todayIso } = zurichDateContext();
   document.getElementById('dateLine').textContent =
-    today.toLocaleDateString(strings.dateLocale, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    now.toLocaleDateString(strings.dateLocale, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Europe/Zurich' });
 
   app.innerHTML = '';
   app.append(el('div', 'loading', strings.loading));
-
-  const tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
-  const todayStr = formatDate(today);
-  const tomorrowStr = formatDate(tomorrow);
-  const todayIso = isoWeekday(today);
 
   let facilities, fromSnapshot;
   try {
@@ -637,10 +675,9 @@ function main() {
   loadAndRender(state);
 
   // Fetch the other language in the background too, so toggling never waits on a fetch.
-  const today = new Date();
-  const tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
+  const { todayStr, tomorrowStr, todayIso } = zurichDateContext();
   const otherLang = state.lang === 'en' ? 'de' : 'en';
-  getFacilitiesData(otherLang, formatDate(today), formatDate(tomorrow), isoWeekday(today)).catch(() => {});
+  getFacilitiesData(otherLang, todayStr, tomorrowStr, todayIso).catch(() => {});
 
   document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => {
     if (state.lang === btn.dataset.lang) return;

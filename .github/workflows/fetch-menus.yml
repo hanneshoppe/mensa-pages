@@ -60,16 +60,41 @@ jobs:
           # rota down to just today's day-entry (matching the client's
           # findTodayEntry) so we archive one day's menu, not a redundant
           # copy of the whole week on every run.
+          # --max-time/--retry: a facility fetch that times out or 5xxs
+          # would otherwise fall through to `echo null` below and get
+          # archived as a fabricated "no menu today" - see the validation
+          # right after.
+          CURL='curl -sf --max-time 15 --retry 2'
+
           for lang in en de; do
             : > "$TMP/$lang.jsonl"
             for id in $IDS; do
-              info=$(curl -sf "$BASE/facilities/$id?client-id=$CLIENT_ID&lang=$lang" || echo null)
-              rota=$(curl -sf "$BASE/weeklyrotas?client-id=$CLIENT_ID&lang=$lang&rs-first=0&rs-size=50&valid-after=$TODAY&valid-before=$TOMORROW&facility=$id" || echo null)
+              info=$($CURL "$BASE/facilities/$id?client-id=$CLIENT_ID&lang=$lang" || echo null)
+              rota=$($CURL "$BASE/weeklyrotas?client-id=$CLIENT_ID&lang=$lang&rs-first=0&rs-size=50&valid-after=$TODAY&valid-before=$TOMORROW&facility=$id" || echo null)
+
+              # A failed info fetch is not "this canteen served nothing today"
+              # - it's a broken sweep. Require a real facility-name (no
+              # "Mensa <id>" placeholder) instead of archiving a guess, and
+              # abandon the run rather than append a partial snapshot.
+              #
+              # Warning + exit 0, not error + exit 1: skipping IS the correct
+              # handling here, and at ~120 runs a weekday a red X on every
+              # transient upstream blip would train us to ignore red X. A gap
+              # in the archive is the intended outcome; the browser falls back
+              # to the live API regardless. A sustained outage shows up as the
+              # archive quietly not growing.
+              if ! jq -e '. != null and (."facility-name" // "") != ""' >/dev/null 2>&1 <<<"$info"; then
+                echo "::warning::Incomplete sweep: facility $id ($lang) fetch failed or returned no facility-name, skipping without appending."
+                echo "SNAPSHOT_CHANGED=false" >> "$GITHUB_ENV"
+                rm -rf "$TMP"
+                exit 0
+              fi
+
               jq -n -c --arg id "$id" --argjson info "$info" --argjson rota "$rota" \
                 --arg today "$TODAY" --argjson isowd "$ISOWD" '
                 ([$rota["weekly-rota-array"][]? | select($today >= ."valid-from" and $today <= ."valid-to")][0]) as $week
                 | ([$week["day-of-week-array"][]? | select(."day-of-week-code" == $isowd)][0]) as $day
-                | {id: $id, name: ($info["facility-name"] // ("Mensa " + $id)), url: $info["facility-url"], dayEntry: ($day // null)}
+                | {id: $id, name: $info["facility-name"], url: $info["facility-url"], dayEntry: ($day // null)}
               ' >> "$TMP/$lang.jsonl"
             done
             jq -s '.' "$TMP/$lang.jsonl" > "$TMP/$lang.json"
@@ -96,15 +121,22 @@ jobs:
           echo "$NEW" >> "$SNAPSHOT"
           echo "SNAPSHOT_CHANGED=true" >> "$GITHUB_ENV"
 
-      # The `hashFiles` clause is a self-heal: if data/stats.json ever goes
-      # missing it gets rebuilt on the next run rather than waiting for a
-      # menu change to happen to trigger one.
+      # The `hashFiles` clause is a self-heal: if data/stats.json or
+      # data/dishes.csv ever goes missing it gets rebuilt on the next run
+      # rather than waiting for a menu change to happen to trigger one.
+      # OUTPUTS_REBUILT is set explicitly (rather than re-checking hashFiles
+      # in the commit step below) because hashFiles is re-evaluated live -
+      # by the time the commit step's `if` runs, the rebuild above has
+      # already created the file, so a hashFiles-only check would find it
+      # present and skip the commit that was supposed to save it.
       - name: Rebuild stats.json
-        if: env.SNAPSHOT_CHANGED == 'true' || hashFiles('data/stats.json') == ''
-        run: python3 tools/build_stats.py
+        if: env.SNAPSHOT_CHANGED == 'true' || hashFiles('data/stats.json') == '' || hashFiles('data/dishes.csv') == ''
+        run: |
+          python3 tools/build_stats.py
+          echo "OUTPUTS_REBUILT=true" >> "$GITHUB_ENV"
 
       - name: Commit and push if anything changed
-        if: env.SNAPSHOT_CHANGED == 'true' || hashFiles('data/stats.json') == ''
+        if: env.SNAPSHOT_CHANGED == 'true' || env.OUTPUTS_REBUILT == 'true'
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'

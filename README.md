@@ -71,12 +71,22 @@ stops there: no line is appended, `data/stats.json` is not rebuilt, and
 nothing is committed. So the scheduled runs cost one API sweep each and
 produce commits only when the menu actually moves.
 
+If any facility's fetch fails or comes back without a real name, the whole
+sweep is treated as broken rather than as "this canteen served nothing
+today": nothing is appended, nothing is rebuilt, nothing is committed, and
+the run fails loudly instead of exiting clean. A gap in the archive for that
+run is the correct outcome — a fabricated empty menu is not — and the next
+scheduled tick a few minutes later retries the sweep from scratch.
+
 All timestamps shown to a human — commit messages and the stats page header
 — are Europe/Zurich wall-clock with the DST-correct abbreviation (CEST in
-summer, CET in winter; MESZ/MEZ in German). The `fetchedAt` values inside
-`data/*.jsonl`, and `sold_out_at`/`first_seen_at`/`last_seen_at` in
-`data/dishes.csv`, are raw **UTC** as the API returns them — add the offset
-when reading those directly.
+summer, CET in winter; MESZ/MEZ in German). `fetchedAt` inside
+`data/*.jsonl` is not returned by the API — the workflow stamps it in UTC
+(`date -u`) right before the sweep starts, so it marks roughly when that
+run's fetch began, not per-dish. `dishes.csv`'s `sold_out_at`/
+`first_seen_at`/`last_seen_at` are carried over from the `fetchedAt` of
+whichever snapshot line first/last observed that state — add the Zurich
+offset when reading any of these directly.
 
 That gives two things for the price of one:
 
@@ -117,6 +127,12 @@ language join that every consumer would otherwise reimplement. Columns cover
 the dish (`line`, `name_en`, `name_de`, `diet`), its timing (`first_seen_at`,
 `last_seen_at`, `sold_out_at`), one `price_<group>` per customer group, and
 the nutrition fields.
+
+`stats.json`'s top-level `priceGroups` array lists customer groups in the
+same order the CSV uses for its `price_<group>` columns: known groups first
+(students, internal, external), then any others in first-seen order — one
+authoritative order so the page's legend/colours and the CSV's column order
+never disagree.
 
 `sold_out_at` is what the 5-minute cadence buys. The API has no sold-out
 field — it overwrites the dish's `name` with "Ausverkauft"/"Sold Out" — so

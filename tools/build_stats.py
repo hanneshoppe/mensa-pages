@@ -78,7 +78,10 @@ def price_stats(prices):
     if len(prices) == 1:
         p25 = p50 = p75 = prices[0]
     else:
-        p25, p50, p75 = statistics.quantiles(prices, n=4)
+        # method="inclusive": the default "exclusive" method extrapolates
+        # beyond the observed range on small samples (e.g. two points),
+        # which would render a box-plot whisker shorter than its own box.
+        p25, p50, p75 = statistics.quantiles(prices, n=4, method="inclusive")
     return {
         "n": len(prices),
         "min": round(prices[0], 2),
@@ -162,8 +165,12 @@ def build_date_rows(d, snapshots):
     "Sold Out"/"Ausverkauft" once a dish runs out, so it can't be joined by
     name anymore. line-id survives the overwrite and identifies the serving
     line (not the dish - it's reused across days for different dishes), so
-    the join below is line-id -> last real dish name seen on that line,
-    reset fresh for every date.
+    the join below is (facility_id, line-id) -> last real dish name seen on
+    that line, reset fresh for every date. Keyed by facility_id rather than
+    the display name used elsewhere in this function, because the EN/DE
+    sides can carry different names for the same facility (e.g. one side's
+    fetch failing) - an id match is exact where a name match would silently
+    miss and fall back to English.
 
     Returns (rows, de_name_for, price_groups_seen):
     - rows: (facility, dish) -> row dict for this date, name_de already
@@ -176,18 +183,18 @@ def build_date_rows(d, snapshots):
     first_seen, last_seen = {}, {}
     meal_for, line_for, de_name_for = {}, {}, {}
     facility_id_for = {}
-    line_last_dish = {}  # (facility, line-id) -> current real dish name, this date only
+    line_last_dish = {}  # (facility_id, line-id) -> current real dish name, this date only
     sold_out_at = {}
     price_groups_seen = []
 
     for snapshot in snapshots:
         fetched_at = snapshot.get("fetchedAt")
 
-        de_line_name = {}  # (facility, line-id) -> German name, this snapshot only
-        for facility, _fid, _line, meal in iter_lines(snapshot["facilities"].get("de")):
+        de_line_name = {}  # (facility_id, line-id) -> German name, this snapshot only
+        for _facility_de, fid_de, _line, meal in iter_lines(snapshot["facilities"].get("de")):
             lid, name = meal.get("line-id"), meal.get("name")
-            if lid is not None and name is not None:
-                de_line_name[(facility, lid)] = name
+            if fid_de is not None and lid is not None and name is not None:
+                de_line_name[(fid_de, lid)] = name
 
         for facility, fid, line_name, meal in iter_lines(snapshot["facilities"]["en"]):
             facility_id_for.setdefault(facility, fid)
@@ -198,7 +205,7 @@ def build_date_rows(d, snapshots):
                 # Not a dish of its own (matches iter_meals) - attribute the
                 # timestamp to whichever dish this line-id served earlier
                 # today, if any.
-                dish = line_last_dish.get((facility, lid)) if lid is not None else None
+                dish = line_last_dish.get((fid, lid)) if fid is not None and lid is not None else None
                 if dish is not None:
                     sold_out_at.setdefault((facility, dish), fetched_at)
                 continue
@@ -213,13 +220,13 @@ def build_date_rows(d, snapshots):
             # write wins" - so a line-id mismatch on the day's final
             # snapshot correctly falls back to English even if an earlier
             # snapshot that day happened to match.
-            de_name = de_line_name.get((facility, lid)) if lid is not None else None
+            de_name = de_line_name.get((fid, lid)) if fid is not None and lid is not None else None
             if de_name is not None and de_name.strip().lower() not in SOLD_OUT:
                 de_name_for[key] = de_name
             else:
                 de_name_for.pop(key, None)
-            if lid is not None:
-                line_last_dish[(facility, lid)] = name
+            if fid is not None and lid is not None:
+                line_last_dish[(fid, lid)] = name
 
             for p in meal.get("meal-price-array") or []:
                 group = p.get("customer-group-desc")
@@ -311,7 +318,7 @@ def write_dishes_csv(rows, price_groups, out_path):
             writer.writerow(out)
 
 
-def build_stats(data_dir, latest_de_name=None):
+def build_stats(data_dir, latest_de_name=None, price_groups=None):
     day_dish, data_as_of = load_day_dish(data_dir)
 
     facility_days = defaultdict(set)
@@ -408,6 +415,10 @@ def build_stats(data_dir, latest_de_name=None):
 
     return {
         "dataAsOf": data_as_of,
+        # Authoritative group order (known groups first, then first-seen) so
+        # this and dishes.csv's price_<group> columns never disagree - see
+        # ordered_groups().
+        "priceGroups": ordered_groups(price_groups or [], PRICE_GROUPS_KNOWN),
         "dateRange": {
             "from": min(overall_days),
             "to": max(overall_days),
@@ -441,6 +452,13 @@ def demo():
 
     assert ordered_groups(["external", "students", "unknown", "internal"],
                            PRICE_GROUPS_KNOWN) == ["students", "internal", "external", "unknown"]
+
+    # method="inclusive" (see price_stats): the default "exclusive" method
+    # extrapolates quartiles outside the observed range on small samples -
+    # e.g. [7, 8] gives p25=6.75/p75=8.25, both outside min/max.
+    ps = price_stats([7, 8])
+    assert ps["p25"] >= ps["min"]
+    assert ps["p75"] <= ps["max"]
 
     # dishes.csv sold-out attribution: the API has no sold-out flag, it just
     # overwrites the meal's name - so a dish that sells out partway through
@@ -485,9 +503,9 @@ if __name__ == "__main__":
         demo()
     else:
         rows, latest_de_name, price_groups = build_dish_rows(Path(args.data_dir))
-        stats = build_stats(Path(args.data_dir), latest_de_name)
+        stats = build_stats(Path(args.data_dir), latest_de_name, price_groups)
         Path(args.out).write_text(json.dumps(stats, indent=2) + "\n")
-        write_dishes_csv(rows, ordered_groups(price_groups, PRICE_GROUPS_KNOWN), Path(args.out_csv))
+        write_dishes_csv(rows, stats["priceGroups"], Path(args.out_csv))
         print(f"wrote {args.out}: {len(stats['facilities'])} facilities, "
               f"{len(stats['dishes'])} dishes, "
               f"{sum(1 for d in stats['dishes'] if d['prediction'])} with a prediction")
