@@ -14,7 +14,15 @@ from collections import Counter, defaultdict
 from datetime import date, timedelta
 from pathlib import Path
 
-SOLD_OUT = {"sold out", "ausverkauft"}
+# Exact casing the API sends for a sold-out placeholder, mirroring
+# index.html's SOLD_OUT_LABELS literal-for-literal so
+# _test_policy_matches_html_pages can exact-case-compare the two lists (see
+# there for why exact case, not a lowercased comparison, is the point).
+# SOLD_OUT below - the set every actual sold-out check in this file matches
+# against - is derived from this, not the other way round; edit this list,
+# not SOLD_OUT, to change what counts as sold out.
+SOLD_OUT_LABELS = ["Sold Out", "Ausverkauft"]
+SOLD_OUT = {s.lower() for s in SOLD_OUT_LABELS}
 # Precedence when a dish carries more than one meal-class tag: best-wins,
 # mirroring classifyMeal() in index.html so the stats page and the menu
 # page never disagree. A dish tagged both Meat and Vegan is a counter
@@ -73,6 +81,9 @@ DISH_IDS_README = (
 )
 
 
+_CANONICAL_ID = re.compile(r"[1-9]\d*")  # positive int, no leading zeros
+
+
 def load_dish_ids(path=DISH_IDS_PATH, allow_new=False):
     """Load the id registry: {id (int) -> [(facility, name_en), ...]}.
 
@@ -85,6 +96,21 @@ def load_dish_ids(path=DISH_IDS_PATH, allow_new=False):
     link while looking like a successful build, so restoring the file from
     git history is the only correct recovery. allow_new exists solely to
     bootstrap the registry the first time.
+
+    This file is hand-edited (a rename is recorded by hand, see
+    DISH_IDS_README), so a typo here silently corrupts identity - validate
+    on load and raise rather than trust the file blindly:
+    - every key besides "_readme" must be a canonical positive integer
+      ("01" is rejected - int("01") == int("1") would otherwise silently
+      collapse two registry entries into one id);
+    - every id's value must be a non-empty list of [facility, name_en]
+      pairs of non-empty strings;
+    - a given [facility, name_en] pair may appear under only one id - if
+      two ids both claim it, identity would depend on dict/JSON-object
+      iteration order and ratings pointing at the losing id would be
+      silently orphaned.
+    Raising is correct here: this file is the source of truth, and only a
+    human editing it can fix a violation.
     """
     try:
         raw = json.loads(Path(path).read_text())
@@ -96,11 +122,41 @@ def load_dish_ids(path=DISH_IDS_PATH, allow_new=False):
             "dish identity and cannot be regenerated - restore it from git "
             "history. Pass --allow-new-registry only to bootstrap a new one."
         )
-    return {
-        int(k): [tuple(pair) for pair in v]
-        for k, v in raw.items()
-        if k != "_readme"
-    }
+
+    registry = {}
+    pair_owner = {}  # (facility, name_en) -> owning id, to catch a pair claimed twice
+    for k, v in raw.items():
+        if k == "_readme":
+            continue
+        if not _CANONICAL_ID.fullmatch(k):
+            raise ValueError(
+                f"dish id registry {path}: key {k!r} is not a canonical "
+                "positive integer (no leading zeros) - fix it by hand in the "
+                "file, do not regenerate it (see load_dish_ids)")
+        dish_id = int(k)
+        if not v:
+            raise ValueError(
+                f"dish id registry {path}: id {dish_id} has no [facility, "
+                "name_en] pairs - fix it by hand, do not regenerate the file")
+        pairs = []
+        for pair in v:
+            if not (isinstance(pair, list) and len(pair) == 2
+                    and all(isinstance(x, str) and x for x in pair)):
+                raise ValueError(
+                    f"dish id registry {path}: id {dish_id} has a malformed "
+                    f"entry {pair!r} - expected a [facility, name_en] pair of "
+                    "non-empty strings")
+            pair = tuple(pair)
+            if pair in pair_owner and pair_owner[pair] != dish_id:
+                raise ValueError(
+                    f"dish id registry {path}: [{pair[0]!r}, {pair[1]!r}] is "
+                    f"listed under both id {pair_owner[pair]} and id "
+                    f"{dish_id} - a dish can only have one id; fix it by "
+                    "hand, do not regenerate the file")
+            pair_owner[pair] = dish_id
+            pairs.append(pair)
+        registry[dish_id] = pairs
+    return registry
 
 
 def assign_dish_ids(registry, keys):
@@ -249,11 +305,16 @@ def load_day_dish(data_dir):
 
     Also returns facility_id_for: facility_name -> id (first seen), so
     build_stats can order facilities[] by websites.txt position without a
-    second pass over the archive; and day_dish_line: (date, facility, dish)
-    -> serving-counter name, last-write-wins like day_dish itself, feeding
-    the lines[] substitution grouping (TODO item 2)."""
+    second pass over the archive; day_dish_line: (date, facility, dish) ->
+    serving-counter name, last-write-wins like day_dish itself, feeding the
+    lines[] substitution grouping (TODO item 2); and day_dish_fetched_at:
+    (date, facility, dish) -> fetchedAt of the snapshot line that produced
+    this entry, last-write-wins too - the recency signal dedup_by_dish_id
+    needs to pick a winner when a registry-recorded rename puts two
+    different names for the same dish id on one date (see there)."""
     day_dish = {}
     day_dish_line = {}
+    day_dish_fetched_at = {}
     facility_id_for = {}
     latest_fetched_at = None  # max fetchedAt seen, for a deterministic "as of"
     for path in sorted(glob.glob(str(data_dir / "*.jsonl"))):
@@ -274,8 +335,41 @@ def load_day_dish(data_dir):
                 for facility, fid, line_name, dish, meal in iter_meals(snapshot["facilities"]["en"]):
                     day_dish[(d, facility, dish)] = meal
                     day_dish_line[(d, facility, dish)] = line_name
+                    day_dish_fetched_at[(d, facility, dish)] = fetched_at or ""
                     facility_id_for.setdefault(facility, fid)
-    return day_dish, latest_fetched_at, facility_id_for, day_dish_line
+    return day_dish, latest_fetched_at, facility_id_for, day_dish_line, day_dish_fetched_at
+
+
+def dedup_by_dish_id(entries, recency, id_for):
+    """Collapse entries keyed by (date, facility, name) down to the single
+    entry per (date, facility, dish id) with the latest recency value.
+
+    Dish identity is (facility, name) resolved through id_for, but a
+    registry-recorded rename maps two different names to the same id. If
+    the archive happens to carry both names on the same date (exactly what
+    a mid-day rename looks like), day_dish/dishes.csv rows still hold two
+    separate (date, facility, name) entries for that date - and every
+    aggregate downstream is keyed by dish id, so both survive into one
+    dish's history and double-count that date (inflated count/dietDays/
+    prices, plus a same-date-twice entry in dates[] that produces a zero
+    weekday gap, poisoning meanGapWeekdays and the prediction). This must
+    run before any of that aggregation, on both the stats.json path
+    (day_dish) and the dishes.csv path (rows) - callers pass in whichever
+    dict and a recency(key) accessor (an ISO fetchedAt string; missing
+    values sort first) for that dict's own "latest observation" field, and
+    filter their dict down to the returned winners.
+
+    recency ties keep whichever key iteration visits first, which is
+    deterministic here since entries is always built by a single ordered
+    pass over the archive (sorted glob + chronological snapshot lines)."""
+    best = {}
+    for key in entries:
+        d, facility, name = key
+        group = (d, facility, id_for[(facility, name)])
+        cur = best.get(group)
+        if cur is None or (recency(key) or "") > (recency(cur) or ""):
+            best[group] = key
+    return set(best.values())
 
 
 def ordered_groups(seen_order, known):
@@ -497,7 +591,7 @@ def write_dishes_csv(rows, price_groups, id_for, out_path):
 
 
 def build_stats(data_dir, latest_de_name=None, price_groups=None, websites_path=WEBSITES_PATH, id_for=None):
-    day_dish, data_as_of, facility_id_for, day_dish_line = load_day_dish(data_dir)
+    day_dish, data_as_of, facility_id_for, day_dish_line, day_dish_fetched_at = load_day_dish(data_dir)
 
     # id_for: (facility, dish) -> numeric dish id (TODO item 8). Callers that
     # care about stable ids across builds (the real __main__ run, and the
@@ -507,6 +601,14 @@ def build_stats(data_dir, latest_de_name=None, price_groups=None, websites_path=
     # persisted, so it says nothing about what a real build would assign.
     if id_for is None:
         id_for, _ = assign_dish_ids({}, {(facility, dish) for _d, facility, dish in day_dish})
+
+    # See dedup_by_dish_id: a registry-recorded rename can put two different
+    # names for the same dish id on one date, and that must collapse to one
+    # entry before any aggregation below runs. A no-op when id_for is 1:1
+    # with names (the id_for=None case above, and most self-tests).
+    winners = dedup_by_dish_id(day_dish, lambda k: day_dish_fetched_at.get(k), id_for)
+    day_dish = {k: v for k, v in day_dish.items() if k in winners}
+    day_dish_line = {k: v for k, v in day_dish_line.items() if k in winners}
 
     facility_days = defaultdict(set)
     facility_dishdays = Counter()
@@ -768,8 +870,11 @@ def demo():
     _test_dish_id_new_name_gets_next_free()
     _test_dish_id_stable_across_rebuild()
     _test_dish_id_rename_merges_sightings()
+    _test_dish_id_rename_same_date_double_count()
     _test_dish_id_allocation_deterministic_for_batch()
     _test_dish_id_registry_reserialize_byte_identical()
+    _test_dish_id_registry_rejects_duplicate_pair()
+    _test_dish_id_registry_rejects_noncanonical_key()
     _test_policy_matches_html_pages()
 
     print("demo: all assertions passed")
@@ -801,7 +906,7 @@ def _test_duplicate_snapshots_dedup():
                      for h in (6, 7, 8)]
         _write_jsonl(d / "2026-08-01.jsonl", snapshots)
 
-        day_dish, _as_of, _fid_for, _line_for = load_day_dish(d)
+        day_dish, _as_of, _fid_for, _line_for, _fetched_for = load_day_dish(d)
         assert len(day_dish) == 1
         assert ("2026-08-01", "food market", "Ramen") in day_dish
 
@@ -863,7 +968,7 @@ def _test_sold_out_in_first_snapshot():
 
         rows, _latest, _groups = build_dish_rows(d)
         assert rows == {}
-        day_dish, _as_of, _fid_for, _line_for = load_day_dish(d)
+        day_dish, _as_of, _fid_for, _line_for, _fetched_for = load_day_dish(d)
         assert day_dish == {}
 
 
@@ -907,6 +1012,8 @@ def _test_byte_repeatability():
             rows, latest_de_name, price_groups = build_dish_rows(d)
             keys = {(r["facility"], r["name_en"]) for r in rows.values()}
             id_for, _registry = assign_dish_ids({}, keys)  # mirrors __main__'s flow
+            winners = dedup_by_dish_id(rows, lambda k: rows[k]["last_seen_at"], id_for)
+            rows = {k: v for k, v in rows.items() if k in winners}
             stats = build_stats(d, latest_de_name, price_groups, id_for=id_for)
             json_bytes = (json.dumps(stats, indent=2) + "\n").encode()
             csv_path = d / "out.csv"
@@ -1046,6 +1153,51 @@ def _test_dish_id_rename_merges_sightings():
             assert id_for[(r["facility"], r["name_en"])] == 7  # dishes.csv agrees too
 
 
+def _test_dish_id_rename_same_date_double_count():
+    """The riskier rename case: both names appear on the SAME date (a
+    mid-day rename, not a rename between days). day_dish/rows dedup by
+    name, so without dedup_by_dish_id both names' entries for that date
+    would survive and merge downstream into one dish - double-counting the
+    date (count/dietDays/prices all inflated) and leaving it twice, adjacent,
+    in dates[], which produces a zero weekday gap that poisons
+    meanGapWeekdays and the prediction. dedup_by_dish_id must collapse them
+    to the single latest-observed entry before any of that runs, on both
+    the stats.json path and the dishes.csv rows path."""
+    with tempfile.TemporaryDirectory() as td:
+        d = Path(td)
+        day1 = [
+            {"fetchedAt": "2026-08-03T06:00:00Z", "facilities": {"en": _mk_facility(
+                "19", "food market", [_mk_meal("1", "Berlin Currywurst")])}},
+            {"fetchedAt": "2026-08-03T09:00:00Z", "facilities": {"en": _mk_facility(
+                "19", "food market", [_mk_meal("1", "Currywurst Berliner Art")])}},
+        ]
+        day2 = [{"fetchedAt": "2026-08-04T06:00:00Z", "facilities": {"en": _mk_facility(
+            "19", "food market", [_mk_meal("1", "Currywurst Berliner Art")])}}]
+        _write_jsonl(d / "2026-08-03.jsonl", day1)
+        _write_jsonl(d / "2026-08-04.jsonl", day2)
+
+        rows, latest_de_name, price_groups = build_dish_rows(d)
+        registry = {7: [("food market", "Berlin Currywurst"),
+                         ("food market", "Currywurst Berliner Art")]}
+        keys = {(r["facility"], r["name_en"]) for r in rows.values()}
+        id_for, _new_registry = assign_dish_ids(registry, keys)
+
+        assert len(rows) == 3, "both names' raw rows exist for 2026-08-03 before dedup"
+        winners = dedup_by_dish_id(rows, lambda k: rows[k]["last_seen_at"], id_for)
+        deduped_rows = {k: v for k, v in rows.items() if k in winners}
+        assert len(deduped_rows) == 2, "one row per date after dedup, not one per name"
+
+        stats = build_stats(d, latest_de_name, price_groups, id_for=id_for)
+        assert len(stats["dishes"]) == 1
+        dish = stats["dishes"][0]
+        assert dish["count"] == 2, "2026-08-03 must count once despite the mid-day rename"
+        assert dish["dates"].count("2026-08-03") == 1, "no duplicate date entry"
+        assert dish["dates"] == ["2026-08-03", "2026-08-04"]
+        assert 0 not in dish["gapsWeekdays"], \
+            "a duplicate date produces a zero gap that poisons meanGapWeekdays"
+        assert dish["meanGapWeekdays"] == 1.0
+
+
 def _test_dish_id_allocation_deterministic_for_batch():
     """Several brand-new names allocated in one call must get the same ids
     regardless of the order they're passed in - sorted (facility, name)
@@ -1079,6 +1231,40 @@ def _test_dish_id_registry_reserialize_byte_identical():
         assert loaded == registry
         write_dish_ids(loaded, path)
         assert path.read_bytes() == b1
+
+
+def _test_dish_id_registry_rejects_duplicate_pair():
+    """The registry is hand-edited (see DISH_IDS_README): a typo that lists
+    the same [facility, name_en] pair under two different ids must raise,
+    not silently let the later id win while the earlier id's entry stays in
+    the file - that would make identity depend on dict/JSON-object
+    iteration order and orphan any rating pointing at the losing id."""
+    with tempfile.TemporaryDirectory() as td:
+        path = Path(td) / "dish-ids.json"
+        path.write_text(json.dumps({
+            "1": [["food market", "Ramen"]],
+            "2": [["food market", "Ramen"]],
+        }))
+        try:
+            load_dish_ids(path)
+            assert False, "a pair listed under two ids must raise"
+        except ValueError as e:
+            msg = str(e)
+            assert "Ramen" in msg and "1" in msg and "2" in msg, msg
+
+
+def _test_dish_id_registry_rejects_noncanonical_key():
+    """int("01") == int("1") would otherwise silently collapse two registry
+    keys into the same id - load_dish_ids must reject the non-canonical key
+    outright rather than tolerate it."""
+    with tempfile.TemporaryDirectory() as td:
+        path = Path(td) / "dish-ids.json"
+        path.write_text(json.dumps({"01": [["food market", "Ramen"]]}))
+        try:
+            load_dish_ids(path)
+            assert False, "a non-canonical id key ('01') must raise"
+        except ValueError as e:
+            assert "01" in str(e)
 
 
 def _test_facility_order_from_websites_txt():
@@ -1154,14 +1340,27 @@ def _test_policy_matches_html_pages(index_html_path=INDEX_HTML_PATH,
     index_src = index_html_path.read_text()
     stats_src = stats_html_path.read_text()
 
-    # Sold-out placeholders: build_stats.py's SOLD_OUT vs index.html's
-    # SOLD_OUT_LABELS must name the same placeholders, case-insensitively.
-    # (stats.html has no equivalent list to check - it never inspects a
-    # meal's sold-out state itself.)
-    js_sold_out = {s.lower() for s in _extract_js_list(index_src, "SOLD_OUT_LABELS", "index.html")}
-    assert js_sold_out == SOLD_OUT, (
-        f"SOLD_OUT in build_stats.py ({sorted(SOLD_OUT)}) and SOLD_OUT_LABELS "
-        f"in index.html ({sorted(js_sold_out)}) disagree - change both together")
+    # Sold-out placeholders: build_stats.py's SOLD_OUT_LABELS vs index.html's
+    # SOLD_OUT_LABELS must name the exact same placeholder strings, in the
+    # exact same case. (stats.html has no equivalent list to check - it
+    # never inspects a meal's sold-out state itself.)
+    #
+    # Deliberately exact-case, not case-insensitive: lowercasing both sides
+    # before comparing (as this check used to) can only ever confirm that
+    # the two lists agree once folded to lowercase - it can never notice
+    # that one side's literal casing drifted from the other's, because a
+    # drift is exactly what .lower() erases before the comparison runs. The
+    # index.html reader lowercases meal.name and its own copy of these
+    # labels before matching at runtime (see SOLD_OUT_LABELS_LC there), so
+    # any casing this list carries still gets treated case-insensitively in
+    # the browser either way - but that runtime detail is precisely what
+    # must not leak into this guard, or the guard stops being able to catch
+    # its own two source lists disagreeing on casing.
+    js_sold_out = set(_extract_js_list(index_src, "SOLD_OUT_LABELS", "index.html"))
+    assert js_sold_out == set(SOLD_OUT_LABELS), (
+        f"SOLD_OUT_LABELS in build_stats.py ({sorted(SOLD_OUT_LABELS)}) and "
+        f"SOLD_OUT_LABELS in index.html ({sorted(js_sold_out)}) disagree - "
+        f"change both together")
 
     # Diet precedence: index.html's classifyMeal() must check vegan before
     # vegetarian, matching DIET_PRECEDENCE's best-wins order, and its label
@@ -1233,6 +1432,16 @@ if __name__ == "__main__":
         already_known = {pair for names in old_registry.values() for pair in names}
         id_for, dish_id_registry = assign_dish_ids(old_registry, keys)
         write_dish_ids(dish_id_registry, dish_ids_path)
+
+        # See dedup_by_dish_id: a registry-recorded rename can put two rows
+        # for the same dish id on one date (old name and new name each
+        # producing their own row) - collapse to the one from the latest
+        # observation before writing dishes.csv. build_stats does the same
+        # collapse internally for stats.json's day_dish, using the same
+        # id_for, so the two outputs can't disagree about which date's
+        # sighting counts.
+        winners = dedup_by_dish_id(rows, lambda k: rows[k]["last_seen_at"], id_for)
+        rows = {k: v for k, v in rows.items() if k in winners}
 
         stats = build_stats(Path(args.data_dir), latest_de_name, price_groups, id_for=id_for)
         Path(args.out).write_text(json.dumps(stats, indent=2) + "\n")

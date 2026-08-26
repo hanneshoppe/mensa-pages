@@ -413,6 +413,7 @@ let renderedDateStr = null; // Zurich date last rendered, to detect a midnight r
 // 5-minute TTL and would discard ratings almost immediately.
 const RATINGS_KEY = 'mensaDishRatings';
 const RATING_MAX_AGE_MS = 365 * 24 * 60 * 60 * 1000; // 1 year
+const RATING_MAX_FUTURE_MS = 24 * 60 * 60 * 1000; // tolerate up to a day of clock skew
 let ratingsCache = null; // lazy in-memory mirror, so ratings still work for
                           // this session even if localStorage itself is
                           // unavailable (private browsing) or write fails.
@@ -437,8 +438,9 @@ function loadRatings() {
   for (const [key, entry] of Object.entries(ratings)) {
     const stars = entry && entry.stars;
     const time = entry && Date.parse(entry.ts);
-    const valid = Number.isInteger(stars) && stars >= 0 && stars <= 5 && !Number.isNaN(time);
-    if (!valid || now - time > RATING_MAX_AGE_MS) {
+    const age = now - time; // negative when ts is in the future
+    const valid = Number.isInteger(stars) && stars >= 0 && stars <= 5 && !Number.isNaN(time) && age > -RATING_MAX_FUTURE_MS;
+    if (!valid || age > RATING_MAX_AGE_MS) {
       delete ratings[key];
       pruned = true;
     }
@@ -503,7 +505,14 @@ function migrateProvisionalRatings(dishIdLookup) {
     if (!key.startsWith('name:')) continue;
     const id = dishIdLookup.get(key.slice(5));
     if (id) {
-      if (!(id in ratings)) ratings[id] = ratings[key];
+      // Keep whichever of the two is newer rather than unconditionally
+      // keeping the id-keyed one — the provisional entry can be the newer
+      // rating (e.g. rated again while the registry fetch was failing), and
+      // discarding it unconditionally would lose the reader's latest vote.
+      const existing = ratings[id];
+      if (!existing || Date.parse(ratings[key].ts) >= Date.parse(existing.ts)) {
+        ratings[id] = ratings[key];
+      }
       delete ratings[key];
       changed = true;
     }
@@ -511,14 +520,20 @@ function migrateProvisionalRatings(dishIdLookup) {
   if (changed) saveRatings(ratings);
 }
 
+// Resolves to the (facility|name_en) -> id lookup Map, or to null if the
+// registry couldn't be loaded at all this run. null is deliberately distinct
+// from an empty-but-loaded Map: a transient fetch failure must not look like
+// "every dish is unregistered", or every rating would fall back to a
+// provisional key and later be discarded by migrateProvisionalRatings once
+// the registry does load and finds an existing numeric entry in the way.
 let dishIdLookupPromise = null;
 function getDishIdLookupCached() {
   if (!dishIdLookupPromise) {
     dishIdLookupPromise = fetch('data/dish-ids.json')
-      .then(res => res.ok ? res.json() : {})
+      .then(res => res.ok ? res.json() : Promise.reject(new Error(`dish-ids.json fetch failed: ${res.status}`)))
       .then(buildDishIdLookup)
-      .catch(() => new Map()) // registry unreachable — ids just won't resolve this load
-      .then(lookup => { migrateProvisionalRatings(lookup); return lookup; });
+      .catch(() => null) // registry unreachable this load — see comment above
+      .then(lookup => { if (lookup) migrateProvisionalRatings(lookup); return lookup; });
   }
   return dishIdLookupPromise;
 }
@@ -548,6 +563,7 @@ function buildEnIdentityMap(enFacilities) {
     for (const line of allLines(f.dayEntry)) {
       const lineId = line.meal['line-id'];
       if (lineId == null) continue;
+      if (isSoldOut(line.meal)) continue; // a sold-out placeholder isn't a real dish identity
       map.set(`${f.id}|${lineId}`, { facility: f.name, name: line.meal.name });
     }
   }
@@ -811,20 +827,40 @@ function getFacilitiesData(lang, todayStr, tomorrowStr, todayIso) {
 // render, quietly re-check against the live API and only touch the DOM if
 // something actually changed (e.g. an item sold out since the last run).
 async function refreshInBackground(state, token, lang, todayStr, tomorrowStr, todayIso, renderedFacilities) {
-  let fresh;
+  let fresh, ids;
   try {
     // force: true — this check exists specifically to catch things that
     // changed since the snapshot (e.g. a dish selling out), so it must never
     // be answered by the same 5-minute cache the snapshot itself predates.
-    const ids = await getFacilityIdsCached();
+    ids = await getFacilityIdsCached();
     fresh = sortFacilities(await fetchFacilitiesLive(lang, todayStr, tomorrowStr, todayIso, { force: true }), ids);
   } catch (err) {
     return;
   }
   if (token !== renderToken) return; // superseded by a newer render — discard
   if (JSON.stringify(fresh) === JSON.stringify(renderedFacilities)) return;
-  const ratingCtx = await buildRatingCtx(lang, STRINGS[lang], todayStr, tomorrowStr, todayIso);
-  if (token !== renderToken) return; // superseded while awaiting ratingCtx
+
+  const dishIdLookup = await getDishIdLookupCached();
+  // A non-English rating identity must be resolved against English data from
+  // this SAME forced-fresh fetch, not buildRatingCtx's memoized
+  // getFacilitiesData('en', …) — that one can still hold the older static
+  // snapshot, so a counter whose dish changed since the snapshot would have
+  // its new name paired with a stale English one and write a rating to the
+  // wrong dish id. Fetch English fresh here too; if that fetch fails, still
+  // show the refreshed cards, just without rating controls, rather than
+  // guess at a pairing.
+  let enIdentityMap = null;
+  if (lang !== 'en') {
+    try {
+      const enFresh = sortFacilities(await fetchFacilitiesLive('en', todayStr, tomorrowStr, todayIso, { force: true }), ids);
+      enIdentityMap = buildEnIdentityMap(enFresh);
+    } catch (err) {
+      enIdentityMap = null;
+    }
+  }
+  if (token !== renderToken) return; // superseded while awaiting the above
+
+  const ratingCtx = { lang, strings: STRINGS[lang], dishIdLookup, enIdentityMap };
   renderFacilities(fresh, STRINGS[lang], lang, state.easterEgg, ratingCtx);
   applyView(state);
 }
@@ -847,12 +883,21 @@ function classifyMeal(meal) {
   return 'O';
 }
 
+const SOLD_OUT_LABELS_LC = SOLD_OUT_LABELS.map(s => s.toLowerCase());
+
+// build_stats.py's SOLD_OUT check is case-insensitive; match that here too
+// (trim + lowercase at comparison time) instead of assuming the API always
+// returns the exact casing in SOLD_OUT_LABELS.
+function isSoldOut(meal) {
+  return SOLD_OUT_LABELS_LC.includes((meal.name || '').trim().toLowerCase());
+}
+
 // Vegan, then vegetarian, then omnivore — except "Choose 5" (build-your-own,
 // same name in every language) always sorts after those, and sold-out items
 // always sort last of all, below "Choose 5" too.
 function mealSortKey(meal) {
   const dietRank = DIET_ORDER[classifyMeal(meal)];
-  if (SOLD_OUT_LABELS.includes(meal.name)) return 20 + dietRank;
+  if (isSoldOut(meal)) return 20 + dietRank;
   if (meal.name === 'Choose 5') return 10 + dietRank;
   return dietRank;
 }
@@ -894,7 +939,7 @@ function el(tag, className, children) {
 // the rating widget below rather than rating the joke entry.
 function renderMealCard(meal, facility, ratingCtx) {
   const badge = classifyMeal(meal);
-  const soldOut = SOLD_OUT_LABELS.includes(meal.name);
+  const soldOut = isSoldOut(meal);
   const card = el('div', soldOut ? 'card sold-out' : 'card');
 
   const imgUrl = CookpitClient.imageUrl(meal);
@@ -919,8 +964,11 @@ function renderMealCard(meal, facility, ratingCtx) {
   ]);
 
   // No rating for sold-out placeholders — meal.name is the "Sold Out" text
-  // itself at that point, not a real dish name to key a rating on.
-  if (facility && ratingCtx && !soldOut) {
+  // itself at that point, not a real dish name to key a rating on. Likewise
+  // none when the registry itself is unavailable (dishIdLookup null) —
+  // writing under a provisional key here would risk that vote being
+  // discarded later by migrateProvisionalRatings once the registry loads.
+  if (facility && ratingCtx && ratingCtx.dishIdLookup && !soldOut) {
     const identity = resolveDishIdentity(meal, facility, ratingCtx);
     if (identity) {
       const pairKey = `${identity.facility}|${identity.name}`;

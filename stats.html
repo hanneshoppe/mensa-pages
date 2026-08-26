@@ -483,10 +483,11 @@ const STRINGS = {
       'dish B on another means B stood in for A, so this doubles as the substitution list. With only a handful ' +
       "of weekday menus so far, most dishes have appeared once, so this shows what has run on each counter, " +
       'not yet a ranked "typically replaces" list — that needs a thicker archive. Dishes marked ' +
-      '"same day" ran together on one menu as alternatives (e.g. a protein swap), not as a substitution across ' +
-      'days; unmarked dishes are the genuine different-day signal.',
+      '"same date" shared a serving date on this counter — a day can span several snapshots, so that can mean ' +
+      'simultaneous alternatives (e.g. a protein swap) or a same-day substitution/rename caught between ' +
+      "snapshots; the data can't tell those two apart. Unmarked dishes are the reliable different-day signal.",
     countersEmptyNote: 'No counter data recorded yet.',
-    sameDayLabel: 'same day',
+    sameDayLabel: 'same date',
   },
   de: {
     title: 'Mensa-Statistik',
@@ -562,11 +563,13 @@ const STRINGS = {
       'einem Tag Gericht A und an einem anderen Tag Gericht B, hat B A abgelöst, das ist zugleich die ' +
       'Ablösungsliste. Bei erst wenigen Werktagsmenüs ist die meisten Gerichte bislang nur einmal aufgetaucht, ' +
       'darum zeigt dies, was an jeder Theke lief, noch keine nach Häufigkeit geordnete "löst typischerweise ab"-' +
-      'Liste — dafür braucht es ein dickeres Archiv. Mit "gleicher Tag" markierte Gerichte liefen zusammen auf ' +
-      'derselben Karte als Alternativen (z. B. ein Proteintausch), nicht als Ablösung über Tage hinweg; ' +
-      'unmarkierte Gerichte sind das eigentliche Signal für unterschiedliche Tage.',
+      'Liste — dafür braucht es ein dickeres Archiv. Mit "gleiches Datum" markierte Gerichte teilen sich an ' +
+      'dieser Theke ein Datum — ein Tag kann mehrere Snapshots umfassen, das kann also gleichzeitige ' +
+      'Alternativen bedeuten (z. B. ein Proteintausch) oder eine Ablösung bzw. Umbenennung, die zwischen zwei ' +
+      'Snapshots erfasst wurde; die Daten unterscheiden das nicht. Unmarkierte Gerichte sind das verlässliche ' +
+      'Signal für unterschiedliche Tage.',
     countersEmptyNote: 'Noch keine Thekendaten erfasst.',
-    sameDayLabel: 'gleicher Tag',
+    sameDayLabel: 'gleiches Datum',
   },
 };
 
@@ -967,9 +970,14 @@ function renderPriceSection(stats, state) {
 // resolve — that migration is index.html's job, on next visit there).
 const RATINGS_KEY = 'mensaDishRatings';
 const RATING_MAX_AGE_MS = 365 * 24 * 60 * 60 * 1000; // 1 year
+// Small slack for ordinary clock skew between browser and server; a
+// timestamp any further ahead of "now" than this is malformed, not merely
+// early — without an upper bound, now - time <= RATING_MAX_AGE_MS alone
+// keeps a corrupt future timestamp valid forever (it only ever gets older).
+const RATING_MAX_CLOCK_SKEW_MS = 5 * 60 * 1000; // 5 minutes
 
-// Never throws: corrupt JSON, out-of-range stars, bad timestamps or a
-// missing localStorage (private browsing) all just yield {}.
+// Never throws: corrupt JSON, out-of-range stars, bad or future timestamps,
+// or a missing localStorage (private browsing) all just yield {}.
 function loadRatings() {
   let raw;
   try {
@@ -990,8 +998,9 @@ function loadRatings() {
   for (const [key, entry] of Object.entries(parsed)) {
     const stars = entry && entry.stars;
     const time = entry && Date.parse(entry.ts);
+    const age = now - time;
     const ok = Number.isInteger(stars) && stars >= 0 && stars <= 5 &&
-      !Number.isNaN(time) && now - time <= RATING_MAX_AGE_MS;
+      !Number.isNaN(time) && age <= RATING_MAX_AGE_MS && age >= -RATING_MAX_CLOCK_SKEW_MS;
     if (ok) valid[key] = entry;
   }
   return valid;
@@ -1050,10 +1059,10 @@ function dietBadge(diet, strings) {
   return el('span', 'diet-badge', [dot, strings.diet[diet] || diet]);
 }
 
-// priceGroups defaults to the compile-time-known list so the top-level
-// ALL_COLUMN_KEYS call (below, evaluated before stats.json is fetched) still
-// resolves; renderDishSection passes stats.priceGroups once it's loaded, so
-// group order/labels come from the data rather than being hardcoded twice.
+// priceGroups defaults to the compile-time-known list for callers that don't
+// have stats.json yet; renderDishSection always passes stats.priceGroups once
+// it's loaded, so group order/labels come from the data rather than being
+// hardcoded twice.
 function dishColumns(strings, priceGroups = PRICE_GROUPS_KNOWN) {
   return [
     { key: 'name', label: strings.colDish },
@@ -1076,7 +1085,26 @@ function dishColumns(strings, priceGroups = PRICE_GROUPS_KNOWN) {
 // to enumerate them.
 const COLUMN_PREFS_KEY = 'mensaStatsLedgerColumns';
 const DEFAULT_COLUMN_KEYS = ['name', 'facility', 'diet', 'rating', 'count', 'lastSeen', 'meanGapWeekdays', 'nextDate'];
-const ALL_COLUMN_KEYS = dishColumns(STRINGS.en).map(c => c.key);
+
+// Column set as it stood before the {visible, known} preference format
+// existed, when a saved preference was just a bare array of visible keys —
+// i.e. every column dishColumns() offered *except* "rating" (added later)
+// and the data-driven price_<group> columns (never offered by that old,
+// hardcoded chooser). Migrating a legacy bare array must check each key
+// against *this* list, not against the array's own (visible-only) contents:
+// a column a reader had unchecked back then is simply absent from the array,
+// indistinguishable from a column that didn't exist yet, unless something
+// records the full set that was actually on offer at the time.
+const LEGACY_COLUMN_KEYS = ['name', 'facility', 'diet', 'count', 'firstSeen', 'lastSeen', 'meanGapWeekdays', 'nextDate'];
+
+// The full key set actually on offer right now, data-driven via priceGroups
+// (stats.priceGroups once loaded) rather than a static list — so a price
+// column for a newly-appearing customer group validates and persists like
+// any other column instead of failing ALL_COLUMN_KEYS.includes() and being
+// silently dropped on the next reload.
+function allColumnKeys(priceGroups) {
+  return dishColumns(STRINGS.en, priceGroups).map(c => c.key);
+}
 
 // Unknown/removed keys are dropped rather than rejecting the whole list, and
 // an empty or unusable result falls back to the default — so a future change
@@ -1087,30 +1115,32 @@ const ALL_COLUMN_KEYS = dishColumns(STRINGS.en).map(c => c.key);
 // deliberately switched off, and can adopt its default. Without that, every
 // future column would be invisible to anyone who had ever touched the chooser
 // — silently, which is the worst way for a feature to not exist. A bare array
-// is the pre-{visible,known} format and is still read.
-function loadColumnPrefs() {
+// is the pre-{visible,known} format and is still read, migrated against
+// LEGACY_COLUMN_KEYS (see above) rather than treating the array itself as the
+// full known set.
+function loadColumnPrefs(allKeys) {
   try {
     const raw = localStorage.getItem(COLUMN_PREFS_KEY);
     if (!raw) return DEFAULT_COLUMN_KEYS.slice();
     const parsed = JSON.parse(raw);
     const stored = Array.isArray(parsed) ? parsed : parsed && parsed.visible;
-    const known = Array.isArray(parsed) ? parsed : (parsed && parsed.known) || [];
+    const known = Array.isArray(parsed) ? LEGACY_COLUMN_KEYS : (parsed && parsed.known) || [];
     if (!Array.isArray(stored)) return DEFAULT_COLUMN_KEYS.slice();
-    const valid = stored.filter(k => ALL_COLUMN_KEYS.includes(k));
+    const valid = stored.filter(k => allKeys.includes(k));
     // Columns the reader has never been offered adopt their default.
     const unseen = DEFAULT_COLUMN_KEYS.filter(
-      k => !known.includes(k) && !valid.includes(k) && ALL_COLUMN_KEYS.includes(k));
-    const merged = ALL_COLUMN_KEYS.filter(k => valid.includes(k) || unseen.includes(k));
+      k => !known.includes(k) && !valid.includes(k) && allKeys.includes(k));
+    const merged = allKeys.filter(k => valid.includes(k) || unseen.includes(k));
     return merged.length ? merged : DEFAULT_COLUMN_KEYS.slice();
   } catch (err) {
     return DEFAULT_COLUMN_KEYS.slice();
   }
 }
 
-function saveColumnPrefs(keys) {
+function saveColumnPrefs(keys, allKeys) {
   try {
     localStorage.setItem(COLUMN_PREFS_KEY,
-      JSON.stringify({ visible: keys, known: ALL_COLUMN_KEYS.slice() }));
+      JSON.stringify({ visible: keys, known: allKeys.slice() }));
   } catch (err) {
     // Private browsing or a full quota — the choice just won't persist.
   }
@@ -1282,6 +1312,12 @@ function renderDishSection(stats, state) {
   // at least one column always stays checked so the table can't vanish.
   const priceGroups = stats.priceGroups && stats.priceGroups.length ? stats.priceGroups : PRICE_GROUPS_KNOWN;
   const allColumns = dishColumns(strings, priceGroups);
+  const columnKeys = allColumns.map(c => c.key);
+  // Deferred here rather than in getStateFromUrl(), which runs before
+  // stats.json arrives — loading/validating against the real, data-driven
+  // priceGroups (instead of the static PRICE_GROUPS_KNOWN fallback) is what
+  // lets a price column for an unlisted customer group survive a reload.
+  if (state.dishColumns == null) state.dishColumns = loadColumnPrefs(columnKeys);
   const columnChooser = el('div', 'column-chooser', el('span', 'column-chooser-label', `${strings.columnsLabel}:`));
   for (const col of allColumns) {
     const cb = el('input');
@@ -1295,7 +1331,7 @@ function renderDishSection(stats, state) {
         if (next.length === 0) { cb.checked = true; return; } // keep at least one column on
         state.dishColumns = next;
       }
-      saveColumnPrefs(state.dishColumns);
+      saveColumnPrefs(state.dishColumns, columnKeys);
       rerender();
     });
     columnChooser.append(el('label', null, [cb, ` ${col.label}`]));
@@ -1411,16 +1447,20 @@ function renderTodaySection(stats, state) {
 // ---------------------------------------------------------------------------
 // Section 5 — counters: every dish seen on each serving counter (stats.lines),
 // which doubles as the substitution list (dish A replaced by dish B on the
-// same counter). Dishes that share a date with another dish on the same
-// counter ran together as same-day alternatives, not a substitution — cheap
-// to tell apart because each dish already carries its own `dates` array, so
-// this is a same-date lookup, not a name-similarity heuristic.
+// same counter). Dishes that share a serving date with another dish on the
+// same counter are flagged "same date" rather than folded into the
+// substitution reading — the generator unions dish names across *every*
+// snapshot taken that date, so a same-date pair can equally be simultaneous
+// alternatives (e.g. a protein swap) or an intraday substitution/rename
+// caught between two snapshots. The data can't distinguish those, so this
+// only flags the ambiguity instead of guessing which one it is.
 // ---------------------------------------------------------------------------
 
 // Dishes on one counter that share at least one serving date with another
-// dish on that same counter — same-day alternatives (e.g. a protein swap),
-// not a day-to-day substitution. Returns a Set of dish objects (not indices),
-// so the caller can sort the list freely without losing the marking.
+// dish on that same counter. Doesn't claim they ran simultaneously — see the
+// section comment above for why the data can't support that claim. Returns a
+// Set of dish objects (not indices), so the caller can sort the list freely
+// without losing the marking.
 function sameDayVariantDishes(dishes) {
   const byDate = new Map();
   for (const d of dishes) {
@@ -1527,7 +1567,10 @@ function debounce(fn, ms) {
 // rest of the ledger's sort/filter state starts at its defaults on a fresh
 // load but survives a language toggle in-session (see main()), since
 // renderDishSection reads/writes it on `state`. Column visibility isn't
-// URL-driven at all — it's seeded from localStorage (loadColumnPrefs).
+// URL-driven at all — it's seeded from localStorage (loadColumnPrefs), but
+// only once stats.json (and its priceGroups) is available: this function
+// runs before that fetch, so dishColumns starts null and renderDishSection
+// fills it in on first render.
 function getStateFromUrl() {
   const params = new URLSearchParams(window.location.search);
   return {
@@ -1539,7 +1582,7 @@ function getStateFromUrl() {
     onlyPredicted: false,
     ratedOnly: false,
     dietTableVisible: false,
-    dishColumns: loadColumnPrefs(),
+    dishColumns: null,
   };
 }
 
@@ -1573,6 +1616,7 @@ async function main() {
   const app = document.getElementById('app');
   let stats = null;
   let loadFailed = false;
+  let renderedZurichDate = null; // Zurich date last rendered, to detect a midnight rollover (index.html's renderedDateStr pattern)
 
   // Renders whatever the current load state is (loading / error / loaded)
   // under the current language — called on first paint, once the fetch
@@ -1613,18 +1657,40 @@ async function main() {
     render();
   }));
 
-  render();
-
-  try {
-    const res = await fetch('data/stats.json');
-    if (!res.ok) throw new Error('missing');
-    stats = await res.json();
-  } catch (err) {
-    loadFailed = true;
+  // Fetches stats.json and re-renders. Used for the initial load and again
+  // on a midnight rollover, since a new Zurich day means new data (a fresh
+  // Today section, possibly a new snapshot). On failure, renderedZurichDate
+  // is deliberately left stale so a later visibilitychange still sees a
+  // mismatch and retries — same reasoning as index.html's loadAndRender.
+  async function loadAndRenderStats() {
+    try {
+      const res = await fetch('data/stats.json');
+      if (!res.ok) throw new Error('missing');
+      stats = await res.json();
+    } catch (err) {
+      loadFailed = true;
+      render();
+      return;
+    }
+    loadFailed = false;
+    renderedZurichDate = zurichTodayISO();
+    render();
   }
-  render();
+
+  render(); // initial loading placeholder
+
+  await loadAndRenderStats();
 
   window.addEventListener('resize', debounce(() => fitDietLabels(app), 150));
+
+  // A tab left open across a Zurich midnight would otherwise keep calling
+  // yesterday's dishes "Today" forever, since stats.json is only fetched
+  // once — catch that as soon as the tab regains focus (same pattern as
+  // index.html's visibilitychange handler) and pull the new day's data.
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState !== 'visible') return;
+    if (zurichTodayISO() !== renderedZurichDate) loadAndRenderStats();
+  });
 }
 
 main();

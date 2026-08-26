@@ -28,6 +28,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Unconditional and first: data/dish-ids.json is the source of truth
+      # for dish identity and is deliberately NOT self-healed (see the
+      # comment on the Rebuild stats.json step below) - it's only ever read
+      # when a rebuild runs, so on a quiet day where the menu happens not to
+      # change, a deleted registry would otherwise go unnoticed and every
+      # scheduled run would stay green while identity stayed broken. This
+      # step only checks; it must never create the file - a "fix" that
+      # regenerates it mints different ids and orphans every rating/saved
+      # link (see load_dish_ids in tools/build_stats.py).
+      - name: Verify dish id registry is present
+        run: |
+          if [ ! -f data/dish-ids.json ]; then
+            echo "::error::data/dish-ids.json is missing. It is the source of truth for dish identity and must be restored from git history (e.g. 'git checkout <last-good-commit> -- data/dish-ids.json'), not regenerated - a rebuild assigns different ids and orphans every rating and saved link. See load_dish_ids in tools/build_stats.py."
+            exit 1
+          fi
+
       - name: Fetch today's menus and append a snapshot line
         run: |
           set -euo pipefail
