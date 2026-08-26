@@ -143,6 +143,7 @@
   },
   "dishes": [
     {
+      "id": 1,
       "name": "Chicken Tonkatsu Bowl",
       "nameDe": "Chicken Tonkatsu Bowl",
       "facility": "Mendokoro",
@@ -199,9 +200,33 @@
         "sigmaWeekdays": 0.0,
         "earliest": "2026-08-27",
         "latest": "2026-08-27"
+      },
+      "prices": {
+        "external": {
+          "n": 16,
+          "mean": 18.8,
+          "sd": 0.0,
+          "min": 18.8,
+          "max": 18.8
+        },
+        "internal": {
+          "n": 16,
+          "mean": 15.8,
+          "sd": 0.0,
+          "min": 15.8,
+          "max": 15.8
+        },
+        "students": {
+          "n": 16,
+          "mean": 13.8,
+          "sd": 0.0,
+          "min": 13.8,
+          "max": 13.8
+        }
       }
     },
     {
+      "id": 33,
       "name": "Choose 5",
       "nameDe": "Choose 5",
       "facility": "food market",
@@ -258,9 +283,33 @@
         "sigmaWeekdays": 0.0,
         "earliest": "2026-08-27",
         "latest": "2026-08-27"
+      },
+      "prices": {
+        "external": {
+          "n": 16,
+          "mean": 16.9,
+          "sd": 0.0,
+          "min": 16.9,
+          "max": 16.9
+        },
+        "internal": {
+          "n": 16,
+          "mean": 13.9,
+          "sd": 0.0,
+          "min": 13.9,
+          "max": 13.9
+        },
+        "students": {
+          "n": 16,
+          "mean": 9.9,
+          "sd": 0.0,
+          "min": 9.9,
+          "max": 9.9
+        }
       }
     },
     {
+      "id": 2,
       "name": "Cold Moiroka Ramen",
       "nameDe": "Cold Moiroka Ramen",
       "facility": "Mendokoro",
@@ -317,9 +366,33 @@
         "sigmaWeekdays": 0.0,
         "earliest": "2026-08-27",
         "latest": "2026-08-27"
+      },
+      "prices": {
+        "external": {
+          "n": 16,
+          "mean": 17.5,
+          "sd": 0.0,
+          "min": 17.5,
+          "max": 17.5
+        },
+        "internal": {
+          "n": 16,
+          "mean": 14.5,
+          "sd": 0.0,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "students": {
+          "n": 16,
+          "mean": 12.5,
+          "sd": 0.0,
+          "min": 12.5,
+          "max": 12.5
+        }
       }
     },
     {
+      "id": 3,
       "name": "Miso Ramen",
       "nameDe": "Miso Ramen",
       "facility": "Mendokoro",
@@ -376,9 +449,33 @@
         "sigmaWeekdays": 0.0,
         "earliest": "2026-08-27",
         "latest": "2026-08-27"
+      },
+      "prices": {
+        "external": {
+          "n": 16,
+          "mean": 15.5,
+          "sd": 0.0,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 16,
+          "mean": 12.5,
+          "sd": 0.0,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 16,
+          "mean": 10.5,
+          "sd": 0.0,
+          "min": 10.5,
+          "max": 10.5
+        }
       }
     },
     {
+      "id": 64,
       "name": "Pizza Margherita",
       "nameDe": "Pizza Margherita",
       "facility": "food market",
@@ -435,9 +532,33 @@
         "sigmaWeekdays": 0.0,
         "earliest": "2026-08-27",
         "latest": "2026-08-27"
+      },
+      "prices": {
+        "external": {
+          "n": 16,
+          "mean": 14.5,
+          "sd": 0.0,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 16,
+          "mean": 11.5,
+          "sd": 0.0,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 16,
+          "mean": 7.0,
+          "sd": 0.0,
+          "min": 7.0,
+          "max": 7.0
+        }
       }
     },
     {
+      "id": 4,
       "name": "Shoyu Ramen",
       "nameDe": "Shoyu Ramen",
       "facility": "Mendokoro",
@@ -494,9 +615,33 @@
         "sigmaWeekdays": 0.0,
         "earliest": "2026-08-27",
         "latest": "2026-08-27"
+      },
+      "prices": {
+        "external": {
+          "n": 16,
+          "mean": 15.5,
+          "sd": 0.0,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 16,
+          "mean": 12.5,
+          "sd": 0.0,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 16,
+          "mean": 10.5,
+          "sd": 0.0,
+          "min": 10.5,
+          "max": 10.5
+        }
       }
     },
     {
+      "id": 5,
       "name": "Tori Ramen",
       "nameDe": "Tori Ramen",
       "facility": "Mendokoro",
@@ -553,9 +698,33 @@
         "sigmaWeekdays": 0.0,
         "earliest": "2026-08-27",
         "latest": "2026-08-27"
+      },
+      "prices": {
+        "external": {
+          "n": 16,
+          "mean": 18.8,
+          "sd": 0.0,
+          "min": 18.8,
+          "max": 18.8
+        },
+        "internal": {
+          "n": 16,
+          "mean": 15.8,
+          "sd": 0.0,
+          "min": 15.8,
+          "max": 15.8
+        },
+        "students": {
+          "n": 16,
+          "mean": 13.8,
+          "sd": 0.0,
+          "min": 13.8,
+          "max": 13.8
+        }
       }
     },
     {
+      "id": 6,
       "name": "Alpine Herbs Grilled Pork Steak",
       "nameDe": "Alpenkr\u00e4uter Schweinssteak vom Grill",
       "facility": "food market",
@@ -576,9 +745,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 18.5,
+          "sd": null,
+          "min": 18.5,
+          "max": 18.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        }
+      }
     },
     {
+      "id": 7,
       "name": "Alpine Macaroni",
       "nameDe": "\u00c4lpler Magronen",
       "facility": "food market",
@@ -599,9 +792,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 8,
       "name": "Alpine R\u00f6sti with a Fried Egg",
       "nameDe": "\u00c4lpler R\u00f6sti mit Spiegelei",
       "facility": "food market",
@@ -622,9 +839,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 9,
       "name": "Baked Meat Tortellini",
       "nameDe": "Tortellini carne al forno",
       "facility": "food market",
@@ -645,9 +886,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 10,
       "name": "Baked Pasta",
       "nameDe": "Pasta al forno",
       "facility": "food market",
@@ -668,9 +933,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 11,
       "name": "Bangkok Beef Noodles",
       "nameDe": "Bangkok Beef Noodles",
       "facility": "food market",
@@ -691,9 +980,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
     },
     {
+      "id": 12,
       "name": "Banh Mi Hot Dog",
       "nameDe": "Banh Mi Hot Dog",
       "facility": "food market",
@@ -714,9 +1027,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.9,
+          "sd": null,
+          "min": 15.9,
+          "max": 15.9
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.9,
+          "sd": null,
+          "min": 12.9,
+          "max": 12.9
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.9,
+          "sd": null,
+          "min": 9.9,
+          "max": 9.9
+        }
+      }
     },
     {
+      "id": 13,
       "name": "Barbecue in the \"Steinergarten\"",
       "nameDe": "Grill im Steinergarten ",
       "facility": "food market",
@@ -737,9 +1074,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 7.5,
+          "sd": null,
+          "min": 7.5,
+          "max": 7.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 7.5,
+          "sd": null,
+          "min": 7.5,
+          "max": 7.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.5,
+          "sd": null,
+          "min": 7.5,
+          "max": 7.5
+        }
+      }
     },
     {
+      "id": 14,
       "name": "Beef Massaman",
       "nameDe": "Beef Massaman",
       "facility": "food market",
@@ -760,9 +1121,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 15,
       "name": "Beef Teriyaki",
       "nameDe": "Beef Teriyaki",
       "facility": "food market",
@@ -783,9 +1168,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 16,
       "name": "Berlin Currywurst",
       "nameDe": "Berliner Currywurst",
       "facility": "food market",
@@ -806,9 +1215,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
+        }
+      }
     },
     {
+      "id": 17,
       "name": "Black Pepper Chicken",
       "nameDe": "Black Pepper Chicken",
       "facility": "food market",
@@ -829,9 +1262,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 18,
       "name": "Black Pepper Udon",
       "nameDe": "Black Pepper Udon",
       "facility": "food market",
@@ -852,9 +1309,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
     },
     {
+      "id": 19,
       "name": "Bowlicious",
       "nameDe": "Bowlicious",
       "facility": "food market",
@@ -875,9 +1356,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 20,
       "name": "Breaded Mushrooms",
       "nameDe": "Panierte Champignons",
       "facility": "food market",
@@ -898,9 +1403,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 21,
       "name": "Burrata and Cinque Pi",
       "nameDe": "Burrata e Cinque Pi",
       "facility": "food market",
@@ -921,9 +1450,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
     },
     {
+      "id": 22,
       "name": "Cajun Chicken Pasta",
       "nameDe": "Cajun Chicken Pasta",
       "facility": "food market",
@@ -944,9 +1497,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 23,
       "name": "Cajun Pasta with Shrimp",
       "nameDe": "Cajun Pasta mit Crevetten",
       "facility": "food market",
@@ -967,9 +1544,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 24,
       "name": "Cappelletti with Tomatoes & Mozzarella",
       "nameDe": "Cappelletti Tomaten & Mozzarella",
       "facility": "food market",
@@ -990,9 +1591,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
     },
     {
+      "id": 25,
       "name": "Casarecce alla Nerano",
       "nameDe": "Casarecce alla Nerano",
       "facility": "food market",
@@ -1013,9 +1638,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 26,
       "name": "Cauliflower Gnocchi",
       "nameDe": "Gnocchi Cauliflower",
       "facility": "food market",
@@ -1036,9 +1685,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
     },
     {
+      "id": 27,
       "name": "Cauliflower Wings",
       "nameDe": "Blumenkohl Wings",
       "facility": "food market",
@@ -1059,9 +1732,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 28,
       "name": "Cheeseburger",
       "nameDe": "Cheeseburger",
       "facility": "food market",
@@ -1082,9 +1779,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 17.5,
+          "sd": null,
+          "min": 17.5,
+          "max": 17.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        }
+      }
     },
     {
+      "id": 29,
       "name": "Chicken & Cheese Wrap",
       "nameDe": "Chicken & Cheese Wrap",
       "facility": "food market",
@@ -1105,9 +1826,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 18.5,
+          "sd": null,
+          "min": 18.5,
+          "max": 18.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        }
+      }
     },
     {
+      "id": 30,
       "name": "Chicken Cordon Bleu",
       "nameDe": "Poulet Cordon Bleu",
       "facility": "food market",
@@ -1128,9 +1873,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
+        }
+      }
     },
     {
+      "id": 31,
       "name": "Chicken Cutlet",
       "nameDe": "Pouletschnitzel",
       "facility": "food market",
@@ -1151,9 +1920,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
+        }
+      }
     },
     {
+      "id": 32,
       "name": "Chicken Thighs with Chili & Honey",
       "nameDe": "Pouletschenkel mit Chili & Honig",
       "facility": "food market",
@@ -1174,9 +1967,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 34,
       "name": "Chow Mein",
       "nameDe": "Chow Mein",
       "facility": "food market",
@@ -1197,9 +2014,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
     },
     {
+      "id": 35,
       "name": "Coconut-Crusted Pangasius",
       "nameDe": "Pangasius im Kokosmantel",
       "facility": "food market",
@@ -1220,9 +2061,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 36,
       "name": "Dal made from yellow peas",
       "nameDe": "Dal aus gelben Erbsen",
       "facility": "food market",
@@ -1243,9 +2108,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 37,
       "name": "Delicatessen Meat Loaf",
       "nameDe": "Delikatess Fleischk\u00e4se",
       "facility": "food market",
@@ -1266,9 +2155,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 38,
       "name": "Dragon Chicken Strips",
       "nameDe": "Dragon Chicken Strips",
       "facility": "food market",
@@ -1289,9 +2202,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 18.5,
+          "sd": null,
+          "min": 18.5,
+          "max": 18.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        }
+      }
     },
     {
+      "id": 39,
       "name": "ETH Fitness Plate",
       "nameDe": "Fitnessteller ETH",
       "facility": "food market",
@@ -1312,9 +2249,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 18.5,
+          "sd": null,
+          "min": 18.5,
+          "max": 18.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        }
+      }
     },
     {
+      "id": 40,
       "name": "Emmental Sausage Schnitzel",
       "nameDe": "Emmentaler Br\u00e4tschnitzel",
       "facility": "food market",
@@ -1335,9 +2296,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 41,
       "name": "Fancy Carbonara",
       "nameDe": "Fancy Carbonara",
       "facility": "food market",
@@ -1358,9 +2343,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
     },
     {
+      "id": 42,
       "name": "Farfalle alla Norma",
       "nameDe": "Farfalle alla norma",
       "facility": "food market",
@@ -1381,9 +2390,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 43,
       "name": "Fusilli Bolognese",
       "nameDe": "Fusilli alla bolognese",
       "facility": "food market",
@@ -1404,9 +2437,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 44,
       "name": "Gnocchi with Giardinera",
       "nameDe": "Gnocchi al Giardinera",
       "facility": "food market",
@@ -1427,9 +2484,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
     },
     {
+      "id": 45,
       "name": "Gnocchi with Tomato Sauce",
       "nameDe": "Gnocchi mit Tomatensauce",
       "facility": "food market",
@@ -1450,9 +2531,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 46,
       "name": "Gourmet Italian Filet",
       "nameDe": "Schlemmerfilet Italiano",
       "facility": "food market",
@@ -1473,9 +2578,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 47,
       "name": "Grilled Bratwurst",
       "nameDe": "Grill Bratwurst",
       "facility": "food market",
@@ -1496,9 +2625,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 48,
       "name": "Grilled Chicken & Cheese Wrap",
       "nameDe": "Grilled Chicken & Cheese Wrap",
       "facility": "food market",
@@ -1519,9 +2672,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 18.5,
+          "sd": null,
+          "min": 18.5,
+          "max": 18.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        }
+      }
     },
     {
+      "id": 49,
       "name": "Ground Meat with Horn-Shaped Pasta",
       "nameDe": "G`hacktes mit H\u00f6rnli",
       "facility": "food market",
@@ -1542,9 +2719,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 50,
       "name": "Khao Mok Gai",
       "nameDe": "Khao Mok Gai",
       "facility": "food market",
@@ -1565,9 +2766,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 17.5,
+          "sd": null,
+          "min": 17.5,
+          "max": 17.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        }
+      }
     },
     {
+      "id": 51,
       "name": "Korean Mandu Dumplings",
       "nameDe": "Korean Mandu Dumplings",
       "facility": "food market",
@@ -1588,9 +2813,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
     },
     {
+      "id": 52,
       "name": "Lasagna",
       "nameDe": "Lasagne",
       "facility": "food market",
@@ -1611,9 +2860,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 53,
       "name": "Lumberjack Steak in the Rock Garden",
       "nameDe": "Holzf\u00e4llersteak im Steingarten",
       "facility": "food market",
@@ -1634,9 +2907,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 19.5,
+          "sd": null,
+          "min": 19.5,
+          "max": 19.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        }
+      }
     },
     {
+      "id": 54,
       "name": "Mapo Tofu",
       "nameDe": "Mapo Tofu",
       "facility": "food market",
@@ -1657,9 +2954,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 55,
       "name": "Morel Pasta",
       "nameDe": "Morchelpasta",
       "facility": "food market",
@@ -1680,9 +3001,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 56,
       "name": "Omelet au Gratin",
       "nameDe": "Gratinierte Omelette",
       "facility": "food market",
@@ -1703,9 +3048,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 57,
       "name": "Oriental Naan",
       "nameDe": "Oriental Naan",
       "facility": "food market",
@@ -1726,9 +3095,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 58,
       "name": "Pad Thai",
       "nameDe": "Pad Thai",
       "facility": "food market",
@@ -1749,9 +3142,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
     },
     {
+      "id": 59,
       "name": "Pad Thai-Style Fried Rice",
       "nameDe": "Gebratener Reis Pad Thai Style",
       "facility": "food market",
@@ -1772,9 +3189,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
     },
     {
+      "id": 60,
       "name": "Pasta Portofino",
       "nameDe": "Pasta Portofino",
       "facility": "food market",
@@ -1795,9 +3236,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
     },
     {
+      "id": 61,
       "name": "Pasta with Broccoli",
       "nameDe": "Pasta ai Broccoli",
       "facility": "food market",
@@ -1818,9 +3283,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 62,
       "name": "Pasta with Chicken and Mushrooms",
       "nameDe": "Pasta con Pollo e Funghi",
       "facility": "food market",
@@ -1841,9 +3330,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 63,
       "name": "Penne with Gorgonzola",
       "nameDe": "Penne al Gorgonzola",
       "facility": "food market",
@@ -1864,9 +3377,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 65,
       "name": "Planted, Viennese Style",
       "nameDe": "Planted Wiener Art",
       "facility": "food market",
@@ -1887,9 +3424,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 66,
       "name": "Polpetta alla Bruschetta",
       "nameDe": "Polpetta alla Bruschetta",
       "facility": "food market",
@@ -1910,9 +3471,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 67,
       "name": "Pulled Pork Burger",
       "nameDe": "Pulled Pork Burger",
       "facility": "food market",
@@ -1933,9 +3518,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 17.5,
+          "sd": null,
+          "min": 17.5,
+          "max": 17.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        }
+      }
     },
     {
+      "id": 68,
       "name": "Red Thai Curry",
       "nameDe": "Rotes Thai Curry",
       "facility": "food market",
@@ -1956,9 +3565,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 69,
       "name": "Rigatoni with Porcini Mushrooms",
       "nameDe": "Rigatoni ai Funghi Porcini",
       "facility": "food market",
@@ -1979,9 +3612,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
     },
     {
+      "id": 70,
       "name": "Rigatoni with Tomatoes and Artichokes",
       "nameDe": "Rigatoni mit Tomaten und Artischocken",
       "facility": "food market",
@@ -2002,9 +3659,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 71,
       "name": "Rigatoni with Veal",
       "nameDe": "Rigatoni al vitello",
       "facility": "food market",
@@ -2025,9 +3706,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 72,
       "name": "Samosa Chaat",
       "nameDe": "Samosa Chaat",
       "facility": "food market",
@@ -2048,9 +3753,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 73,
       "name": "Sardinian Fregola",
       "nameDe": "Fregola Sarda",
       "facility": "food market",
@@ -2071,9 +3800,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
     },
     {
+      "id": 74,
       "name": "Schnitzel \u00e0 la Meyer",
       "nameDe": "Schnitzel \u00e0 la Meyer",
       "facility": "food market",
@@ -2094,9 +3847,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 18.5,
+          "sd": null,
+          "min": 18.5,
+          "max": 18.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        }
+      }
     },
     {
+      "id": 75,
       "name": "Seitan Goulash",
       "nameDe": "Seitan Gulasch",
       "facility": "food market",
@@ -2117,9 +3894,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 76,
       "name": "Senthil's Best",
       "nameDe": "Senthil`s Best",
       "facility": "food market",
@@ -2140,9 +3941,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 17.5,
+          "sd": null,
+          "min": 17.5,
+          "max": 17.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        }
+      }
     },
     {
+      "id": 77,
       "name": "Spaghetti & Spicy Vegetarian Balls",
       "nameDe": "Spaghetti & Spicy Vegetrian Balls",
       "facility": "food market",
@@ -2163,9 +3988,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 78,
       "name": "Spiced Lentils by Pascal Haag",
       "nameDe": "Gew\u00fcrzlinsen von Pascal Haag",
       "facility": "food market",
@@ -2186,9 +4035,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 79,
       "name": "Sweet Potatoes Dream",
       "nameDe": "Sweet Potatoes Dream",
       "facility": "food market",
@@ -2209,9 +4082,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 80,
       "name": "Taco - Arroz Rojo",
       "nameDe": "Taco - Arroz Rojo",
       "facility": "food market",
@@ -2232,9 +4129,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 81,
       "name": "Tagliatelle with Spinach and Salmon",
       "nameDe": "Tagliatelle al Spinachi e Salmone",
       "facility": "food market",
@@ -2255,9 +4176,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
     },
     {
+      "id": 82,
       "name": "Tandoori Chickpeas & Sweet Potatoes",
       "nameDe": "Tandoori Chickpeas & Sweet Potatoes",
       "facility": "food market",
@@ -2278,9 +4223,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 83,
       "name": "Teriyaki Beef Balls",
       "nameDe": "Teriyaki Beef Balls",
       "facility": "food market",
@@ -2301,9 +4270,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 84,
       "name": "Teriyaki Chicken Balls",
       "nameDe": "Teriyaki Chicken Balls",
       "facility": "food market",
@@ -2324,9 +4317,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 85,
       "name": "Thai Drunken Noodles",
       "nameDe": "Thai Drunken Noodles",
       "facility": "food market",
@@ -2347,9 +4364,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
     },
     {
+      "id": 86,
       "name": "The BLT Burger",
       "nameDe": "The BLT Burger",
       "facility": "food market",
@@ -2370,9 +4411,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 18.5,
+          "sd": null,
+          "min": 18.5,
+          "max": 18.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        }
+      }
     },
     {
+      "id": 87,
       "name": "The Smoky Bacon Burger",
       "nameDe": "The Smoky Bacon Burger",
       "facility": "food market",
@@ -2393,9 +4458,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 18.5,
+          "sd": null,
+          "min": 18.5,
+          "max": 18.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        }
+      }
     },
     {
+      "id": 88,
       "name": "Tonkatsu Chicken Burger",
       "nameDe": "Tonkatsu Chicken Burger",
       "facility": "food market",
@@ -2416,9 +4505,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 17.5,
+          "sd": null,
+          "min": 17.5,
+          "max": 17.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        }
+      }
     },
     {
+      "id": 89,
       "name": "Tori Yakisoba Wok",
       "nameDe": "Tori Yakisoba Wok",
       "facility": "food market",
@@ -2439,9 +4552,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
     },
     {
+      "id": 90,
       "name": "Turkey Cream Goulash",
       "nameDe": "Truten Rahmgulasch",
       "facility": "food market",
@@ -2462,9 +4599,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 91,
       "name": "Vegan Cevapcici on a D\u00fcr\u00fcm Tortilla",
       "nameDe": "Vegane Cevapcici auf D\u00fcr\u00fcm Tortilla",
       "facility": "food market",
@@ -2485,9 +4646,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 92,
       "name": "Vegetable Meatballs",
       "nameDe": "Gem\u00fcse K\u00f6tbullar",
       "facility": "food market",
@@ -2508,9 +4693,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
     },
     {
+      "id": 93,
       "name": "Viennese Cream Goulash",
       "nameDe": "Wiener Rahmgulasch",
       "facility": "food market",
@@ -2531,9 +4740,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 94,
       "name": "Yellow Thai Curry",
       "nameDe": "Gelbes Thai Curry",
       "facility": "food market",
@@ -2554,9 +4787,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
     },
     {
+      "id": 95,
       "name": "Zoodle, Zucchini, and Burrata",
       "nameDe": "Zoodle Zucchini e Burrata",
       "facility": "food market",
@@ -2577,9 +4834,33 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
     },
     {
+      "id": 96,
       "name": "Zurich-Style Sliced Beef",
       "nameDe": "Geschnetzeltes Z\u00fcrcher Art",
       "facility": "food market",
@@ -2600,7 +4881,1284 @@
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
       "sdGapWeekdays": null,
-      "prediction": null
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    }
+  ],
+  "lines": [
+    {
+      "facility": "food market",
+      "line": "fire",
+      "dishDays": 19,
+      "dishes": [
+        {
+          "id": 14,
+          "name": "Beef Massaman",
+          "nameDe": "Beef Massaman",
+          "count": 1,
+          "firstSeen": "2026-08-17",
+          "lastSeen": "2026-08-17",
+          "dates": [
+            "2026-08-17"
+          ]
+        },
+        {
+          "id": 15,
+          "name": "Beef Teriyaki",
+          "nameDe": "Beef Teriyaki",
+          "count": 1,
+          "firstSeen": "2026-08-10",
+          "lastSeen": "2026-08-10",
+          "dates": [
+            "2026-08-10"
+          ]
+        },
+        {
+          "id": 17,
+          "name": "Black Pepper Chicken",
+          "nameDe": "Black Pepper Chicken",
+          "count": 1,
+          "firstSeen": "2026-08-05",
+          "lastSeen": "2026-08-05",
+          "dates": [
+            "2026-08-05"
+          ]
+        },
+        {
+          "id": 32,
+          "name": "Chicken Thighs with Chili & Honey",
+          "nameDe": "Pouletschenkel mit Chili & Honig",
+          "count": 1,
+          "firstSeen": "2026-08-18",
+          "lastSeen": "2026-08-18",
+          "dates": [
+            "2026-08-18"
+          ]
+        },
+        {
+          "id": 35,
+          "name": "Coconut-Crusted Pangasius",
+          "nameDe": "Pangasius im Kokosmantel",
+          "count": 1,
+          "firstSeen": "2026-08-14",
+          "lastSeen": "2026-08-14",
+          "dates": [
+            "2026-08-14"
+          ]
+        },
+        {
+          "id": 37,
+          "name": "Delicatessen Meat Loaf",
+          "nameDe": "Delikatess Fleischk\u00e4se",
+          "count": 1,
+          "firstSeen": "2026-08-07",
+          "lastSeen": "2026-08-07",
+          "dates": [
+            "2026-08-07"
+          ]
+        },
+        {
+          "id": 40,
+          "name": "Emmental Sausage Schnitzel",
+          "nameDe": "Emmentaler Br\u00e4tschnitzel",
+          "count": 1,
+          "firstSeen": "2026-08-13",
+          "lastSeen": "2026-08-13",
+          "dates": [
+            "2026-08-13"
+          ]
+        },
+        {
+          "id": 46,
+          "name": "Gourmet Italian Filet",
+          "nameDe": "Schlemmerfilet Italiano",
+          "count": 1,
+          "firstSeen": "2026-08-06",
+          "lastSeen": "2026-08-06",
+          "dates": [
+            "2026-08-06"
+          ]
+        },
+        {
+          "id": 47,
+          "name": "Grilled Bratwurst",
+          "nameDe": "Grill Bratwurst",
+          "count": 1,
+          "firstSeen": "2026-08-21",
+          "lastSeen": "2026-08-21",
+          "dates": [
+            "2026-08-21"
+          ]
+        },
+        {
+          "id": 57,
+          "name": "Oriental Naan",
+          "nameDe": "Oriental Naan",
+          "count": 1,
+          "firstSeen": "2026-08-25",
+          "lastSeen": "2026-08-25",
+          "dates": [
+            "2026-08-25"
+          ]
+        },
+        {
+          "id": 66,
+          "name": "Polpetta alla Bruschetta",
+          "nameDe": "Polpetta alla Bruschetta",
+          "count": 1,
+          "firstSeen": "2026-08-20",
+          "lastSeen": "2026-08-20",
+          "dates": [
+            "2026-08-20"
+          ]
+        },
+        {
+          "id": 68,
+          "name": "Red Thai Curry",
+          "nameDe": "Rotes Thai Curry",
+          "count": 1,
+          "firstSeen": "2026-08-19",
+          "lastSeen": "2026-08-19",
+          "dates": [
+            "2026-08-19"
+          ]
+        },
+        {
+          "id": 80,
+          "name": "Taco - Arroz Rojo",
+          "nameDe": "Taco - Arroz Rojo",
+          "count": 1,
+          "firstSeen": "2026-08-12",
+          "lastSeen": "2026-08-12",
+          "dates": [
+            "2026-08-12"
+          ]
+        },
+        {
+          "id": 83,
+          "name": "Teriyaki Beef Balls",
+          "nameDe": "Teriyaki Beef Balls",
+          "count": 1,
+          "firstSeen": "2026-08-10",
+          "lastSeen": "2026-08-10",
+          "dates": [
+            "2026-08-10"
+          ]
+        },
+        {
+          "id": 84,
+          "name": "Teriyaki Chicken Balls",
+          "nameDe": "Teriyaki Chicken Balls",
+          "count": 1,
+          "firstSeen": "2026-08-10",
+          "lastSeen": "2026-08-10",
+          "dates": [
+            "2026-08-10"
+          ]
+        },
+        {
+          "id": 90,
+          "name": "Turkey Cream Goulash",
+          "nameDe": "Truten Rahmgulasch",
+          "count": 1,
+          "firstSeen": "2026-08-24",
+          "lastSeen": "2026-08-24",
+          "dates": [
+            "2026-08-24"
+          ]
+        },
+        {
+          "id": 93,
+          "name": "Viennese Cream Goulash",
+          "nameDe": "Wiener Rahmgulasch",
+          "count": 1,
+          "firstSeen": "2026-08-24",
+          "lastSeen": "2026-08-24",
+          "dates": [
+            "2026-08-24"
+          ]
+        },
+        {
+          "id": 94,
+          "name": "Yellow Thai Curry",
+          "nameDe": "Gelbes Thai Curry",
+          "count": 1,
+          "firstSeen": "2026-08-26",
+          "lastSeen": "2026-08-26",
+          "dates": [
+            "2026-08-26"
+          ]
+        },
+        {
+          "id": 96,
+          "name": "Zurich-Style Sliced Beef",
+          "nameDe": "Geschnetzeltes Z\u00fcrcher Art",
+          "count": 1,
+          "firstSeen": "2026-08-11",
+          "lastSeen": "2026-08-11",
+          "dates": [
+            "2026-08-11"
+          ]
+        }
+      ]
+    },
+    {
+      "facility": "food market",
+      "line": "green daily",
+      "dishDays": 17,
+      "dishes": [
+        {
+          "id": 8,
+          "name": "Alpine R\u00f6sti with a Fried Egg",
+          "nameDe": "\u00c4lpler R\u00f6sti mit Spiegelei",
+          "count": 1,
+          "firstSeen": "2026-08-11",
+          "lastSeen": "2026-08-11",
+          "dates": [
+            "2026-08-11"
+          ]
+        },
+        {
+          "id": 19,
+          "name": "Bowlicious",
+          "nameDe": "Bowlicious",
+          "count": 1,
+          "firstSeen": "2026-08-26",
+          "lastSeen": "2026-08-26",
+          "dates": [
+            "2026-08-26"
+          ]
+        },
+        {
+          "id": 20,
+          "name": "Breaded Mushrooms",
+          "nameDe": "Panierte Champignons",
+          "count": 1,
+          "firstSeen": "2026-08-18",
+          "lastSeen": "2026-08-18",
+          "dates": [
+            "2026-08-18"
+          ]
+        },
+        {
+          "id": 27,
+          "name": "Cauliflower Wings",
+          "nameDe": "Blumenkohl Wings",
+          "count": 1,
+          "firstSeen": "2026-08-14",
+          "lastSeen": "2026-08-14",
+          "dates": [
+            "2026-08-14"
+          ]
+        },
+        {
+          "id": 36,
+          "name": "Dal made from yellow peas",
+          "nameDe": "Dal aus gelben Erbsen",
+          "count": 1,
+          "firstSeen": "2026-08-05",
+          "lastSeen": "2026-08-05",
+          "dates": [
+            "2026-08-05"
+          ]
+        },
+        {
+          "id": 45,
+          "name": "Gnocchi with Tomato Sauce",
+          "nameDe": "Gnocchi mit Tomatensauce",
+          "count": 1,
+          "firstSeen": "2026-08-10",
+          "lastSeen": "2026-08-10",
+          "dates": [
+            "2026-08-10"
+          ]
+        },
+        {
+          "id": 52,
+          "name": "Lasagna",
+          "nameDe": "Lasagne",
+          "count": 1,
+          "firstSeen": "2026-08-10",
+          "lastSeen": "2026-08-10",
+          "dates": [
+            "2026-08-10"
+          ]
+        },
+        {
+          "id": 54,
+          "name": "Mapo Tofu",
+          "nameDe": "Mapo Tofu",
+          "count": 1,
+          "firstSeen": "2026-08-24",
+          "lastSeen": "2026-08-24",
+          "dates": [
+            "2026-08-24"
+          ]
+        },
+        {
+          "id": 56,
+          "name": "Omelet au Gratin",
+          "nameDe": "Gratinierte Omelette",
+          "count": 1,
+          "firstSeen": "2026-08-17",
+          "lastSeen": "2026-08-17",
+          "dates": [
+            "2026-08-17"
+          ]
+        },
+        {
+          "id": 65,
+          "name": "Planted, Viennese Style",
+          "nameDe": "Planted Wiener Art",
+          "count": 1,
+          "firstSeen": "2026-08-06",
+          "lastSeen": "2026-08-06",
+          "dates": [
+            "2026-08-06"
+          ]
+        },
+        {
+          "id": 72,
+          "name": "Samosa Chaat",
+          "nameDe": "Samosa Chaat",
+          "count": 1,
+          "firstSeen": "2026-08-12",
+          "lastSeen": "2026-08-12",
+          "dates": [
+            "2026-08-12"
+          ]
+        },
+        {
+          "id": 75,
+          "name": "Seitan Goulash",
+          "nameDe": "Seitan Gulasch",
+          "count": 1,
+          "firstSeen": "2026-08-21",
+          "lastSeen": "2026-08-21",
+          "dates": [
+            "2026-08-21"
+          ]
+        },
+        {
+          "id": 78,
+          "name": "Spiced Lentils by Pascal Haag",
+          "nameDe": "Gew\u00fcrzlinsen von Pascal Haag",
+          "count": 1,
+          "firstSeen": "2026-08-20",
+          "lastSeen": "2026-08-20",
+          "dates": [
+            "2026-08-20"
+          ]
+        },
+        {
+          "id": 79,
+          "name": "Sweet Potatoes Dream",
+          "nameDe": "Sweet Potatoes Dream",
+          "count": 1,
+          "firstSeen": "2026-08-25",
+          "lastSeen": "2026-08-25",
+          "dates": [
+            "2026-08-25"
+          ]
+        },
+        {
+          "id": 82,
+          "name": "Tandoori Chickpeas & Sweet Potatoes",
+          "nameDe": "Tandoori Chickpeas & Sweet Potatoes",
+          "count": 1,
+          "firstSeen": "2026-08-07",
+          "lastSeen": "2026-08-07",
+          "dates": [
+            "2026-08-07"
+          ]
+        },
+        {
+          "id": 91,
+          "name": "Vegan Cevapcici on a D\u00fcr\u00fcm Tortilla",
+          "nameDe": "Vegane Cevapcici auf D\u00fcr\u00fcm Tortilla",
+          "count": 1,
+          "firstSeen": "2026-08-19",
+          "lastSeen": "2026-08-19",
+          "dates": [
+            "2026-08-19"
+          ]
+        },
+        {
+          "id": 92,
+          "name": "Vegetable Meatballs",
+          "nameDe": "Gem\u00fcse K\u00f6tbullar",
+          "count": 1,
+          "firstSeen": "2026-08-13",
+          "lastSeen": "2026-08-13",
+          "dates": [
+            "2026-08-13"
+          ]
+        }
+      ]
+    },
+    {
+      "facility": "food market",
+      "line": "green delight",
+      "dishDays": 17,
+      "dishes": [
+        {
+          "id": 33,
+          "name": "Choose 5",
+          "nameDe": "Choose 5",
+          "count": 16,
+          "firstSeen": "2026-08-05",
+          "lastSeen": "2026-08-26",
+          "dates": [
+            "2026-08-05",
+            "2026-08-06",
+            "2026-08-07",
+            "2026-08-10",
+            "2026-08-11",
+            "2026-08-12",
+            "2026-08-13",
+            "2026-08-14",
+            "2026-08-17",
+            "2026-08-18",
+            "2026-08-19",
+            "2026-08-20",
+            "2026-08-21",
+            "2026-08-24",
+            "2026-08-25",
+            "2026-08-26"
+          ]
+        },
+        {
+          "id": 13,
+          "name": "Barbecue in the \"Steinergarten\"",
+          "nameDe": "Grill im Steinergarten ",
+          "count": 1,
+          "firstSeen": "2026-08-13",
+          "lastSeen": "2026-08-13",
+          "dates": [
+            "2026-08-13"
+          ]
+        }
+      ]
+    },
+    {
+      "facility": "food market",
+      "line": "grill",
+      "dishDays": 19,
+      "dishes": [
+        {
+          "id": 6,
+          "name": "Alpine Herbs Grilled Pork Steak",
+          "nameDe": "Alpenkr\u00e4uter Schweinssteak vom Grill",
+          "count": 1,
+          "firstSeen": "2026-08-24",
+          "lastSeen": "2026-08-24",
+          "dates": [
+            "2026-08-24"
+          ]
+        },
+        {
+          "id": 12,
+          "name": "Banh Mi Hot Dog",
+          "nameDe": "Banh Mi Hot Dog",
+          "count": 1,
+          "firstSeen": "2026-08-06",
+          "lastSeen": "2026-08-06",
+          "dates": [
+            "2026-08-06"
+          ]
+        },
+        {
+          "id": 16,
+          "name": "Berlin Currywurst",
+          "nameDe": "Berliner Currywurst",
+          "count": 1,
+          "firstSeen": "2026-08-14",
+          "lastSeen": "2026-08-14",
+          "dates": [
+            "2026-08-14"
+          ]
+        },
+        {
+          "id": 28,
+          "name": "Cheeseburger",
+          "nameDe": "Cheeseburger",
+          "count": 1,
+          "firstSeen": "2026-08-26",
+          "lastSeen": "2026-08-26",
+          "dates": [
+            "2026-08-26"
+          ]
+        },
+        {
+          "id": 29,
+          "name": "Chicken & Cheese Wrap",
+          "nameDe": "Chicken & Cheese Wrap",
+          "count": 1,
+          "firstSeen": "2026-08-17",
+          "lastSeen": "2026-08-17",
+          "dates": [
+            "2026-08-17"
+          ]
+        },
+        {
+          "id": 30,
+          "name": "Chicken Cordon Bleu",
+          "nameDe": "Poulet Cordon Bleu",
+          "count": 1,
+          "firstSeen": "2026-08-07",
+          "lastSeen": "2026-08-07",
+          "dates": [
+            "2026-08-07"
+          ]
+        },
+        {
+          "id": 31,
+          "name": "Chicken Cutlet",
+          "nameDe": "Pouletschnitzel",
+          "count": 1,
+          "firstSeen": "2026-08-07",
+          "lastSeen": "2026-08-07",
+          "dates": [
+            "2026-08-07"
+          ]
+        },
+        {
+          "id": 38,
+          "name": "Dragon Chicken Strips",
+          "nameDe": "Dragon Chicken Strips",
+          "count": 1,
+          "firstSeen": "2026-08-21",
+          "lastSeen": "2026-08-21",
+          "dates": [
+            "2026-08-21"
+          ]
+        },
+        {
+          "id": 39,
+          "name": "ETH Fitness Plate",
+          "nameDe": "Fitnessteller ETH",
+          "count": 1,
+          "firstSeen": "2026-08-13",
+          "lastSeen": "2026-08-13",
+          "dates": [
+            "2026-08-13"
+          ]
+        },
+        {
+          "id": 48,
+          "name": "Grilled Chicken & Cheese Wrap",
+          "nameDe": "Grilled Chicken & Cheese Wrap",
+          "count": 1,
+          "firstSeen": "2026-08-17",
+          "lastSeen": "2026-08-17",
+          "dates": [
+            "2026-08-17"
+          ]
+        },
+        {
+          "id": 50,
+          "name": "Khao Mok Gai",
+          "nameDe": "Khao Mok Gai",
+          "count": 1,
+          "firstSeen": "2026-08-25",
+          "lastSeen": "2026-08-25",
+          "dates": [
+            "2026-08-25"
+          ]
+        },
+        {
+          "id": 51,
+          "name": "Korean Mandu Dumplings",
+          "nameDe": "Korean Mandu Dumplings",
+          "count": 1,
+          "firstSeen": "2026-08-18",
+          "lastSeen": "2026-08-18",
+          "dates": [
+            "2026-08-18"
+          ]
+        },
+        {
+          "id": 53,
+          "name": "Lumberjack Steak in the Rock Garden",
+          "nameDe": "Holzf\u00e4llersteak im Steingarten",
+          "count": 1,
+          "firstSeen": "2026-08-10",
+          "lastSeen": "2026-08-10",
+          "dates": [
+            "2026-08-10"
+          ]
+        },
+        {
+          "id": 67,
+          "name": "Pulled Pork Burger",
+          "nameDe": "Pulled Pork Burger",
+          "count": 1,
+          "firstSeen": "2026-08-19",
+          "lastSeen": "2026-08-19",
+          "dates": [
+            "2026-08-19"
+          ]
+        },
+        {
+          "id": 74,
+          "name": "Schnitzel \u00e0 la Meyer",
+          "nameDe": "Schnitzel \u00e0 la Meyer",
+          "count": 1,
+          "firstSeen": "2026-08-20",
+          "lastSeen": "2026-08-20",
+          "dates": [
+            "2026-08-20"
+          ]
+        },
+        {
+          "id": 76,
+          "name": "Senthil's Best",
+          "nameDe": "Senthil`s Best",
+          "count": 1,
+          "firstSeen": "2026-08-11",
+          "lastSeen": "2026-08-11",
+          "dates": [
+            "2026-08-11"
+          ]
+        },
+        {
+          "id": 86,
+          "name": "The BLT Burger",
+          "nameDe": "The BLT Burger",
+          "count": 1,
+          "firstSeen": "2026-08-05",
+          "lastSeen": "2026-08-05",
+          "dates": [
+            "2026-08-05"
+          ]
+        },
+        {
+          "id": 87,
+          "name": "The Smoky Bacon Burger",
+          "nameDe": "The Smoky Bacon Burger",
+          "count": 1,
+          "firstSeen": "2026-08-12",
+          "lastSeen": "2026-08-12",
+          "dates": [
+            "2026-08-12"
+          ]
+        },
+        {
+          "id": 88,
+          "name": "Tonkatsu Chicken Burger",
+          "nameDe": "Tonkatsu Chicken Burger",
+          "count": 1,
+          "firstSeen": "2026-08-19",
+          "lastSeen": "2026-08-19",
+          "dates": [
+            "2026-08-19"
+          ]
+        }
+      ]
+    },
+    {
+      "facility": "food market",
+      "line": "pasta classica",
+      "dishDays": 9,
+      "dishes": [
+        {
+          "id": 9,
+          "name": "Baked Meat Tortellini",
+          "nameDe": "Tortellini carne al forno",
+          "count": 1,
+          "firstSeen": "2026-08-21",
+          "lastSeen": "2026-08-21",
+          "dates": [
+            "2026-08-21"
+          ]
+        },
+        {
+          "id": 10,
+          "name": "Baked Pasta",
+          "nameDe": "Pasta al forno",
+          "count": 1,
+          "firstSeen": "2026-08-07",
+          "lastSeen": "2026-08-07",
+          "dates": [
+            "2026-08-07"
+          ]
+        },
+        {
+          "id": 22,
+          "name": "Cajun Chicken Pasta",
+          "nameDe": "Cajun Chicken Pasta",
+          "count": 1,
+          "firstSeen": "2026-08-11",
+          "lastSeen": "2026-08-11",
+          "dates": [
+            "2026-08-11"
+          ]
+        },
+        {
+          "id": 23,
+          "name": "Cajun Pasta with Shrimp",
+          "nameDe": "Cajun Pasta mit Crevetten",
+          "count": 1,
+          "firstSeen": "2026-08-05",
+          "lastSeen": "2026-08-05",
+          "dates": [
+            "2026-08-05"
+          ]
+        },
+        {
+          "id": 43,
+          "name": "Fusilli Bolognese",
+          "nameDe": "Fusilli alla bolognese",
+          "count": 1,
+          "firstSeen": "2026-08-24",
+          "lastSeen": "2026-08-24",
+          "dates": [
+            "2026-08-24"
+          ]
+        },
+        {
+          "id": 49,
+          "name": "Ground Meat with Horn-Shaped Pasta",
+          "nameDe": "G`hacktes mit H\u00f6rnli",
+          "count": 1,
+          "firstSeen": "2026-08-13",
+          "lastSeen": "2026-08-13",
+          "dates": [
+            "2026-08-13"
+          ]
+        },
+        {
+          "id": 62,
+          "name": "Pasta with Chicken and Mushrooms",
+          "nameDe": "Pasta con Pollo e Funghi",
+          "count": 1,
+          "firstSeen": "2026-08-17",
+          "lastSeen": "2026-08-17",
+          "dates": [
+            "2026-08-17"
+          ]
+        },
+        {
+          "id": 70,
+          "name": "Rigatoni with Tomatoes and Artichokes",
+          "nameDe": "Rigatoni mit Tomaten und Artischocken",
+          "count": 1,
+          "firstSeen": "2026-08-26",
+          "lastSeen": "2026-08-26",
+          "dates": [
+            "2026-08-26"
+          ]
+        },
+        {
+          "id": 71,
+          "name": "Rigatoni with Veal",
+          "nameDe": "Rigatoni al vitello",
+          "count": 1,
+          "firstSeen": "2026-08-19",
+          "lastSeen": "2026-08-19",
+          "dates": [
+            "2026-08-19"
+          ]
+        }
+      ]
+    },
+    {
+      "facility": "food market",
+      "line": "pasta classica vegi",
+      "dishDays": 7,
+      "dishes": [
+        {
+          "id": 7,
+          "name": "Alpine Macaroni",
+          "nameDe": "\u00c4lpler Magronen",
+          "count": 1,
+          "firstSeen": "2026-08-20",
+          "lastSeen": "2026-08-20",
+          "dates": [
+            "2026-08-20"
+          ]
+        },
+        {
+          "id": 25,
+          "name": "Casarecce alla Nerano",
+          "nameDe": "Casarecce alla Nerano",
+          "count": 1,
+          "firstSeen": "2026-08-06",
+          "lastSeen": "2026-08-06",
+          "dates": [
+            "2026-08-06"
+          ]
+        },
+        {
+          "id": 42,
+          "name": "Farfalle alla Norma",
+          "nameDe": "Farfalle alla norma",
+          "count": 1,
+          "firstSeen": "2026-08-14",
+          "lastSeen": "2026-08-14",
+          "dates": [
+            "2026-08-14"
+          ]
+        },
+        {
+          "id": 55,
+          "name": "Morel Pasta",
+          "nameDe": "Morchelpasta",
+          "count": 1,
+          "firstSeen": "2026-08-12",
+          "lastSeen": "2026-08-12",
+          "dates": [
+            "2026-08-12"
+          ]
+        },
+        {
+          "id": 61,
+          "name": "Pasta with Broccoli",
+          "nameDe": "Pasta ai Broccoli",
+          "count": 1,
+          "firstSeen": "2026-08-18",
+          "lastSeen": "2026-08-18",
+          "dates": [
+            "2026-08-18"
+          ]
+        },
+        {
+          "id": 63,
+          "name": "Penne with Gorgonzola",
+          "nameDe": "Penne al Gorgonzola",
+          "count": 1,
+          "firstSeen": "2026-08-25",
+          "lastSeen": "2026-08-25",
+          "dates": [
+            "2026-08-25"
+          ]
+        },
+        {
+          "id": 77,
+          "name": "Spaghetti & Spicy Vegetarian Balls",
+          "nameDe": "Spaghetti & Spicy Vegetrian Balls",
+          "count": 1,
+          "firstSeen": "2026-08-10",
+          "lastSeen": "2026-08-10",
+          "dates": [
+            "2026-08-10"
+          ]
+        }
+      ]
+    },
+    {
+      "facility": "food market",
+      "line": "pasta della nonna",
+      "dishDays": 17,
+      "dishes": [
+        {
+          "id": 11,
+          "name": "Bangkok Beef Noodles",
+          "nameDe": "Bangkok Beef Noodles",
+          "count": 1,
+          "firstSeen": "2026-08-24",
+          "lastSeen": "2026-08-24",
+          "dates": [
+            "2026-08-24"
+          ]
+        },
+        {
+          "id": 18,
+          "name": "Black Pepper Udon",
+          "nameDe": "Black Pepper Udon",
+          "count": 1,
+          "firstSeen": "2026-08-20",
+          "lastSeen": "2026-08-20",
+          "dates": [
+            "2026-08-20"
+          ]
+        },
+        {
+          "id": 21,
+          "name": "Burrata and Cinque Pi",
+          "nameDe": "Burrata e Cinque Pi",
+          "count": 1,
+          "firstSeen": "2026-08-14",
+          "lastSeen": "2026-08-14",
+          "dates": [
+            "2026-08-14"
+          ]
+        },
+        {
+          "id": 24,
+          "name": "Cappelletti with Tomatoes & Mozzarella",
+          "nameDe": "Cappelletti Tomaten & Mozzarella",
+          "count": 1,
+          "firstSeen": "2026-08-05",
+          "lastSeen": "2026-08-05",
+          "dates": [
+            "2026-08-05"
+          ]
+        },
+        {
+          "id": 26,
+          "name": "Cauliflower Gnocchi",
+          "nameDe": "Gnocchi Cauliflower",
+          "count": 1,
+          "firstSeen": "2026-08-21",
+          "lastSeen": "2026-08-21",
+          "dates": [
+            "2026-08-21"
+          ]
+        },
+        {
+          "id": 34,
+          "name": "Chow Mein",
+          "nameDe": "Chow Mein",
+          "count": 1,
+          "firstSeen": "2026-08-17",
+          "lastSeen": "2026-08-17",
+          "dates": [
+            "2026-08-17"
+          ]
+        },
+        {
+          "id": 41,
+          "name": "Fancy Carbonara",
+          "nameDe": "Fancy Carbonara",
+          "count": 1,
+          "firstSeen": "2026-08-18",
+          "lastSeen": "2026-08-18",
+          "dates": [
+            "2026-08-18"
+          ]
+        },
+        {
+          "id": 44,
+          "name": "Gnocchi with Giardinera",
+          "nameDe": "Gnocchi al Giardinera",
+          "count": 1,
+          "firstSeen": "2026-08-07",
+          "lastSeen": "2026-08-07",
+          "dates": [
+            "2026-08-07"
+          ]
+        },
+        {
+          "id": 58,
+          "name": "Pad Thai",
+          "nameDe": "Pad Thai",
+          "count": 1,
+          "firstSeen": "2026-08-13",
+          "lastSeen": "2026-08-13",
+          "dates": [
+            "2026-08-13"
+          ]
+        },
+        {
+          "id": 59,
+          "name": "Pad Thai-Style Fried Rice",
+          "nameDe": "Gebratener Reis Pad Thai Style",
+          "count": 1,
+          "firstSeen": "2026-08-13",
+          "lastSeen": "2026-08-13",
+          "dates": [
+            "2026-08-13"
+          ]
+        },
+        {
+          "id": 60,
+          "name": "Pasta Portofino",
+          "nameDe": "Pasta Portofino",
+          "count": 1,
+          "firstSeen": "2026-08-26",
+          "lastSeen": "2026-08-26",
+          "dates": [
+            "2026-08-26"
+          ]
+        },
+        {
+          "id": 69,
+          "name": "Rigatoni with Porcini Mushrooms",
+          "nameDe": "Rigatoni ai Funghi Porcini",
+          "count": 1,
+          "firstSeen": "2026-08-25",
+          "lastSeen": "2026-08-25",
+          "dates": [
+            "2026-08-25"
+          ]
+        },
+        {
+          "id": 73,
+          "name": "Sardinian Fregola",
+          "nameDe": "Fregola Sarda",
+          "count": 1,
+          "firstSeen": "2026-08-11",
+          "lastSeen": "2026-08-11",
+          "dates": [
+            "2026-08-11"
+          ]
+        },
+        {
+          "id": 81,
+          "name": "Tagliatelle with Spinach and Salmon",
+          "nameDe": "Tagliatelle al Spinachi e Salmone",
+          "count": 1,
+          "firstSeen": "2026-08-12",
+          "lastSeen": "2026-08-12",
+          "dates": [
+            "2026-08-12"
+          ]
+        },
+        {
+          "id": 85,
+          "name": "Thai Drunken Noodles",
+          "nameDe": "Thai Drunken Noodles",
+          "count": 1,
+          "firstSeen": "2026-08-10",
+          "lastSeen": "2026-08-10",
+          "dates": [
+            "2026-08-10"
+          ]
+        },
+        {
+          "id": 89,
+          "name": "Tori Yakisoba Wok",
+          "nameDe": "Tori Yakisoba Wok",
+          "count": 1,
+          "firstSeen": "2026-08-06",
+          "lastSeen": "2026-08-06",
+          "dates": [
+            "2026-08-06"
+          ]
+        },
+        {
+          "id": 95,
+          "name": "Zoodle, Zucchini, and Burrata",
+          "nameDe": "Zoodle Zucchini e Burrata",
+          "count": 1,
+          "firstSeen": "2026-08-19",
+          "lastSeen": "2026-08-19",
+          "dates": [
+            "2026-08-19"
+          ]
+        }
+      ]
+    },
+    {
+      "facility": "food market",
+      "line": "pizza classica",
+      "dishDays": 16,
+      "dishes": [
+        {
+          "id": 64,
+          "name": "Pizza Margherita",
+          "nameDe": "Pizza Margherita",
+          "count": 16,
+          "firstSeen": "2026-08-05",
+          "lastSeen": "2026-08-26",
+          "dates": [
+            "2026-08-05",
+            "2026-08-06",
+            "2026-08-07",
+            "2026-08-10",
+            "2026-08-11",
+            "2026-08-12",
+            "2026-08-13",
+            "2026-08-14",
+            "2026-08-17",
+            "2026-08-18",
+            "2026-08-19",
+            "2026-08-20",
+            "2026-08-21",
+            "2026-08-24",
+            "2026-08-25",
+            "2026-08-26"
+          ]
+        }
+      ]
+    },
+    {
+      "facility": "Mendokoro",
+      "line": "Ichi",
+      "dishDays": 16,
+      "dishes": [
+        {
+          "id": 3,
+          "name": "Miso Ramen",
+          "nameDe": "Miso Ramen",
+          "count": 16,
+          "firstSeen": "2026-08-05",
+          "lastSeen": "2026-08-26",
+          "dates": [
+            "2026-08-05",
+            "2026-08-06",
+            "2026-08-07",
+            "2026-08-10",
+            "2026-08-11",
+            "2026-08-12",
+            "2026-08-13",
+            "2026-08-14",
+            "2026-08-17",
+            "2026-08-18",
+            "2026-08-19",
+            "2026-08-20",
+            "2026-08-21",
+            "2026-08-24",
+            "2026-08-25",
+            "2026-08-26"
+          ]
+        }
+      ]
+    },
+    {
+      "facility": "Mendokoro",
+      "line": "Ni",
+      "dishDays": 16,
+      "dishes": [
+        {
+          "id": 4,
+          "name": "Shoyu Ramen",
+          "nameDe": "Shoyu Ramen",
+          "count": 16,
+          "firstSeen": "2026-08-05",
+          "lastSeen": "2026-08-26",
+          "dates": [
+            "2026-08-05",
+            "2026-08-06",
+            "2026-08-07",
+            "2026-08-10",
+            "2026-08-11",
+            "2026-08-12",
+            "2026-08-13",
+            "2026-08-14",
+            "2026-08-17",
+            "2026-08-18",
+            "2026-08-19",
+            "2026-08-20",
+            "2026-08-21",
+            "2026-08-24",
+            "2026-08-25",
+            "2026-08-26"
+          ]
+        }
+      ]
+    },
+    {
+      "facility": "Mendokoro",
+      "line": "Roku",
+      "dishDays": 16,
+      "dishes": [
+        {
+          "id": 5,
+          "name": "Tori Ramen",
+          "nameDe": "Tori Ramen",
+          "count": 16,
+          "firstSeen": "2026-08-05",
+          "lastSeen": "2026-08-26",
+          "dates": [
+            "2026-08-05",
+            "2026-08-06",
+            "2026-08-07",
+            "2026-08-10",
+            "2026-08-11",
+            "2026-08-12",
+            "2026-08-13",
+            "2026-08-14",
+            "2026-08-17",
+            "2026-08-18",
+            "2026-08-19",
+            "2026-08-20",
+            "2026-08-21",
+            "2026-08-24",
+            "2026-08-25",
+            "2026-08-26"
+          ]
+        }
+      ]
+    },
+    {
+      "facility": "Mendokoro",
+      "line": "San",
+      "dishDays": 16,
+      "dishes": [
+        {
+          "id": 2,
+          "name": "Cold Moiroka Ramen",
+          "nameDe": "Cold Moiroka Ramen",
+          "count": 16,
+          "firstSeen": "2026-08-05",
+          "lastSeen": "2026-08-26",
+          "dates": [
+            "2026-08-05",
+            "2026-08-06",
+            "2026-08-07",
+            "2026-08-10",
+            "2026-08-11",
+            "2026-08-12",
+            "2026-08-13",
+            "2026-08-14",
+            "2026-08-17",
+            "2026-08-18",
+            "2026-08-19",
+            "2026-08-20",
+            "2026-08-21",
+            "2026-08-24",
+            "2026-08-25",
+            "2026-08-26"
+          ]
+        }
+      ]
+    },
+    {
+      "facility": "Mendokoro",
+      "line": "Shi",
+      "dishDays": 16,
+      "dishes": [
+        {
+          "id": 1,
+          "name": "Chicken Tonkatsu Bowl",
+          "nameDe": "Chicken Tonkatsu Bowl",
+          "count": 16,
+          "firstSeen": "2026-08-05",
+          "lastSeen": "2026-08-26",
+          "dates": [
+            "2026-08-05",
+            "2026-08-06",
+            "2026-08-07",
+            "2026-08-10",
+            "2026-08-11",
+            "2026-08-12",
+            "2026-08-13",
+            "2026-08-14",
+            "2026-08-17",
+            "2026-08-18",
+            "2026-08-19",
+            "2026-08-20",
+            "2026-08-21",
+            "2026-08-24",
+            "2026-08-25",
+            "2026-08-26"
+          ]
+        }
+      ]
     }
   ]
 }

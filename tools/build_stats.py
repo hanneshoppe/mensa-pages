@@ -38,6 +38,20 @@ PRICE_GROUPS_KNOWN = ["students", "internal", "external"]
 # reader may be tempted to "fix" facilities[] back to alphabetical; don't.
 WEBSITES_PATH = Path(__file__).resolve().parent.parent / "websites.txt"
 
+# Numeric dish-id registry (TODO item 8) - the source of identity for a dish,
+# not a cache: a dish's only stable handle is its (facility, name_en) pair,
+# and this file is what turns that pair into a small integer that survives a
+# rename. See load_dish_ids/assign_dish_ids/write_dish_ids below.
+DISH_IDS_PATH = Path(__file__).resolve().parent.parent / "data" / "dish-ids.json"
+
+# TODO item 7: diet precedence, the sold-out labels and the build-your-own
+# name are duplicated in index.html and stats.html on purpose, to keep the
+# deployment dependency-free (no runtime-fetched policy file on the menu
+# page's render path). _test_policy_matches_html_pages() in --selftest is
+# the drift guard for that duplication - see its docstring.
+INDEX_HTML_PATH = Path(__file__).resolve().parent.parent / "index.html"
+STATS_HTML_PATH = Path(__file__).resolve().parent.parent / "stats.html"
+
 # meal dict key -> dishes.csv column name.
 NUTRITION_FIELDS = [
     ("energy", "energy"),
@@ -48,6 +62,85 @@ NUTRITION_FIELDS = [
     ("sugar", "sugar"),
     ("saturated-fatty-acids", "saturated_fatty_acids"),
 ]
+
+DISH_IDS_README = (
+    "id (string key) -> list of [facility, name_en] pairs identifying this "
+    "dish. (facility, name_en) is the identity unit - two facilities serving "
+    "a dish of the same name are different entries. A rename is recorded by "
+    "hand: append a second [facility, name_en] pair to the existing id's "
+    "list, do not create a new id for it. Never remove, reuse, or renumber "
+    "an id - local ratings and saved links reference it."
+)
+
+
+def load_dish_ids(path=DISH_IDS_PATH, allow_new=False):
+    """Load the id registry: {id (int) -> [(facility, name_en), ...]}.
+
+    A missing file is a HARD ERROR unless allow_new is set. Unlike stats.json
+    and dishes.csv, this file cannot be regenerated: ids are assigned in the
+    order names are first seen, so rebuilding it from the finished archive
+    allocates completely different numbers. Measured on this archive, a
+    day-by-day allocation and a one-shot rebuild agree on only 6 of 96 ids.
+    Silently re-minting them would orphan every local rating and every saved
+    link while looking like a successful build, so restoring the file from
+    git history is the only correct recovery. allow_new exists solely to
+    bootstrap the registry the first time.
+    """
+    try:
+        raw = json.loads(Path(path).read_text())
+    except FileNotFoundError:
+        if allow_new:
+            return {}
+        raise FileNotFoundError(
+            f"dish id registry missing: {path}. It is the source of truth for "
+            "dish identity and cannot be regenerated - restore it from git "
+            "history. Pass --allow-new-registry only to bootstrap a new one."
+        )
+    return {
+        int(k): [tuple(pair) for pair in v]
+        for k, v in raw.items()
+        if k != "_readme"
+    }
+
+
+def assign_dish_ids(registry, keys):
+    """Extend registry with fresh ids for any (facility, name_en) pair in
+    keys that isn't already covered by an existing id, and return
+    (id_for, new_registry):
+    - id_for: (facility, name_en) -> id, covering every pair in keys.
+    - new_registry: registry plus the newly-assigned entries (registry
+      itself is left untouched).
+
+    Determinism is the whole point here (see TODO item 8): allocating a
+    batch of new names in *sorted* (facility, name) order, rather than
+    whatever order keys happens to iterate in, makes allocation a pure
+    function of (registry, set of new names) - so two builds over the same
+    archive assign the same ids to the same new dishes, and stats.json
+    doesn't churn on every run.
+    """
+    id_for = {}
+    for dish_id, names in registry.items():
+        for pair in names:
+            id_for[pair] = dish_id
+    new_registry = {k: list(v) for k, v in registry.items()}
+    next_id = max(registry) + 1 if registry else 1
+    new_names = sorted(k for k in set(keys) if k not in id_for)
+    for key in new_names:
+        new_registry[next_id] = [key]
+        id_for[key] = next_id
+        next_id += 1
+    return id_for, new_registry
+
+
+def write_dish_ids(registry, path=DISH_IDS_PATH):
+    """Serialise the registry with sorted numeric key order and a stable
+    format, so loading an unchanged registry and re-serialising it produces
+    byte-identical output - required for the workflow's
+    commit-only-when-changed gating (see TODO item 8)."""
+    out = {"_readme": DISH_IDS_README}
+    for dish_id in sorted(registry):
+        out[str(dish_id)] = [list(pair) for pair in registry[dish_id]]
+    Path(path).write_text(json.dumps(out, indent=2) + "\n")
 
 
 def classify_diet(meal_class_array):
@@ -102,6 +195,26 @@ def price_stats(prices):
     }
 
 
+def dish_price_stats(prices):
+    """Per-dish price summary for stats.json's dishes[].prices (TODO item
+    3) - n/mean/min/max reuse price_stats()'s already-rounded numbers rather
+    than a second rounding path; the quartiles that field carries aren't
+    needed at dish granularity. sd is the sample standard deviation, and
+    stays honestly null (not 0.00) with a single observation - there's no
+    deviation to measure from one point, the same honesty rule the
+    prediction column already follows."""
+    stats = price_stats(prices)
+    if stats is None:
+        return None
+    return {
+        "n": stats["n"],
+        "mean": stats["mean"],
+        "sd": round(statistics.stdev(prices), 2) if len(prices) >= 2 else None,
+        "min": stats["min"],
+        "max": stats["max"],
+    }
+
+
 def iter_lines(facilities):
     """Yield (facility_name, facility_id, line_name, meal) for every
     line-array entry with a meal - real dish or sold-out placeholder alike.
@@ -120,13 +233,13 @@ def iter_lines(facilities):
 
 
 def iter_meals(facilities_en):
-    """Yield (facility_name, facility_id, dish_name, meal) for every real
-    dish of the day."""
-    for facility, fid, _line, meal in iter_lines(facilities_en):
+    """Yield (facility_name, facility_id, line_name, dish_name, meal) for
+    every real dish of the day."""
+    for facility, fid, line, meal in iter_lines(facilities_en):
         name = meal.get("name")
         if name is None or name.strip().lower() in SOLD_OUT:
             continue
-        yield facility, fid, name, meal
+        yield facility, fid, line, name, meal
 
 
 def load_day_dish(data_dir):
@@ -136,8 +249,11 @@ def load_day_dish(data_dir):
 
     Also returns facility_id_for: facility_name -> id (first seen), so
     build_stats can order facilities[] by websites.txt position without a
-    second pass over the archive."""
+    second pass over the archive; and day_dish_line: (date, facility, dish)
+    -> serving-counter name, last-write-wins like day_dish itself, feeding
+    the lines[] substitution grouping (TODO item 2)."""
     day_dish = {}
+    day_dish_line = {}
     facility_id_for = {}
     latest_fetched_at = None  # max fetchedAt seen, for a deterministic "as of"
     for path in sorted(glob.glob(str(data_dir / "*.jsonl"))):
@@ -147,18 +263,19 @@ def load_day_dish(data_dir):
         except ValueError:
             continue
         with open(path) as f:
-            for line in f:
-                line = line.strip()
-                if not line:
+            for raw_line in f:
+                raw_line = raw_line.strip()
+                if not raw_line:
                     continue
-                snapshot = json.loads(line)
+                snapshot = json.loads(raw_line)
                 fetched_at = snapshot.get("fetchedAt")
                 if fetched_at and (latest_fetched_at is None or fetched_at > latest_fetched_at):
                     latest_fetched_at = fetched_at
-                for facility, fid, dish, meal in iter_meals(snapshot["facilities"]["en"]):
+                for facility, fid, line_name, dish, meal in iter_meals(snapshot["facilities"]["en"]):
                     day_dish[(d, facility, dish)] = meal
+                    day_dish_line[(d, facility, dish)] = line_name
                     facility_id_for.setdefault(facility, fid)
-    return day_dish, latest_fetched_at, facility_id_for
+    return day_dish, latest_fetched_at, facility_id_for, day_dish_line
 
 
 def ordered_groups(seen_order, known):
@@ -350,8 +467,11 @@ def build_dish_rows(data_dir):
     return rows, latest_de_name, price_groups_seen
 
 
-def write_dishes_csv(rows, price_groups, out_path):
-    fixed = ["date", "facility", "facility_id", "line", "name_en", "name_de", "diet",
+def write_dishes_csv(rows, price_groups, id_for, out_path):
+    # dish_id first (TODO item 8) - the stable handle a reader should join
+    # on, ahead of the human-readable columns that can be renamed out from
+    # under it.
+    fixed = ["dish_id", "date", "facility", "facility_id", "line", "name_en", "name_de", "diet",
              "first_seen_at", "last_seen_at", "sold_out_at"]
     nutrition_cols = [col for _src, col in NUTRITION_FIELDS]
     fieldnames = fixed + [f"price_{g}" for g in price_groups] + nutrition_cols
@@ -364,15 +484,29 @@ def write_dishes_csv(rows, price_groups, out_path):
         writer.writeheader()
         for key in sorted(rows):  # (date, facility, name_en) - deterministic output
             row = rows[key]
-            out = {k: row[k] for k in fixed}
+            out = {k: row[k] for k in fixed if k != "dish_id"}
+            # Direct lookup, not .get(): id_for must cover every (facility,
+            # name_en) pair rows can produce (both are derived from the same
+            # archive traversal) - a miss means that invariant broke and
+            # should fail loudly, not silently emit a blank id column.
+            out["dish_id"] = id_for[(row["facility"], row["name_en"])]
             for g in price_groups:
                 out[f"price_{g}"] = row["prices"].get(g, "")
             out.update(row["nutrition"])
             writer.writerow(out)
 
 
-def build_stats(data_dir, latest_de_name=None, price_groups=None, websites_path=WEBSITES_PATH):
-    day_dish, data_as_of, facility_id_for = load_day_dish(data_dir)
+def build_stats(data_dir, latest_de_name=None, price_groups=None, websites_path=WEBSITES_PATH, id_for=None):
+    day_dish, data_as_of, facility_id_for, day_dish_line = load_day_dish(data_dir)
+
+    # id_for: (facility, dish) -> numeric dish id (TODO item 8). Callers that
+    # care about stable ids across builds (the real __main__ run, and the
+    # rename test below) pass a registry-backed mapping in; a caller that
+    # doesn't (most of the self-tests) gets one assigned fresh, in-memory,
+    # from an empty registry - deterministic and self-contained, but not
+    # persisted, so it says nothing about what a real build would assign.
+    if id_for is None:
+        id_for, _ = assign_dish_ids({}, {(facility, dish) for _d, facility, dish in day_dish})
 
     facility_days = defaultdict(set)
     facility_dishdays = Counter()
@@ -383,19 +517,34 @@ def build_stats(data_dir, latest_de_name=None, price_groups=None, websites_path=
     overall_diet = Counter()
     overall_prices = defaultdict(list)
 
-    by_dish_dates = defaultdict(list)  # (facility, dish) -> dates, ascending
-    by_dish_latest_meal = {}  # (facility, dish) -> most recent meal seen
-    by_dish_diet = defaultdict(Counter)  # (facility, dish) -> Counter of each dish-day's own diet
+    # Keyed by dish id, not (facility, dish) name, from here on: two names
+    # that the registry maps to the same id (a recorded rename) must
+    # accumulate into one dish history, not two - see by_dish_name/
+    # by_dish_facility below, which track which (facility, name) pair
+    # produced the *latest* sighting for display purposes.
+    by_dish_dates = defaultdict(list)  # dish id -> dates, ascending
+    by_dish_latest_meal = {}  # dish id -> most recent meal seen
+    by_dish_name = {}  # dish id -> name_en of the most recent sighting
+    by_dish_facility = {}  # dish id -> facility of the most recent sighting
+    by_dish_diet = defaultdict(Counter)  # dish id -> Counter of each dish-day's own diet
+    by_dish_prices = defaultdict(lambda: defaultdict(list))  # dish id -> group -> prices, one per dish-day
+    # lines[] is intentionally NOT merged by id - it groups by the literal
+    # dish name a serving counter ran, and still shows each name it saw as
+    # its own entry (carrying the shared id, see below), rather than folding
+    # a rename together at the counter level too.
+    by_line_dish_dates = defaultdict(list)  # (facility, line, dish) -> dates, ascending
 
     for (d, facility, dish), meal in sorted(day_dish.items()):
         diet = classify_diet(meal.get("meal-class-array"))
+        line = day_dish_line[(d, facility, dish)]
+        dish_id = id_for[(facility, dish)]
 
         facility_days[facility].add(d)
         facility_dishdays[facility] += 1
         facility_diet[facility][diet] += 1
         overall_days.add(d)
         overall_diet[diet] += 1
-        by_dish_diet[(facility, dish)][diet] += 1
+        by_dish_diet[dish_id][diet] += 1
 
         for p in meal.get("meal-price-array") or []:
             group, price = p.get("customer-group-desc"), p.get("price")
@@ -403,9 +552,13 @@ def build_stats(data_dir, latest_de_name=None, price_groups=None, websites_path=
                 continue
             facility_prices[facility][group].append(price)
             overall_prices[group].append(price)
+            by_dish_prices[dish_id][group].append(price)
 
-        by_dish_dates[(facility, dish)].append(d)
-        by_dish_latest_meal[(facility, dish)] = meal  # last write = most recent (sorted by date)
+        by_dish_dates[dish_id].append(d)  # sorted-by-date loop -> stays ascending even across a merge
+        by_dish_latest_meal[dish_id] = meal  # last write = most recent (sorted by date)
+        by_dish_name[dish_id] = dish
+        by_dish_facility[dish_id] = facility
+        by_line_dish_dates[(facility, line, dish)].append(d)
 
     def facility_entry(name, days_set, dishdays, diet_counter, price_lists):
         return {
@@ -443,7 +596,9 @@ def build_stats(data_dir, latest_de_name=None, price_groups=None, websites_path=
                               overall_diet, overall_prices)
 
     dishes = []
-    for (facility, dish), dates_seen in by_dish_dates.items():
+    for dish_id, dates_seen in by_dish_dates.items():
+        facility = by_dish_facility[dish_id]
+        dish = by_dish_name[dish_id]
         date_objs = [date.fromisoformat(d) for d in dates_seen]
         gaps = [weekdays_between(date_objs[i], date_objs[i + 1]) for i in range(len(date_objs) - 1)]
         mean_gap = round(float(statistics.mean(gaps)), 2) if gaps else None
@@ -462,8 +617,15 @@ def build_stats(data_dir, latest_de_name=None, price_groups=None, websites_path=
                 "latest": latest.isoformat(),
             }
 
-        meal = by_dish_latest_meal[(facility, dish)]
-        dishes.append({
+        meal = by_dish_latest_meal[dish_id]
+        # Per-customer-group price mean/sd (TODO item 3) - omitted entirely
+        # (not an empty dict) for a dish that never carried a price, and
+        # per-group for a dish that only sometimes did, mirroring
+        # facility_entry's "prices" above.
+        dish_prices = {g: dish_price_stats(v)
+                        for g, v in sorted(by_dish_prices.get(dish_id, {}).items())}
+        entry = {
+            "id": dish_id,
             "name": dish,
             "nameDe": (latest_de_name or {}).get((facility, dish)) or dish,
             "facility": facility,
@@ -475,7 +637,7 @@ def build_stats(data_dir, latest_de_name=None, price_groups=None, websites_path=
             # excluding the Choose-5 build-your-own dish from the diet mix)
             # subtract a dish's history from the exact bucket(s) it landed
             # in, instead of assuming it's all under the latest diet.
-            "dietDays": {k: by_dish_diet[(facility, dish)].get(k, 0) for k in DIET_KEYS},
+            "dietDays": {k: by_dish_diet[dish_id].get(k, 0) for k in DIET_KEYS},
             "count": len(dates_seen),
             "firstSeen": dates_seen[0],
             "lastSeen": dates_seen[-1],
@@ -484,8 +646,39 @@ def build_stats(data_dir, latest_de_name=None, price_groups=None, websites_path=
             "meanGapWeekdays": mean_gap,
             "sdGapWeekdays": sd_gap,
             "prediction": prediction,
-        })
+        }
+        if dish_prices:
+            entry["prices"] = dish_prices
+        dishes.append(entry)
     dishes.sort(key=lambda x: (-x["count"], x["name"]))
+
+    # lines[]: which dish typically replaces which (TODO item 2), grouped by
+    # serving counter (facility, line) - the same counter runs different
+    # dishes on different days, so its dish sequence is the substitution
+    # list. Current limitation: with 16 weekday menus most dishes appear
+    # once, so this shows what has run on a counter, not yet a *ranking* of
+    # substitution pairs by frequency - that needs a thicker archive.
+    by_line_dishes = defaultdict(list)  # (facility, line) -> [{dish summary}]
+    for (facility, line, dish), dates_seen in by_line_dish_dates.items():
+        by_line_dishes[(facility, line)].append({
+            "id": id_for[(facility, dish)],
+            "name": dish,
+            "nameDe": (latest_de_name or {}).get((facility, dish)) or dish,
+            "count": len(dates_seen),
+            "firstSeen": dates_seen[0],
+            "lastSeen": dates_seen[-1],
+            "dates": dates_seen,
+        })
+    lines = []
+    for facility, line in sorted(by_line_dishes,
+                                  key=lambda fl: (facility_sort_key(fl[0], facility_id_for.get(fl[0]), order), fl[1])):
+        dish_list = sorted(by_line_dishes[(facility, line)], key=lambda x: (-x["count"], x["name"]))
+        lines.append({
+            "facility": facility,
+            "line": line,
+            "dishDays": sum(x["count"] for x in dish_list),
+            "dishes": dish_list,
+        })
 
     return {
         "dataAsOf": data_as_of,
@@ -501,6 +694,7 @@ def build_stats(data_dir, latest_de_name=None, price_groups=None, websites_path=
         "facilities": facilities,
         "overall": overall,
         "dishes": dishes,
+        "lines": lines,
     }
 
 
@@ -570,6 +764,13 @@ def demo():
     _test_byte_repeatability()
     _test_facility_order_from_websites_txt()
     _test_dish_diet_days_matches_history()
+    _test_dish_prices_and_lines()
+    _test_dish_id_new_name_gets_next_free()
+    _test_dish_id_stable_across_rebuild()
+    _test_dish_id_rename_merges_sightings()
+    _test_dish_id_allocation_deterministic_for_batch()
+    _test_dish_id_registry_reserialize_byte_identical()
+    _test_policy_matches_html_pages()
 
     print("demo: all assertions passed")
 
@@ -600,7 +801,7 @@ def _test_duplicate_snapshots_dedup():
                      for h in (6, 7, 8)]
         _write_jsonl(d / "2026-08-01.jsonl", snapshots)
 
-        day_dish, _as_of, _fid_for = load_day_dish(d)
+        day_dish, _as_of, _fid_for, _line_for = load_day_dish(d)
         assert len(day_dish) == 1
         assert ("2026-08-01", "food market", "Ramen") in day_dish
 
@@ -662,7 +863,7 @@ def _test_sold_out_in_first_snapshot():
 
         rows, _latest, _groups = build_dish_rows(d)
         assert rows == {}
-        day_dish, _as_of, _fid_for = load_day_dish(d)
+        day_dish, _as_of, _fid_for, _line_for = load_day_dish(d)
         assert day_dish == {}
 
 
@@ -704,10 +905,12 @@ def _test_byte_repeatability():
 
         def build_once():
             rows, latest_de_name, price_groups = build_dish_rows(d)
-            stats = build_stats(d, latest_de_name, price_groups)
+            keys = {(r["facility"], r["name_en"]) for r in rows.values()}
+            id_for, _registry = assign_dish_ids({}, keys)  # mirrors __main__'s flow
+            stats = build_stats(d, latest_de_name, price_groups, id_for=id_for)
             json_bytes = (json.dumps(stats, indent=2) + "\n").encode()
             csv_path = d / "out.csv"
-            write_dishes_csv(rows, stats["priceGroups"], csv_path)
+            write_dishes_csv(rows, stats["priceGroups"], id_for, csv_path)
             csv_bytes = csv_path.read_bytes()
             csv_path.unlink()
             return json_bytes, csv_bytes
@@ -744,6 +947,140 @@ def _test_dish_diet_days_matches_history():
         assert sum(dish["dietDays"].values()) == dish["count"] == 2
 
 
+def _test_dish_prices_and_lines():
+    """TODO items 2+3. Same fixture covers both: 'Line A' (the fixed
+    counter name _mk_meal bakes in) carries two different dishes across
+    three dates - Teriyaki Beef Balls on day 1 and day 3 (price changes
+    between them, so sd must be non-null), Teriyaki Chicken Balls on day 2
+    only (a single price observation, so sd must stay null, not 0.00)."""
+    with tempfile.TemporaryDirectory() as td:
+        d = Path(td)
+
+        def priced(line_id, name, price):
+            return _mk_meal(line_id, name,
+                             **{"meal-price-array": [{"customer-group-desc": "students", "price": price}]})
+
+        day1 = [{"fetchedAt": "2026-08-03T06:00:00Z", "facilities": {"en": _mk_facility(
+            "19", "food market", [priced("7", "Teriyaki Beef Balls", 10.50)])}}]
+        day2 = [{"fetchedAt": "2026-08-04T06:00:00Z", "facilities": {"en": _mk_facility(
+            "19", "food market", [priced("7", "Teriyaki Chicken Balls", 11.00)])}}]
+        day3 = [{"fetchedAt": "2026-08-05T06:00:00Z", "facilities": {"en": _mk_facility(
+            "19", "food market", [priced("7", "Teriyaki Beef Balls", 11.50)])}}]
+        _write_jsonl(d / "2026-08-03.jsonl", day1)
+        _write_jsonl(d / "2026-08-04.jsonl", day2)
+        _write_jsonl(d / "2026-08-05.jsonl", day3)
+
+        rows, latest_de_name, price_groups = build_dish_rows(d)
+        stats = build_stats(d, latest_de_name, price_groups)
+
+        beef = next(x for x in stats["dishes"] if x["name"] == "Teriyaki Beef Balls")
+        assert beef["prices"]["students"]["n"] == 2
+        assert beef["prices"]["students"]["sd"] == round(statistics.stdev([10.50, 11.50]), 2)
+        assert beef["prices"]["students"]["mean"] == 11.0
+
+        chicken = next(x for x in stats["dishes"] if x["name"] == "Teriyaki Chicken Balls")
+        assert chicken["prices"]["students"]["n"] == 1
+        assert chicken["prices"]["students"]["sd"] is None, "a single observation has no sd, not 0.00"
+
+        line = next(l for l in stats["lines"]
+                    if l["facility"] == "food market" and l["line"] == "Line A")
+        assert {x["name"] for x in line["dishes"]} == {"Teriyaki Beef Balls", "Teriyaki Chicken Balls"}
+        assert line["dishDays"] == 3
+
+
+def _test_dish_id_new_name_gets_next_free():
+    """A name with no registry entry gets a fresh id, one past the current
+    max - not 1, not a reused gap."""
+    registry = {1: [("food market", "Ramen")], 2: [("food market", "Pizza")]}
+    id_for, new_registry = assign_dish_ids(
+        registry, [("food market", "Ramen"), ("food market", "Curry")])
+    assert id_for[("food market", "Curry")] == 3
+    assert new_registry[3] == [("food market", "Curry")]
+    assert id_for[("food market", "Ramen")] == 1  # untouched
+    assert registry == {1: [("food market", "Ramen")], 2: [("food market", "Pizza")]}, \
+        "assign_dish_ids must not mutate its registry argument"
+
+
+def _test_dish_id_stable_across_rebuild():
+    """A name already in the registry keeps its id, and re-running
+    assignment over an unchanged registry+keys changes nothing - the
+    no-new-ids case the workflow's commit gating depends on."""
+    registry = {5: [("food market", "Ramen")]}
+    id_for1, reg1 = assign_dish_ids(registry, [("food market", "Ramen")])
+    id_for2, reg2 = assign_dish_ids(reg1, [("food market", "Ramen")])
+    assert id_for1[("food market", "Ramen")] == 5
+    assert id_for2[("food market", "Ramen")] == 5
+    assert reg1 == reg2 == registry
+
+
+def _test_dish_id_rename_merges_sightings():
+    """The rename case: a registry entry listing two names under one id
+    must merge their sightings into a single stats.json dish entry with the
+    combined count, not two separate dishes that happen to share an id."""
+    with tempfile.TemporaryDirectory() as td:
+        d = Path(td)
+        day1 = [{"fetchedAt": "2026-08-03T06:00:00Z", "facilities": {"en": _mk_facility(
+            "19", "food market", [_mk_meal("1", "Berlin Currywurst")])}}]
+        day2 = [{"fetchedAt": "2026-08-04T06:00:00Z", "facilities": {"en": _mk_facility(
+            "19", "food market", [_mk_meal("1", "Currywurst Berliner Art")])}}]
+        _write_jsonl(d / "2026-08-03.jsonl", day1)
+        _write_jsonl(d / "2026-08-04.jsonl", day2)
+
+        rows, latest_de_name, price_groups = build_dish_rows(d)
+        registry = {7: [("food market", "Berlin Currywurst"),
+                         ("food market", "Currywurst Berliner Art")]}
+        keys = {(r["facility"], r["name_en"]) for r in rows.values()}
+        id_for, _new_registry = assign_dish_ids(registry, keys)
+        assert id_for[("food market", "Berlin Currywurst")] == 7
+        assert id_for[("food market", "Currywurst Berliner Art")] == 7
+
+        stats = build_stats(d, latest_de_name, price_groups, id_for=id_for)
+        assert len(stats["dishes"]) == 1, "a recorded rename must merge into one dish, not two"
+        dish = stats["dishes"][0]
+        assert dish["id"] == 7
+        assert dish["count"] == 2
+        assert dish["dates"] == ["2026-08-03", "2026-08-04"]
+        assert dish["name"] == "Currywurst Berliner Art", "latest sighting's name wins, like nameDe elsewhere"
+
+        for r in rows.values():
+            assert id_for[(r["facility"], r["name_en"])] == 7  # dishes.csv agrees too
+
+
+def _test_dish_id_allocation_deterministic_for_batch():
+    """Several brand-new names allocated in one call must get the same ids
+    regardless of the order they're passed in - sorted (facility, name)
+    order is the only thing that may decide allocation order, not dict/set
+    iteration, or two builds over the same archive could assign different
+    ids and churn stats.json every run."""
+    keys = [("food market", "Zucchini"), ("food market", "Apple"),
+            ("Mendokoro", "Apple"), ("food market", "Mango")]
+    id_for1, reg1 = assign_dish_ids({}, keys)
+    id_for2, reg2 = assign_dish_ids({}, list(reversed(keys)))
+    assert id_for1 == id_for2
+    assert reg1 == reg2
+    # sorted (facility, name): uppercase "Mendokoro" sorts before lowercase
+    # "food market" (ASCII), so this is not alphabetical-by-dish-name-alone.
+    assert id_for1[("Mendokoro", "Apple")] == 1
+    assert id_for1[("food market", "Apple")] == 2
+    assert id_for1[("food market", "Mango")] == 3
+    assert id_for1[("food market", "Zucchini")] == 4
+
+
+def _test_dish_id_registry_reserialize_byte_identical():
+    """Loading a registry and re-serialising it without allocating anything
+    new must produce byte-identical output - the property the workflow's
+    commit-only-when-changed gating relies on for a no-op run."""
+    with tempfile.TemporaryDirectory() as td:
+        path = Path(td) / "dish-ids.json"
+        registry = {1: [("food market", "Ramen")], 2: [("Mendokoro", "Sushi")]}
+        write_dish_ids(registry, path)
+        b1 = path.read_bytes()
+        loaded = load_dish_ids(path)
+        assert loaded == registry
+        write_dish_ids(loaded, path)
+        assert path.read_bytes() == b1
+
+
 def _test_facility_order_from_websites_txt():
     """A fixture whose websites.txt order differs from alphabetical must
     come out in file order, and a missing websites.txt must raise rather
@@ -778,11 +1115,105 @@ def _test_facility_order_from_websites_txt():
             pass
 
 
+def _extract_js_list(text, const_name, source):
+    """Pull the quoted strings out of a `const NAME = [...]` JS array."""
+    m = re.search(rf"const {const_name}\s*=\s*\[(.*?)\]\s*;", text, re.DOTALL)
+    assert m, (f"{const_name} not found in {source} - it was moved, renamed "
+               f"or restructured, so _test_policy_matches_html_pages() can no "
+               f"longer check it against build_stats.py; fix the check and "
+               f"re-verify the policies still agree before relying on it again")
+    return [a or b for a, b in re.findall(r"'([^']*)'|\"([^\"]*)\"", m.group(1))]
+
+
+def _extract_js_string(text, const_name, source):
+    """Pull the quoted value out of a `const NAME = '...'` JS assignment."""
+    m = re.search(rf"const {const_name}\s*=\s*'([^']*)'\s*;", text)
+    assert m, (f"{const_name} not found in {source} - it was moved, renamed "
+               f"or restructured, so _test_policy_matches_html_pages() can no "
+               f"longer check it against build_stats.py; fix the check and "
+               f"re-verify the policies still agree before relying on it again")
+    return m.group(1)
+
+
+def _test_policy_matches_html_pages(index_html_path=INDEX_HTML_PATH,
+                                     stats_html_path=STATS_HTML_PATH):
+    """Drift guard for TODO item 7: diet precedence, the sold-out labels and
+    the build-your-own name are deliberately duplicated in build_stats.py,
+    index.html and stats.html rather than unified into one runtime-fetched
+    config (that would put a new failure mode on the menu page's render
+    path to save three small constants). The risk that duplication carries
+    is silent drift - a copy changes and the pages quietly disagree, which
+    has already happened twice here before facility order and price-group
+    order were each unified onto one canonical source. This test removes
+    that risk without removing the duplication: it reads index.html's and
+    stats.html's actual source off disk - unlike every other check in this
+    file, which builds synthetic fixtures - because the point is to catch
+    the real pages drifting, not a fixture that always agrees with itself.
+    Extraction failures are hard asserts, not skips: a silent skip after
+    someone restructures the JS would defeat the entire guard."""
+    index_src = index_html_path.read_text()
+    stats_src = stats_html_path.read_text()
+
+    # Sold-out placeholders: build_stats.py's SOLD_OUT vs index.html's
+    # SOLD_OUT_LABELS must name the same placeholders, case-insensitively.
+    # (stats.html has no equivalent list to check - it never inspects a
+    # meal's sold-out state itself.)
+    js_sold_out = {s.lower() for s in _extract_js_list(index_src, "SOLD_OUT_LABELS", "index.html")}
+    assert js_sold_out == SOLD_OUT, (
+        f"SOLD_OUT in build_stats.py ({sorted(SOLD_OUT)}) and SOLD_OUT_LABELS "
+        f"in index.html ({sorted(js_sold_out)}) disagree - change both together")
+
+    # Diet precedence: index.html's classifyMeal() must check vegan before
+    # vegetarian, matching DIET_PRECEDENCE's best-wins order, and its label
+    # lists must include the exact API desc words build_stats.py matches on.
+    m = re.search(r"function classifyMeal\(meal\)\s*\{.*?\n\}", index_src, re.DOTALL)
+    assert m, ("classifyMeal() not found in index.html - update this check "
+               "together with it")
+    body = m.group(0)
+    assert "VEGAN_LABELS" in body and "VEGETARIAN_LABELS" in body, (
+        "classifyMeal() in index.html no longer references VEGAN_LABELS/"
+        "VEGETARIAN_LABELS - update this check together with it")
+    vegan_idx = DIET_PRECEDENCE.index("vegan")
+    vegetarian_idx = DIET_PRECEDENCE.index("vegetarian")
+    js_checks_vegan_first = body.index("VEGAN_LABELS") < body.index("VEGETARIAN_LABELS")
+    assert (vegan_idx < vegetarian_idx) == js_checks_vegan_first, (
+        "DIET_PRECEDENCE in build_stats.py and the check order in index.html's "
+        "classifyMeal() disagree on whether vegan or vegetarian wins when a "
+        "dish carries both tags - reorder one to match the other")
+    vegan_labels = _extract_js_list(index_src, "VEGAN_LABELS", "index.html")
+    vegetarian_labels = _extract_js_list(index_src, "VEGETARIAN_LABELS", "index.html")
+    assert DIET_PRECEDENCE[vegan_idx].capitalize() in vegan_labels, (
+        f"DIET_PRECEDENCE has {DIET_PRECEDENCE[vegan_idx]!r} but index.html's "
+        f"VEGAN_LABELS {vegan_labels} has no matching API desc word - "
+        f"change both together")
+    assert DIET_PRECEDENCE[vegetarian_idx].capitalize() in vegetarian_labels, (
+        f"DIET_PRECEDENCE has {DIET_PRECEDENCE[vegetarian_idx]!r} but "
+        f"index.html's VEGETARIAN_LABELS {vegetarian_labels} has no matching "
+        f"API desc word - change both together")
+
+    # Build-your-own exclusion: stats.html's CHOOSE_5_NAME and index.html's
+    # special-casing in mealSortKey() must name the same dish.
+    choose5_stats = _extract_js_string(stats_src, "CHOOSE_5_NAME", "stats.html")
+    m = re.search(r"meal\.name === '([^']*)'", index_src)
+    assert m, ("mealSortKey()'s build-your-own special case not found in "
+               "index.html - update this check together with it")
+    choose5_index = m.group(1)
+    assert choose5_stats == choose5_index, (
+        f"CHOOSE_5_NAME in stats.html ({choose5_stats!r}) and the "
+        f"build-your-own name in index.html's mealSortKey() ({choose5_index!r}) "
+        f"disagree - change both together")
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", default="data/stats.json", help="output path")
     parser.add_argument("--out-csv", default="data/dishes.csv", help="tidy per-dish-day csv output path")
     parser.add_argument("--data-dir", default="data", help="directory of *.jsonl snapshots")
+    parser.add_argument("--allow-new-registry", action="store_true",
+                        help="create data/dish-ids.json if absent (bootstrap only; "
+                             "CI must never pass this - see load_dish_ids)")
+    parser.add_argument("--dish-ids", default=str(DISH_IDS_PATH),
+                         help="numeric dish-id registry path (TODO item 8) - read and rewritten every build")
     parser.add_argument("--selftest", action="store_true", help="run self checks and exit")
     args = parser.parse_args()
 
@@ -790,11 +1221,26 @@ if __name__ == "__main__":
         demo()
     else:
         rows, latest_de_name, price_groups = build_dish_rows(Path(args.data_dir))
-        stats = build_stats(Path(args.data_dir), latest_de_name, price_groups)
+
+        # Registry allocation happens once, here, and the resulting id_for is
+        # threaded into both outputs below - build_stats and write_dishes_csv
+        # each parse the archive their own way (deduped-by-day vs per-date
+        # rows), so computing ids independently in each risks the two
+        # disagreeing; a single shared mapping can't.
+        dish_ids_path = Path(args.dish_ids)
+        keys = {(r["facility"], r["name_en"]) for r in rows.values()}
+        old_registry = load_dish_ids(dish_ids_path, allow_new=args.allow_new_registry)
+        already_known = {pair for names in old_registry.values() for pair in names}
+        id_for, dish_id_registry = assign_dish_ids(old_registry, keys)
+        write_dish_ids(dish_id_registry, dish_ids_path)
+
+        stats = build_stats(Path(args.data_dir), latest_de_name, price_groups, id_for=id_for)
         Path(args.out).write_text(json.dumps(stats, indent=2) + "\n")
-        write_dishes_csv(rows, stats["priceGroups"], Path(args.out_csv))
+        write_dishes_csv(rows, stats["priceGroups"], id_for, Path(args.out_csv))
         print(f"wrote {args.out}: {len(stats['facilities'])} facilities, "
               f"{len(stats['dishes'])} dishes, "
               f"{sum(1 for d in stats['dishes'] if d['prediction'])} with a prediction")
         print(f"wrote {args.out_csv}: {len(rows)} dish-day rows, "
               f"{sum(1 for r in rows.values() if r['sold_out_at'])} sold out")
+        print(f"wrote {dish_ids_path}: {len(dish_id_registry)} ids "
+              f"({len(keys - already_known)} newly allocated this build)")

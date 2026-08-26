@@ -121,9 +121,18 @@ jobs:
           echo "$NEW" >> "$SNAPSHOT"
           echo "SNAPSHOT_CHANGED=true" >> "$GITHUB_ENV"
 
-      # The `hashFiles` clause is a self-heal: if data/stats.json or
-      # data/dishes.csv ever goes missing it gets rebuilt on the next run
-      # rather than waiting for a menu change to happen to trigger one.
+      # The `hashFiles` clause is a self-heal for the two DERIVABLE outputs:
+      # if data/stats.json or data/dishes.csv goes missing it is rebuilt on
+      # the next run rather than waiting for a menu change.
+      #
+      # data/dish-ids.json is deliberately NOT self-healed. It is the source
+      # of truth for dish identity, and ids are assigned in first-seen order
+      # rather than derived, so "rebuilding" it does not restore it - it
+      # mints different numbers. Measured on this archive, day-by-day
+      # allocation and a one-shot rebuild agree on only 6 of 96 ids. A
+      # self-heal would therefore orphan every local rating and saved link
+      # while reporting success. If it goes missing the build fails loudly
+      # and a human restores it from git history.
       # OUTPUTS_REBUILT is set explicitly (rather than re-checking hashFiles
       # in the commit step below) because hashFiles is re-evaluated live -
       # by the time the commit step's `if` runs, the rebuild above has

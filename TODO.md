@@ -1,151 +1,71 @@
 # TODO
 
-Next session. Notes under each item are what I found while checking, so the
-work can start from a diagnosis rather than from scratch.
+Nothing outstanding. The previous list is done — the notes below record what
+landed and where the limits are, since several items are only as good as the
+archive behind them.
 
-Items 1, 2, 4, 5, 8, 9 and 11 from the previous list are done (see commit
-`a81a3dc`): shared facility ordering from `websites.txt`, a fully bilingual
-stats page, `Choose 5` excluded from the statistics, `?lang=` carried both
-ways between the pages, the two `index.html` races, and `--selftest` grown
-from 19 to 36 assertions.
+## Done
 
-## 1. Analyse today's menu specifically on the stats page
+| Item | Where it lives |
+|---|---|
+| Today's menu analysed against the archive | `stats.html`, "Today" section |
+| What ran on each counter | `stats.html` + `stats.json`'s `lines[]` |
+| Per-dish price mean ± σ | ledger columns, hidden by default |
+| Choosable ledger columns, remembered | `localStorage`, validated on read |
+| Cross-language dish search | `?q=`, matches `name` and `nameDe` |
+| Local star ratings, 0–5 | `index.html`, keyed on numeric dish id |
+| Policy-drift guard | `--selftest` reads both HTML pages |
+| Numeric dish ids + registry | `data/dish-ids.json` |
 
-Everything on the stats page is archive-wide. Add a "today" view: what is on
-offer right now, its diet split versus the historical average, whether each
-dish is a first-ever sighting or a repeat, and — once the archive is thicker
-— how today compares to the same weekday historically.
+Earlier rounds: shared facility ordering from `websites.txt`, a fully
+bilingual stats page, `Choose 5` excluded from the statistics, `?lang=`
+carried both ways, two `index.html` races, and `--selftest` grown from 19 to
+79 assertions.
 
-`data/dishes.csv` already has `date`, so this is a filter plus a comparison,
-not new extraction.
+## What is thin rather than broken
 
-## 2. List which dish typically replaces which
+The machinery is finished; the archive is not. As of 2026-08-26 it holds 16
+weekday menus, **2** sell-out events, and 96 dishes of which only 7 have been
+seen more than once. That is why:
 
-Wanted: pairs like *Teriyaki Beef Balls* ↔ *Teriyaki Chicken Balls*.
+- Almost every dish shows `—` for its next predicted serving. A prediction
+  needs 3 sightings before a standard deviation exists.
+- Every non-null price σ is exactly `0.00` — no dish has ever changed price.
+- The counters section shows *what has run on each counter*, not what
+  *typically* replaces what. Ranking substitution pairs by frequency needs a
+  thicker archive; a single co-occurrence is not a pattern.
 
-The data already supports this and the key is the `line` column in
-`data/dishes.csv` — the serving counter. The same counter runs different
-dishes on different days, so a counter's dish sequence *is* the substitution
-list. The requested example is literally a line named `Teriyaki` carrying both
-`Teriyaki Beef Balls` and `Teriyaki Chicken Balls`.
+These fill in on their own as dishes recur — realistically from November.
+None of them needs code changes to start working.
 
-Counters with the most variety to mine:
+## Things worth knowing before changing anything
 
-| facility | line | distinct dishes |
-|---|---|---|
-| food market | fire | 18 |
-| food market | grill | 18 |
-| food market | pasta della nonna | 16 |
-| food market | green daily | 16 |
-| food market | pasta classica | 8 |
+**`data/dish-ids.json` cannot be regenerated.** Ids are assigned in first-seen
+order, not derived, so rebuilding from a finished archive allocates different
+numbers — measured here, day-by-day and one-shot allocation agree on only 6 of
+96. Losing it orphans every local rating. It is deliberately excluded from the
+workflow's self-heal, and the build fails loudly if it goes missing.
 
-Caveat worth designing around: with 16 weekday menus most dishes appear once,
-so "typically" is not yet supported by the data. Grouping by counter works
-today; ranking substitution *pairs* by frequency needs more archive. Consider
-shipping the per-counter grouping now and the pairing later.
+**Diet precedence, the sold-out labels and the build-your-own name are
+duplicated on purpose** across `tools/build_stats.py`, `index.html` and
+`stats.html`, to keep the deployment dependency-free. `--selftest` asserts the
+copies agree, so changing one means changing all three. A shared config
+fetched at runtime was considered and rejected: it would add a failure mode on
+the menu page's render path to unify three constants.
 
-## 3. Historic price average + deviation per dish in the ledger
+**One archive line is corrupt and stays that way.** `data/2026-08-17.jsonl` at
+`07:21:25Z` records a failed API call as `"Mensa 19"` with a null `dayEntry` —
+i.e. "this canteen served nothing". The generator bug is long fixed, but the
+line remains: the archive is append-only history, and rewriting it would be
+worse than documenting it. Anything analysing that date should expect one
+snapshot with a missing German food-market menu.
 
-Add mean and standard deviation of each dish's observed price to the dish
-ledger, so a dish's typical cost and how much it moves are visible per row
-rather than only as a facility-wide spread.
+## Possible next steps
 
-Per-dish-day prices are already in `data/dishes.csv` (`price_students`,
-`price_internal`, `price_external`), so this is an aggregation in
-`tools/build_stats.py` plus columns in `stats.html` — no new extraction.
+Not requested, listed only so they are not rediscovered from scratch:
 
-Expect it to be empty for a while, and design the empty state accordingly:
-
-- All 96 dishes carry a price, but only **7** have been seen on more than one
-  day, so 89 have no deviation to compute at all.
-- Of those 7, **none** has ever changed price. Every standard deviation in the
-  archive today would be exactly `0.00`.
-
-So ship it with the same honesty as the prediction column: show mean always,
-show σ only where ≥2 observations exist, and `—` otherwise. Decide whether
-a column that is all-zeros-and-dashes earns its width yet, or whether
-mean-only now and σ later is the better call. Archive-wide the student prices
-occupy just ten distinct values (7.00–13.80), so price movement is likely to
-be rare and step-like rather than continuous.
-
-## 4. Choosable columns in the dish ledger, with a remembered choice
-
-The ledger shows all eight columns unconditionally. Let the reader pick which
-to see, defaulting to seven:
-
-> Dish, Facility, Diet, Times seen, Last seen, Mean gap, Next predicted serving
-
-i.e. only `First seen` is hidden by default. `dishColumns(strings)` in
-`stats.html` already returns a list of `{key, label}` (it became a function
-when the labels were translated), so the chooser is a filter over its result —
-the table builder should render whatever subset is selected rather than the
-whole array. Keep at least one column always on so the table cannot vanish.
-
-**"Last seen" must not count today.** A dish on today's menu currently shows
-today's date, which is trivially true and useless next to "next predicted
-serving" — the useful answer is when it was *previously* served. Right now 12
-of 96 dishes have `lastSeen == today`, so this is visible immediately.
-
-No schema change needed: `stats.json`'s `dishes[].dates` carries the full
-sighting list, so the page can take the last entry before today. Leave
-`lastSeen` in the JSON as the honest maximum — this is a display rule, not a
-data change. Edge case to handle: a dish whose *only* sighting is today has no
-previous serving, so show `—` (or "first time today"), not today's date and
-not a blank.
-
-**Persist the choice for at least 3 months.** Plain `localStorage` under its
-own key is enough — it survives indefinitely until cleared, which satisfies
-"at least 3 months". Do **not** reuse the API-response cache helper: that one
-carries a 5-minute TTL (`index.html:237`) and would silently discard the
-preference almost immediately. Store a list of column keys, and validate on
-read — unknown or removed keys must be ignored gracefully so a future change
-to the column list cannot leave someone with a broken or empty table.
-
-Note this interacts with item 3 above — per-dish price mean/deviation adds
-more columns — and the chooser's own labels need to go into `STRINGS` like
-everything else user-visible on the page.
-
-## 5. Search the stats page for a specific dish
-
-Free-text search over the dish ledger — type "teriyaki" and see just those
-rows. With 96 dishes and growing, scanning is already awkward.
-
-- Search **both** `name` and `nameDe` regardless of the active language, so
-  "Rahmgulasch" finds the dish while the page is in English and vice versa.
-  Match case- and accent-insensitively (`Älpler` should match "alpler").
-- Compose with the existing facility filter and "only predicted" checkbox
-  rather than replacing them, and preserve the query across a language toggle
-  the same way the other controls now are (they live on `state`).
-- Reflect it in the URL (`?q=`) so a search can be linked, consistent with
-  how `?lang=` already works.
-- Needs a translated placeholder and a translated "no matches" empty state —
-  the latter already exists as `strings`-driven text.
-
-Cheapest version is a substring match over the two name fields; no index, no
-fuzzy matching, until the archive is big enough to justify it.
-
-## 6. Reduce the policy duplicated across four languages
-
-Diet precedence, the sold-out labels and the build-your-own exclusion each
-still exist in some combination of `tools/build_stats.py`, `index.html`,
-`stats.html` and the workflow's shell/jq.
-
-Facility ordering and price-group ordering are no longer duplicated —
-`websites.txt` position is now canonical for the first, and `stats.json`'s
-`priceGroups` for the second. Both had already drifted before being unified,
-which is the argument for doing the same to what remains: one generated
-config the others read, without giving up the dependency-free deployment.
-
----
-
-Standing context: the machinery is finished, the archive is still thin — 16
-weekday menus, 2 sell-out events, and most dishes seen exactly once. Items 1,
-4 and 5 get substantially more useful once dishes start recurring
-(≈November).
-
-Note on the archive: `data/2026-08-17.jsonl` at `07:21:25Z` contains a
-corrupted line — a failed API call was recorded as `"Mensa 19"` with a null
-`dayEntry`, i.e. "this canteen served nothing". The generator bug is fixed,
-but the line stays: the archive is append-only history, and rewriting it
-would be worse than documenting it. Anything analysing that date should
-expect one snapshot with a missing German food-market menu.
+- Rating review/sort on the stats page — ratings are captured on the menu page
+  but nothing surfaces them yet.
+- Same-weekday comparison in the Today section, once there are enough weeks.
+- Pruning `data/` if it ever grows enough to matter; it is append-only and
+  nothing deletes old snapshots.

@@ -302,7 +302,8 @@
     margin-bottom: 12px;
     font-size: 0.85rem;
   }
-  .ledger-controls select {
+  .ledger-controls select,
+  .ledger-controls input[type="text"] {
     font-size: 0.82rem;
     padding: 4px 6px;
     border-radius: 6px;
@@ -310,13 +311,44 @@
     background: var(--card-bg);
     color: var(--text);
   }
+  .ledger-controls input[type="text"] { min-width: 160px; }
+  .column-chooser {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 14px;
+    margin-bottom: 12px;
+    font-size: 0.82rem;
+  }
+  .column-chooser-label { color: var(--muted); }
+  .column-chooser label { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
   th.sortable { cursor: pointer; user-select: none; }
   th.sortable:hover { color: var(--text); }
   th.sortable .sort-arrow { color: var(--accent); }
   .diet-badge { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
   .diet-badge-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
   .muted-dash { color: var(--muted); }
-  .pred-range { color: var(--muted); font-size: 0.85em; }
+
+  /* --- Today --- */
+  .today-facility { margin-bottom: 24px; }
+  .today-facility:last-child { margin-bottom: 0; }
+  .today-facility h3 { margin: 0 0 6px; font-size: 0.95rem; font-weight: 600; }
+  .today-facility .diet-row { padding: 3px 0; }
+  .today-facility .table-wrap { margin-top: 10px; }
+
+  /* --- Counters --- */
+  .counter-block {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 12px;
+    margin-bottom: 8px;
+  }
+  .counter-block summary { cursor: pointer; font-weight: 600; font-size: 0.88rem; padding: 4px 0; }
+  .counter-block summary:hover { color: var(--accent); }
+  .counter-dish-list { list-style: none; margin: 6px 0 4px; padding: 0; font-size: 0.84rem; }
+  .counter-dish-list li { padding: 5px 0; border-top: 1px solid var(--border); }
+  .counter-dish-list li:first-child { border-top: none; }
+  .variant-badge { color: var(--muted); font-size: 0.85em; }
 </style>
 </head>
 <body>
@@ -422,8 +454,10 @@ const STRINGS = {
       'current archive almost nothing qualifies yet. This column fills in on its own as dishes recur. ' +
       'Build-your-own counters (e.g. "Choose 5") are left out of this list — they aren\'t a dish.',
     onlyPredictedLabel: 'Only predicted',
+    ratedOnlyLabel: 'Rated only',
     colDish: 'Dish',
     colDiet: 'Diet',
+    colRating: 'Rating',
     colTimesSeen: 'Times seen',
     colFirstSeen: 'First seen',
     colLastSeen: 'Last seen',
@@ -431,6 +465,28 @@ const STRINGS = {
     colNextServing: 'Next predicted serving',
     noDishesMatch: 'No dishes match this filter.',
     weekdaysUnit: 'weekdays',
+    columnsLabel: 'Columns',
+    searchPlaceholder: 'Search dishes…',
+    colPricePrefix: 'Price (CHF)',
+    ratedNoneNote: 'No dishes rated yet — rate what you ate on the menu page.',
+    todaySectionTitle: 'Today',
+    todaySectionNote: "What's on the menu today, per facility: whether each dish is new or a repeat " +
+      "(and if a repeat, when it last ran before today), plus how today's diet mix compares to the " +
+      "facility's archive-wide split — so an unusually meaty or vegan day stands out.",
+    todayEmptyNote: 'Nothing on today — this is normal on a weekend, or before today\'s menu has been published.',
+    todayLabel: 'Today',
+    archiveWideLabel: 'Archive-wide',
+    todayPreviouslyLabel: 'Previously served',
+    firstTimeLabel: 'First time today',
+    countersSectionTitle: 'What ran on each counter',
+    countersSectionNote: 'Every dish seen on each serving counter — a counter serving dish A on one day and ' +
+      'dish B on another means B stood in for A, so this doubles as the substitution list. With only a handful ' +
+      "of weekday menus so far, most dishes have appeared once, so this shows what has run on each counter, " +
+      'not yet a ranked "typically replaces" list — that needs a thicker archive. Dishes marked ' +
+      '"same day" ran together on one menu as alternatives (e.g. a protein swap), not as a substitution across ' +
+      'days; unmarked dishes are the genuine different-day signal.',
+    countersEmptyNote: 'No counter data recorded yet.',
+    sameDayLabel: 'same day',
   },
   de: {
     title: 'Mensa-Statistik',
@@ -475,8 +531,10 @@ const STRINGS = {
       'sich von selbst, sobald Gerichte wiederkehren. Build-your-own-Theken (z. B. "Choose 5") sind in ' +
       'dieser Liste weggelassen — sie sind kein Gericht.',
     onlyPredictedLabel: 'Nur mit Vorhersage',
+    ratedOnlyLabel: 'Nur bewertet',
     colDish: 'Gericht',
     colDiet: 'Ernährung',
+    colRating: 'Bewertung',
     colTimesSeen: 'Häufigkeit',
     colFirstSeen: 'Erstmals gesehen',
     colLastSeen: 'Zuletzt gesehen',
@@ -484,6 +542,31 @@ const STRINGS = {
     colNextServing: 'Nächste vorhergesagte Ausgabe',
     noDishesMatch: 'Keine Gerichte entsprechen diesem Filter.',
     weekdaysUnit: 'Werktage',
+    columnsLabel: 'Spalten',
+    searchPlaceholder: 'Gerichte suchen…',
+    colPricePrefix: 'Preis (CHF)',
+    ratedNoneNote: 'Noch keine Gerichte bewertet — bewerte auf der Menüseite, was du gegessen hast.',
+    todaySectionTitle: 'Heute',
+    todaySectionNote: 'Was heute pro Mensa auf der Karte steht: ob ein Gericht neu ist oder eine Wiederholung ' +
+      '(und bei einer Wiederholung, wann es zuletzt vor heute serviert wurde), sowie wie sich der heutige ' +
+      'Ernährungsmix zum archivweiten Durchschnitt der Mensa verhält — damit ein aussergewöhnlich fleischlastiger ' +
+      'oder veganer Tag auffällt.',
+    todayEmptyNote: 'Heute steht nichts auf dem Programm — das ist am Wochenende normal, oder bevor die ' +
+      'heutige Karte veröffentlicht wurde.',
+    todayLabel: 'Heute',
+    archiveWideLabel: 'Archivweit',
+    todayPreviouslyLabel: 'Zuletzt serviert',
+    firstTimeLabel: 'Erstmals heute',
+    countersSectionTitle: 'Was an jeder Theke lief',
+    countersSectionNote: 'Alle Gerichte, die an jeder Ausgabetheke gesichtet wurden — läuft an einer Theke an ' +
+      'einem Tag Gericht A und an einem anderen Tag Gericht B, hat B A abgelöst, das ist zugleich die ' +
+      'Ablösungsliste. Bei erst wenigen Werktagsmenüs ist die meisten Gerichte bislang nur einmal aufgetaucht, ' +
+      'darum zeigt dies, was an jeder Theke lief, noch keine nach Häufigkeit geordnete "löst typischerweise ab"-' +
+      'Liste — dafür braucht es ein dickeres Archiv. Mit "gleicher Tag" markierte Gerichte liefen zusammen auf ' +
+      'derselben Karte als Alternativen (z. B. ein Proteintausch), nicht als Ablösung über Tage hinweg; ' +
+      'unmarkierte Gerichte sind das eigentliche Signal für unterschiedliche Tage.',
+    countersEmptyNote: 'Noch keine Thekendaten erfasst.',
+    sameDayLabel: 'gleicher Tag',
   },
 };
 
@@ -875,11 +958,90 @@ function renderPriceSection(stats, state) {
 // once it has recurred enough to support one.
 // ---------------------------------------------------------------------------
 
+// Read-only mirror of index.html's RATINGS_KEY/loadRatings — same storage
+// contract (0-5 stars, ISO ts, pruned after a year), but this page never
+// rates anything itself, so pruning here only drops stale entries from the
+// in-memory result; unlike index.html it never writes the prune back to
+// localStorage. dish.id from stats.json is the same numeric id ratings are
+// keyed on, so the lookup here is direct (no provisional "name:" keys to
+// resolve — that migration is index.html's job, on next visit there).
+const RATINGS_KEY = 'mensaDishRatings';
+const RATING_MAX_AGE_MS = 365 * 24 * 60 * 60 * 1000; // 1 year
+
+// Never throws: corrupt JSON, out-of-range stars, bad timestamps or a
+// missing localStorage (private browsing) all just yield {}.
+function loadRatings() {
+  let raw;
+  try {
+    raw = localStorage.getItem(RATINGS_KEY);
+  } catch (err) {
+    return {};
+  }
+  if (!raw) return {};
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (err) {
+    return {};
+  }
+  if (!parsed || typeof parsed !== 'object') return {};
+  const now = Date.now();
+  const valid = {};
+  for (const [key, entry] of Object.entries(parsed)) {
+    const stars = entry && entry.stars;
+    const time = entry && Date.parse(entry.ts);
+    const ok = Number.isInteger(stars) && stars >= 0 && stars <= 5 &&
+      !Number.isNaN(time) && now - time <= RATING_MAX_AGE_MS;
+    if (ok) valid[key] = entry;
+  }
+  return valid;
+}
+
+// Zurich calendar date for "today", matching index.html's zurichDateParts/
+// formatDate pattern — never the viewer's own timezone (same rationale as
+// formatDataAsOf above).
+function zurichTodayISO(d = new Date()) {
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/Zurich', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).formatToParts(d).reduce((a, x) => (a[x.type] = x.value, a), {});
+  return `${parts.year}-${parts.month}-${parts.day}`;
+}
+
+// Last sighting strictly before "today" — d.dates is sorted ascending, so
+// this walks from the end and skips today's entry. Returns null when the
+// dish's only sighting so far is today (a brand-new dish's first day),
+// which is the common case while the archive is this thin.
+function previousLastSeenDate(dish, todayISO) {
+  const dates = dish.dates || [];
+  for (let i = dates.length - 1; i >= 0; i--) {
+    if (dates[i] < todayISO) return dates[i];
+  }
+  return null;
+}
+
+// Accent- and case-insensitive substring match, no dependency: NFD splits
+// each accented character into base + combining mark(s), which are then
+// stripped, so "Älpler" normalizes the same as "alpler".
+function normalizeForSearch(s) {
+  return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+}
+
+// Matches on both language names regardless of which one is displayed, so a
+// German search works while the page is in English and vice versa.
+function matchesQuery(dish, normalizedQuery) {
+  if (!normalizedQuery) return true;
+  return normalizeForSearch(dish.name).includes(normalizedQuery) ||
+    normalizeForSearch(dish.nameDe || dish.name).includes(normalizedQuery);
+}
+
 function predictionCell(pred, strings) {
   if (!pred) return el('span', 'muted-dash', '—');
   const sigma = pred.sigmaWeekdays;
-  const main = sigma == null ? pred.nextDate : `${pred.nextDate} ±${sigma.toFixed(1)} ${strings.weekdaysUnit}`;
-  return el('span', null, [main, el('span', 'pred-range', ` (${pred.earliest}–${pred.latest})`)]);
+  // Just the date and the uncertainty in weekdays. The earliest/latest dates
+  // stay in stats.json for anyone analysing it, but spelling the interval out
+  // again here only repeated what ±N already says.
+  return el('span', null, sigma == null ? pred.nextDate
+    : `${pred.nextDate} ±${sigma.toFixed(1)} ${strings.weekdaysUnit}`);
 }
 
 function dietBadge(diet, strings) {
@@ -888,17 +1050,70 @@ function dietBadge(diet, strings) {
   return el('span', 'diet-badge', [dot, strings.diet[diet] || diet]);
 }
 
-function dishColumns(strings) {
+// priceGroups defaults to the compile-time-known list so the top-level
+// ALL_COLUMN_KEYS call (below, evaluated before stats.json is fetched) still
+// resolves; renderDishSection passes stats.priceGroups once it's loaded, so
+// group order/labels come from the data rather than being hardcoded twice.
+function dishColumns(strings, priceGroups = PRICE_GROUPS_KNOWN) {
   return [
     { key: 'name', label: strings.colDish },
     { key: 'facility', label: strings.colFacility },
     { key: 'diet', label: strings.colDiet },
+    { key: 'rating', label: strings.colRating },
     { key: 'count', label: strings.colTimesSeen },
     { key: 'firstSeen', label: strings.colFirstSeen },
     { key: 'lastSeen', label: strings.colLastSeen },
     { key: 'meanGapWeekdays', label: strings.colMeanGap },
     { key: 'nextDate', label: strings.colNextServing },
+    ...priceGroups.map(g => ({ key: `price_${g}`, label: `${strings.colPricePrefix} · ${strings.priceGroups[g] || g}` })),
   ];
+}
+
+// Column visibility is a display preference the reader sets once and expects
+// to stick — a plain localStorage key, not the 5-minute-TTL cache helper
+// index.html uses for API responses (index.html:237), which would discard it
+// almost immediately. Keys are language-independent, so STRINGS.en is enough
+// to enumerate them.
+const COLUMN_PREFS_KEY = 'mensaStatsLedgerColumns';
+const DEFAULT_COLUMN_KEYS = ['name', 'facility', 'diet', 'rating', 'count', 'lastSeen', 'meanGapWeekdays', 'nextDate'];
+const ALL_COLUMN_KEYS = dishColumns(STRINGS.en).map(c => c.key);
+
+// Unknown/removed keys are dropped rather than rejecting the whole list, and
+// an empty or unusable result falls back to the default — so a future change
+// to the column set, or a hand-edited/corrupt value, can never strand
+// someone with a broken or empty table.
+// Stored as {visible, known}: `known` records which columns existed when the
+// choice was last made, so a column added later is genuinely new rather than
+// deliberately switched off, and can adopt its default. Without that, every
+// future column would be invisible to anyone who had ever touched the chooser
+// — silently, which is the worst way for a feature to not exist. A bare array
+// is the pre-{visible,known} format and is still read.
+function loadColumnPrefs() {
+  try {
+    const raw = localStorage.getItem(COLUMN_PREFS_KEY);
+    if (!raw) return DEFAULT_COLUMN_KEYS.slice();
+    const parsed = JSON.parse(raw);
+    const stored = Array.isArray(parsed) ? parsed : parsed && parsed.visible;
+    const known = Array.isArray(parsed) ? parsed : (parsed && parsed.known) || [];
+    if (!Array.isArray(stored)) return DEFAULT_COLUMN_KEYS.slice();
+    const valid = stored.filter(k => ALL_COLUMN_KEYS.includes(k));
+    // Columns the reader has never been offered adopt their default.
+    const unseen = DEFAULT_COLUMN_KEYS.filter(
+      k => !known.includes(k) && !valid.includes(k) && ALL_COLUMN_KEYS.includes(k));
+    const merged = ALL_COLUMN_KEYS.filter(k => valid.includes(k) || unseen.includes(k));
+    return merged.length ? merged : DEFAULT_COLUMN_KEYS.slice();
+  } catch (err) {
+    return DEFAULT_COLUMN_KEYS.slice();
+  }
+}
+
+function saveColumnPrefs(keys) {
+  try {
+    localStorage.setItem(COLUMN_PREFS_KEY,
+      JSON.stringify({ visible: keys, known: ALL_COLUMN_KEYS.slice() }));
+  } catch (err) {
+    // Private browsing or a full quota — the choice just won't persist.
+  }
 }
 
 // nameDe falls back to the English name server-side (always non-empty), so
@@ -907,14 +1122,25 @@ function dishDisplayName(d, lang) {
   return lang === 'de' ? (d.nameDe || d.name) : d.name;
 }
 
-function sortValue(dish, key, lang) {
+// ratings is only consulted for key === 'rating' — every other column reads
+// straight off the dish object, same as before this column existed.
+function sortValue(dish, key, lang, todayISO, ratings) {
   if (key === 'nextDate') return dish.prediction ? dish.prediction.nextDate : null;
   if (key === 'name') return dishDisplayName(dish, lang);
+  if (key === 'lastSeen') return previousLastSeenDate(dish, todayISO);
+  if (key === 'rating') {
+    const entry = ratings[dish.id]; // dish.id (number) coerces fine as a key
+    return entry ? entry.stars : null; // null (unrated) sorts last either way, same as the other columns below
+  }
+  if (key.startsWith('price_')) {
+    const p = dish.prices && dish.prices[key.slice(6)];
+    return p ? p.mean : null;
+  }
   return dish[key];
 }
 
-function compareDishes(a, b, key, dir, lang) {
-  const av = sortValue(a, key, lang), bv = sortValue(b, key, lang);
+function compareDishes(a, b, key, dir, lang, todayISO, ratings) {
+  const av = sortValue(a, key, lang, todayISO, ratings), bv = sortValue(b, key, lang, todayISO, ratings);
   if (av == null && bv == null) return 0;
   if (av == null) return 1;   // nulls always sort last, regardless of direction
   if (bv == null) return -1;
@@ -922,8 +1148,69 @@ function compareDishes(a, b, key, dir, lang) {
   return base * dir;
 }
 
-function buildDishTable(rows, sortKey, sortDir, lang, strings, onSort) {
-  const columns = dishColumns(strings);
+// One cell-builder per column key, closed over the language/date context, so
+// buildDishTable can render whatever subset of dishColumns() is currently
+// visible without needing its own display logic per column.
+// priceGroups mirrors the list dishColumns() was built with, so a
+// price_<group> column key always has a matching cell builder.
+function dishCellBuilders(strings, lang, todayISO, priceGroups = PRICE_GROUPS_KNOWN, ratings = {}) {
+  const builders = {
+    name: d => el('td', null, dishDisplayName(d, lang)),
+    facility: d => el('td', null, d.facility),
+    diet: d => el('td', null, dietBadge(d.diet, strings)),
+    // "n/5" rather than star glyphs: at 380px it stays legible and, unlike a
+    // row of filled/empty stars, "0/5" vs. the unrated muted-dash can never
+    // be confused for each other.
+    rating: d => {
+      const entry = ratings[d.id];
+      return el('td', null, entry ? `${entry.stars}/5` : el('span', 'muted-dash', '—'));
+    },
+    count: d => el('td', null, String(d.count)),
+    firstSeen: d => el('td', null, d.firstSeen),
+    lastSeen: d => {
+      const prev = previousLastSeenDate(d, todayISO);
+      return el('td', null, prev ? prev : el('span', 'muted-dash', '—'));
+    },
+    meanGapWeekdays: d => el('td', null, d.meanGapWeekdays == null ? el('span', 'muted-dash', '—') : d.meanGapWeekdays.toFixed(1)),
+    nextDate: d => el('td', null, predictionCell(d.prediction, strings)),
+  };
+  // Absent `prices`, an absent group within it, or n<2 (sd: null) all render
+  // as a plain dash — a lone observation has no deviation to show, and is
+  // not the same thing as a price that has been confirmed stable at 0.00.
+  for (const g of priceGroups) {
+    builders[`price_${g}`] = d => {
+      const p = d.prices && d.prices[g];
+      if (!p) return el('td', null, el('span', 'muted-dash', '—'));
+      const text = p.sd == null ? p.mean.toFixed(2) : `${p.mean.toFixed(2)} ± ${p.sd.toFixed(2)}`;
+      return el('td', null, text);
+    };
+  }
+  return builders;
+}
+
+// Full sentence per language, same "n von 5 Sternen" phrasing index.html's
+// starLabel() uses — built directly rather than through STRINGS since it
+// needs the count/mean interpolated in different word order per language
+// (same pattern as renderHeader's dateLine text further below).
+function ratingSummaryText(count, mean, strings, lang) {
+  const avg = mean.toFixed(1);
+  return lang === 'de'
+    ? `${count} ${strings.dishesUnit} bewertet — im Schnitt ${avg} von 5 Sternen.`
+    : `${count} ${strings.dishesUnit} rated — average ${avg} of 5 stars.`;
+}
+
+// Count + mean over every valid rating this browser holds, regardless of
+// whether that dish is currently visible in the (filtered) ledger below —
+// "how many dishes have I rated", not "how many of the currently-shown rows
+// are rated".
+function renderRatingSummary(ratings, strings, lang) {
+  const entries = Object.values(ratings);
+  if (entries.length === 0) return el('div', 'empty-note', strings.ratedNoneNote);
+  const mean = entries.reduce((sum, e) => sum + e.stars, 0) / entries.length;
+  return el('p', 'section-note', ratingSummaryText(entries.length, mean, strings, lang));
+}
+
+function buildDishTable(rows, columns, cellBuilders, sortKey, sortDir, strings, onSort) {
   const headRow = el('tr', null, columns.map(col => {
     const th = el('th', 'sortable', [col.label, col.key === sortKey ? el('span', 'sort-arrow', sortDir === 1 ? ' ▲' : ' ▼') : null]);
     th.addEventListener('click', () => onSort(col.key));
@@ -936,24 +1223,17 @@ function buildDishTable(rows, sortKey, sortDir, lang, strings, onSort) {
     tbody.append(el('tr', null, cell));
   }
   for (const d of rows) {
-    tbody.append(el('tr', null, [
-      el('td', null, dishDisplayName(d, lang)),
-      el('td', null, d.facility),
-      el('td', null, dietBadge(d.diet, strings)),
-      el('td', null, String(d.count)),
-      el('td', null, d.firstSeen),
-      el('td', null, d.lastSeen),
-      el('td', null, d.meanGapWeekdays == null ? el('span', 'muted-dash', '—') : d.meanGapWeekdays.toFixed(1)),
-      el('td', null, predictionCell(d.prediction, strings)),
-    ]));
+    tbody.append(el('tr', null, columns.map(col => cellBuilders[col.key](d))));
   }
   return el('table', 'data-table', [el('thead', null, headRow), tbody]);
 }
 
-// Sort column/direction, facility filter and "only predicted" live on the
-// shared `state` object (alongside state.lang) rather than as local closure
-// variables, so a full re-render on language toggle can rebuild this section
-// from scratch and still come back up in the same place.
+// Sort column/direction, facility filter, search query and "only predicted"
+// live on the shared `state` object (alongside state.lang) rather than as
+// local closure variables, so a full re-render on language toggle can
+// rebuild this section from scratch and still come back up in the same
+// place. Column visibility lives on state too, but is seeded from
+// localStorage (see loadColumnPrefs) rather than URL/defaults.
 function renderDishSection(stats, state) {
   const strings = STRINGS[state.lang];
   const section = el('section', 'stat-section');
@@ -964,6 +1244,11 @@ function renderDishSection(stats, state) {
   // ledger (dishes.csv and the archive keep the full record; only this
   // client-side view excludes it).
   const dishes = stats.dishes.filter(d => d.name !== CHOOSE_5_NAME);
+  const todayISO = zurichTodayISO();
+  // Read-only: rating happens on the menu page, this page only ever reads
+  // mensaDishRatings, never writes it.
+  const ratings = loadRatings();
+  section.append(renderRatingSummary(ratings, strings, state.lang));
 
   const facilities = [...new Set(dishes.map(d => d.facility))].sort();
   const ALL_FACILITIES_VALUE = ''; // stable sentinel, independent of the translated label
@@ -977,29 +1262,221 @@ function renderDishSection(stats, state) {
   const onlyPredicted = el('input');
   onlyPredicted.type = 'checkbox';
   onlyPredicted.checked = state.onlyPredicted;
+  const ratedOnly = el('input');
+  ratedOnly.type = 'checkbox';
+  ratedOnly.checked = state.ratedOnly;
+  const searchInput = el('input');
+  searchInput.type = 'text';
+  searchInput.placeholder = strings.searchPlaceholder;
+  searchInput.setAttribute('aria-label', strings.searchPlaceholder);
+  searchInput.value = state.dishQuery;
   const controls = el('div', 'ledger-controls', [
     el('label', null, [onlyPredicted, ` ${strings.onlyPredictedLabel}`]),
+    el('label', null, [ratedOnly, ` ${strings.ratedOnlyLabel}`]),
     el('label', null, [`${strings.colFacility}: `, facilitySelect]),
+    searchInput,
   ]);
   section.append(controls);
+
+  // Column chooser: canonical dishColumns() order (not selection order), and
+  // at least one column always stays checked so the table can't vanish.
+  const priceGroups = stats.priceGroups && stats.priceGroups.length ? stats.priceGroups : PRICE_GROUPS_KNOWN;
+  const allColumns = dishColumns(strings, priceGroups);
+  const columnChooser = el('div', 'column-chooser', el('span', 'column-chooser-label', `${strings.columnsLabel}:`));
+  for (const col of allColumns) {
+    const cb = el('input');
+    cb.type = 'checkbox';
+    cb.checked = state.dishColumns.includes(col.key);
+    cb.addEventListener('change', () => {
+      if (cb.checked) {
+        if (!state.dishColumns.includes(col.key)) state.dishColumns = [...state.dishColumns, col.key];
+      } else {
+        const next = state.dishColumns.filter(k => k !== col.key);
+        if (next.length === 0) { cb.checked = true; return; } // keep at least one column on
+        state.dishColumns = next;
+      }
+      saveColumnPrefs(state.dishColumns);
+      rerender();
+    });
+    columnChooser.append(el('label', null, [cb, ` ${col.label}`]));
+  }
+  section.append(columnChooser);
 
   const tableWrap = el('div', 'table-wrap');
   section.append(tableWrap);
 
   function rerender() {
+    const normalizedQuery = normalizeForSearch(state.dishQuery.trim());
     let rows = dishes.filter(d =>
       (!state.onlyPredicted || d.prediction) &&
-      (state.dishFacility === ALL_FACILITIES_VALUE || d.facility === state.dishFacility));
-    rows = rows.slice().sort((a, b) => compareDishes(a, b, state.dishSortKey, state.dishSortDir, state.lang));
-    tableWrap.replaceChildren(buildDishTable(rows, state.dishSortKey, state.dishSortDir, state.lang, strings, key => {
+      (!state.ratedOnly || ratings[d.id]) &&
+      (state.dishFacility === ALL_FACILITIES_VALUE || d.facility === state.dishFacility) &&
+      matchesQuery(d, normalizedQuery));
+    rows = rows.slice().sort((a, b) => compareDishes(a, b, state.dishSortKey, state.dishSortDir, state.lang, todayISO, ratings));
+    const visibleColumns = allColumns.filter(c => state.dishColumns.includes(c.key));
+    const cellBuilders = dishCellBuilders(strings, state.lang, todayISO, priceGroups, ratings);
+    tableWrap.replaceChildren(buildDishTable(rows, visibleColumns, cellBuilders, state.dishSortKey, state.dishSortDir, strings, key => {
       state.dishSortDir = (state.dishSortKey === key) ? -state.dishSortDir : -1;
       state.dishSortKey = key;
       rerender();
     }));
   }
   onlyPredicted.addEventListener('change', () => { state.onlyPredicted = onlyPredicted.checked; rerender(); });
+  ratedOnly.addEventListener('change', () => { state.ratedOnly = ratedOnly.checked; rerender(); });
   facilitySelect.addEventListener('change', () => { state.dishFacility = facilitySelect.value; rerender(); });
+  searchInput.addEventListener('input', () => {
+    state.dishQuery = searchInput.value;
+    updateUrl(state);
+    rerender();
+  });
   rerender();
+  return section;
+}
+
+// ---------------------------------------------------------------------------
+// Section 4 — today: what's on offer right now, per facility, filtered from
+// the same stats.dishes[] the ledger uses (no separate extraction). Rendered
+// first on the page (see render()) even though it's defined last here, since
+// it reuses dietRow()/dietStatsExcludingChoose5() from section 1 above and
+// previousLastSeenDate()/dishDisplayName() from section 3 — JS function
+// declarations are hoisted, so definition order doesn't affect this.
+// ---------------------------------------------------------------------------
+
+// Today's per-facility diet tally, shaped like a stats.facilities entry so it
+// can go straight into dietRow() — the same bar/tooltip/aria-label code the
+// diet-mix section already uses, just fed a one-day slice instead of the
+// archive. `name` doubles as the row label dietRow() prints (see displayName),
+// which is why it's set to a translated "Today" rather than the facility name
+// — the facility name is already the block heading above both rows.
+function todayDietPseudoFacility(dishesToday, todayISO, strings) {
+  const diet = { vegan: 0, vegetarian: 0, fish: 0, meat: 0, unclassified: 0 };
+  for (const d of dishesToday) diet[d.diet] = (diet[d.diet] || 0) + 1;
+  return { name: strings.todayLabel, diet, dishDays: dishesToday.length, firstSeen: todayISO, lastSeen: todayISO };
+}
+
+function renderTodaySection(stats, state) {
+  const strings = STRINGS[state.lang];
+  const section = el('section', 'stat-section');
+  section.append(el('h2', null, strings.todaySectionTitle));
+  section.append(el('p', 'section-note', strings.todaySectionNote));
+
+  const todayISO = zurichTodayISO();
+  // Choose 5 is excluded here too, same as the ledger and diet-mix sections —
+  // it's a build-your-own counter, not a dish.
+  const dishesToday = stats.dishes.filter(d => d.name !== CHOOSE_5_NAME && (d.dates || []).includes(todayISO));
+  if (dishesToday.length === 0) {
+    section.append(el('div', 'empty-note', strings.todayEmptyNote));
+    return section;
+  }
+
+  const { facilities: archiveFacilities } = dietStatsExcludingChoose5(stats);
+  const archiveByName = new Map(archiveFacilities.map(f => [f.name, f]));
+
+  const byFacility = new Map();
+  for (const d of dishesToday) {
+    if (!byFacility.has(d.facility)) byFacility.set(d.facility, []);
+    byFacility.get(d.facility).push(d);
+  }
+
+  // Canonical facility order (stats.facilities, ultimately from websites.txt),
+  // not insertion order, so this stays consistent with the rest of the page.
+  for (const f of stats.facilities) {
+    const dishes = byFacility.get(f.name);
+    if (!dishes || dishes.length === 0) continue;
+    const block = el('div', 'today-facility');
+    block.append(el('h3', null, f.name));
+
+    block.append(dietRow(todayDietPseudoFacility(dishes, todayISO, strings), false, { from: todayISO, to: todayISO }, strings));
+    const archiveFacility = archiveByName.get(f.name);
+    if (archiveFacility) {
+      block.append(dietRow({ ...archiveFacility, name: strings.archiveWideLabel }, false, stats.dateRange, strings));
+    }
+
+    const table = el('table', 'data-table', [
+      el('thead', null, el('tr', null, [el('th', null, strings.colDish), el('th', null, strings.todayPreviouslyLabel)])),
+      el('tbody', null, dishes.map(d => {
+        const prev = previousLastSeenDate(d, todayISO);
+        return el('tr', null, [
+          el('td', null, dishDisplayName(d, state.lang)),
+          el('td', null, prev ? prev : el('span', 'muted-dash', strings.firstTimeLabel)),
+        ]);
+      })),
+    ]);
+    block.append(el('div', 'table-wrap', table));
+    section.append(block);
+  }
+  return section;
+}
+
+// ---------------------------------------------------------------------------
+// Section 5 — counters: every dish seen on each serving counter (stats.lines),
+// which doubles as the substitution list (dish A replaced by dish B on the
+// same counter). Dishes that share a date with another dish on the same
+// counter ran together as same-day alternatives, not a substitution — cheap
+// to tell apart because each dish already carries its own `dates` array, so
+// this is a same-date lookup, not a name-similarity heuristic.
+// ---------------------------------------------------------------------------
+
+// Dishes on one counter that share at least one serving date with another
+// dish on that same counter — same-day alternatives (e.g. a protein swap),
+// not a day-to-day substitution. Returns a Set of dish objects (not indices),
+// so the caller can sort the list freely without losing the marking.
+function sameDayVariantDishes(dishes) {
+  const byDate = new Map();
+  for (const d of dishes) {
+    for (const date of d.dates || []) {
+      if (!byDate.has(date)) byDate.set(date, []);
+      byDate.get(date).push(d);
+    }
+  }
+  const variants = new Set();
+  for (const group of byDate.values()) {
+    if (group.length > 1) group.forEach(d => variants.add(d));
+  }
+  return variants;
+}
+
+// One counter's history, collapsed behind a native <details> so a 19-dish
+// counter (fire, grill) doesn't dominate the page — no JS toggle state
+// needed, and it degrades fine with scripting off.
+function counterBlock(line, lang, strings) {
+  const variants = sameDayVariantDishes(line.dishes);
+  const sorted = line.dishes.slice().sort((a, b) => a.firstSeen.localeCompare(b.firstSeen));
+  const list = el('ul', 'counter-dish-list', sorted.map(d => {
+    const range = d.count > 1 ? `${d.firstSeen} – ${d.lastSeen} (${d.count}×)` : d.firstSeen;
+    return el('li', null, [
+      `${dishDisplayName(d, lang)} — ${range}`,
+      variants.has(d) ? el('span', 'variant-badge', ` · ${strings.sameDayLabel}`) : null,
+    ]);
+  }));
+  const details = el('details', 'counter-block', [
+    el('summary', null, `${line.line} — ${line.dishes.length} ${strings.dishesUnit}`),
+    list,
+  ]);
+  return details;
+}
+
+function renderCountersSection(stats, state) {
+  const strings = STRINGS[state.lang];
+  const section = el('section', 'stat-section');
+  section.append(el('h2', null, strings.countersSectionTitle));
+  section.append(el('p', 'section-note', strings.countersSectionNote));
+
+  if (!stats.lines || stats.lines.length === 0) {
+    section.append(el('div', 'empty-note', strings.countersEmptyNote));
+    return section;
+  }
+
+  // stats.lines is already grouped by facility upstream; a facility heading
+  // goes up whenever it changes.
+  let currentFacility = null;
+  for (const line of stats.lines) {
+    if (line.facility !== currentFacility) {
+      currentFacility = line.facility;
+      section.append(el('h3', null, currentFacility));
+    }
+    section.append(counterBlock(line, state.lang, strings));
+  }
   return section;
 }
 
@@ -1046,9 +1523,11 @@ function debounce(fn, ms) {
 }
 
 // Same ?lang= convention as index.html: default 'en', reflected into the URL.
-// Only lang is URL-driven; the ledger's sort/filter state below starts at
-// its defaults on a fresh load but survives a language toggle in-session
-// (see main()), since renderDishSection reads/writes it on `state`.
+// The search query (?q=) is URL-driven too, so a search is linkable. The
+// rest of the ledger's sort/filter state starts at its defaults on a fresh
+// load but survives a language toggle in-session (see main()), since
+// renderDishSection reads/writes it on `state`. Column visibility isn't
+// URL-driven at all — it's seeded from localStorage (loadColumnPrefs).
 function getStateFromUrl() {
   const params = new URLSearchParams(window.location.search);
   return {
@@ -1056,14 +1535,19 @@ function getStateFromUrl() {
     dishSortKey: 'count',
     dishSortDir: -1, // count desc, as delivered
     dishFacility: '', // '' = all facilities
+    dishQuery: params.get('q') || '',
     onlyPredicted: false,
+    ratedOnly: false,
     dietTableVisible: false,
+    dishColumns: loadColumnPrefs(),
   };
 }
 
 function updateUrl(state) {
   const params = new URLSearchParams(window.location.search);
   params.set('lang', state.lang);
+  if (state.dishQuery) params.set('q', state.dishQuery);
+  else params.delete('q');
   history.replaceState(null, '', `${window.location.pathname}?${params.toString()}`);
 }
 
@@ -1110,8 +1594,10 @@ async function main() {
       return;
     }
     renderHeader(stats, state);
+    app.append(renderTodaySection(stats, state));
     app.append(renderDietSection(stats, state));
     app.append(renderPriceSection(stats, state));
+    app.append(renderCountersSection(stats, state));
     app.append(renderDishSection(stats, state));
     // Label-fit and edge-clamp checks need real layout, so they run after
     // the browser has actually painted the new DOM.

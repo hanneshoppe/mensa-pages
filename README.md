@@ -128,6 +128,27 @@ the dish (`line`, `name_en`, `name_de`, `diet`), its timing (`first_seen_at`,
 `last_seen_at`, `sold_out_at`), one `price_<group>` per customer group, and
 the nutrition fields.
 
+### Dish identity: `data/dish-ids.json`
+
+Every dish has a numeric id, and `data/dish-ids.json` maps ids to the
+`[facility, name_en]` pairs that resolve to them. One id can own several
+names, so a kitchen renaming a dish keeps its history instead of splitting it
+into two. Renames are recorded **by hand** — appending a name to an existing
+id — because inferring them from name similarity would happily merge
+genuinely different dishes (`Red Thai Curry` and `Yellow Thai Curry` are not
+the same dish).
+
+**This file is the source of truth for identity and cannot be regenerated.**
+Ids are assigned in the order names are first seen, not derived from content,
+so rebuilding from a finished archive allocates different numbers: measured
+here, a day-by-day allocation and a one-shot rebuild agree on only 6 of 96
+ids. Losing it and "rebuilding" would silently renumber almost everything,
+orphaning any local rating or saved link that references an id.
+
+So unlike `stats.json` and `dishes.csv`, it is never self-healed. If it goes
+missing the build fails and says to restore it from git history;
+`--allow-new-registry` exists only to bootstrap a fresh one.
+
 `stats.json`'s top-level `priceGroups` array lists customer groups in the
 same order the CSV uses for its `price_<group>` columns: known groups first
 (students, internal, external), then any others in first-seen order — one
@@ -142,6 +163,27 @@ attributed back through `line-id` to whichever dish held that counter earlier
 reused across days). One blind spot follows from this: a dish already showing
 the placeholder in the day's first snapshot never appears under its real name
 and cannot be identified at all.
+
+`stats.json` also carries `lines[]` — one entry per serving counter with the
+dishes that have run on it. A counter serving dish A on Monday and dish B on
+Tuesday is what "B stood in for A" looks like in this data, so that array is
+the substitution record. Note it shows *what has run on each counter*, not yet
+what typically replaces what: with the archive this thin, most dishes appear
+once, and a one-off co-occurrence is not a pattern. The archive also mixes
+same-day variants (`Teriyaki Beef Balls` and `Teriyaki Chicken Balls` ran
+together) with genuine different-day substitutions (`Red Thai Curry` →
+`Yellow Thai Curry`); the `dates` arrays are what tell them apart.
+
+Each dish additionally carries `prices` (mean/sd/min/max per customer group,
+one observation per dish-day) and `dietDays`. `sd` is `null` below two
+observations rather than a misleading `0.00`.
+
+The stats page has five sections: today's offering against the archive-wide
+diet split, the diet mix, the price spread, what ran on each counter, and the
+dish ledger. The ledger has a column chooser (remembered in `localStorage`),
+free-text search across both languages' names, and a "Last seen" that
+deliberately excludes today — for a dish on today's menu the useful answer is
+when it was *previously* served.
 
 The page is fully bilingual via `?lang=`, the same convention `index.html`
 uses, and the two pages carry the choice across the link between them in both
@@ -173,6 +215,14 @@ Two things the numbers deliberately do not do:
   three), and a next-serving estimate needs at least two gaps before a
   standard deviation exists. Almost nothing qualifies yet; the column fills
   in on its own as dishes recur.
+
+Diet precedence, the sold-out labels and the build-your-own name (`"Choose
+5"`) are deliberately duplicated between `tools/build_stats.py`, `index.html`
+and `stats.html` rather than served from one generated config, so the pages
+stay dependency-free (no runtime fetch on the menu page's render path just to
+unify three small constants). `tools/build_stats.py --selftest` guards
+against the three copies drifting apart: it reads the pages' own source and
+fails if they disagree, so changing one means changing all of them.
 
 ## Usage
 

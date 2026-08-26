@@ -1,0 +1,579 @@
+{
+  "_readme": "id (string key) -> list of [facility, name_en] pairs identifying this dish. (facility, name_en) is the identity unit - two facilities serving a dish of the same name are different entries. A rename is recorded by hand: append a second [facility, name_en] pair to the existing id's list, do not create a new id for it. Never remove, reuse, or renumber an id - local ratings and saved links reference it.",
+  "1": [
+    [
+      "Mendokoro",
+      "Chicken Tonkatsu Bowl"
+    ]
+  ],
+  "2": [
+    [
+      "Mendokoro",
+      "Cold Moiroka Ramen"
+    ]
+  ],
+  "3": [
+    [
+      "Mendokoro",
+      "Miso Ramen"
+    ]
+  ],
+  "4": [
+    [
+      "Mendokoro",
+      "Shoyu Ramen"
+    ]
+  ],
+  "5": [
+    [
+      "Mendokoro",
+      "Tori Ramen"
+    ]
+  ],
+  "6": [
+    [
+      "food market",
+      "Alpine Herbs Grilled Pork Steak"
+    ]
+  ],
+  "7": [
+    [
+      "food market",
+      "Alpine Macaroni"
+    ]
+  ],
+  "8": [
+    [
+      "food market",
+      "Alpine R\u00f6sti with a Fried Egg"
+    ]
+  ],
+  "9": [
+    [
+      "food market",
+      "Baked Meat Tortellini"
+    ]
+  ],
+  "10": [
+    [
+      "food market",
+      "Baked Pasta"
+    ]
+  ],
+  "11": [
+    [
+      "food market",
+      "Bangkok Beef Noodles"
+    ]
+  ],
+  "12": [
+    [
+      "food market",
+      "Banh Mi Hot Dog"
+    ]
+  ],
+  "13": [
+    [
+      "food market",
+      "Barbecue in the \"Steinergarten\""
+    ]
+  ],
+  "14": [
+    [
+      "food market",
+      "Beef Massaman"
+    ]
+  ],
+  "15": [
+    [
+      "food market",
+      "Beef Teriyaki"
+    ]
+  ],
+  "16": [
+    [
+      "food market",
+      "Berlin Currywurst"
+    ]
+  ],
+  "17": [
+    [
+      "food market",
+      "Black Pepper Chicken"
+    ]
+  ],
+  "18": [
+    [
+      "food market",
+      "Black Pepper Udon"
+    ]
+  ],
+  "19": [
+    [
+      "food market",
+      "Bowlicious"
+    ]
+  ],
+  "20": [
+    [
+      "food market",
+      "Breaded Mushrooms"
+    ]
+  ],
+  "21": [
+    [
+      "food market",
+      "Burrata and Cinque Pi"
+    ]
+  ],
+  "22": [
+    [
+      "food market",
+      "Cajun Chicken Pasta"
+    ]
+  ],
+  "23": [
+    [
+      "food market",
+      "Cajun Pasta with Shrimp"
+    ]
+  ],
+  "24": [
+    [
+      "food market",
+      "Cappelletti with Tomatoes & Mozzarella"
+    ]
+  ],
+  "25": [
+    [
+      "food market",
+      "Casarecce alla Nerano"
+    ]
+  ],
+  "26": [
+    [
+      "food market",
+      "Cauliflower Gnocchi"
+    ]
+  ],
+  "27": [
+    [
+      "food market",
+      "Cauliflower Wings"
+    ]
+  ],
+  "28": [
+    [
+      "food market",
+      "Cheeseburger"
+    ]
+  ],
+  "29": [
+    [
+      "food market",
+      "Chicken & Cheese Wrap"
+    ]
+  ],
+  "30": [
+    [
+      "food market",
+      "Chicken Cordon Bleu"
+    ]
+  ],
+  "31": [
+    [
+      "food market",
+      "Chicken Cutlet"
+    ]
+  ],
+  "32": [
+    [
+      "food market",
+      "Chicken Thighs with Chili & Honey"
+    ]
+  ],
+  "33": [
+    [
+      "food market",
+      "Choose 5"
+    ]
+  ],
+  "34": [
+    [
+      "food market",
+      "Chow Mein"
+    ]
+  ],
+  "35": [
+    [
+      "food market",
+      "Coconut-Crusted Pangasius"
+    ]
+  ],
+  "36": [
+    [
+      "food market",
+      "Dal made from yellow peas"
+    ]
+  ],
+  "37": [
+    [
+      "food market",
+      "Delicatessen Meat Loaf"
+    ]
+  ],
+  "38": [
+    [
+      "food market",
+      "Dragon Chicken Strips"
+    ]
+  ],
+  "39": [
+    [
+      "food market",
+      "ETH Fitness Plate"
+    ]
+  ],
+  "40": [
+    [
+      "food market",
+      "Emmental Sausage Schnitzel"
+    ]
+  ],
+  "41": [
+    [
+      "food market",
+      "Fancy Carbonara"
+    ]
+  ],
+  "42": [
+    [
+      "food market",
+      "Farfalle alla Norma"
+    ]
+  ],
+  "43": [
+    [
+      "food market",
+      "Fusilli Bolognese"
+    ]
+  ],
+  "44": [
+    [
+      "food market",
+      "Gnocchi with Giardinera"
+    ]
+  ],
+  "45": [
+    [
+      "food market",
+      "Gnocchi with Tomato Sauce"
+    ]
+  ],
+  "46": [
+    [
+      "food market",
+      "Gourmet Italian Filet"
+    ]
+  ],
+  "47": [
+    [
+      "food market",
+      "Grilled Bratwurst"
+    ]
+  ],
+  "48": [
+    [
+      "food market",
+      "Grilled Chicken & Cheese Wrap"
+    ]
+  ],
+  "49": [
+    [
+      "food market",
+      "Ground Meat with Horn-Shaped Pasta"
+    ]
+  ],
+  "50": [
+    [
+      "food market",
+      "Khao Mok Gai"
+    ]
+  ],
+  "51": [
+    [
+      "food market",
+      "Korean Mandu Dumplings"
+    ]
+  ],
+  "52": [
+    [
+      "food market",
+      "Lasagna"
+    ]
+  ],
+  "53": [
+    [
+      "food market",
+      "Lumberjack Steak in the Rock Garden"
+    ]
+  ],
+  "54": [
+    [
+      "food market",
+      "Mapo Tofu"
+    ]
+  ],
+  "55": [
+    [
+      "food market",
+      "Morel Pasta"
+    ]
+  ],
+  "56": [
+    [
+      "food market",
+      "Omelet au Gratin"
+    ]
+  ],
+  "57": [
+    [
+      "food market",
+      "Oriental Naan"
+    ]
+  ],
+  "58": [
+    [
+      "food market",
+      "Pad Thai"
+    ]
+  ],
+  "59": [
+    [
+      "food market",
+      "Pad Thai-Style Fried Rice"
+    ]
+  ],
+  "60": [
+    [
+      "food market",
+      "Pasta Portofino"
+    ]
+  ],
+  "61": [
+    [
+      "food market",
+      "Pasta with Broccoli"
+    ]
+  ],
+  "62": [
+    [
+      "food market",
+      "Pasta with Chicken and Mushrooms"
+    ]
+  ],
+  "63": [
+    [
+      "food market",
+      "Penne with Gorgonzola"
+    ]
+  ],
+  "64": [
+    [
+      "food market",
+      "Pizza Margherita"
+    ]
+  ],
+  "65": [
+    [
+      "food market",
+      "Planted, Viennese Style"
+    ]
+  ],
+  "66": [
+    [
+      "food market",
+      "Polpetta alla Bruschetta"
+    ]
+  ],
+  "67": [
+    [
+      "food market",
+      "Pulled Pork Burger"
+    ]
+  ],
+  "68": [
+    [
+      "food market",
+      "Red Thai Curry"
+    ]
+  ],
+  "69": [
+    [
+      "food market",
+      "Rigatoni with Porcini Mushrooms"
+    ]
+  ],
+  "70": [
+    [
+      "food market",
+      "Rigatoni with Tomatoes and Artichokes"
+    ]
+  ],
+  "71": [
+    [
+      "food market",
+      "Rigatoni with Veal"
+    ]
+  ],
+  "72": [
+    [
+      "food market",
+      "Samosa Chaat"
+    ]
+  ],
+  "73": [
+    [
+      "food market",
+      "Sardinian Fregola"
+    ]
+  ],
+  "74": [
+    [
+      "food market",
+      "Schnitzel \u00e0 la Meyer"
+    ]
+  ],
+  "75": [
+    [
+      "food market",
+      "Seitan Goulash"
+    ]
+  ],
+  "76": [
+    [
+      "food market",
+      "Senthil's Best"
+    ]
+  ],
+  "77": [
+    [
+      "food market",
+      "Spaghetti & Spicy Vegetarian Balls"
+    ]
+  ],
+  "78": [
+    [
+      "food market",
+      "Spiced Lentils by Pascal Haag"
+    ]
+  ],
+  "79": [
+    [
+      "food market",
+      "Sweet Potatoes Dream"
+    ]
+  ],
+  "80": [
+    [
+      "food market",
+      "Taco - Arroz Rojo"
+    ]
+  ],
+  "81": [
+    [
+      "food market",
+      "Tagliatelle with Spinach and Salmon"
+    ]
+  ],
+  "82": [
+    [
+      "food market",
+      "Tandoori Chickpeas & Sweet Potatoes"
+    ]
+  ],
+  "83": [
+    [
+      "food market",
+      "Teriyaki Beef Balls"
+    ]
+  ],
+  "84": [
+    [
+      "food market",
+      "Teriyaki Chicken Balls"
+    ]
+  ],
+  "85": [
+    [
+      "food market",
+      "Thai Drunken Noodles"
+    ]
+  ],
+  "86": [
+    [
+      "food market",
+      "The BLT Burger"
+    ]
+  ],
+  "87": [
+    [
+      "food market",
+      "The Smoky Bacon Burger"
+    ]
+  ],
+  "88": [
+    [
+      "food market",
+      "Tonkatsu Chicken Burger"
+    ]
+  ],
+  "89": [
+    [
+      "food market",
+      "Tori Yakisoba Wok"
+    ]
+  ],
+  "90": [
+    [
+      "food market",
+      "Turkey Cream Goulash"
+    ]
+  ],
+  "91": [
+    [
+      "food market",
+      "Vegan Cevapcici on a D\u00fcr\u00fcm Tortilla"
+    ]
+  ],
+  "92": [
+    [
+      "food market",
+      "Vegetable Meatballs"
+    ]
+  ],
+  "93": [
+    [
+      "food market",
+      "Viennese Cream Goulash"
+    ]
+  ],
+  "94": [
+    [
+      "food market",
+      "Yellow Thai Curry"
+    ]
+  ],
+  "95": [
+    [
+      "food market",
+      "Zoodle, Zucchini, and Burrata"
+    ]
+  ],
+  "96": [
+    [
+      "food market",
+      "Zurich-Style Sliced Beef"
+    ]
+  ]
+}

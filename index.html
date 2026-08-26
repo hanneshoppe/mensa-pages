@@ -172,6 +172,68 @@
     text-align: center;
     padding: 40px 0;
   }
+  .rating-note {
+    color: var(--muted);
+    font-size: 0.75rem;
+    font-style: italic;
+    margin-top: 6px;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .rating {
+    border: 0;
+    margin: 4px 0 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .rating-stars {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 1px;
+  }
+  .rating-stars label {
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    color: var(--border);
+    padding: 1px 2px;
+    border-radius: 2px;
+  }
+  .rating-stars label.filled { color: #c9972f; }
+  .rating-stars label.rating-zero {
+    font-size: 0.65rem;
+    color: var(--muted);
+    padding: 1px 3px;
+  }
+  .rating-stars label.rating-zero.selected {
+    color: var(--text);
+    font-weight: 700;
+  }
+  .rating-stars input.sr-only:focus-visible + label {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+  .rating-clear {
+    border: none;
+    background: none;
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 2px;
+  }
+  .rating-clear:hover { color: var(--text); }
 
   /* List view: same markup, row layout instead of a card grid */
   #app.list-view .cards {
@@ -222,6 +284,7 @@
     </div>
     <a class="stats-link" href="stats.html">Stats</a> <!-- href rewritten in JS to carry ?lang= -->
   </div>
+  <div class="rating-note" id="ratingNote"></div>
 </header>
 <main id="app">
   <div class="loading">Loading…</div>
@@ -311,6 +374,9 @@ const STRINGS = {
     loadError: 'Konnte websites.txt nicht laden.',
     noFacilities: 'Keine Mensen gefunden.',
     dateLocale: 'de-CH',
+    rateLabel: 'Gericht bewerten',
+    clearRating: 'Bewertung löschen',
+    ratingNote: 'Bewertungen werden nur in diesem Browser gespeichert – nicht synchronisiert, weg wenn Website-Daten gelöscht werden.',
   },
   en: {
     title: 'Mensa Menus',
@@ -319,13 +385,275 @@ const STRINGS = {
     loadError: 'Could not load websites.txt.',
     noFacilities: 'No canteens found.',
     dateLocale: 'en-GB',
+    rateLabel: 'Rate this dish',
+    clearRating: 'Clear rating',
+    ratingNote: 'Ratings are stored only in this browser — not synced, gone if site data is cleared.',
   },
 };
+
+// "n of 5 stars" / "n von 5 Sternen" — parametrized, so it stays a plain
+// function rather than living in STRINGS (whose other values are static text).
+function starLabel(lang, n) {
+  return lang === 'de' ? `${n} von 5 Sternen` : `${n} of 5 stars`;
+}
 
 const facilitiesPromises = {}; // "date:lang" -> Promise<{facilities, fromSnapshot}>
 let idsPromise = null;
 let renderToken = 0; // monotonic guard so a stale async render can't paint over a newer one
 let renderedDateStr = null; // Zurich date last rendered, to detect a midnight rollover
+
+// --- Local star ratings (TODO item 6) --------------------------------------
+//
+// Ratings key on the numeric dish id from data/dish-ids.json, not on the
+// dish name, so a rename recorded in that registry keeps its rating. A dish
+// the registry doesn't know yet (brand new today) gets a provisional
+// "name:<facility>|<name_en>" key and is migrated onto the numeric id once
+// the registry catches up (see migrateProvisionalRatings). Own localStorage
+// key, deliberately not CookpitClient's cache helper — that one has a
+// 5-minute TTL and would discard ratings almost immediately.
+const RATINGS_KEY = 'mensaDishRatings';
+const RATING_MAX_AGE_MS = 365 * 24 * 60 * 60 * 1000; // 1 year
+let ratingsCache = null; // lazy in-memory mirror, so ratings still work for
+                          // this session even if localStorage itself is
+                          // unavailable (private browsing) or write fails.
+
+// Reads, validates and prunes (>1 year old) the stored ratings. Never
+// throws: corrupt JSON, out-of-range stars, bad timestamps or a missing
+// localStorage all just fall back to an empty ratings set.
+function loadRatings() {
+  if (ratingsCache) return ratingsCache;
+  let ratings = {};
+  try {
+    const raw = localStorage.getItem(RATINGS_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === 'object') ratings = parsed;
+    }
+  } catch (err) {
+    ratings = {};
+  }
+  const now = Date.now();
+  let pruned = false;
+  for (const [key, entry] of Object.entries(ratings)) {
+    const stars = entry && entry.stars;
+    const time = entry && Date.parse(entry.ts);
+    const valid = Number.isInteger(stars) && stars >= 0 && stars <= 5 && !Number.isNaN(time);
+    if (!valid || now - time > RATING_MAX_AGE_MS) {
+      delete ratings[key];
+      pruned = true;
+    }
+  }
+  ratingsCache = ratings;
+  if (pruned) saveRatings(ratings);
+  return ratings;
+}
+
+function saveRatings(ratings) {
+  ratingsCache = ratings;
+  try {
+    localStorage.setItem(RATINGS_KEY, JSON.stringify(ratings));
+  } catch (err) {
+    // Storage unavailable (private browsing, quota, …) — ratingsCache still
+    // makes ratings work for the rest of this session, they just won't
+    // survive a reload.
+  }
+}
+
+function getRating(dishId) {
+  const entry = loadRatings()[dishId];
+  return entry ? entry.stars : null;
+}
+
+// 0 is a real, storable rating — the caller passing it here is exactly what
+// distinguishes it from "unrated" (an absent key, see clearRatingFor).
+function setRating(dishId, stars) {
+  const ratings = loadRatings();
+  ratings[dishId] = { stars, ts: new Date().toISOString() };
+  saveRatings(ratings);
+}
+
+function clearRatingFor(dishId) {
+  const ratings = loadRatings();
+  delete ratings[dishId];
+  saveRatings(ratings);
+}
+
+// data/dish-ids.json: {"<id>": [["facility", "name_en"], ...], "_readme": …}.
+// Flattened into (facility|name_en) -> id, covering every name a dish has
+// ever been recorded under (a rename appends a second pair to the same id).
+function buildDishIdLookup(registry) {
+  const lookup = new Map();
+  for (const [id, pairs] of Object.entries(registry || {})) {
+    if (id === '_readme') continue;
+    for (const [facility, nameEn] of pairs) {
+      lookup.set(`${facility}|${nameEn}`, id);
+    }
+  }
+  return lookup;
+}
+
+// Moves any provisional "name:<facility>|<name_en>" rating onto its real
+// numeric id now that the registry knows it. Idempotent (a migrated key is
+// gone from ratings, so a repeat run finds nothing left to do) and never
+// overwrites a rating already stored under the numeric id.
+function migrateProvisionalRatings(dishIdLookup) {
+  const ratings = loadRatings();
+  let changed = false;
+  for (const key of Object.keys(ratings)) {
+    if (!key.startsWith('name:')) continue;
+    const id = dishIdLookup.get(key.slice(5));
+    if (id) {
+      if (!(id in ratings)) ratings[id] = ratings[key];
+      delete ratings[key];
+      changed = true;
+    }
+  }
+  if (changed) saveRatings(ratings);
+}
+
+let dishIdLookupPromise = null;
+function getDishIdLookupCached() {
+  if (!dishIdLookupPromise) {
+    dishIdLookupPromise = fetch('data/dish-ids.json')
+      .then(res => res.ok ? res.json() : {})
+      .then(buildDishIdLookup)
+      .catch(() => new Map()) // registry unreachable — ids just won't resolve this load
+      .then(lookup => { migrateProvisionalRatings(lookup); return lookup; });
+  }
+  return dishIdLookupPromise;
+}
+
+// Flattens a dayEntry down to every {name, meal} line that actually has a
+// dish, same traversal tools/build_stats.py's iter_lines does server-side.
+function allLines(dayEntry) {
+  const lines = [];
+  for (const oh of (dayEntry && dayEntry['opening-hour-array']) || []) {
+    for (const mealTime of oh['meal-time-array'] || []) {
+      for (const line of mealTime['line-array'] || []) {
+        if (line.meal) lines.push(line);
+      }
+    }
+  }
+  return lines;
+}
+
+// The registry keys on English (facility, name) pairs, but this page can be
+// showing German. Build (facility-id|line-id) -> English identity from the
+// *English* facilities of the same day/snapshot so a German-displayed dish
+// can still be resolved to its English pair — line-id is only unique within
+// one day, so this map is rebuilt per render, never cached globally.
+function buildEnIdentityMap(enFacilities) {
+  const map = new Map();
+  for (const f of enFacilities) {
+    for (const line of allLines(f.dayEntry)) {
+      const lineId = line.meal['line-id'];
+      if (lineId == null) continue;
+      map.set(`${f.id}|${lineId}`, { facility: f.name, name: line.meal.name });
+    }
+  }
+  return map;
+}
+
+// Bundles what renderMealCard needs to key a rating: the dish-id lookup, and
+// (only in German) the English-identity map to resolve the card's facility
+// id + line-id against it. Built once per render, reusing the already
+// memoized facilities fetch so this costs nothing extra in English.
+async function buildRatingCtx(lang, strings, todayStr, tomorrowStr, todayIso) {
+  const dishIdLookup = await getDishIdLookupCached();
+  let enIdentityMap = null;
+  if (lang !== 'en') {
+    try {
+      const { facilities: enFacilities } = await getFacilitiesData('en', todayStr, tomorrowStr, todayIso);
+      enIdentityMap = buildEnIdentityMap(enFacilities);
+    } catch (err) {
+      enIdentityMap = null; // English data unavailable this render — rating widgets skip rather than mis-key
+    }
+  }
+  return { lang, strings, dishIdLookup, enIdentityMap };
+}
+
+// The English (facility, name) pair identifying a dish, used both as the
+// dish-id lookup key and as the provisional key. Returns null when it can't
+// be determined (no English line-id counterpart found this render).
+function resolveDishIdentity(meal, facility, ratingCtx) {
+  if (ratingCtx.lang === 'en') return { facility: facility.name, name: meal.name };
+  if (!ratingCtx.enIdentityMap) return null;
+  const lineId = meal['line-id'];
+  if (lineId == null) return null;
+  return ratingCtx.enIdentityMap.get(`${facility.id}|${lineId}`) || null;
+}
+
+let ratingWidgetSeq = 0;
+
+// Real radio-group semantics: six <input type="radio"> (0..5, 0 a real
+// rating, distinct from nothing selected = unrated), visually hidden but
+// focusable so arrow-key navigation and accessible names come from the
+// browser's native radiogroup behaviour rather than reimplemented JS.
+function renderRatingWidget(dishId, lang, strings) {
+  const uid = `rating-${ratingWidgetSeq++}`;
+  const fieldset = document.createElement('fieldset');
+  fieldset.className = 'rating';
+  fieldset.setAttribute('aria-describedby', 'ratingNote');
+  fieldset.dataset.dishId = dishId; // not read by any app code; just makes the resolved key inspectable
+
+  const legend = el('legend', 'sr-only', strings.rateLabel);
+  fieldset.append(legend);
+
+  const starsWrap = el('div', 'rating-stars');
+  const stars = [];
+  for (let n = 0; n <= 5; n++) {
+    const id = `${uid}-${n}`;
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = uid;
+    input.id = id;
+    input.value = String(n);
+    input.className = 'sr-only';
+    const label = document.createElement('label');
+    label.htmlFor = id;
+    label.textContent = n === 0 ? '0' : '★';
+    label.setAttribute('aria-label', starLabel(lang, n));
+    if (n === 0) label.classList.add('rating-zero');
+    starsWrap.append(input, label);
+    stars.push({ input, label, n });
+  }
+  fieldset.append(starsWrap);
+
+  const clearBtn = document.createElement('button');
+  clearBtn.type = 'button';
+  clearBtn.className = 'rating-clear';
+  clearBtn.textContent = '×';
+  clearBtn.setAttribute('aria-label', strings.clearRating);
+  fieldset.append(clearBtn);
+
+  function paint(current) {
+    for (const { label, n } of stars) {
+      label.classList.toggle('filled', current != null && n >= 1 && n <= current);
+      label.classList.toggle('selected', current === n);
+    }
+    clearBtn.style.visibility = current == null ? 'hidden' : 'visible';
+  }
+
+  const current = getRating(dishId);
+  if (current != null) stars[current].input.checked = true;
+  paint(current);
+
+  starsWrap.addEventListener('change', () => {
+    const picked = stars.find(s => s.input.checked);
+    if (!picked) return;
+    setRating(dishId, picked.n);
+    paint(picked.n);
+  });
+
+  clearBtn.addEventListener('click', () => {
+    clearRatingFor(dishId);
+    for (const { input } of stars) input.checked = false;
+    paint(null);
+  });
+
+  return fieldset;
+}
+// --- end local star ratings --------------------------------------------
 
 function pad(n) { return String(n).padStart(2, '0'); }
 
@@ -495,7 +823,9 @@ async function refreshInBackground(state, token, lang, todayStr, tomorrowStr, to
   }
   if (token !== renderToken) return; // superseded by a newer render — discard
   if (JSON.stringify(fresh) === JSON.stringify(renderedFacilities)) return;
-  renderFacilities(fresh, STRINGS[lang], lang, state.easterEgg);
+  const ratingCtx = await buildRatingCtx(lang, STRINGS[lang], todayStr, tomorrowStr, todayIso);
+  if (token !== renderToken) return; // superseded while awaiting ratingCtx
+  renderFacilities(fresh, STRINGS[lang], lang, state.easterEgg, ratingCtx);
   applyView(state);
 }
 
@@ -559,7 +889,10 @@ function el(tag, className, children) {
   return node;
 }
 
-function renderMealCard(meal) {
+// facility is {id, name} for a real dish, or null for the easter-egg card,
+// which has no line-id and no legitimate rating identity — the null skips
+// the rating widget below rather than rating the joke entry.
+function renderMealCard(meal, facility, ratingCtx) {
   const badge = classifyMeal(meal);
   const soldOut = SOLD_OUT_LABELS.includes(meal.name);
   const card = el('div', soldOut ? 'card sold-out' : 'card');
@@ -585,11 +918,22 @@ function renderMealCard(meal) {
     formatPrices(meal) ? el('div', 'card-price', formatPrices(meal)) : null,
   ]);
 
+  // No rating for sold-out placeholders — meal.name is the "Sold Out" text
+  // itself at that point, not a real dish name to key a rating on.
+  if (facility && ratingCtx && !soldOut) {
+    const identity = resolveDishIdentity(meal, facility, ratingCtx);
+    if (identity) {
+      const pairKey = `${identity.facility}|${identity.name}`;
+      const dishId = ratingCtx.dishIdLookup.get(pairKey) || `name:${pairKey}`;
+      body.append(renderRatingWidget(dishId, ratingCtx.lang, ratingCtx.strings));
+    }
+  }
+
   card.append(body);
   return card;
 }
 
-function renderFacility(name, url, dayEntry, strings, lang, easterEgg) {
+function renderFacility(id, name, url, dayEntry, strings, lang, easterEgg, ratingCtx) {
   const section = el('section', 'facility');
 
   const heading = document.createElement('h2');
@@ -607,7 +951,7 @@ function renderFacility(name, url, dayEntry, strings, lang, easterEgg) {
 
   if (easterEgg && (name || '').toLowerCase().includes('fusion')) {
     const cards = el('div', 'cards');
-    cards.append(renderMealCard({ ...EASTER_EGG_CONTENT[lang], 'meal-class-array': [], __rawImage: EASTER_EGG_IMAGE, __containImage: true }));
+    cards.append(renderMealCard({ ...EASTER_EGG_CONTENT[lang], 'meal-class-array': [], __rawImage: EASTER_EGG_IMAGE, __containImage: true }, null, null));
     section.append(cards);
     return section;
   }
@@ -618,12 +962,13 @@ function renderFacility(name, url, dayEntry, strings, lang, easterEgg) {
     return section;
   }
 
+  const facility = { id, name };
   for (const oh of openingHours) {
     for (const mealTime of oh['meal-time-array'] || []) {
       section.append(el('div', 'meal-time-label', mealTime.name));
       const cards = el('div', 'cards');
       for (const line of sortedLines(mealTime['line-array'])) {
-        cards.append(renderMealCard(line.meal));
+        cards.append(renderMealCard(line.meal, facility, ratingCtx));
       }
       section.append(cards);
     }
@@ -632,7 +977,7 @@ function renderFacility(name, url, dayEntry, strings, lang, easterEgg) {
   return section;
 }
 
-function renderFacilities(facilities, strings, lang, easterEgg) {
+function renderFacilities(facilities, strings, lang, easterEgg, ratingCtx) {
   const app = document.getElementById('app');
   app.innerHTML = '';
   if (facilities.length === 0) {
@@ -640,7 +985,7 @@ function renderFacilities(facilities, strings, lang, easterEgg) {
     return;
   }
   for (const f of facilities) {
-    app.append(renderFacility(f.name, f.url, f.dayEntry, strings, lang, easterEgg));
+    app.append(renderFacility(f.id, f.name, f.url, f.dayEntry, strings, lang, easterEgg, ratingCtx));
   }
 }
 
@@ -665,6 +1010,7 @@ async function loadAndRender(state) {
   document.documentElement.lang = lang;
   document.title = strings.title;
   document.getElementById('titleText').textContent = strings.title;
+  document.getElementById('ratingNote').textContent = strings.ratingNote;
 
   const { now, todayStr, tomorrowStr, todayIso } = zurichDateContext();
   document.getElementById('dateLine').textContent =
@@ -673,9 +1019,12 @@ async function loadAndRender(state) {
   app.innerHTML = '';
   app.append(el('div', 'loading', strings.loading));
 
-  let facilities, fromSnapshot;
+  let facilities, fromSnapshot, ratingCtx;
   try {
-    ({ facilities, fromSnapshot } = await getFacilitiesData(lang, todayStr, tomorrowStr, todayIso));
+    [{ facilities, fromSnapshot }, ratingCtx] = await Promise.all([
+      getFacilitiesData(lang, todayStr, tomorrowStr, todayIso),
+      buildRatingCtx(lang, strings, todayStr, tomorrowStr, todayIso),
+    ]);
   } catch (err) {
     if (token !== renderToken) return; // superseded by a newer render — discard
     app.innerHTML = '';
@@ -689,7 +1038,7 @@ async function loadAndRender(state) {
   // later visibilitychange still sees a stale renderedDateStr and retries.
   renderedDateStr = todayStr;
 
-  renderFacilities(facilities, strings, lang, state.easterEgg);
+  renderFacilities(facilities, strings, lang, state.easterEgg, ratingCtx);
   applyView(state);
 
   if (fromSnapshot) {
