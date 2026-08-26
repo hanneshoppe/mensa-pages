@@ -59,6 +59,87 @@ language toggle never has to wait on a request. The background re-check in
 step 3 deliberately bypasses that cache — it exists to catch what changed, so
 answering it from a cached response would defeat the point.
 
+## How the code fits together
+
+Four moving parts, no build step and no dependencies anywhere:
+
+```
+websites.txt ──────────────┐   which facilities exist, and in what order
+                           │
+.github/workflows/  ───────┤   every 5 min: fetch the API, append a snapshot
+  fetch-menus.yml          │
+                           ▼
+                    data/<date>.jsonl        raw API responses, append-only
+                           │
+                           ▼
+              tools/build_stats.py           the only thing that writes below
+                           │
+        ┌──────────────────┼──────────────────┐
+        ▼                  ▼                  ▼
+  data/stats.json   data/dishes.csv   data/dish-ids.json
+        │                  │                  │
+        ▼                  ▼                  ▼
+   stats.html         (analysis)         index.html
+```
+
+### `tools/build_stats.py` — everything derived
+
+Stdlib only, ~1,450 lines, and the single writer of the three files under
+`data/` that aren't raw snapshots. Roughly in pipeline order:
+
+- `load_dish_ids` / `assign_dish_ids` / `write_dish_ids` — the id registry.
+  Validates on load, since renames are recorded by hand.
+- `load_day_dish` / `build_date_rows` — walk the raw snapshots. This is where
+  the API's shape is absorbed: the four-level `opening-hour-array` →
+  `meal-time-array` → `line-array` → `meal` nesting, the English/German join,
+  and the sold-out attribution.
+- `dedup_by_dish_id` — collapses repeated snapshots of one day down to one row
+  per `(date, facility, dish_id)`. **After** ids resolve, not before, or a
+  renamed dish counts its day twice.
+- `classify_diet`, `weekdays_between`, `price_stats` / `dish_price_stats` —
+  the small rules. Gaps are weekdays because the canteens shut at weekends.
+- `build_stats` / `build_dish_rows` / `write_dishes_csv` — assemble the
+  outputs.
+- `demo()` and the `_test_*` functions — `--selftest`, 91 assertions on
+  synthetic fixtures, so it stays valid as the archive grows. Two exceptions
+  read real repo files on purpose: the policy-drift guard, and the
+  `websites.txt` ordering check.
+
+### `index.html` — today's menu
+
+Reads `data/<today>.jsonl`, falls back to the live API, then re-checks live in
+the background. The parts worth knowing before editing:
+
+- `zurichDateParts` / `nextDay` / `isoWeekday` / `zurichDateContext` — every
+  date decision comes from one Europe/Zurich derivation. Don't add a second.
+- `getFacilitiesData` / `refreshInBackground` — memoised per
+  `` `${date}:${lang}` ``, with a monotonic `renderToken` so a slow response
+  can't paint over a newer one, and rejected promises evicted so a failure
+  isn't cached forever.
+- `buildEnIdentityMap` / `resolveDishIdentity` / `renderRatingWidget` —
+  ratings. The identity map is rebuilt per render and keyed by `line-id`
+  *within one snapshot*, never globally.
+- `classifyMeal` / `isSoldOut` / `mealSortKey` — the duplicated policy the
+  drift guard watches.
+
+### `stats.html` — the archive
+
+Reads only `data/stats.json`; aggregating the daily files in the browser would
+get slower every day. Five sections (`renderTodaySection`, `renderDietSection`,
+`renderPriceSection`, `renderCountersSection`, `renderDishSection`), a
+`STRINGS` table for both languages, and inline SVG for the price plots — no
+chart library. `state` holds sort, filters, search and column choice so a
+language switch can re-render everything without losing where you were.
+
+### The workflow
+
+Fires over the union of both DST offsets and trims to 05:00–15:00
+Europe/Zurich with a `TZ=Europe/Zurich` guard, because cron is UTC-only.
+Verifies the id registry exists before anything else, skips the append when
+the menu is byte-identical to the last snapshot, and commits only when a file
+actually changed — which is why every generated file must be a pure function
+of its inputs.
+
 ## Menu snapshots & history
 
 `.github/workflows/fetch-menus.yml` runs on a schedule (05:00–15:00
@@ -271,6 +352,39 @@ Two details that are easy to get wrong and are deliberately not:
 
 Entries carry a timestamp, are pruned after a year, and a timestamp
 implausibly far in the future is treated as corrupt rather than kept forever.
+
+## Constraints worth knowing before changing things
+
+Collected here because each one costs real time to rediscover, and two of them
+look like obvious cleanups until you know why they are the way they are.
+
+**`data/dish-ids.json` cannot be regenerated** — see "Dish identity" above.
+Never "rebuild" it to fix something.
+
+**Diet precedence, the sold-out labels and the build-your-own name are
+duplicated on purpose** across `tools/build_stats.py`, `index.html` and
+`stats.html`, so the pages stay dependency-free. `--selftest` reads both pages
+and fails if the copies disagree, so changing one means changing all three. A
+shared config fetched at runtime was considered and rejected: it would put a
+new failure mode on the menu page's render path to unify three constants.
+
+**A `0` in someone's stored ratings is real data.** Ratings are 1–5 now, but a
+selectable 0 briefly existed. Those entries still validate and still show on
+the stats page — migrating them away would delete real ratings.
+
+**One archive line is corrupt and stays that way.** `data/2026-08-17.jsonl` at
+`07:21:25Z` records a failed API call as `"Mensa 19"` with a null `dayEntry` —
+i.e. "this canteen served nothing". The generator bug that caused it is long
+fixed (an incomplete sweep now aborts instead of writing a guess), but the
+line remains: the archive is append-only history and rewriting it would be
+worse than documenting it. Anything analysing that date should expect one
+snapshot with a missing German food-market menu.
+
+**Most statistics are empty, and that is the data rather than a bug.** A
+prediction needs 3 sightings before a standard deviation exists; a price σ
+needs 2. With the archive still only a few weeks deep, most dishes have been
+seen once, so those columns show `—` and every non-null σ is `0.00`. They fill
+in on their own as dishes recur — no code change required.
 
 ## Usage
 
