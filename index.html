@@ -211,15 +211,6 @@
     border-radius: 2px;
   }
   .rating-stars label.filled { color: #c9972f; }
-  .rating-stars label.rating-zero {
-    font-size: 0.65rem;
-    color: var(--muted);
-    padding: 1px 3px;
-  }
-  .rating-stars label.rating-zero.selected {
-    color: var(--text);
-    font-weight: 700;
-  }
   .rating-stars input.sr-only:focus-visible + label {
     outline: 2px solid var(--accent);
     outline-offset: 1px;
@@ -601,10 +592,14 @@ function resolveDishIdentity(meal, facility, ratingCtx) {
 
 let ratingWidgetSeq = 0;
 
-// Real radio-group semantics: six <input type="radio"> (0..5, 0 a real
-// rating, distinct from nothing selected = unrated), visually hidden but
-// focusable so arrow-key navigation and accessible names come from the
-// browser's native radiogroup behaviour rather than reimplemented JS.
+// Real radio-group semantics: five <input type="radio"> (1..5), visually
+// hidden but focusable so arrow-key navigation and accessible names come from
+// the browser's native radiogroup behaviour rather than reimplemented JS.
+// Unrated is the absence of a stored key, reached via the clear button — a
+// selectable 0 used to exist alongside it, but "1 star" already says the dish
+// was bad, and a sixth control for a distinction almost nobody draws only made
+// the widget read as a stray digit next to the stars. A 0 already in storage
+// stays valid and still shows on the stats page; it just can't be set again.
 function renderRatingWidget(dishId, lang, strings) {
   const uid = `rating-${ratingWidgetSeq++}`;
   const fieldset = document.createElement('fieldset');
@@ -617,7 +612,7 @@ function renderRatingWidget(dishId, lang, strings) {
 
   const starsWrap = el('div', 'rating-stars');
   const stars = [];
-  for (let n = 0; n <= 5; n++) {
+  for (let n = 1; n <= 5; n++) {
     const id = `${uid}-${n}`;
     const input = document.createElement('input');
     input.type = 'radio';
@@ -627,9 +622,8 @@ function renderRatingWidget(dishId, lang, strings) {
     input.className = 'sr-only';
     const label = document.createElement('label');
     label.htmlFor = id;
-    label.textContent = n === 0 ? '0' : '★';
+    label.textContent = '★';
     label.setAttribute('aria-label', starLabel(lang, n));
-    if (n === 0) label.classList.add('rating-zero');
     starsWrap.append(input, label);
     stars.push({ input, label, n });
   }

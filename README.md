@@ -27,12 +27,14 @@ step). At load time it:
    background and re-renders only if something actually changed (e.g. an
    item sold out since the snapshot was taken) — so the page stays fresh
    between the Action's 5-minute runs without a visible reload.
-4. Picks out today's date client-side (the dates embedded in `websites.txt`
-   are only there to identify which facility each URL points at — they're
-   not used to decide "today").
-5. Renders each facility's dishes, facilities sorted with "food market" first
-   and "fusion" second; dishes within each facility sorted vegan → vegetarian
-   → omnivore (alphabetically within each), then "Choose 5" (build-your-own),
+4. Picks out today's date client-side in **Europe/Zurich**, not the viewer's
+   own timezone — otherwise a reader outside Switzerland near midnight would
+   be shown the wrong day's menu. (The dates embedded in `websites.txt` are
+   only there to identify which facility each URL points at; they're not used
+   to decide "today".)
+5. Renders each facility's dishes, facilities in `websites.txt` order (see
+   "Adding more facilities"); dishes within each facility sorted vegan →
+   vegetarian → omnivore (alphabetically within each), then "Choose 5",
    then sold-out items last of all, each dish tagged:
    - `O` — omnivore (default: contains meat/fish, or unclassified)
    - `V-` — vegetarian
@@ -47,10 +49,15 @@ step). At load time it:
    student / internal / external), using the API's own already-localized
    group labels.
 
+Each dish card carries a 1–5 star rating you can set, stored in this browser
+only — see "Local ratings" below.
+
 API responses are cached in `localStorage` for 5 minutes (the API itself
 sends no `Cache-Control`/`ETag`), so reloading the page doesn't refetch on
 every visit. Both languages are fetched concurrently on page load, so the
-language toggle never has to wait on a request.
+language toggle never has to wait on a request. The background re-check in
+step 3 deliberately bypasses that cache — it exists to catch what changed, so
+answering it from a cached response would defeat the point.
 
 ## Menu snapshots & history
 
@@ -147,7 +154,15 @@ orphaning any local rating or saved link that references an id.
 
 So unlike `stats.json` and `dishes.csv`, it is never self-healed. If it goes
 missing the build fails and says to restore it from git history;
-`--allow-new-registry` exists only to bootstrap a fresh one.
+`--allow-new-registry` exists only to bootstrap a fresh one, and the workflow
+checks for the file before doing anything else so a quiet day cannot stay
+green while identity is broken.
+
+Because renames are recorded by hand, the file is validated on every load:
+ids must be canonical positive integers (no `01`), each entry a non-empty
+`[facility, name_en]` pair, and each pair owned by exactly one id. A pair
+claimed twice would otherwise let dict order decide identity and orphan the
+ratings pointing at the loser, so the build refuses to run instead.
 
 `stats.json`'s top-level `priceGroups` array lists customer groups in the
 same order the CSV uses for its `price_<group>` columns: known groups first
@@ -223,6 +238,39 @@ stay dependency-free (no runtime fetch on the menu page's render path just to
 unify three small constants). `tools/build_stats.py --selftest` guards
 against the three copies drifting apart: it reads the pages' own source and
 fails if they disagree, so changing one means changing all of them.
+
+## Local ratings
+
+Dishes can be rated 1–5 stars on the menu page. Ratings live in this browser's
+`localStorage` under `mensaDishRatings` and nowhere else: they are never
+synced, never leave the machine, and disappear if site data is cleared. There
+is no backend, and adding one would change what this project is. The stats
+page shows them read-only — a column in the dish ledger, a "rated only"
+filter, and a count/average — so there is only ever one implementation of the
+control.
+
+Two details that are easy to get wrong and are deliberately not:
+
+- **Unrated is the absence of a key, not a zero.** Clearing a rating removes
+  it rather than storing `0`, so "I haven't tried this" never reads as "this
+  was terrible" and sorting by rating stays meaningful. A selectable `0`
+  briefly existed alongside the clear button; it was dropped because one star
+  already says the dish was bad, and a sixth control for a distinction almost
+  nobody draws just read as a stray digit next to the stars. A `0` already in
+  storage is still valid and still shows on the stats page — it simply cannot
+  be set again.
+- **Ratings key on the numeric dish id, resolved from the English name**, even
+  when the page is showing German. The registry keys on English names, so a
+  lookup by displayed name would silently create a second rating for the same
+  dish. The menu page resolves the id by matching the displayed dish to its
+  English counterpart via `line-id` *within the same snapshot* — and when it
+  cannot pair the two (a failed fetch, a background refresh that disagrees
+  with the snapshot), it renders no rating control rather than guessing. A
+  missing control is recoverable; a rating silently attached to the wrong dish
+  is not.
+
+Entries carry a timestamp, are pruned after a year, and a timestamp
+implausibly far in the future is treated as corrupt rather than kept forever.
 
 ## Usage
 

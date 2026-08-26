@@ -13,14 +13,14 @@ archive behind them.
 | Per-dish price mean ± σ | ledger columns, hidden by default |
 | Choosable ledger columns, remembered | `localStorage`, validated on read |
 | Cross-language dish search | `?q=`, matches `name` and `nameDe` |
-| Local star ratings, 0–5 | `index.html`, keyed on numeric dish id |
+| Local star ratings, 1–5 | rate on `index.html`, review on `stats.html` |
 | Policy-drift guard | `--selftest` reads both HTML pages |
 | Numeric dish ids + registry | `data/dish-ids.json` |
 
 Earlier rounds: shared facility ordering from `websites.txt`, a fully
 bilingual stats page, `Choose 5` excluded from the statistics, `?lang=`
 carried both ways, two `index.html` races, and `--selftest` grown from 19 to
-79 assertions.
+91 assertions.
 
 ## What is thin rather than broken
 
@@ -64,8 +64,6 @@ snapshot with a missing German food-market menu.
 
 Not requested, listed only so they are not rediscovered from scratch:
 
-- Rating review/sort on the stats page — ratings are captured on the menu page
-  but nothing surfaces them yet.
 - Same-weekday comparison in the Today section, once there are enough weeks.
 - Pruning `data/` if it ever grows enough to matter; it is append-only and
   nothing deletes old snapshots.
