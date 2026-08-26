@@ -1,27 +1,27 @@
 {
-  "dataAsOf": "2026-08-25T09:15:06Z",
+  "dataAsOf": "2026-08-26T03:22:56Z",
   "dateRange": {
     "from": "2026-08-05",
-    "to": "2026-08-25",
-    "days": 15
+    "to": "2026-08-26",
+    "days": 16
   },
   "facilities": [
     {
       "name": "Mendokoro",
-      "days": 15,
-      "dishDays": 75,
+      "days": 16,
+      "dishDays": 80,
       "firstSeen": "2026-08-05",
-      "lastSeen": "2026-08-25",
+      "lastSeen": "2026-08-26",
       "diet": {
         "vegan": 0,
-        "vegetarian": 45,
+        "vegetarian": 48,
         "fish": 0,
-        "meat": 30,
+        "meat": 32,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 75,
+          "n": 80,
           "min": 15.5,
           "p25": 15.5,
           "median": 17.5,
@@ -30,7 +30,7 @@
           "mean": 17.22
         },
         "internal": {
-          "n": 75,
+          "n": 80,
           "min": 12.5,
           "p25": 12.5,
           "median": 14.5,
@@ -39,7 +39,7 @@
           "mean": 14.22
         },
         "students": {
-          "n": 75,
+          "n": 80,
           "min": 10.5,
           "p25": 10.5,
           "median": 12.5,
@@ -51,38 +51,38 @@
     },
     {
       "name": "food market",
-      "days": 15,
-      "dishDays": 114,
+      "days": 16,
+      "dishDays": 121,
       "firstSeen": "2026-08-05",
-      "lastSeen": "2026-08-25",
+      "lastSeen": "2026-08-26",
       "diet": {
-        "vegan": 16,
-        "vegetarian": 29,
-        "fish": 4,
-        "meat": 45,
-        "unclassified": 20
+        "vegan": 17,
+        "vegetarian": 30,
+        "fish": 5,
+        "meat": 47,
+        "unclassified": 22
       },
       "prices": {
         "external": {
-          "n": 114,
+          "n": 121,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
-          "p75": 16.6,
+          "p75": 16.7,
           "max": 19.5,
           "mean": 15.77
         },
         "internal": {
-          "n": 114,
+          "n": 121,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
-          "p75": 13.6,
+          "p75": 13.7,
           "max": 16.5,
-          "mean": 12.79
+          "mean": 12.8
         },
         "students": {
-          "n": 114,
+          "n": 121,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
@@ -95,29 +95,29 @@
   ],
   "overall": {
     "name": "all",
-    "days": 15,
-    "dishDays": 189,
+    "days": 16,
+    "dishDays": 201,
     "firstSeen": "2026-08-05",
-    "lastSeen": "2026-08-25",
+    "lastSeen": "2026-08-26",
     "diet": {
-      "vegan": 16,
-      "vegetarian": 74,
-      "fish": 4,
-      "meat": 75,
-      "unclassified": 20
+      "vegan": 17,
+      "vegetarian": 78,
+      "fish": 5,
+      "meat": 79,
+      "unclassified": 22
     },
     "prices": {
       "external": {
-        "n": 189,
+        "n": 201,
         "min": 7.5,
         "p25": 15.5,
         "median": 15.5,
         "p75": 17.5,
         "max": 19.5,
-        "mean": 16.34
+        "mean": 16.35
       },
       "internal": {
-        "n": 189,
+        "n": 201,
         "min": 7.5,
         "p25": 12.5,
         "median": 12.5,
@@ -126,7 +126,7 @@
         "mean": 13.36
       },
       "students": {
-        "n": 189,
+        "n": 201,
         "min": 7.0,
         "p25": 8.5,
         "median": 9.9,
@@ -142,9 +142,9 @@
       "nameDe": "Chicken Tonkatsu Bowl",
       "facility": "Mendokoro",
       "diet": "meat",
-      "count": 15,
+      "count": 16,
       "firstSeen": "2026-08-05",
-      "lastSeen": "2026-08-25",
+      "lastSeen": "2026-08-26",
       "dates": [
         "2026-08-05",
         "2026-08-06",
@@ -160,9 +160,11 @@
         "2026-08-20",
         "2026-08-21",
         "2026-08-24",
-        "2026-08-25"
+        "2026-08-25",
+        "2026-08-26"
       ],
       "gapsWeekdays": [
+        1,
         1,
         1,
         1,
@@ -181,10 +183,10 @@
       "meanGapWeekdays": 1.0,
       "sdGapWeekdays": 0.0,
       "prediction": {
-        "nextDate": "2026-08-26",
+        "nextDate": "2026-08-27",
         "sigmaWeekdays": 0.0,
-        "earliest": "2026-08-26",
-        "latest": "2026-08-26"
+        "earliest": "2026-08-27",
+        "latest": "2026-08-27"
       }
     },
     {
@@ -192,9 +194,9 @@
       "nameDe": "Choose 5",
       "facility": "food market",
       "diet": "unclassified",
-      "count": 15,
+      "count": 16,
       "firstSeen": "2026-08-05",
-      "lastSeen": "2026-08-25",
+      "lastSeen": "2026-08-26",
       "dates": [
         "2026-08-05",
         "2026-08-06",
@@ -210,9 +212,11 @@
         "2026-08-20",
         "2026-08-21",
         "2026-08-24",
-        "2026-08-25"
+        "2026-08-25",
+        "2026-08-26"
       ],
       "gapsWeekdays": [
+        1,
         1,
         1,
         1,
@@ -231,10 +235,10 @@
       "meanGapWeekdays": 1.0,
       "sdGapWeekdays": 0.0,
       "prediction": {
-        "nextDate": "2026-08-26",
+        "nextDate": "2026-08-27",
         "sigmaWeekdays": 0.0,
-        "earliest": "2026-08-26",
-        "latest": "2026-08-26"
+        "earliest": "2026-08-27",
+        "latest": "2026-08-27"
       }
     },
     {
@@ -242,9 +246,9 @@
       "nameDe": "Cold Moiroka Ramen",
       "facility": "Mendokoro",
       "diet": "vegetarian",
-      "count": 15,
+      "count": 16,
       "firstSeen": "2026-08-05",
-      "lastSeen": "2026-08-25",
+      "lastSeen": "2026-08-26",
       "dates": [
         "2026-08-05",
         "2026-08-06",
@@ -260,9 +264,11 @@
         "2026-08-20",
         "2026-08-21",
         "2026-08-24",
-        "2026-08-25"
+        "2026-08-25",
+        "2026-08-26"
       ],
       "gapsWeekdays": [
+        1,
         1,
         1,
         1,
@@ -281,10 +287,10 @@
       "meanGapWeekdays": 1.0,
       "sdGapWeekdays": 0.0,
       "prediction": {
-        "nextDate": "2026-08-26",
+        "nextDate": "2026-08-27",
         "sigmaWeekdays": 0.0,
-        "earliest": "2026-08-26",
-        "latest": "2026-08-26"
+        "earliest": "2026-08-27",
+        "latest": "2026-08-27"
       }
     },
     {
@@ -292,9 +298,9 @@
       "nameDe": "Miso Ramen",
       "facility": "Mendokoro",
       "diet": "vegetarian",
-      "count": 15,
+      "count": 16,
       "firstSeen": "2026-08-05",
-      "lastSeen": "2026-08-25",
+      "lastSeen": "2026-08-26",
       "dates": [
         "2026-08-05",
         "2026-08-06",
@@ -310,9 +316,11 @@
         "2026-08-20",
         "2026-08-21",
         "2026-08-24",
-        "2026-08-25"
+        "2026-08-25",
+        "2026-08-26"
       ],
       "gapsWeekdays": [
+        1,
         1,
         1,
         1,
@@ -331,10 +339,10 @@
       "meanGapWeekdays": 1.0,
       "sdGapWeekdays": 0.0,
       "prediction": {
-        "nextDate": "2026-08-26",
+        "nextDate": "2026-08-27",
         "sigmaWeekdays": 0.0,
-        "earliest": "2026-08-26",
-        "latest": "2026-08-26"
+        "earliest": "2026-08-27",
+        "latest": "2026-08-27"
       }
     },
     {
@@ -342,9 +350,9 @@
       "nameDe": "Pizza Margherita",
       "facility": "food market",
       "diet": "vegetarian",
-      "count": 15,
+      "count": 16,
       "firstSeen": "2026-08-05",
-      "lastSeen": "2026-08-25",
+      "lastSeen": "2026-08-26",
       "dates": [
         "2026-08-05",
         "2026-08-06",
@@ -360,9 +368,11 @@
         "2026-08-20",
         "2026-08-21",
         "2026-08-24",
-        "2026-08-25"
+        "2026-08-25",
+        "2026-08-26"
       ],
       "gapsWeekdays": [
+        1,
         1,
         1,
         1,
@@ -381,10 +391,10 @@
       "meanGapWeekdays": 1.0,
       "sdGapWeekdays": 0.0,
       "prediction": {
-        "nextDate": "2026-08-26",
+        "nextDate": "2026-08-27",
         "sigmaWeekdays": 0.0,
-        "earliest": "2026-08-26",
-        "latest": "2026-08-26"
+        "earliest": "2026-08-27",
+        "latest": "2026-08-27"
       }
     },
     {
@@ -392,9 +402,9 @@
       "nameDe": "Shoyu Ramen",
       "facility": "Mendokoro",
       "diet": "vegetarian",
-      "count": 15,
+      "count": 16,
       "firstSeen": "2026-08-05",
-      "lastSeen": "2026-08-25",
+      "lastSeen": "2026-08-26",
       "dates": [
         "2026-08-05",
         "2026-08-06",
@@ -410,9 +420,11 @@
         "2026-08-20",
         "2026-08-21",
         "2026-08-24",
-        "2026-08-25"
+        "2026-08-25",
+        "2026-08-26"
       ],
       "gapsWeekdays": [
+        1,
         1,
         1,
         1,
@@ -431,10 +443,10 @@
       "meanGapWeekdays": 1.0,
       "sdGapWeekdays": 0.0,
       "prediction": {
-        "nextDate": "2026-08-26",
+        "nextDate": "2026-08-27",
         "sigmaWeekdays": 0.0,
-        "earliest": "2026-08-26",
-        "latest": "2026-08-26"
+        "earliest": "2026-08-27",
+        "latest": "2026-08-27"
       }
     },
     {
@@ -442,9 +454,9 @@
       "nameDe": "Tori Ramen",
       "facility": "Mendokoro",
       "diet": "meat",
-      "count": 15,
+      "count": 16,
       "firstSeen": "2026-08-05",
-      "lastSeen": "2026-08-25",
+      "lastSeen": "2026-08-26",
       "dates": [
         "2026-08-05",
         "2026-08-06",
@@ -460,9 +472,11 @@
         "2026-08-20",
         "2026-08-21",
         "2026-08-24",
-        "2026-08-25"
+        "2026-08-25",
+        "2026-08-26"
       ],
       "gapsWeekdays": [
+        1,
         1,
         1,
         1,
@@ -481,10 +495,10 @@
       "meanGapWeekdays": 1.0,
       "sdGapWeekdays": 0.0,
       "prediction": {
-        "nextDate": "2026-08-26",
+        "nextDate": "2026-08-27",
         "sigmaWeekdays": 0.0,
-        "earliest": "2026-08-26",
-        "latest": "2026-08-26"
+        "earliest": "2026-08-27",
+        "latest": "2026-08-27"
       }
     },
     {
@@ -696,6 +710,22 @@
       "prediction": null
     },
     {
+      "name": "Bowlicious",
+      "nameDe": "Bowlicious",
+      "facility": "food market",
+      "diet": "vegan",
+      "count": 1,
+      "firstSeen": "2026-08-26",
+      "lastSeen": "2026-08-26",
+      "dates": [
+        "2026-08-26"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
       "name": "Breaded Mushrooms",
       "nameDe": "Panierte Champignons",
       "facility": "food market",
@@ -817,6 +847,22 @@
       "lastSeen": "2026-08-14",
       "dates": [
         "2026-08-14"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Cheeseburger",
+      "nameDe": "Cheeseburger",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-26",
+      "lastSeen": "2026-08-26",
+      "dates": [
+        "2026-08-26"
       ],
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
@@ -1304,6 +1350,22 @@
       "prediction": null
     },
     {
+      "name": "Pasta Portofino",
+      "nameDe": "Pasta Portofino",
+      "facility": "food market",
+      "diet": "unclassified",
+      "count": 1,
+      "firstSeen": "2026-08-26",
+      "lastSeen": "2026-08-26",
+      "dates": [
+        "2026-08-26"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
       "name": "Pasta with Broccoli",
       "nameDe": "Pasta ai Broccoli",
       "facility": "food market",
@@ -1425,6 +1487,22 @@
       "lastSeen": "2026-08-25",
       "dates": [
         "2026-08-25"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Rigatoni with Tomatoes and Artichokes",
+      "nameDe": "Rigatoni mit Tomaten und Artischocken",
+      "facility": "food market",
+      "diet": "meat",
+      "count": 1,
+      "firstSeen": "2026-08-26",
+      "lastSeen": "2026-08-26",
+      "dates": [
+        "2026-08-26"
       ],
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
@@ -1793,6 +1871,22 @@
       "lastSeen": "2026-08-24",
       "dates": [
         "2026-08-24"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null
+    },
+    {
+      "name": "Yellow Thai Curry",
+      "nameDe": "Gelbes Thai Curry",
+      "facility": "food market",
+      "diet": "fish",
+      "count": 1,
+      "firstSeen": "2026-08-26",
+      "lastSeen": "2026-08-26",
+      "dates": [
+        "2026-08-26"
       ],
       "gapsWeekdays": [],
       "meanGapWeekdays": null,

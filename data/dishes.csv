@@ -188,3 +188,15 @@ date,facility,facility_id,line,name_en,name_de,diet,first_seen_at,last_seen_at,s
 2026-08-25,food market,19,pizza classica,Pizza Margherita,Pizza Margherita,vegetarian,2026-08-25T06:12:50Z,2026-08-25T09:15:06Z,,7.0,11.5,14.5,858,9.6,5.3,29,1.28,1.2,2.5
 2026-08-25,food market,19,pasta della nonna,Rigatoni with Porcini Mushrooms,Rigatoni ai Funghi Porcini,vegan,2026-08-25T06:12:50Z,2026-08-25T09:15:06Z,,9.5,13.5,16.5,613,4.8,3.1,24,0.62,0.9,1.1
 2026-08-25,food market,19,green daily,Sweet Potatoes Dream,Sweet Potatoes Dream,vegetarian,2026-08-25T06:12:50Z,2026-08-25T09:15:06Z,,7.0,11.5,14.5,465,3.2,5.9,13,0.73,3.3,1.5
+2026-08-26,Mendokoro,16,Shi,Chicken Tonkatsu Bowl,Chicken Tonkatsu Bowl,meat,2026-08-26T03:22:56Z,2026-08-26T03:22:56Z,,13.8,15.8,18.8,733,5.8,3.8,29,1.06,6.1,0.5
+2026-08-26,Mendokoro,16,San,Cold Moiroka Ramen,Cold Moiroka Ramen,vegetarian,2026-08-26T03:22:56Z,2026-08-26T03:22:56Z,,12.5,14.5,17.5,271,2.3,3.0,10,1.15,1.1,0.1
+2026-08-26,Mendokoro,16,Ichi,Miso Ramen,Miso Ramen,vegetarian,2026-08-26T03:22:56Z,2026-08-26T03:22:56Z,,10.5,12.5,15.5,293,2.8,3.6,10,1.21,0.9,0.2
+2026-08-26,Mendokoro,16,Ni,Shoyu Ramen,Shoyu Ramen,vegetarian,2026-08-26T03:22:56Z,2026-08-26T03:22:56Z,,10.5,12.5,15.5,308,2.9,3.7,11,1.30,0.8,0.2
+2026-08-26,Mendokoro,16,Roku,Tori Ramen,Tori Ramen,meat,2026-08-26T03:22:56Z,2026-08-26T03:22:56Z,,13.8,15.8,18.8,318,5.0,3.5,9.5,1.18,0.8,0.2
+2026-08-26,food market,19,green daily,Bowlicious,Bowlicious,vegan,2026-08-26T03:22:56Z,2026-08-26T03:22:56Z,,7.0,11.5,14.5,515,3.9,5.3,14,1.03,1.1,0.8
+2026-08-26,food market,19,grill,Cheeseburger,Cheeseburger,meat,2026-08-26T03:22:56Z,2026-08-26T03:22:56Z,,11.5,14.5,17.5,837,7.6,10,18,1.25,2.6,2.9
+2026-08-26,food market,19,green delight,Choose 5,Choose 5,unclassified,2026-08-26T03:22:56Z,2026-08-26T03:22:56Z,,9.9,13.9,16.9,0.0,0.0,0.0,0.0,0.00,0.0,0.0
+2026-08-26,food market,19,pasta della nonna,Pasta Portofino,Pasta Portofino,unclassified,2026-08-26T03:22:56Z,2026-08-26T03:22:56Z,,9.5,13.5,16.5,428,3.4,3.2,14,0.47,1.0,0.5
+2026-08-26,food market,19,pizza classica,Pizza Margherita,Pizza Margherita,vegetarian,2026-08-26T03:22:56Z,2026-08-26T03:22:56Z,,7.0,11.5,14.5,858,9.6,5.3,29,1.28,1.2,2.5
+2026-08-26,food market,19,pasta classica,Rigatoni with Tomatoes and Artichokes,Rigatoni mit Tomaten und Artischocken,meat,2026-08-26T03:22:56Z,2026-08-26T03:22:56Z,,8.5,12.5,15.5,708,5.7,6.7,20,0.67,1.8,1.9
+2026-08-26,food market,19,fire,Yellow Thai Curry,Gelbes Thai Curry,fish,2026-08-26T03:22:56Z,2026-08-26T03:22:56Z,,8.5,12.5,15.5,482,5.6,6.3,12,0.84,0.9,4.8
