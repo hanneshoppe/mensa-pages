@@ -12,49 +12,6 @@
   },
   "facilities": [
     {
-      "name": "Mendokoro",
-      "days": 16,
-      "dishDays": 80,
-      "firstSeen": "2026-08-05",
-      "lastSeen": "2026-08-26",
-      "diet": {
-        "vegan": 0,
-        "vegetarian": 48,
-        "fish": 0,
-        "meat": 32,
-        "unclassified": 0
-      },
-      "prices": {
-        "external": {
-          "n": 80,
-          "min": 15.5,
-          "p25": 15.5,
-          "median": 17.5,
-          "p75": 18.8,
-          "max": 18.8,
-          "mean": 17.22
-        },
-        "internal": {
-          "n": 80,
-          "min": 12.5,
-          "p25": 12.5,
-          "median": 14.5,
-          "p75": 15.8,
-          "max": 15.8,
-          "mean": 14.22
-        },
-        "students": {
-          "n": 80,
-          "min": 10.5,
-          "p25": 10.5,
-          "median": 12.5,
-          "p75": 13.8,
-          "max": 13.8,
-          "mean": 12.22
-        }
-      }
-    },
-    {
       "name": "food market",
       "days": 16,
       "dishDays": 121,
@@ -94,6 +51,49 @@
           "p75": 9.9,
           "max": 13.5,
           "mean": 8.82
+        }
+      }
+    },
+    {
+      "name": "Mendokoro",
+      "days": 16,
+      "dishDays": 80,
+      "firstSeen": "2026-08-05",
+      "lastSeen": "2026-08-26",
+      "diet": {
+        "vegan": 0,
+        "vegetarian": 48,
+        "fish": 0,
+        "meat": 32,
+        "unclassified": 0
+      },
+      "prices": {
+        "external": {
+          "n": 80,
+          "min": 15.5,
+          "p25": 15.5,
+          "median": 17.5,
+          "p75": 18.8,
+          "max": 18.8,
+          "mean": 17.22
+        },
+        "internal": {
+          "n": 80,
+          "min": 12.5,
+          "p25": 12.5,
+          "median": 14.5,
+          "p75": 15.8,
+          "max": 15.8,
+          "mean": 14.22
+        },
+        "students": {
+          "n": 80,
+          "min": 10.5,
+          "p25": 10.5,
+          "median": 12.5,
+          "p75": 13.8,
+          "max": 13.8,
+          "mean": 12.22
         }
       }
     }

@@ -120,6 +120,58 @@ mean-only now and σ later is the better call. Archive-wide the student prices
 occupy just ten distinct values (7.00–13.80), so price movement is likely to
 be rare and step-like rather than continuous.
 
+## 12. Choosable columns in "Dish ledger & next serving", with a remembered choice
+
+The ledger shows all eight columns unconditionally. Let the reader pick which
+to see, defaulting to seven:
+
+> Dish, Facility, Diet, Times seen, Last seen, Mean gap, Next predicted serving
+
+i.e. only `First seen` is hidden by default. `DISH_COLUMNS` (`stats.html:714`)
+is already a list of `{key, label}`, so the chooser is a filter over it — the
+table builder should render whatever subset is selected rather than the whole
+array. Keep at least one column always on so the table cannot vanish entirely.
+
+**"Last seen" must not count today.** A dish on today's menu currently shows
+today's date, which is trivially true and useless next to "next predicted
+serving" — the useful answer is when it was *previously* served. Right now 12
+of 96 dishes have `lastSeen == today`, so this is visible immediately.
+
+No schema change needed: `stats.json`'s `dishes[].dates` carries the full
+sighting list, so the page can take the last entry before today. Leave
+`lastSeen` in the JSON as the honest maximum — this is a display rule, not a
+data change. Edge case to handle: a dish whose *only* sighting is today has no
+previous serving, so show `—` (or "first time today"), not today's date and
+not a blank.
+
+**Persist the choice for at least 3 months.** Plain `localStorage` under its
+own key is enough — it survives indefinitely until cleared, which satisfies
+"at least 3 months". Do **not** reuse the API-response cache helper: that one
+carries a 5-minute TTL (`index.html:237`) and would silently discard the
+preference almost immediately. Store a list of column keys, and validate on
+read — unknown or removed keys must be ignored gracefully so a future change
+to `DISH_COLUMNS` cannot leave someone with a broken or empty table.
+
+Note this interacts with item 7 (per-dish price mean/deviation adds more
+columns) and item 11 (the chooser's own labels need German too).
+
+## 11. German translations for the stats page's descriptive text
+
+Right now the DE/EN toggle swaps dish names only — every heading, column
+label, legend entry and caveat note is hardcoded English. Translate the
+descriptive text so DE is a real language choice rather than a name swap.
+
+**This largely solves item 4.** The toggle looks broken today because the
+seven dishes at the top of the ledger have identical German and English
+names, so clicking DE changes nothing above the fold. Once the section notes,
+headings and column labels translate, the effect is immediate and obvious no
+matter which dishes are on screen.
+
+Note `index.html` already has a `STRINGS` object keyed by language for
+exactly this. Reuse that shape rather than inventing a second mechanism, and
+keep the caveat notes' meaning intact in translation — they are the page's
+honesty about thin data, not decoration.
+
 ## 8. Two `index.html` races, deferred from the Codex review
 
 Both are real but need a network slow enough or a tab left open long enough to

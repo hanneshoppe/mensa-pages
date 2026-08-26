@@ -7,7 +7,9 @@ import argparse
 import csv
 import glob
 import json
+import re
 import statistics
+import tempfile
 from collections import Counter, defaultdict
 from datetime import date, timedelta
 from pathlib import Path
@@ -28,6 +30,13 @@ DIET_KEYS = ["vegan", "vegetarian", "fish", "meat", "unclassified"]
 # PRICE_GROUPS_KNOWN / computePriceGroups() in stats.html so the csv and the
 # stats page never disagree about group order.
 PRICE_GROUPS_KNOWN = ["students", "internal", "external"]
+
+# websites.txt's line order is deliberately treated as the canonical facility
+# order (it already lists food market/FUSION/Mendokoro in the intended
+# order), so stats.json and index.html's PRIORITY_ORDER agree without
+# duplicating the priority list in two languages - see TODO item 2. A future
+# reader may be tempted to "fix" facilities[] back to alphabetical; don't.
+WEBSITES_PATH = Path(__file__).resolve().parent.parent / "websites.txt"
 
 # meal dict key -> dishes.csv column name.
 NUTRITION_FIELDS = [
@@ -111,19 +120,25 @@ def iter_lines(facilities):
 
 
 def iter_meals(facilities_en):
-    """Yield (facility_name, dish_name, meal) for every real dish of the day."""
-    for facility, _fid, _line, meal in iter_lines(facilities_en):
+    """Yield (facility_name, facility_id, dish_name, meal) for every real
+    dish of the day."""
+    for facility, fid, _line, meal in iter_lines(facilities_en):
         name = meal.get("name")
         if name is None or name.strip().lower() in SOLD_OUT:
             continue
-        yield facility, name, meal
+        yield facility, fid, name, meal
 
 
 def load_day_dish(data_dir):
     """Read every data/*.jsonl file and dedup down to one meal per
     (date, facility, dish name), keeping the most recent snapshot line seen
-    for that day (multiple snapshot lines per day repeat the same dishes)."""
+    for that day (multiple snapshot lines per day repeat the same dishes).
+
+    Also returns facility_id_for: facility_name -> id (first seen), so
+    build_stats can order facilities[] by websites.txt position without a
+    second pass over the archive."""
     day_dish = {}
+    facility_id_for = {}
     latest_fetched_at = None  # max fetchedAt seen, for a deterministic "as of"
     for path in sorted(glob.glob(str(data_dir / "*.jsonl"))):
         d = Path(path).stem
@@ -140,9 +155,10 @@ def load_day_dish(data_dir):
                 fetched_at = snapshot.get("fetchedAt")
                 if fetched_at and (latest_fetched_at is None or fetched_at > latest_fetched_at):
                     latest_fetched_at = fetched_at
-                for facility, dish, meal in iter_meals(snapshot["facilities"]["en"]):
+                for facility, fid, dish, meal in iter_meals(snapshot["facilities"]["en"]):
                     day_dish[(d, facility, dish)] = meal
-    return day_dish, latest_fetched_at
+                    facility_id_for.setdefault(facility, fid)
+    return day_dish, latest_fetched_at, facility_id_for
 
 
 def ordered_groups(seen_order, known):
@@ -152,6 +168,35 @@ def ordered_groups(seen_order, known):
     present_known = [g for g in known if g in seen_order]
     unknown = [g for g in seen_order if g not in known]
     return present_known + unknown
+
+
+def parse_websites_order(path):
+    """Extract id= values out of websites.txt, first-occurrence order - the
+    canonical facility order (see WEBSITES_PATH). Returns [] if the file is
+    missing or unreadable, so callers degrade to alphabetical order instead
+    of crashing."""
+    try:
+        text = Path(path).read_text()
+    except OSError:
+        return []
+    ids = []
+    for line in text.splitlines():
+        m = re.search(r"[?&]id=(\w+)", line)
+        if m and m.group(1) not in ids:
+            ids.append(m.group(1))
+    return ids
+
+
+def facility_sort_key(name, facility_id, order):
+    """Sort key placing facility_id at its websites.txt position; unknown or
+    unmatched ids sort after all known ones, then alphabetically by name -
+    so the order stays total and deterministic even as new facilities show
+    up in the API before websites.txt is updated."""
+    try:
+        idx = order.index(facility_id)
+    except ValueError:
+        idx = len(order)
+    return (idx, name)
 
 
 def build_date_rows(d, snapshots):
@@ -318,8 +363,8 @@ def write_dishes_csv(rows, price_groups, out_path):
             writer.writerow(out)
 
 
-def build_stats(data_dir, latest_de_name=None, price_groups=None):
-    day_dish, data_as_of = load_day_dish(data_dir)
+def build_stats(data_dir, latest_de_name=None, price_groups=None, websites_path=WEBSITES_PATH):
+    day_dish, data_as_of, facility_id_for = load_day_dish(data_dir)
 
     facility_days = defaultdict(set)
     facility_dishdays = Counter()
@@ -357,8 +402,10 @@ def build_stats(data_dir, latest_de_name=None, price_groups=None):
             "name": name,
             "days": len(days_set),
             "dishDays": dishdays,
-            "firstSeen": min(days_set),
-            "lastSeen": max(days_set),
+            # None (not a crash) when days_set is empty - see the empty-
+            # archive self-test.
+            "firstSeen": min(days_set) if days_set else None,
+            "lastSeen": max(days_set) if days_set else None,
             "diet": {k: diet_counter.get(k, 0) for k in DIET_KEYS},
             "prices": {g: price_stats(v) for g, v in sorted(price_lists.items()) if v},
         }
@@ -368,10 +415,19 @@ def build_stats(data_dir, latest_de_name=None, price_groups=None):
     # non-null dayEntry but an empty line-array (e.g. FUSION, closed for
     # summer) never touches it, so it's omitted here automatically and will
     # reappear on its own once it starts serving again - no dayEntry check.
+    #
+    # Ordered by websites.txt's line position, not alphabetically - that
+    # file already lists facilities in the intended order (food market,
+    # FUSION, Mendokoro) and is the single source both this script and
+    # index.html read, so the two pages can't drift apart again (TODO
+    # item 2). Do not "fix" this back to sorted(facility_days).
+    order = parse_websites_order(websites_path)
+    facility_names = sorted(facility_days,
+                             key=lambda n: facility_sort_key(n, facility_id_for.get(n), order))
     facilities = [
         facility_entry(name, facility_days[name], facility_dishdays[name],
                         facility_diet[name], facility_prices[name])
-        for name in sorted(facility_days)
+        for name in facility_names
     ]
     overall = facility_entry("all", overall_days, sum(facility_dishdays.values()),
                               overall_diet, overall_prices)
@@ -420,8 +476,8 @@ def build_stats(data_dir, latest_de_name=None, price_groups=None):
         # ordered_groups().
         "priceGroups": ordered_groups(price_groups or [], PRICE_GROUPS_KNOWN),
         "dateRange": {
-            "from": min(overall_days),
-            "to": max(overall_days),
+            "from": min(overall_days) if overall_days else None,
+            "to": max(overall_days) if overall_days else None,
             "days": len(overall_days),
         },
         "facilities": facilities,
@@ -488,7 +544,190 @@ def demo():
     assert row["name_de"] == "Testgericht"
     assert de_name_for[("Test Facility", "Test Dish")] == "Testgericht"
 
+    _test_duplicate_snapshots_dedup()
+    _test_line_id_reuse_across_dates()
+    _test_mismatched_facility_names()
+    _test_sold_out_in_first_snapshot()
+    _test_empty_archive()
+    _test_byte_repeatability()
+    _test_facility_order_from_websites_txt()
+
     print("demo: all assertions passed")
+
+
+# --- Fixture helpers for the tests below: build the smallest possible
+# facilities-array shape the API produces, without touching data/*.jsonl. ---
+
+def _mk_meal(line_id, name, **extra):
+    return {"name": "Line A", "meal": {"line-id": line_id, "name": name, **extra}}
+
+
+def _mk_facility(fid, name, line_entries):
+    return [{"id": fid, "name": name, "dayEntry": {
+        "opening-hour-array": [{"meal-time-array": [{"line-array": line_entries}]}]}}]
+
+
+def _write_jsonl(path, snapshots):
+    path.write_text("\n".join(json.dumps(s) for s in snapshots) + "\n")
+
+
+def _test_duplicate_snapshots_dedup():
+    """The same dish repeated across several snapshot lines in one day must
+    dedup to a single dish-day, not be counted once per snapshot."""
+    with tempfile.TemporaryDirectory() as td:
+        d = Path(td)
+        en = _mk_facility("19", "food market", [_mk_meal("1", "Ramen")])
+        snapshots = [{"fetchedAt": f"2026-08-01T0{h}:00:00Z", "facilities": {"en": en}}
+                     for h in (6, 7, 8)]
+        _write_jsonl(d / "2026-08-01.jsonl", snapshots)
+
+        day_dish, _as_of, _fid_for = load_day_dish(d)
+        assert len(day_dish) == 1
+        assert ("2026-08-01", "food market", "Ramen") in day_dish
+
+
+def _test_line_id_reuse_across_dates():
+    """A line-id is reused across dates for unrelated dishes (it identifies
+    the serving counter, not the dish). A sellout attributed via line-id on
+    one date must not leak onto a different dish that reuses the same
+    line-id on another date - the highest-value gap, since it's the bug
+    class that would silently corrupt data."""
+    with tempfile.TemporaryDirectory() as td:
+        d = Path(td)
+        day1 = [
+            {"fetchedAt": "2026-08-01T06:00:00Z", "facilities": {
+                "en": _mk_facility("19", "food market", [_mk_meal("7", "Dish A")])}},
+            {"fetchedAt": "2026-08-01T09:00:00Z", "facilities": {
+                "en": _mk_facility("19", "food market", [_mk_meal("7", "Sold Out")])}},
+        ]
+        day2 = [
+            {"fetchedAt": "2026-08-02T06:00:00Z", "facilities": {
+                "en": _mk_facility("19", "food market", [_mk_meal("7", "Dish B")])}},
+        ]
+        _write_jsonl(d / "2026-08-01.jsonl", day1)
+        _write_jsonl(d / "2026-08-02.jsonl", day2)
+
+        rows, _latest_de_name, _groups = build_dish_rows(d)
+        row_a = rows[("2026-08-01", "food market", "Dish A")]
+        row_b = rows[("2026-08-02", "food market", "Dish B")]
+        assert row_a["sold_out_at"] == "2026-08-01T09:00:00Z"
+        assert row_b["sold_out_at"] == "", "day1's sellout on line-id 7 must not leak onto day2"
+
+
+def _test_mismatched_facility_names():
+    """EN 'food market' / DE 'Mensa 19' for the same facility id 19 (this
+    really happened, see data/2026-08-17.jsonl) - the German join keys on
+    facility id, not the display name, so it must still succeed even though
+    the two sides disagree on what to call the facility."""
+    with tempfile.TemporaryDirectory() as td:
+        d = Path(td)
+        snapshot = {"fetchedAt": "2026-08-01T06:00:00Z", "facilities": {
+            "en": _mk_facility("19", "food market", [_mk_meal("5", "Ramen")]),
+            "de": _mk_facility("19", "Mensa 19", [_mk_meal("5", "Ramen (DE)")]),
+        }}
+        _write_jsonl(d / "2026-08-01.jsonl", [snapshot])
+
+        rows, _latest, _groups = build_dish_rows(d)
+        row = rows[("2026-08-01", "food market", "Ramen")]
+        assert row["name_de"] == "Ramen (DE)"
+
+
+def _test_sold_out_in_first_snapshot():
+    """A dish already sold out by the day's very first snapshot never
+    appeared under a real name - it must simply be absent, not crash and
+    not produce a phantom row."""
+    with tempfile.TemporaryDirectory() as td:
+        d = Path(td)
+        en = _mk_facility("19", "food market", [_mk_meal("3", "Sold Out")])
+        _write_jsonl(d / "2026-08-01.jsonl", [{"fetchedAt": "2026-08-01T06:00:00Z", "facilities": {"en": en}}])
+
+        rows, _latest, _groups = build_dish_rows(d)
+        assert rows == {}
+        day_dish, _as_of, _fid_for = load_day_dish(d)
+        assert day_dish == {}
+
+
+def _test_empty_archive():
+    """No files, or a day where every dayEntry is null: must produce valid
+    empty output, not raise."""
+    with tempfile.TemporaryDirectory() as td:
+        d = Path(td)
+        rows, latest_de_name, price_groups = build_dish_rows(d)
+        assert rows == {} and latest_de_name == {} and price_groups == []
+
+        stats = build_stats(d, latest_de_name, price_groups)
+        assert stats["facilities"] == [] and stats["dishes"] == []
+        assert stats["dateRange"] == {"from": None, "to": None, "days": 0}
+        assert stats["overall"]["firstSeen"] is None and stats["overall"]["lastSeen"] is None
+
+        # A day entirely present but every dayEntry null behaves the same -
+        # iter_lines skips a null dayEntry, so no dish ever surfaces.
+        null_day = [{"fetchedAt": "2026-08-02T06:00:00Z", "facilities": {
+            "en": [{"id": "19", "name": "food market", "dayEntry": None}]}}]
+        _write_jsonl(d / "2026-08-02.jsonl", null_day)
+        rows2, latest2, groups2 = build_dish_rows(d)
+        stats2 = build_stats(d, latest2, groups2)
+        assert rows2 == {} and stats2["facilities"] == [] and stats2["dateRange"]["days"] == 0
+
+
+def _test_byte_repeatability():
+    """Building the same fixture twice must yield identical bytes for both
+    outputs - stats.json and dishes.csv must not depend on dict/set
+    iteration order or wall-clock time."""
+    with tempfile.TemporaryDirectory() as td:
+        d = Path(td)
+        meal = _mk_meal("1", "Ramen", **{
+            "meal-class-array": [{"desc": "Meat"}],
+            "meal-price-array": [{"customer-group-desc": "students", "price": 8.5}],
+        })
+        en = _mk_facility("19", "food market", [meal])
+        _write_jsonl(d / "2026-08-01.jsonl", [{"fetchedAt": "2026-08-01T06:00:00Z", "facilities": {"en": en}}])
+
+        def build_once():
+            rows, latest_de_name, price_groups = build_dish_rows(d)
+            stats = build_stats(d, latest_de_name, price_groups)
+            json_bytes = (json.dumps(stats, indent=2) + "\n").encode()
+            csv_path = d / "out.csv"
+            write_dishes_csv(rows, stats["priceGroups"], csv_path)
+            csv_bytes = csv_path.read_bytes()
+            csv_path.unlink()
+            return json_bytes, csv_bytes
+
+        j1, c1 = build_once()
+        j2, c2 = build_once()
+        assert j1 == j2
+        assert c1 == c2
+
+
+def _test_facility_order_from_websites_txt():
+    """A fixture whose websites.txt order differs from alphabetical must
+    come out in file order, and a missing websites.txt must degrade to
+    alphabetical rather than crash."""
+    with tempfile.TemporaryDirectory() as td:
+        d = Path(td)
+        websites = d / "websites.txt"
+        # File order is 20, 19 - the reverse of alphabetical name order, so
+        # a passing test proves file order wins, not name order.
+        websites.write_text(
+            "https://example.org/offerDay.html?id=20&date=2026-08-03\n"
+            "https://example.org/offerDay.html?id=19&date=2026-08-03\n"
+        )
+        assert parse_websites_order(websites) == ["20", "19"]
+
+        en = (_mk_facility("19", "Alpha", [_mk_meal("1", "Dish Alpha")])
+              + _mk_facility("20", "Zeta", [_mk_meal("2", "Dish Zeta")])
+              + _mk_facility("99", "Unlisted", [_mk_meal("3", "Dish Unlisted")]))
+        _write_jsonl(d / "2026-08-01.jsonl", [{"fetchedAt": "2026-08-01T06:00:00Z", "facilities": {"en": en}}])
+
+        rows, latest_de_name, price_groups = build_dish_rows(d)
+        stats = build_stats(d, latest_de_name, price_groups, websites_path=websites)
+        names = [f["name"] for f in stats["facilities"]]
+        assert names == ["Zeta", "Alpha", "Unlisted"], names
+
+        stats_fallback = build_stats(d, latest_de_name, price_groups,
+                                      websites_path=d / "does-not-exist.txt")
+        names_fallback = [f["name"] for f in stats_fallback["facilities"]]
+        assert names_fallback == sorted(names_fallback)
 
 
 if __name__ == "__main__":
