@@ -1097,15 +1097,6 @@ const DEFAULT_COLUMN_KEYS = ['name', 'facility', 'diet', 'rating', 'count', 'las
 // records the full set that was actually on offer at the time.
 const LEGACY_COLUMN_KEYS = ['name', 'facility', 'diet', 'count', 'firstSeen', 'lastSeen', 'meanGapWeekdays', 'nextDate'];
 
-// The full key set actually on offer right now, data-driven via priceGroups
-// (stats.priceGroups once loaded) rather than a static list — so a price
-// column for a newly-appearing customer group validates and persists like
-// any other column instead of failing ALL_COLUMN_KEYS.includes() and being
-// silently dropped on the next reload.
-function allColumnKeys(priceGroups) {
-  return dishColumns(STRINGS.en, priceGroups).map(c => c.key);
-}
-
 // Unknown/removed keys are dropped rather than rejecting the whole list, and
 // an empty or unusable result falls back to the default — so a future change
 // to the column set, or a hand-edited/corrupt value, can never strand
