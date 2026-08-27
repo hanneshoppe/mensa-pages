@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-08-27T04:48:05Z",
+  "dataAsOf": "2026-08-27T10:40:42Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,43 +14,43 @@
     {
       "name": "food market",
       "days": 17,
-      "dishDays": 128,
+      "dishDays": 129,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-08-27",
       "diet": {
         "vegan": 17,
-        "vegetarian": 33,
+        "vegetarian": 34,
         "fish": 5,
         "meat": 50,
         "unclassified": 23
       },
       "prices": {
         "external": {
-          "n": 128,
+          "n": 129,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
           "p75": 16.5,
           "max": 19.5,
-          "mean": 15.76
+          "mean": 15.75
         },
         "internal": {
-          "n": 128,
+          "n": 129,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
           "p75": 13.5,
           "max": 16.5,
-          "mean": 12.78
+          "mean": 12.77
         },
         "students": {
-          "n": 128,
+          "n": 129,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
           "p75": 9.9,
           "max": 13.5,
-          "mean": 8.8
+          "mean": 8.79
         }
       }
     },
@@ -101,43 +101,43 @@
   "overall": {
     "name": "all",
     "days": 17,
-    "dishDays": 213,
+    "dishDays": 214,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-08-27",
     "diet": {
       "vegan": 17,
-      "vegetarian": 84,
+      "vegetarian": 85,
       "fish": 5,
       "meat": 84,
       "unclassified": 23
     },
     "prices": {
       "external": {
-        "n": 213,
+        "n": 214,
         "min": 7.5,
         "p25": 15.5,
         "median": 15.5,
         "p75": 17.5,
         "max": 19.5,
-        "mean": 16.34
+        "mean": 16.33
       },
       "internal": {
-        "n": 213,
+        "n": 214,
         "min": 7.5,
         "p25": 12.5,
         "median": 12.5,
         "p75": 14.5,
         "max": 16.5,
-        "mean": 13.36
+        "mean": 13.35
       },
       "students": {
-        "n": 213,
+        "n": 214,
         "min": 7.0,
         "p25": 8.5,
         "median": 9.9,
         "p75": 12.5,
         "max": 13.8,
-        "mean": 10.17
+        "mean": 10.15
       }
     }
   },
@@ -1510,6 +1510,53 @@
       "lastSeen": "2026-08-18",
       "dates": [
         "2026-08-18"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
+    },
+    {
+      "id": 101,
+      "name": "Broccoli - Pasta",
+      "nameDe": "Broccoli - Pasta",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-08-27",
+      "lastSeen": "2026-08-27",
+      "dates": [
+        "2026-08-27"
       ],
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
@@ -5926,7 +5973,7 @@
     {
       "facility": "food market",
       "line": "pasta classica vegi",
-      "dishDays": 8,
+      "dishDays": 9,
       "dishes": [
         {
           "id": 7,
@@ -5937,6 +5984,17 @@
           "lastSeen": "2026-08-20",
           "dates": [
             "2026-08-20"
+          ]
+        },
+        {
+          "id": 101,
+          "name": "Broccoli - Pasta",
+          "nameDe": "Broccoli - Pasta",
+          "count": 1,
+          "firstSeen": "2026-08-27",
+          "lastSeen": "2026-08-27",
+          "dates": [
+            "2026-08-27"
           ]
         },
         {
