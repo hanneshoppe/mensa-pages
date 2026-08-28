@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-08-28T05:43:05Z",
+  "dataAsOf": "2026-08-28T12:40:13Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,19 +14,19 @@
     {
       "name": "food market",
       "days": 18,
-      "dishDays": 136,
+      "dishDays": 137,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-08-28",
       "diet": {
         "vegan": 18,
         "vegetarian": 36,
-        "fish": 6,
+        "fish": 7,
         "meat": 52,
         "unclassified": 24
       },
       "prices": {
         "external": {
-          "n": 136,
+          "n": 137,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,7 +35,7 @@
           "mean": 15.77
         },
         "internal": {
-          "n": 136,
+          "n": 137,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
@@ -44,13 +44,13 @@
           "mean": 12.79
         },
         "students": {
-          "n": 136,
+          "n": 137,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
           "p75": 9.9,
           "max": 13.5,
-          "mean": 8.81
+          "mean": 8.8
         }
       }
     },
@@ -101,28 +101,28 @@
   "overall": {
     "name": "all",
     "days": 18,
-    "dishDays": 226,
+    "dishDays": 227,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-08-28",
     "diet": {
       "vegan": 18,
       "vegetarian": 90,
-      "fish": 6,
+      "fish": 7,
       "meat": 88,
       "unclassified": 24
     },
     "prices": {
       "external": {
-        "n": 226,
+        "n": 227,
         "min": 7.5,
         "p25": 15.5,
         "median": 15.5,
         "p75": 17.5,
         "max": 19.5,
-        "mean": 16.35
+        "mean": 16.34
       },
       "internal": {
-        "n": 226,
+        "n": 227,
         "min": 7.5,
         "p25": 12.5,
         "median": 12.5,
@@ -131,13 +131,13 @@
         "mean": 13.36
       },
       "students": {
-        "n": 226,
+        "n": 227,
         "min": 7.0,
         "p25": 8.5,
         "median": 9.9,
         "p75": 12.5,
         "max": 13.8,
-        "mean": 10.17
+        "mean": 10.16
       }
     }
   },
@@ -3719,6 +3719,53 @@
       }
     },
     {
+      "id": 106,
+      "name": "Pasta with Salmon",
+      "nameDe": "Pasta al Salmone",
+      "facility": "food market",
+      "diet": "fish",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 1,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-08-28",
+      "lastSeen": "2026-08-28",
+      "dates": [
+        "2026-08-28"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    },
+    {
       "id": 63,
       "name": "Penne with Gorgonzola",
       "nameDe": "Penne al Gorgonzola",
@@ -6106,7 +6153,7 @@
     {
       "facility": "food market",
       "line": "pasta classica",
-      "dishDays": 10,
+      "dishDays": 11,
       "dishes": [
         {
           "id": 9,
@@ -6194,6 +6241,17 @@
           "lastSeen": "2026-08-17",
           "dates": [
             "2026-08-17"
+          ]
+        },
+        {
+          "id": 106,
+          "name": "Pasta with Salmon",
+          "nameDe": "Pasta al Salmone",
+          "count": 1,
+          "firstSeen": "2026-08-28",
+          "lastSeen": "2026-08-28",
+          "dates": [
+            "2026-08-28"
           ]
         },
         {
