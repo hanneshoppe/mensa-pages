@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-08-31T09:20:01Z",
+  "dataAsOf": "2026-08-31T11:18:35Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,43 +14,43 @@
     {
       "name": "food market",
       "days": 19,
-      "dishDays": 145,
+      "dishDays": 146,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-08-31",
       "diet": {
         "vegan": 18,
-        "vegetarian": 38,
+        "vegetarian": 39,
         "fish": 7,
         "meat": 56,
         "unclassified": 26
       },
       "prices": {
         "external": {
-          "n": 145,
+          "n": 146,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
           "p75": 16.5,
           "max": 19.5,
-          "mean": 15.78
+          "mean": 15.77
         },
         "internal": {
-          "n": 145,
+          "n": 146,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
           "p75": 13.5,
           "max": 16.5,
-          "mean": 12.8
+          "mean": 12.79
         },
         "students": {
-          "n": 145,
+          "n": 146,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
           "p75": 9.9,
           "max": 13.5,
-          "mean": 8.82
+          "mean": 8.8
         }
       }
     },
@@ -101,43 +101,43 @@
   "overall": {
     "name": "all",
     "days": 19,
-    "dishDays": 240,
+    "dishDays": 241,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-08-31",
     "diet": {
       "vegan": 18,
-      "vegetarian": 95,
+      "vegetarian": 96,
       "fish": 7,
       "meat": 94,
       "unclassified": 26
     },
     "prices": {
       "external": {
-        "n": 240,
+        "n": 241,
         "min": 7.5,
         "p25": 15.5,
         "median": 15.5,
         "p75": 17.5,
         "max": 19.5,
-        "mean": 16.35
+        "mean": 16.34
       },
       "internal": {
-        "n": 240,
+        "n": 241,
         "min": 7.5,
         "p25": 12.5,
         "median": 12.5,
         "p75": 14.5,
         "max": 16.5,
-        "mean": 13.36
+        "mean": 13.35
       },
       "students": {
-        "n": 240,
+        "n": 241,
         "min": 7.0,
         "p25": 8.5,
         "median": 9.9,
         "p75": 12.5,
         "max": 13.8,
-        "mean": 10.16
+        "mean": 10.15
       }
     }
   },
@@ -2881,6 +2881,53 @@
           "sd": null,
           "min": 8.5,
           "max": 8.5
+        }
+      }
+    },
+    {
+      "id": 114,
+      "name": "Gnocchi Casserole",
+      "nameDe": "Gnocchi - Auflauf",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-08-31",
+      "lastSeen": "2026-08-31",
+      "dates": [
+        "2026-08-31"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
         }
       }
     },
@@ -6005,7 +6052,7 @@
     {
       "facility": "food market",
       "line": "green daily",
-      "dishDays": 20,
+      "dishDays": 21,
       "dishes": [
         {
           "id": 8,
@@ -6071,6 +6118,17 @@
           "lastSeen": "2026-08-05",
           "dates": [
             "2026-08-05"
+          ]
+        },
+        {
+          "id": 114,
+          "name": "Gnocchi Casserole",
+          "nameDe": "Gnocchi - Auflauf",
+          "count": 1,
+          "firstSeen": "2026-08-31",
+          "lastSeen": "2026-08-31",
+          "dates": [
+            "2026-08-31"
           ]
         },
         {
