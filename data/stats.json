@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-09-08T09:23:01Z",
+  "dataAsOf": "2026-09-08T11:26:35Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,19 +14,19 @@
     {
       "name": "food market",
       "days": 25,
-      "dishDays": 189,
+      "dishDays": 190,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-09-08",
       "diet": {
         "vegan": 26,
         "vegetarian": 48,
         "fish": 9,
-        "meat": 76,
+        "meat": 77,
         "unclassified": 30
       },
       "prices": {
         "external": {
-          "n": 189,
+          "n": 190,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,7 +35,7 @@
           "mean": 15.82
         },
         "internal": {
-          "n": 189,
+          "n": 190,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
@@ -44,13 +44,13 @@
           "mean": 12.84
         },
         "students": {
-          "n": 189,
+          "n": 190,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
           "p75": 9.9,
           "max": 13.5,
-          "mean": 8.86
+          "mean": 8.87
         }
       }
     },
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 25,
-    "dishDays": 332,
+    "dishDays": 333,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-09-08",
     "diet": {
       "vegan": 34,
       "vegetarian": 127,
       "fish": 9,
-      "meat": 132,
+      "meat": 133,
       "unclassified": 30
     },
     "prices": {
       "external": {
-        "n": 332,
+        "n": 333,
         "min": 3.4,
         "p25": 15.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 16.1
       },
       "internal": {
-        "n": 332,
+        "n": 333,
         "min": 2.9,
         "p25": 12.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 13.16
       },
       "students": {
-        "n": 332,
+        "n": 333,
         "min": 2.5,
         "p25": 8.5,
         "median": 9.9,
@@ -5288,6 +5288,53 @@
       }
     },
     {
+      "id": 160,
+      "name": "Pad Krapao N\u00fca",
+      "nameDe": "Pad Krapao N\u00fca",
+      "facility": "food market",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-09-08",
+      "lastSeen": "2026-09-08",
+      "dates": [
+        "2026-09-08"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
+        }
+      }
+    },
+    {
       "id": 59,
       "name": "Pad Thai-Style Fried Rice",
       "nameDe": "Gebratener Reis Pad Thai Style",
@@ -8727,7 +8774,7 @@
     {
       "facility": "food market",
       "line": "grill",
-      "dishDays": 28,
+      "dishDays": 29,
       "dishes": [
         {
           "id": 6,
@@ -8931,6 +8978,17 @@
           "id": 157,
           "name": "Pad Kra Pao",
           "nameDe": "Pad Kra Pao",
+          "count": 1,
+          "firstSeen": "2026-09-08",
+          "lastSeen": "2026-09-08",
+          "dates": [
+            "2026-09-08"
+          ]
+        },
+        {
+          "id": 160,
+          "name": "Pad Krapao N\u00fca",
+          "nameDe": "Pad Krapao N\u00fca",
           "count": 1,
           "firstSeen": "2026-09-08",
           "lastSeen": "2026-09-08",
