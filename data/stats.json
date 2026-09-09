@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-09-09T03:10:47Z",
+  "dataAsOf": "2026-09-09T05:49:30Z",
   "priceGroups": [
     "students",
     "internal",
@@ -6310,7 +6310,7 @@
     {
       "id": 165,
       "name": "Pork Western Steak",
-      "nameDe": "Schweine-Westernsteak",
+      "nameDe": "Schweins-Westernsteak",
       "facility": "FUSION meal",
       "diet": "meat",
       "dietDays": {
@@ -10437,7 +10437,7 @@
         {
           "id": 165,
           "name": "Pork Western Steak",
-          "nameDe": "Schweine-Westernsteak",
+          "nameDe": "Schweins-Westernsteak",
           "count": 1,
           "firstSeen": "2026-09-09",
           "lastSeen": "2026-09-09",
