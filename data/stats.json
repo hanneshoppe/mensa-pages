@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-09-10T05:48:57Z",
+  "dataAsOf": "2026-09-10T05:55:58Z",
   "priceGroups": [
     "students",
     "internal",
@@ -6751,7 +6751,7 @@
     {
       "id": 174,
       "name": "Red Thai Pork",
-      "nameDe": "Red Thai Porc",
+      "nameDe": "Red Thai Pork",
       "facility": "FUSION meal",
       "diet": "meat",
       "dietDays": {
@@ -11277,7 +11277,7 @@
         {
           "id": 174,
           "name": "Red Thai Pork",
-          "nameDe": "Red Thai Porc",
+          "nameDe": "Red Thai Pork",
           "count": 1,
           "firstSeen": "2026-09-10",
           "lastSeen": "2026-09-10",

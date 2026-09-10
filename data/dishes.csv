@@ -352,23 +352,23 @@ dish_id,date,facility,facility_id,line,name_en,name_de,diet,first_seen_at,last_s
 169,2026-09-09,food market,19,grill,Spicy Beef Burger,Spicy Beef Burger,meat,2026-09-09T03:10:47Z,2026-09-09T08:26:53Z,2026-09-09T11:37:48Z,11.5,14.5,17.5,810,8.2,9.4,18,1.30,1.6,3.2
 170,2026-09-09,food market,19,green daily,Stuffed Eggplant,Gefüllte Aubergine,vegan,2026-09-09T03:10:47Z,2026-09-09T11:37:48Z,,7.0,11.5,14.5,359,3.3,1.9,12,0.59,1.0,0.4
 171,2026-09-09,food market,19,pasta classica vegi,Tagliatelle with Gorgonzola and Walnuts,Tagliatelle al Gorgonzola e Noci,unclassified,2026-09-09T03:10:47Z,2026-09-09T11:37:48Z,,7.0,11.5,14.5,773,6.2,11,14,0.24,2.0,4.9
-172,2026-09-10,FUSION meal,20,SOUL FOOD,Big Mountain Schnitzel,Big Mountain Schnitzel,meat,2026-09-10T03:10:33Z,2026-09-10T05:48:57Z,,12.5,15.5,18.5,,,,,,,
-173,2026-09-10,FUSION meal,20,WORLD OF ASIA VEGGIE,Fried Noodles & Samosa,Fried Noodles & Samosa,vegetarian,2026-09-10T03:10:33Z,2026-09-10T05:48:57Z,,8.5,10.5,12.5,,,,,,,
-139,2026-09-10,FUSION meal,20,GLOBETROTTER,Hot Buffet,Warmes Buffet,vegan,2026-09-10T03:10:33Z,2026-09-10T05:48:57Z,,2.5,2.9,3.4,,,,,,,
-141,2026-09-10,FUSION meal,20,POWER KITCHEN,Protein Buffet,Protein Buffet,vegan,2026-09-10T03:10:33Z,2026-09-10T05:48:57Z,,2.5,2.9,3.4,,,,,,,
-174,2026-09-10,FUSION meal,20,WORLD OF ASIA,Red Thai Pork,Red Thai Porc,meat,2026-09-10T03:10:33Z,2026-09-10T05:48:57Z,,10.5,12.9,14.5,,,,,,,
-175,2026-09-10,FUSION meal,20,VEGGIE,Rösti & Fried Egg,Rösti & Spiegelei,vegetarian,2026-09-10T03:10:33Z,2026-09-10T05:48:57Z,,7.0,11.5,14.5,,,,,,,
-142,2026-09-10,FUSION meal,20,FRESH ISLAND,Salad Buffet,Salat Buffet,vegan,2026-09-10T03:10:33Z,2026-09-10T05:48:57Z,,2.5,2.9,3.4,,,,,,,
-176,2026-09-10,FUSION meal,20,VEGAN,Seitan Stroganoff,Seitan Stroganoff,vegan,2026-09-10T03:10:33Z,2026-09-10T05:48:57Z,,8.9,12.9,16.9,,,,,,,
-177,2026-09-10,FUSION meal,20,MEATWORKS,Viennese-Style Chicken Stew,Poulet-Voressen Wiener Art,meat,2026-09-10T03:10:33Z,2026-09-10T05:48:57Z,,8.5,12.5,15.5,,,,,,,
-1,2026-09-10,Mendokoro,16,Shi,Chicken Tonkatsu Bowl,Chicken Tonkatsu Bowl,meat,2026-09-10T03:10:33Z,2026-09-10T05:48:57Z,,13.8,15.8,18.8,733,5.8,3.8,29,1.06,6.1,0.5
-3,2026-09-10,Mendokoro,16,Ichi,Miso Ramen,Miso Ramen,vegetarian,2026-09-10T03:10:33Z,2026-09-10T05:48:57Z,,10.5,12.5,15.5,293,2.8,3.6,10,1.22,0.9,0.2
-4,2026-09-10,Mendokoro,16,Ni,Shoyu Ramen,Shoyu Ramen,vegetarian,2026-09-10T03:10:33Z,2026-09-10T05:48:57Z,,10.5,12.5,15.5,308,2.9,3.7,11,1.30,0.8,0.2
-107,2026-09-10,Mendokoro,16,San,Tantanmen Ramen,Tantanmen Ramen,vegetarian,2026-09-10T03:10:33Z,2026-09-10T05:48:57Z,,12.5,14.5,17.5,312,3.8,3.5,10,1.29,0.9,0.2
-5,2026-09-10,Mendokoro,16,Roku,Tori Ramen,Tori Ramen,meat,2026-09-10T03:10:33Z,2026-09-10T05:48:57Z,,13.8,15.8,18.8,302,4.9,3.3,9.7,1.18,0.8,0.2
-178,2026-09-10,food market,19,grill,Butter Chicken,Butter Chicken,meat,2026-09-10T03:10:33Z,2026-09-10T05:48:57Z,,10.5,13.5,16.5,461,5.3,2.8,15,0.85,1.8,0.5
-33,2026-09-10,food market,19,green delight,Choose 5,Choose 5,vegan,2026-09-10T03:10:33Z,2026-09-10T05:48:57Z,,9.9,13.9,16.9,224,2.9,3.0,2.3,0.00,2.2,0.3
-179,2026-09-10,food market,19,pasta della nonna,Hong Kong Rice from the Wok,Hong Kong Rice aus dem Wok,meat,2026-09-10T03:10:33Z,2026-09-10T05:48:57Z,,9.5,13.5,16.5,505,4.5,4.3,15,1.12,2.1,0.6
-180,2026-09-10,food market,19,pasta classica,Pasta with Tomatoes and Prosciutto,Pasta al Pomodoro e Prosciutto,meat,2026-09-10T03:10:33Z,2026-09-10T05:48:57Z,,8.5,12.5,15.5,538,6.6,4.6,15,0.61,1.9,2.1
-181,2026-09-10,food market,19,green daily,Spring Rolls with Vegetables,Frühlingsrollen mit Gemüse,vegan,2026-09-10T03:10:33Z,2026-09-10T05:48:57Z,,7.0,11.5,14.5,479,1.9,2.8,20,1.25,7.2,0.4
-182,2026-09-10,food market,19,fire,Veal Sausage,Kalbsbratwurst,meat,2026-09-10T03:10:33Z,2026-09-10T05:48:57Z,,8.5,12.5,15.5,607,4.4,10,8.1,1.04,1.1,2.7
+172,2026-09-10,FUSION meal,20,SOUL FOOD,Big Mountain Schnitzel,Big Mountain Schnitzel,meat,2026-09-10T03:10:33Z,2026-09-10T05:55:58Z,,12.5,15.5,18.5,,,,,,,
+173,2026-09-10,FUSION meal,20,WORLD OF ASIA VEGGIE,Fried Noodles & Samosa,Fried Noodles & Samosa,vegetarian,2026-09-10T03:10:33Z,2026-09-10T05:55:58Z,,8.5,10.5,12.5,,,,,,,
+139,2026-09-10,FUSION meal,20,GLOBETROTTER,Hot Buffet,Warmes Buffet,vegan,2026-09-10T03:10:33Z,2026-09-10T05:55:58Z,,2.5,2.9,3.4,,,,,,,
+141,2026-09-10,FUSION meal,20,POWER KITCHEN,Protein Buffet,Protein Buffet,vegan,2026-09-10T03:10:33Z,2026-09-10T05:55:58Z,,2.5,2.9,3.4,,,,,,,
+174,2026-09-10,FUSION meal,20,WORLD OF ASIA,Red Thai Pork,Red Thai Pork,meat,2026-09-10T03:10:33Z,2026-09-10T05:55:58Z,,10.5,12.9,14.5,,,,,,,
+175,2026-09-10,FUSION meal,20,VEGGIE,Rösti & Fried Egg,Rösti & Spiegelei,vegetarian,2026-09-10T03:10:33Z,2026-09-10T05:55:58Z,,7.0,11.5,14.5,,,,,,,
+142,2026-09-10,FUSION meal,20,FRESH ISLAND,Salad Buffet,Salat Buffet,vegan,2026-09-10T03:10:33Z,2026-09-10T05:55:58Z,,2.5,2.9,3.4,,,,,,,
+176,2026-09-10,FUSION meal,20,VEGAN,Seitan Stroganoff,Seitan Stroganoff,vegan,2026-09-10T03:10:33Z,2026-09-10T05:55:58Z,,8.9,12.9,16.9,,,,,,,
+177,2026-09-10,FUSION meal,20,MEATWORKS,Viennese-Style Chicken Stew,Poulet-Voressen Wiener Art,meat,2026-09-10T03:10:33Z,2026-09-10T05:55:58Z,,8.5,12.5,15.5,,,,,,,
+1,2026-09-10,Mendokoro,16,Shi,Chicken Tonkatsu Bowl,Chicken Tonkatsu Bowl,meat,2026-09-10T03:10:33Z,2026-09-10T05:55:58Z,,13.8,15.8,18.8,733,5.8,3.8,29,1.06,6.1,0.5
+3,2026-09-10,Mendokoro,16,Ichi,Miso Ramen,Miso Ramen,vegetarian,2026-09-10T03:10:33Z,2026-09-10T05:55:58Z,,10.5,12.5,15.5,293,2.8,3.6,10,1.22,0.9,0.2
+4,2026-09-10,Mendokoro,16,Ni,Shoyu Ramen,Shoyu Ramen,vegetarian,2026-09-10T03:10:33Z,2026-09-10T05:55:58Z,,10.5,12.5,15.5,308,2.9,3.7,11,1.30,0.8,0.2
+107,2026-09-10,Mendokoro,16,San,Tantanmen Ramen,Tantanmen Ramen,vegetarian,2026-09-10T03:10:33Z,2026-09-10T05:55:58Z,,12.5,14.5,17.5,312,3.8,3.5,10,1.29,0.9,0.2
+5,2026-09-10,Mendokoro,16,Roku,Tori Ramen,Tori Ramen,meat,2026-09-10T03:10:33Z,2026-09-10T05:55:58Z,,13.8,15.8,18.8,302,4.9,3.3,9.7,1.18,0.8,0.2
+178,2026-09-10,food market,19,grill,Butter Chicken,Butter Chicken,meat,2026-09-10T03:10:33Z,2026-09-10T05:55:58Z,,10.5,13.5,16.5,461,5.3,2.8,15,0.85,1.8,0.5
+33,2026-09-10,food market,19,green delight,Choose 5,Choose 5,vegan,2026-09-10T03:10:33Z,2026-09-10T05:55:58Z,,9.9,13.9,16.9,224,2.9,3.0,2.3,0.00,2.2,0.3
+179,2026-09-10,food market,19,pasta della nonna,Hong Kong Rice from the Wok,Hong Kong Rice aus dem Wok,meat,2026-09-10T03:10:33Z,2026-09-10T05:55:58Z,,9.5,13.5,16.5,505,4.5,4.3,15,1.12,2.1,0.6
+180,2026-09-10,food market,19,pasta classica,Pasta with Tomatoes and Prosciutto,Pasta al Pomodoro e Prosciutto,meat,2026-09-10T03:10:33Z,2026-09-10T05:55:58Z,,8.5,12.5,15.5,538,6.6,4.6,15,0.61,1.9,2.1
+181,2026-09-10,food market,19,green daily,Spring Rolls with Vegetables,Frühlingsrollen mit Gemüse,vegan,2026-09-10T03:10:33Z,2026-09-10T05:55:58Z,,7.0,11.5,14.5,479,1.9,2.8,20,1.25,7.2,0.4
+182,2026-09-10,food market,19,fire,Veal Sausage,Kalbsbratwurst,meat,2026-09-10T03:10:33Z,2026-09-10T05:55:58Z,,8.5,12.5,15.5,607,4.4,10,8.1,1.04,1.1,2.7
