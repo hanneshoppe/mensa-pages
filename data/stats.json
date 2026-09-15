@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-09-15T05:56:29Z",
+  "dataAsOf": "2026-09-15T06:28:01Z",
   "priceGroups": [
     "students",
     "internal",
@@ -9877,7 +9877,7 @@
     {
       "id": 208,
       "name": "Turkey Korma ",
-      "nameDe": "Truthuhn Korma ",
+      "nameDe": "Truthahn Korma ",
       "facility": "FUSION meal",
       "diet": "meat",
       "dietDays": {
@@ -13071,7 +13071,7 @@
         {
           "id": 208,
           "name": "Turkey Korma ",
-          "nameDe": "Truthuhn Korma ",
+          "nameDe": "Truthahn Korma ",
           "count": 1,
           "firstSeen": "2026-09-15",
           "lastSeen": "2026-09-15",
