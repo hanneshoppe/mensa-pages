@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-09-15T09:22:44Z",
+  "dataAsOf": "2026-09-15T10:19:08Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,19 +14,19 @@
     {
       "name": "food market",
       "days": 30,
-      "dishDays": 224,
+      "dishDays": 225,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-09-15",
       "diet": {
         "vegan": 35,
         "vegetarian": 53,
         "fish": 10,
-        "meat": 92,
+        "meat": 93,
         "unclassified": 34
       },
       "prices": {
         "external": {
-          "n": 224,
+          "n": 225,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,16 +35,16 @@
           "mean": 15.83
         },
         "internal": {
-          "n": 224,
+          "n": 225,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
           "p75": 13.9,
           "max": 16.5,
-          "mean": 12.85
+          "mean": 12.84
         },
         "students": {
-          "n": 224,
+          "n": 225,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 30,
-    "dishDays": 435,
+    "dishDays": 436,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-09-15",
     "diet": {
       "vegan": 60,
       "vegetarian": 159,
       "fish": 10,
-      "meat": 172,
+      "meat": 173,
       "unclassified": 34
     },
     "prices": {
       "external": {
-        "n": 435,
+        "n": 436,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 15.64
       },
       "internal": {
-        "n": 435,
+        "n": 436,
         "min": 2.9,
         "p25": 12.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.8
       },
       "students": {
-        "n": 435,
+        "n": 436,
         "min": 2.5,
         "p25": 8.5,
         "median": 9.9,
@@ -7619,6 +7619,53 @@
       }
     },
     {
+      "id": 213,
+      "name": "Pork Schnitzel",
+      "nameDe": "Br\u00e4tschnitzel",
+      "facility": "food market",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-09-15",
+      "lastSeen": "2026-09-15",
+      "dates": [
+        "2026-09-15"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    },
+    {
       "id": 165,
       "name": "Pork Western Steak",
       "nameDe": "Schweins-Westernsteak",
@@ -10678,7 +10725,7 @@
     {
       "facility": "food market",
       "line": "fire",
-      "dishDays": 33,
+      "dishDays": 34,
       "dishes": [
         {
           "id": 14,
@@ -10898,6 +10945,17 @@
           "lastSeen": "2026-09-08",
           "dates": [
             "2026-09-08"
+          ]
+        },
+        {
+          "id": 213,
+          "name": "Pork Schnitzel",
+          "nameDe": "Br\u00e4tschnitzel",
+          "count": 1,
+          "firstSeen": "2026-09-15",
+          "lastSeen": "2026-09-15",
+          "dates": [
+            "2026-09-15"
           ]
         },
         {
