@@ -436,3 +436,25 @@ dish_id,date,facility,facility_id,line,name_en,name_de,diet,first_seen_at,last_s
 213,2026-09-15,food market,19,fire,Pork Schnitzel,Brätschnitzel,meat,2026-09-15T10:19:08Z,2026-09-15T10:50:14Z,,8.5,12.5,15.5,375,7.5,3.8,5.5,0.78,0.9,1.2
 214,2026-09-15,food market,19,fire,Pork steak,Schweinssteak,meat,2026-09-15T10:57:57Z,2026-09-15T11:17:53Z,,8.5,12.5,15.5,375,7.5,3.8,5.5,0.78,0.9,1.2
 113,2026-09-15,food market,19,pasta della nonna,Spaghetti & Spicy Meatballs,Spaghetti & Spicy Meatballs,meat,2026-09-15T03:11:11Z,2026-09-15T11:17:53Z,,9.5,13.5,16.5,525,6.5,4.3,14,0.63,1.9,1.6
+215,2026-09-16,FUSION meal,20,MEATWORKS,Augustiner Schüblig,Augustiner Schüblig,meat,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,8.5,12.5,15.5,,,,,,,
+216,2026-09-16,FUSION meal,20,WORLD OF ASIA,Chicken Kung Pao,Chicken Kung Pao,meat,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,10.5,12.9,14.5,,,,,,,
+139,2026-09-16,FUSION meal,20,GLOBETROTTER,Hot Buffet,Warmes Buffet,vegetarian,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,2.5,2.9,3.4,,,,,,,
+217,2026-09-16,FUSION meal,20,VEGAN,Ocean-Sticks Burger,Ocean-Sticks Burger,vegan,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,8.9,12.9,16.9,,,,,,,
+218,2026-09-16,FUSION meal,20,WORLD OF ASIA VEGGIE,Palak Paneer,Palak Paneer,vegetarian,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,8.5,10.5,12.5,,,,,,,
+219,2026-09-16,FUSION meal,20,VEGGIE,Pear Risotto,Birnen-Risotto,vegetarian,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,7.0,11.5,14.5,,,,,,,
+141,2026-09-16,FUSION meal,20,POWER KITCHEN,Protein Buffet,Protein Buffet,vegan,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,2.5,2.9,3.4,,,,,,,
+142,2026-09-16,FUSION meal,20,FRESH ISLAND,Salad Buffet,Salat Buffet,vegan,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,2.5,2.9,3.4,,,,,,,
+220,2026-09-16,FUSION meal,20,SOUL FOOD,Salmon Trout with Chimichurri,Lachsforelle mit Chimichurri,fish,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,11.5,14.5,17.5,,,,,,,
+1,2026-09-16,Mendokoro,16,Shi,Chicken Tonkatsu Bowl,Chicken Tonkatsu Bowl,meat,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,13.8,15.8,18.8,733,5.8,3.8,29,1.06,6.1,0.5
+3,2026-09-16,Mendokoro,16,Ichi,Miso Ramen,Miso Ramen,vegetarian,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,10.5,12.5,15.5,293,2.8,3.6,10,1.22,0.9,0.2
+4,2026-09-16,Mendokoro,16,Ni,Shoyu Ramen,Shoyu Ramen,vegetarian,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,10.5,12.5,15.5,308,2.9,3.7,11,1.30,0.8,0.2
+107,2026-09-16,Mendokoro,16,San,Tantanmen Ramen,Tantanmen Ramen,vegetarian,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,12.5,14.5,17.5,312,3.8,3.5,10,1.29,0.9,0.2
+5,2026-09-16,Mendokoro,16,Roku,Tori Ramen,Tori Ramen,meat,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,13.8,15.8,18.8,302,4.9,3.3,9.7,1.18,0.8,0.2
+221,2026-09-16,food market,19,pizza mamma mia,Capri Pizza,Pizza Capri,unclassified,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,10.5,13.5,16.5,766,10,6.6,20,1.05,1.0,3.6
+33,2026-09-16,food market,19,green delight,Choose 5,Choose 5,unclassified,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,9.9,13.9,16.9,0.0,0.0,0.0,0.0,0.00,0.0,0.0
+222,2026-09-16,food market,19,green daily,Fancy Falafel Bowl,Fancy Falafel Bowl,vegan,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,7.0,11.5,14.5,718,5.4,7.3,20,0.82,3.5,0.9
+223,2026-09-16,food market,19,fire,Hot & Smoky Chicken Drumsticks,Pouletschenkel Hot & Smoky,meat,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,8.5,12.5,15.5,742,8.0,9.3,15,1.16,2.7,2.2
+224,2026-09-16,food market,19,pasta classica vegi,Penne with Tomatoes and Olives,Penne pomodori e olive,vegan,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,7.0,11.5,14.5,654,4.5,3.3,25,0.58,1.7,1.0
+64,2026-09-16,food market,19,pizza classica,Pizza Margherita,Pizza Margherita,vegetarian,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,7.0,11.5,14.5,859,9.6,5.3,29,1.28,1.2,2.5
+225,2026-09-16,food market,19,pasta della nonna,Tagliatelle & Sautéed Porcini Mushrooms,Tagliatelle mit gebratenen Steinpilzen,vegetarian,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,9.5,13.5,16.5,545,4.8,4.4,17,0.57,1.2,1.7
+226,2026-09-16,food market,19,grill,The Deluxe Burger,The Deluxe Burger,meat,2026-09-16T03:10:53Z,2026-09-16T03:10:53Z,,12.5,15.5,18.5,811,8.1,9.0,19,1.42,2.8,2.8
