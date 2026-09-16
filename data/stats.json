@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-09-16T03:10:53Z",
+  "dataAsOf": "2026-09-16T06:27:28Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,19 +14,19 @@
     {
       "name": "food market",
       "days": 31,
-      "dishDays": 234,
+      "dishDays": 235,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-09-16",
       "diet": {
         "vegan": 37,
         "vegetarian": 55,
         "fish": 10,
-        "meat": 96,
+        "meat": 97,
         "unclassified": 36
       },
       "prices": {
         "external": {
-          "n": 234,
+          "n": 235,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,16 +35,16 @@
           "mean": 15.83
         },
         "internal": {
-          "n": 234,
+          "n": 235,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
           "p75": 13.9,
           "max": 16.5,
-          "mean": 12.85
+          "mean": 12.84
         },
         "students": {
-          "n": 234,
+          "n": 235,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 31,
-    "dishDays": 459,
+    "dishDays": 460,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-09-16",
     "diet": {
       "vegan": 65,
       "vegetarian": 167,
       "fish": 11,
-      "meat": 180,
+      "meat": 181,
       "unclassified": 36
     },
     "prices": {
       "external": {
-        "n": 459,
+        "n": 460,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 15.58
       },
       "internal": {
-        "n": 459,
+        "n": 460,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,13 +174,13 @@
         "mean": 12.74
       },
       "students": {
-        "n": 459,
+        "n": 460,
         "min": 2.5,
         "p25": 8.5,
         "median": 9.9,
         "p75": 11.5,
         "max": 13.8,
-        "mean": 9.7
+        "mean": 9.69
       }
     }
   },
@@ -6135,6 +6135,53 @@
       }
     },
     {
+      "id": 227,
+      "name": "Hot & Smoky Chicken Wings",
+      "nameDe": "Chicken Wings Hot & Smoky",
+      "facility": "food market",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-09-16",
+      "lastSeen": "2026-09-16",
+      "dates": [
+        "2026-09-16"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    },
+    {
       "id": 50,
       "name": "Khao Mok Gai",
       "nameDe": "Khao Mok Gai",
@@ -11356,7 +11403,7 @@
     {
       "facility": "food market",
       "line": "fire",
-      "dishDays": 36,
+      "dishDays": 37,
       "dishes": [
         {
           "id": 14,
@@ -11527,6 +11574,17 @@
           "id": 223,
           "name": "Hot & Smoky Chicken Drumsticks",
           "nameDe": "Pouletschenkel Hot & Smoky",
+          "count": 1,
+          "firstSeen": "2026-09-16",
+          "lastSeen": "2026-09-16",
+          "dates": [
+            "2026-09-16"
+          ]
+        },
+        {
+          "id": 227,
+          "name": "Hot & Smoky Chicken Wings",
+          "nameDe": "Chicken Wings Hot & Smoky",
           "count": 1,
           "firstSeen": "2026-09-16",
           "lastSeen": "2026-09-16",
