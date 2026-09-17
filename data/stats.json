@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-09-17T05:57:33Z",
+  "dataAsOf": "2026-09-17T06:34:20Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,43 +57,43 @@
     {
       "name": "FUSION meal",
       "days": 9,
-      "dishDays": 79,
+      "dishDays": 80,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-09-17",
       "diet": {
         "vegan": 31,
-        "vegetarian": 22,
+        "vegetarian": 23,
         "fish": 1,
         "meat": 25,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 79,
+          "n": 80,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.13
+          "mean": 11.14
         },
         "internal": {
-          "n": 79,
+          "n": 80,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.15
+          "mean": 9.17
         },
         "students": {
-          "n": 79,
+          "n": 80,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
           "p75": 8.9,
           "max": 12.5,
-          "mean": 6.84
+          "mean": 6.86
         }
       }
     },
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 32,
-    "dishDays": 483,
+    "dishDays": 484,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-09-17",
     "diet": {
       "vegan": 69,
-      "vegetarian": 174,
+      "vegetarian": 175,
       "fish": 11,
       "meat": 190,
       "unclassified": 39
     },
     "prices": {
       "external": {
-        "n": 483,
+        "n": 484,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,16 +165,16 @@
         "mean": 15.52
       },
       "internal": {
-        "n": 483,
+        "n": 484,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
         "p75": 14.5,
         "max": 16.5,
-        "mean": 12.7
+        "mean": 12.69
       },
       "students": {
-        "n": 483,
+        "n": 484,
         "min": 2.5,
         "p25": 8.5,
         "median": 9.9,
@@ -5423,6 +5423,53 @@
       "lastSeen": "2026-09-10",
       "dates": [
         "2026-09-10"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    },
+    {
+      "id": 240,
+      "name": "Fried Noodles & Spring Rolls",
+      "nameDe": "Fried Noodles & Fr\u00fchlingsrolle",
+      "facility": "FUSION meal",
+      "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-09-17",
+      "lastSeen": "2026-09-17",
+      "dates": [
+        "2026-09-17"
       ],
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
@@ -14693,7 +14740,7 @@
     {
       "facility": "FUSION meal",
       "line": "WORLD OF ASIA VEGGIE",
-      "dishDays": 9,
+      "dishDays": 10,
       "dishes": [
         {
           "id": 183,
@@ -14748,6 +14795,17 @@
           "lastSeen": "2026-09-10",
           "dates": [
             "2026-09-10"
+          ]
+        },
+        {
+          "id": 240,
+          "name": "Fried Noodles & Spring Rolls",
+          "nameDe": "Fried Noodles & Fr\u00fchlingsrolle",
+          "count": 1,
+          "firstSeen": "2026-09-17",
+          "lastSeen": "2026-09-17",
+          "dates": [
+            "2026-09-17"
           ]
         },
         {
