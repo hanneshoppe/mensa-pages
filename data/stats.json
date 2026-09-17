@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-09-17T09:24:50Z",
+  "dataAsOf": "2026-09-17T11:01:11Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,7 +14,7 @@
     {
       "name": "food market",
       "days": 32,
-      "dishDays": 244,
+      "dishDays": 245,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-09-17",
       "diet": {
@@ -22,11 +22,11 @@
         "vegetarian": 56,
         "fish": 10,
         "meat": 101,
-        "unclassified": 39
+        "unclassified": 40
       },
       "prices": {
         "external": {
-          "n": 244,
+          "n": 245,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,16 +35,16 @@
           "mean": 15.83
         },
         "internal": {
-          "n": 244,
+          "n": 245,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
           "p75": 13.9,
           "max": 16.5,
-          "mean": 12.85
+          "mean": 12.84
         },
         "students": {
-          "n": 244,
+          "n": 245,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
@@ -144,7 +144,7 @@
   "overall": {
     "name": "all",
     "days": 32,
-    "dishDays": 484,
+    "dishDays": 485,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-09-17",
     "diet": {
@@ -152,20 +152,20 @@
       "vegetarian": 175,
       "fish": 11,
       "meat": 190,
-      "unclassified": 39
+      "unclassified": 40
     },
     "prices": {
       "external": {
-        "n": 484,
+        "n": 485,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
         "p75": 17.5,
         "max": 19.5,
-        "mean": 15.52
+        "mean": 15.51
       },
       "internal": {
-        "n": 484,
+        "n": 485,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.69
       },
       "students": {
-        "n": 484,
+        "n": 485,
         "min": 2.5,
         "p25": 8.5,
         "median": 9.9,
@@ -5752,6 +5752,53 @@
       "lastSeen": "2026-08-31",
       "dates": [
         "2026-08-31"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
+    },
+    {
+      "id": 241,
+      "name": "Gnocchi with Burratella",
+      "nameDe": "Gnocchi Burratella",
+      "facility": "food market",
+      "diet": "unclassified",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 1
+      },
+      "count": 1,
+      "firstSeen": "2026-09-17",
+      "lastSeen": "2026-09-17",
+      "dates": [
+        "2026-09-17"
       ],
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
@@ -12462,7 +12509,7 @@
     {
       "facility": "food market",
       "line": "green daily",
-      "dishDays": 34,
+      "dishDays": 35,
       "dishes": [
         {
           "id": 105,
@@ -12573,6 +12620,17 @@
           "lastSeen": "2026-08-31",
           "dates": [
             "2026-08-31"
+          ]
+        },
+        {
+          "id": 241,
+          "name": "Gnocchi with Burratella",
+          "nameDe": "Gnocchi Burratella",
+          "count": 1,
+          "firstSeen": "2026-09-17",
+          "lastSeen": "2026-09-17",
+          "dates": [
+            "2026-09-17"
           ]
         },
         {
