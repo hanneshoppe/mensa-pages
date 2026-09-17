@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-09-17T03:10:44Z",
+  "dataAsOf": "2026-09-17T04:56:38Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,19 +14,19 @@
     {
       "name": "food market",
       "days": 32,
-      "dishDays": 243,
+      "dishDays": 244,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-09-17",
       "diet": {
         "vegan": 38,
         "vegetarian": 56,
         "fish": 10,
-        "meat": 100,
+        "meat": 101,
         "unclassified": 39
       },
       "prices": {
         "external": {
-          "n": 243,
+          "n": 244,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,7 +35,7 @@
           "mean": 15.83
         },
         "internal": {
-          "n": 243,
+          "n": 244,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
@@ -44,13 +44,13 @@
           "mean": 12.85
         },
         "students": {
-          "n": 243,
+          "n": 244,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
           "p75": 9.9,
           "max": 13.5,
-          "mean": 8.89
+          "mean": 8.88
         }
       }
     },
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 32,
-    "dishDays": 482,
+    "dishDays": 483,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-09-17",
     "diet": {
       "vegan": 69,
       "vegetarian": 174,
       "fish": 11,
-      "meat": 189,
+      "meat": 190,
       "unclassified": 39
     },
     "prices": {
       "external": {
-        "n": 482,
+        "n": 483,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 15.52
       },
       "internal": {
-        "n": 482,
+        "n": 483,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,13 +174,13 @@
         "mean": 12.7
       },
       "students": {
-        "n": 482,
+        "n": 483,
         "min": 2.5,
         "p25": 8.5,
         "median": 9.9,
         "p75": 11.5,
         "max": 13.8,
-        "mean": 9.66
+        "mean": 9.65
       }
     }
   },
@@ -5470,6 +5470,53 @@
       "lastSeen": "2026-08-24",
       "dates": [
         "2026-08-24"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    },
+    {
+      "id": 239,
+      "name": "Fusilli with Mascarpone and Basil",
+      "nameDe": "Fusilli al Mascarpone e Basilico",
+      "facility": "food market",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-09-17",
+      "lastSeen": "2026-09-17",
+      "dates": [
+        "2026-09-17"
       ],
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
@@ -13202,7 +13249,7 @@
     {
       "facility": "food market",
       "line": "pasta classica",
-      "dishDays": 18,
+      "dishDays": 19,
       "dishes": [
         {
           "id": 132,
@@ -13280,6 +13327,17 @@
           "lastSeen": "2026-08-24",
           "dates": [
             "2026-08-24"
+          ]
+        },
+        {
+          "id": 239,
+          "name": "Fusilli with Mascarpone and Basil",
+          "nameDe": "Fusilli al Mascarpone e Basilico",
+          "count": 1,
+          "firstSeen": "2026-09-17",
+          "lastSeen": "2026-09-17",
+          "dates": [
+            "2026-09-17"
           ]
         },
         {
