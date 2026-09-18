@@ -484,3 +484,24 @@ dish_id,date,facility,facility_id,line,name_en,name_de,diet,first_seen_at,last_s
 64,2026-09-17,food market,19,pizza classica,Pizza Margherita,Pizza Margherita,vegetarian,2026-09-17T03:10:44Z,2026-09-17T11:01:11Z,,7.0,11.5,14.5,859,9.6,5.3,29,1.28,1.2,2.5
 237,2026-09-17,food market,19,green daily,Rösti with Burratella,Rösti Burratella,unclassified,2026-09-17T03:10:44Z,2026-09-17T09:24:50Z,,7.0,11.5,14.5,393,2.4,4.3,10,0.79,2.2,1.0
 238,2026-09-17,food market,19,fire,Turkey breast,Truthahnbrust,meat,2026-09-17T03:10:44Z,2026-09-17T11:01:11Z,,8.5,12.5,15.5,359,6.4,2.6,7.9,0.56,1.1,0.4
+242,2026-09-18,FUSION meal,20,VEGAN,Falafel ,Falafel ,vegan,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,8.9,12.9,16.9,,,,,,,
+139,2026-09-18,FUSION meal,20,GLOBETROTTER,Hot Buffet,Warmes Buffet,vegetarian,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,2.5,2.9,3.4,,,,,,,
+243,2026-09-18,FUSION meal,20,WORLD OF ASIA VEGGIE,Kare Raisu,Kare Raisu,vegetarian,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,8.5,10.5,12.5,,,,,,,
+244,2026-09-18,FUSION meal,20,SOUL FOOD,Loaded Rösti Fries & Pulled Chicken,Loaded Rösti Fries & Pulled Chicken,meat,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,11.5,14.5,17.5,,,,,,,
+141,2026-09-18,FUSION meal,20,POWER KITCHEN,Protein Buffet,Protein Buffet,vegan,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,2.5,2.9,3.4,,,,,,,
+142,2026-09-18,FUSION meal,20,FRESH ISLAND,Salad Buffet,Salat Buffet,vegan,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,2.5,2.9,3.4,,,,,,,
+245,2026-09-18,FUSION meal,20,MEATWORKS,Squid Rings,Calamares Ringe,fish,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,8.5,12.5,15.5,,,,,,,
+246,2026-09-18,FUSION meal,20,WORLD OF ASIA,Sweet and Sour Pork,Süss-Sauer Schweinefleisch,meat,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,10.5,12.9,14.5,,,,,,,
+247,2026-09-18,FUSION meal,20,VEGGIE,Vegetable Empanada,Gemüse-Empanada,vegetarian,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,7.0,11.5,14.5,,,,,,,
+1,2026-09-18,Mendokoro,16,Shi,Chicken Tonkatsu Bowl,Chicken Tonkatsu Bowl,meat,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,13.8,15.8,18.8,733,5.8,3.8,29,1.06,6.1,0.5
+3,2026-09-18,Mendokoro,16,Ichi,Miso Ramen,Miso Ramen,vegetarian,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,10.5,12.5,15.5,293,2.8,3.6,10,1.22,0.9,0.2
+4,2026-09-18,Mendokoro,16,Ni,Shoyu Ramen,Shoyu Ramen,vegetarian,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,10.5,12.5,15.5,308,2.9,3.7,11,1.30,0.8,0.2
+107,2026-09-18,Mendokoro,16,San,Tantanmen Ramen,Tantanmen Ramen,vegetarian,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,12.5,14.5,17.5,312,3.8,3.5,10,1.29,0.9,0.2
+5,2026-09-18,Mendokoro,16,Roku,Tori Ramen,Tori Ramen,meat,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,13.8,15.8,18.8,302,4.9,3.3,9.7,1.18,0.8,0.2
+33,2026-09-18,food market,19,green delight,Choose 5,Choose 5,unclassified,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,9.9,13.9,16.9,0.0,0.0,0.0,0.0,0.00,0.0,0.0
+248,2026-09-18,food market,19,grill,Grilled Burewurst,Burewurst vom Grill,meat,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,10.5,13.5,16.5,590,7.4,8.0,12,1.21,1.2,2.2
+49,2026-09-18,food market,19,pasta classica vegi,Ground Meat with Horn-Shaped Pasta,G`hacktes mit Hörnli,vegan,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,7.0,11.5,14.5,574,4.7,1.2,26,0.32,3.5,0.5
+249,2026-09-18,food market,19,fire,Japan Bowl,Japan Bowl,fish,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,8.5,12.5,15.5,723,6.6,3.6,28,1.26,7.3,0.5
+250,2026-09-18,food market,19,green daily,Pan-Fried Spätzli with a Fried Egg,Spätzlipfanne mit Spiegelei,unclassified,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,7.0,11.5,14.5,548,5.8,5.6,14,0.92,1.8,2.0
+251,2026-09-18,food market,19,pasta della nonna,Pasta al Bufala,Pasta al Bufala,unclassified,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,9.5,13.5,16.5,714,6.3,5.2,24,0.74,1.9,1.7
+64,2026-09-18,food market,19,pizza classica,Pizza Margherita,Pizza Margherita,vegetarian,2026-09-18T03:10:12Z,2026-09-18T03:10:12Z,,7.0,11.5,14.5,859,9.6,5.3,29,1.28,1.2,2.5
