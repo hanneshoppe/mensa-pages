@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-09-18T03:10:12Z",
+  "dataAsOf": "2026-09-18T06:32:37Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,43 +57,43 @@
     {
       "name": "FUSION meal",
       "days": 10,
-      "dishDays": 89,
+      "dishDays": 90,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-09-18",
       "diet": {
         "vegan": 34,
         "vegetarian": 26,
         "fish": 2,
-        "meat": 27,
+        "meat": 28,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 89,
+          "n": 90,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.16
+          "mean": 11.22
         },
         "internal": {
-          "n": 89,
+          "n": 90,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.18
+          "mean": 9.23
         },
         "students": {
-          "n": 89,
+          "n": 90,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
           "p75": 8.9,
           "max": 12.5,
-          "mean": 6.87
+          "mean": 6.91
         }
       }
     },
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 33,
-    "dishDays": 506,
+    "dishDays": 507,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-09-18",
     "diet": {
       "vegan": 73,
       "vegetarian": 182,
       "fish": 13,
-      "meat": 195,
+      "meat": 196,
       "unclassified": 43
     },
     "prices": {
       "external": {
-        "n": 506,
+        "n": 507,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 15.46
       },
       "internal": {
-        "n": 506,
+        "n": 507,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.64
       },
       "students": {
-        "n": 506,
+        "n": 507,
         "min": 2.5,
         "p25": 8.5,
         "median": 9.9,
@@ -7258,6 +7258,53 @@
           "sd": null,
           "min": 8.9,
           "max": 8.9
+        }
+      }
+    },
+    {
+      "id": 252,
+      "name": "Loaded Fries & Pulled Chicken",
+      "nameDe": "Loaded Fries & Pulled Chicken",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-09-18",
+      "lastSeen": "2026-09-18",
+      "dates": [
+        "2026-09-18"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
         }
       }
     },
@@ -14960,7 +15007,7 @@
     {
       "facility": "FUSION meal",
       "line": "SOUL FOOD",
-      "dishDays": 9,
+      "dishDays": 10,
       "dishes": [
         {
           "id": 172,
@@ -14982,6 +15029,17 @@
           "lastSeen": "2026-09-09",
           "dates": [
             "2026-09-09"
+          ]
+        },
+        {
+          "id": 252,
+          "name": "Loaded Fries & Pulled Chicken",
+          "nameDe": "Loaded Fries & Pulled Chicken",
+          "count": 1,
+          "firstSeen": "2026-09-18",
+          "lastSeen": "2026-09-18",
+          "dates": [
+            "2026-09-18"
           ]
         },
         {
