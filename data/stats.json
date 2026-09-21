@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-09-21T09:28:11Z",
+  "dataAsOf": "2026-09-21T09:45:17Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,43 +14,43 @@
     {
       "name": "food market",
       "days": 34,
-      "dishDays": 260,
+      "dishDays": 261,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-09-21",
       "diet": {
         "vegan": 41,
         "vegetarian": 58,
         "fish": 11,
-        "meat": 106,
+        "meat": 107,
         "unclassified": 44
       },
       "prices": {
         "external": {
-          "n": 260,
+          "n": 261,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
           "p75": 16.9,
           "max": 19.5,
-          "mean": 15.82
+          "mean": 15.83
         },
         "internal": {
-          "n": 260,
+          "n": 261,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
           "p75": 13.9,
           "max": 16.5,
-          "mean": 12.83
+          "mean": 12.84
         },
         "students": {
-          "n": 260,
+          "n": 261,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
           "p75": 9.9,
           "max": 13.5,
-          "mean": 8.87
+          "mean": 8.88
         }
       }
     },
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 34,
-    "dishDays": 531,
+    "dishDays": 532,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-09-21",
     "diet": {
       "vegan": 76,
       "vegetarian": 191,
       "fish": 14,
-      "meat": 206,
+      "meat": 207,
       "unclassified": 44
     },
     "prices": {
       "external": {
-        "n": 531,
+        "n": 532,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,16 +165,16 @@
         "mean": 15.42
       },
       "internal": {
-        "n": 531,
+        "n": 532,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
         "p75": 14.5,
         "max": 16.5,
-        "mean": 12.61
+        "mean": 12.62
       },
       "students": {
-        "n": 531,
+        "n": 532,
         "min": 2.5,
         "p25": 8.5,
         "median": 9.9,
@@ -10478,6 +10478,53 @@
       }
     },
     {
+      "id": 267,
+      "name": "Saut\u00e9ed Chicken",
+      "nameDe": "Pollo Saltado",
+      "facility": "food market",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-09-21",
+      "lastSeen": "2026-09-21",
+      "dates": [
+        "2026-09-21"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 17.5,
+          "sd": null,
+          "min": 17.5,
+          "max": 17.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        }
+      }
+    },
+    {
       "id": 147,
       "name": "Scavenger Hunt",
       "nameDe": "Schnitzeljagd",
@@ -14215,7 +14262,7 @@
     {
       "facility": "food market",
       "line": "grill",
-      "dishDays": 38,
+      "dishDays": 39,
       "dishes": [
         {
           "id": 6,
@@ -14534,6 +14581,17 @@
           "lastSeen": "2026-08-19",
           "dates": [
             "2026-08-19"
+          ]
+        },
+        {
+          "id": 267,
+          "name": "Saut\u00e9ed Chicken",
+          "nameDe": "Pollo Saltado",
+          "count": 1,
+          "firstSeen": "2026-09-21",
+          "lastSeen": "2026-09-21",
+          "dates": [
+            "2026-09-21"
           ]
         },
         {
