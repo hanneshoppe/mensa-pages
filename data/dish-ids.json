@@ -1511,5 +1511,77 @@
       "FUSION meal",
       "Loaded Fries & Pulled Chicken"
     ]
+  ],
+  "253": [
+    [
+      "FUSION meal",
+      "Beef Cutlets with Pepper Sauce"
+    ]
+  ],
+  "254": [
+    [
+      "FUSION meal",
+      "Caribbean Currywurst"
+    ]
+  ],
+  "255": [
+    [
+      "FUSION meal",
+      "Chana Masala"
+    ]
+  ],
+  "256": [
+    [
+      "FUSION meal",
+      "Gnocchi Cinque Pi"
+    ]
+  ],
+  "257": [
+    [
+      "FUSION meal",
+      "Mahi Mahi"
+    ]
+  ],
+  "258": [
+    [
+      "FUSION meal",
+      "Pork Cutlet"
+    ]
+  ],
+  "259": [
+    [
+      "food market",
+      "Lahmacun"
+    ]
+  ],
+  "260": [
+    [
+      "food market",
+      "Lomo Saltado"
+    ]
+  ],
+  "261": [
+    [
+      "food market",
+      "Pasta Chat"
+    ]
+  ],
+  "262": [
+    [
+      "food market",
+      "Red Lentil Dal"
+    ]
+  ],
+  "263": [
+    [
+      "food market",
+      "Roasted Beef & Vegetable Moussaka"
+    ]
+  ],
+  "264": [
+    [
+      "food market",
+      "Yaki Udon Noodles"
+    ]
   ]
 }
