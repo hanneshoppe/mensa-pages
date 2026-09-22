@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-09-22T06:33:40Z",
+  "dataAsOf": "2026-09-22T06:55:48Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,19 +14,19 @@
     {
       "name": "food market",
       "days": 35,
-      "dishDays": 269,
+      "dishDays": 270,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-09-22",
       "diet": {
         "vegan": 42,
         "vegetarian": 60,
         "fish": 13,
-        "meat": 109,
+        "meat": 110,
         "unclassified": 45
       },
       "prices": {
         "external": {
-          "n": 269,
+          "n": 270,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,22 +35,22 @@
           "mean": 15.83
         },
         "internal": {
-          "n": 269,
+          "n": 270,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
           "p75": 13.9,
           "max": 16.5,
-          "mean": 12.84
+          "mean": 12.85
         },
         "students": {
-          "n": 269,
+          "n": 270,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
           "p75": 9.9,
           "max": 13.5,
-          "mean": 8.88
+          "mean": 8.89
         }
       }
     },
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 35,
-    "dishDays": 556,
+    "dishDays": 557,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-09-22",
     "diet": {
       "vegan": 78,
       "vegetarian": 202,
       "fish": 16,
-      "meat": 215,
+      "meat": 216,
       "unclassified": 45
     },
     "prices": {
       "external": {
-        "n": 556,
+        "n": 557,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 15.37
       },
       "internal": {
-        "n": 556,
+        "n": 557,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.58
       },
       "students": {
-        "n": 556,
+        "n": 557,
         "min": 2.5,
         "p25": 8.5,
         "median": 9.9,
@@ -12863,6 +12863,53 @@
       }
     },
     {
+      "id": 277,
+      "name": "Tortellini with Meat Filling",
+      "nameDe": "Tortellini alla carne",
+      "facility": "food market",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-09-22",
+      "lastSeen": "2026-09-22",
+      "dates": [
+        "2026-09-22"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
+    },
+    {
       "id": 90,
       "name": "Turkey Cream Goulash",
       "nameDe": "Truten Rahmgulasch",
@@ -15602,7 +15649,7 @@
     {
       "facility": "food market",
       "line": "pasta della nonna",
-      "dishDays": 36,
+      "dishDays": 37,
       "dishes": [
         {
           "id": 58,
@@ -15934,6 +15981,17 @@
           "lastSeen": "2026-08-06",
           "dates": [
             "2026-08-06"
+          ]
+        },
+        {
+          "id": 277,
+          "name": "Tortellini with Meat Filling",
+          "nameDe": "Tortellini alla carne",
+          "count": 1,
+          "firstSeen": "2026-09-22",
+          "lastSeen": "2026-09-22",
+          "dates": [
+            "2026-09-22"
           ]
         },
         {
