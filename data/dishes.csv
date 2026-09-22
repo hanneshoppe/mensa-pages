@@ -531,3 +531,25 @@ dish_id,date,facility,facility_id,line,name_en,name_de,diet,first_seen_at,last_s
 263,2026-09-21,food market,19,fire,Roasted Beef & Vegetable Moussaka,Roasted Beef & Vegetable Moussaka,meat,2026-09-21T03:11:58Z,2026-09-21T09:53:37Z,,8.5,12.5,15.5,276,3.4,3.0,5.7,0.82,2.3,1.2
 267,2026-09-21,food market,19,grill,Sautéed Chicken,Pollo Saltado,meat,2026-09-21T09:45:17Z,2026-09-21T09:53:37Z,,11.5,14.5,17.5,533,5.7,2.7,19,1.26,3.5,0.2
 264,2026-09-21,food market,19,pasta della nonna,Yaki Udon Noodles,Yaki Udon Noodles,vegan,2026-09-21T03:11:58Z,2026-09-21T09:53:37Z,,9.5,13.5,16.5,555,5.5,3.9,21,2.20,3.7,0.6
+268,2026-09-22,FUSION meal,20,VEGGIE,Cheese Omelet,Käse-Omelette,vegetarian,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,7.0,11.5,14.5,,,,,,,
+269,2026-09-22,FUSION meal,20,WORLD OF ASIA,Chicken Butter Masala,Chicken Butter-Masala,meat,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,10.5,12.9,14.5,,,,,,,
+270,2026-09-22,FUSION meal,20,WORLD OF ASIA VEGGIE,Fried Rice with Gyoza,Fried Rice mit Gyoza,vegetarian,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,8.5,10.5,12.5,,,,,,,
+138,2026-09-22,FUSION meal,20,MEATWORKS,Ground Meat with Horn-Shaped Pasta,Gehacktes mit Hörnli,meat,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,8.5,12.5,15.5,,,,,,,
+139,2026-09-22,FUSION meal,20,GLOBETROTTER,Hot Buffet,Warmes Buffet,vegetarian,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,2.5,2.9,3.4,,,,,,,
+271,2026-09-22,FUSION meal,20,VEGAN,Loaded Frankie Wrap,Loaded Frankie Wrap,vegan,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,8.9,12.9,16.9,,,,,,,
+141,2026-09-22,FUSION meal,20,POWER KITCHEN,Protein Buffet,Protein Buffet,vegetarian,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,2.5,2.9,3.4,,,,,,,
+142,2026-09-22,FUSION meal,20,FRESH ISLAND,Salad Buffet,Salat Buffet,vegetarian,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,2.5,2.9,3.4,,,,,,,
+272,2026-09-22,FUSION meal,20,SOUL FOOD,Spanish-Style Veal Burger,Kalbsburger Spanish Style,meat,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,12.5,15.5,18.5,,,,,,,
+1,2026-09-22,Mendokoro,16,Shi,Chicken Tonkatsu Bowl,Chicken Tonkatsu Bowl,meat,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,13.8,15.8,18.8,733,5.8,3.8,29,1.06,6.1,0.5
+3,2026-09-22,Mendokoro,16,Ichi,Miso Ramen,Miso Ramen,vegetarian,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,10.5,12.5,15.5,293,2.8,3.6,10,1.22,0.9,0.2
+4,2026-09-22,Mendokoro,16,Ni,Shoyu Ramen,Shoyu Ramen,vegetarian,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,10.5,12.5,15.5,308,2.9,3.7,11,1.30,0.8,0.2
+107,2026-09-22,Mendokoro,16,San,Tantanmen Ramen,Tantanmen Ramen,vegetarian,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,12.5,14.5,17.5,312,3.8,3.5,10,1.29,0.9,0.2
+5,2026-09-22,Mendokoro,16,Roku,Tori Ramen,Tori Ramen,meat,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,13.8,15.8,18.8,302,4.9,3.3,9.7,1.18,0.8,0.2
+33,2026-09-22,food market,19,green delight,Choose 5,Choose 5,unclassified,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,9.9,13.9,16.9,0.0,0.0,0.0,0.0,0.00,0.0,0.0
+273,2026-09-22,food market,19,grill,Grilled Salmon Steak,Lachs Steak vom Grill,fish,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,12.5,15.5,18.5,577,5.8,5.4,16,0.95,1.0,2.6
+259,2026-09-22,food market,19,pizza mamma mia,Lahmacun,Lahmacun,meat,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,10.5,13.5,16.5,647,5.7,5.1,21,0.82,1.9,1.3
+57,2026-09-22,food market,19,green daily,Oriental Naan,Oriental Naan,vegan,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,7.0,11.5,14.5,468,3.1,4.0,14,0.72,2.7,0.6
+274,2026-09-22,food market,19,pasta classica vegi,Pasta with Ratatouille,Pasta con ratatouille,vegetarian,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,7.0,11.5,14.5,540,4.6,4.9,16,0.37,1.8,2.0
+64,2026-09-22,food market,19,pizza classica,Pizza Margherita,Pizza Margherita,vegetarian,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,7.0,11.5,14.5,859,9.6,5.3,29,1.28,1.2,2.5
+81,2026-09-22,food market,19,pasta della nonna,Tagliatelle with Spinach and Salmon,Tagliatelle agli spinachi e salmone,fish,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,9.5,13.5,16.5,579,6.4,5.3,16,0.44,1.6,1.6
+96,2026-09-22,food market,19,fire,Zurich-Style Sliced Beef,Geschnetzeltes Zürcher Art,meat,2026-09-22T03:11:01Z,2026-09-22T03:11:01Z,,8.5,12.5,15.5,509,6.0,4.9,12,0.51,1.5,1.2
