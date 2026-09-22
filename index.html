@@ -991,16 +991,19 @@ function renderFacility(id, name, url, dayEntry, strings, lang, easterEgg, ratin
   }
   section.append(heading);
 
-  if (easterEgg && (name || '').toLowerCase().includes('fusion')) {
-    const cards = el('div', 'cards');
-    cards.append(renderMealCard({ ...EASTER_EGG_CONTENT[lang], 'meal-class-array': [], __rawImage: EASTER_EGG_IMAGE, __containImage: true }, null, null));
-    section.append(cards);
-    return section;
-  }
+  // The easter-egg card is shown alongside FUSION's real dishes, never instead of them.
+  let eggCard = easterEgg && (name || '').toLowerCase().includes('fusion')
+    ? renderMealCard({ ...EASTER_EGG_CONTENT[lang], 'meal-class-array': [], __rawImage: EASTER_EGG_IMAGE, __containImage: true }, null, null)
+    : null;
 
   const openingHours = dayEntry && dayEntry['opening-hour-array'];
   if (!openingHours || openingHours.length === 0) {
     section.append(el('div', 'empty-note', strings.noMenuToday));
+    if (eggCard) {
+      const cards = el('div', 'cards');
+      cards.append(eggCard);
+      section.append(cards);
+    }
     return section;
   }
 
@@ -1009,6 +1012,10 @@ function renderFacility(id, name, url, dayEntry, strings, lang, easterEgg, ratin
     for (const mealTime of oh['meal-time-array'] || []) {
       section.append(el('div', 'meal-time-label', mealTime.name));
       const cards = el('div', 'cards');
+      if (eggCard) {
+        cards.append(eggCard);
+        eggCard = null;
+      }
       for (const line of sortedLines(mealTime['line-array'])) {
         cards.append(renderMealCard(line.meal, facility, ratingCtx));
       }
