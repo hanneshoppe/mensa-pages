@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-09-22T03:11:01Z",
+  "dataAsOf": "2026-09-22T06:33:40Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,43 +57,43 @@
     {
       "name": "FUSION meal",
       "days": 12,
-      "dishDays": 110,
+      "dishDays": 112,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-09-22",
       "diet": {
         "vegan": 36,
-        "vegetarian": 36,
+        "vegetarian": 37,
         "fish": 3,
-        "meat": 35,
+        "meat": 36,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 110,
+          "n": 112,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.35
+          "mean": 11.38
         },
         "internal": {
-          "n": 110,
+          "n": 112,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.34
+          "mean": 9.38
         },
         "students": {
-          "n": 110,
+          "n": 112,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
           "p75": 8.9,
           "max": 12.5,
-          "mean": 6.99
+          "mean": 7.03
         }
       }
     },
@@ -144,28 +144,28 @@
   "overall": {
     "name": "all",
     "days": 35,
-    "dishDays": 554,
+    "dishDays": 556,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-09-22",
     "diet": {
       "vegan": 78,
-      "vegetarian": 201,
+      "vegetarian": 202,
       "fish": 16,
-      "meat": 214,
+      "meat": 215,
       "unclassified": 45
     },
     "prices": {
       "external": {
-        "n": 554,
+        "n": 556,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
         "p75": 17.5,
         "max": 19.5,
-        "mean": 15.38
+        "mean": 15.37
       },
       "internal": {
-        "n": 554,
+        "n": 556,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.58
       },
       "students": {
-        "n": 554,
+        "n": 556,
         "min": 2.5,
         "p25": 8.5,
         "median": 9.9,
@@ -3651,6 +3651,53 @@
       }
     },
     {
+      "id": 275,
+      "name": "Butter Chicken Masala",
+      "nameDe": "Butter Chicken-Masala",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-09-22",
+      "lastSeen": "2026-09-22",
+      "dates": [
+        "2026-09-22"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.9,
+          "sd": null,
+          "min": 12.9,
+          "max": 12.9
+        },
+        "students": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
+        }
+      }
+    },
+    {
       "id": 22,
       "name": "Cajun Chicken Pasta",
       "nameDe": "Cajun Chicken Pasta",
@@ -6239,6 +6286,53 @@
       "id": 270,
       "name": "Fried Rice with Gyoza",
       "nameDe": "Fried Rice mit Gyoza",
+      "facility": "FUSION meal",
+      "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-09-22",
+      "lastSeen": "2026-09-22",
+      "dates": [
+        "2026-09-22"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    },
+    {
+      "id": 276,
+      "name": "Fried Rice with Shiitake Dumplings",
+      "nameDe": "Fried Rice mit Shiitake Dumplings",
       "facility": "FUSION meal",
       "diet": "vegetarian",
       "dietDays": {
@@ -11549,7 +11643,7 @@
     {
       "id": 272,
       "name": "Spanish-Style Veal Burger",
-      "nameDe": "Kalbsburger Spanish Style",
+      "nameDe": "Kalbs-Burger Spanish Style",
       "facility": "FUSION meal",
       "diet": "meat",
       "dietDays": {
@@ -11572,24 +11666,24 @@
       "prices": {
         "external": {
           "n": 1,
-          "mean": 18.5,
+          "mean": 17.5,
           "sd": null,
-          "min": 18.5,
-          "max": 18.5
+          "min": 17.5,
+          "max": 17.5
         },
         "internal": {
           "n": 1,
-          "mean": 15.5,
+          "mean": 14.5,
           "sd": null,
-          "min": 15.5,
-          "max": 15.5
+          "min": 14.5,
+          "max": 14.5
         },
         "students": {
           "n": 1,
-          "mean": 12.5,
+          "mean": 11.5,
           "sd": null,
-          "min": 12.5,
-          "max": 12.5
+          "min": 11.5,
+          "max": 11.5
         }
       }
     },
@@ -16368,7 +16462,7 @@
         {
           "id": 272,
           "name": "Spanish-Style Veal Burger",
-          "nameDe": "Kalbsburger Spanish Style",
+          "nameDe": "Kalbs-Burger Spanish Style",
           "count": 1,
           "firstSeen": "2026-09-22",
           "lastSeen": "2026-09-22",
@@ -16659,7 +16753,7 @@
     {
       "facility": "FUSION meal",
       "line": "WORLD OF ASIA",
-      "dishDays": 12,
+      "dishDays": 13,
       "dishes": [
         {
           "id": 193,
@@ -16681,6 +16775,17 @@
           "lastSeen": "2026-09-09",
           "dates": [
             "2026-09-09"
+          ]
+        },
+        {
+          "id": 275,
+          "name": "Butter Chicken Masala",
+          "nameDe": "Butter Chicken-Masala",
+          "count": 1,
+          "firstSeen": "2026-09-22",
+          "lastSeen": "2026-09-22",
+          "dates": [
+            "2026-09-22"
           ]
         },
         {
@@ -16798,7 +16903,7 @@
     {
       "facility": "FUSION meal",
       "line": "WORLD OF ASIA VEGGIE",
-      "dishDays": 13,
+      "dishDays": 14,
       "dishes": [
         {
           "id": 183,
@@ -16881,6 +16986,17 @@
           "id": 270,
           "name": "Fried Rice with Gyoza",
           "nameDe": "Fried Rice mit Gyoza",
+          "count": 1,
+          "firstSeen": "2026-09-22",
+          "lastSeen": "2026-09-22",
+          "dates": [
+            "2026-09-22"
+          ]
+        },
+        {
+          "id": 276,
+          "name": "Fried Rice with Shiitake Dumplings",
+          "nameDe": "Fried Rice mit Shiitake Dumplings",
           "count": 1,
           "firstSeen": "2026-09-22",
           "lastSeen": "2026-09-22",
