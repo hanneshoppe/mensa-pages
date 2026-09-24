@@ -578,25 +578,25 @@ dish_id,date,facility,facility_id,line,name_en,name_de,diet,first_seen_at,last_s
 64,2026-09-23,food market,19,pizza classica,Pizza Margherita,Pizza Margherita,vegetarian,2026-09-23T03:11:04Z,2026-09-23T09:31:44Z,,7.0,11.5,14.5,859,9.6,5.3,29,1.28,1.2,2.5
 287,2026-09-23,food market,19,pizza mamma mia,Pizza with buffalo mozzarella,Pizza alla bufala,vegetarian,2026-09-23T03:11:04Z,2026-09-23T09:31:44Z,,10.5,13.5,16.5,851,11,7.6,22,1.13,1.2,4.2
 81,2026-09-23,food market,19,pasta della nonna,Tagliatelle with Spinach and Salmon,Tagliatelle con spinaci e salmone,fish,2026-09-23T03:11:04Z,2026-09-23T09:31:44Z,,9.5,13.5,16.5,579,6.4,5.3,16,0.44,1.6,1.6
-288,2026-09-24,FUSION meal,20,WORLD OF ASIA VEGGIE,Bibimbap & Fried Egg,Bibimbap & Spiegelei,vegetarian,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,8.5,10.5,12.5,,,,,,,
-289,2026-09-24,FUSION meal,20,MEATWORKS,Cevapcici ,Cevapcici ,meat,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,8.5,12.5,15.5,,,,,,,
-290,2026-09-24,FUSION meal,20,SOUL FOOD,"Chicken Cordon Bleu, Gruyère Style ",Poulet-Cordon Bleu-Greyerzer Art ,meat,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,12.5,15.5,18.5,,,,,,,
-139,2026-09-24,FUSION meal,20,GLOBETROTTER,Hot Buffet,Warmes Buffet,vegetarian,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,2.5,2.9,3.4,,,,,,,
-291,2026-09-24,FUSION meal,20,WORLD OF ASIA,Pork Vindaloo,Schweins-Vindaloo,meat,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,10.5,12.9,14.5,,,,,,,
-141,2026-09-24,FUSION meal,20,POWER KITCHEN,Protein Buffet,Protein Buffet,vegetarian,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,2.5,2.9,3.4,,,,,,,
-142,2026-09-24,FUSION meal,20,FRESH ISLAND,Salad Buffet,Salat Buffet,vegetarian,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,2.5,2.9,3.4,,,,,,,
-292,2026-09-24,FUSION meal,20,VEGAN,Soy Stroganoff,Soja-Stroganoff,vegan,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,8.9,12.9,16.9,,,,,,,
-293,2026-09-24,FUSION meal,20,VEGGIE,Stuffed Bell Peppers with Rice & Feta,Gefüllte Paprika mit Reis & Feta,vegetarian,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,7.0,11.5,14.5,,,,,,,
-1,2026-09-24,Mendokoro,16,Shi,Chicken Tonkatsu Bowl,Chicken Tonkatsu Bowl,meat,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,13.8,15.8,18.8,733,5.8,3.8,29,1.06,6.1,0.5
-3,2026-09-24,Mendokoro,16,Ichi,Miso Ramen,Miso Ramen,vegetarian,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,10.5,12.5,15.5,293,2.8,3.6,10,1.22,0.9,0.2
-4,2026-09-24,Mendokoro,16,Ni,Shoyu Ramen,Shoyu Ramen,vegetarian,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,10.5,12.5,15.5,308,2.9,3.7,11,1.30,0.8,0.2
-107,2026-09-24,Mendokoro,16,San,Tantanmen Ramen,Tantanmen Ramen,vegetarian,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,12.5,14.5,17.5,312,3.8,3.5,10,1.29,0.9,0.2
-5,2026-09-24,Mendokoro,16,Roku,Tori Ramen,Tori Ramen,meat,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,13.8,15.8,18.8,302,4.9,3.3,9.7,1.18,0.8,0.2
-294,2026-09-24,food market,19,grill,Chicken & Orzo,Chicken & Orzo,meat,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,12.5,15.5,18.5,610,10,6.0,12,0.95,1.5,1.1
-33,2026-09-24,food market,19,green delight,Choose 5,Choose 5,unclassified,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,9.9,13.9,16.9,0.0,0.0,0.0,0.0,0.00,0.0,0.0
-295,2026-09-24,food market,19,fire,Cod Loins à la Mer,Dorsch Loins à la Mer,fish,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,8.5,12.5,15.5,441,5.3,2.5,12,0.63,1.7,0.9
-296,2026-09-24,food market,19,green daily,Eggplant with Ricotta,Melanzane alla Ricotta,vegetarian,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,7.0,11.5,14.5,410,4.2,5.8,7.0,0.69,1.7,2.6
-297,2026-09-24,food market,19,pasta classica vegi,Farfalle with Pesto,Farfalle al pesto,unclassified,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,7.0,11.5,14.5,621,4.6,5.3,20,0.44,2.0,1.0
-298,2026-09-24,food market,19,pasta della nonna,Fried Mandu,Fried Mandu,vegan,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,9.5,13.5,16.5,576,2.3,1.9,27,1.49,5.0,0.2
-64,2026-09-24,food market,19,pizza classica,Pizza Margherita,Pizza Margherita,vegetarian,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,7.0,11.5,14.5,859,9.6,5.3,29,1.28,1.2,2.5
-287,2026-09-24,food market,19,pizza mamma mia,Pizza with buffalo mozzarella,Pizza alla bufala,vegetarian,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,,10.5,13.5,16.5,851,11,7.6,22,1.13,1.2,4.2
+288,2026-09-24,FUSION meal,20,WORLD OF ASIA VEGGIE,Bibimbap & Fried Egg,Bibimbap & Spiegelei,vegetarian,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,8.5,10.5,12.5,,,,,,,
+289,2026-09-24,FUSION meal,20,MEATWORKS,Cevapcici ,Cevapcici ,meat,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,8.5,12.5,15.5,,,,,,,
+290,2026-09-24,FUSION meal,20,SOUL FOOD,"Chicken Cordon Bleu, Gruyère Style ",Poulet-Cordon Bleu-Greyerzer Art ,meat,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,12.5,15.5,18.5,,,,,,,
+139,2026-09-24,FUSION meal,20,GLOBETROTTER,Hot Buffet,Warmes Buffet,vegetarian,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,2.5,2.9,3.4,,,,,,,
+291,2026-09-24,FUSION meal,20,WORLD OF ASIA,Pork Vindaloo,Schweins-Vindaloo,meat,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,10.5,12.9,14.5,,,,,,,
+141,2026-09-24,FUSION meal,20,POWER KITCHEN,Protein Buffet,Protein Buffet,vegetarian,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,2.5,2.9,3.4,,,,,,,
+142,2026-09-24,FUSION meal,20,FRESH ISLAND,Salad Buffet,Salat Buffet,vegetarian,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,2.5,2.9,3.4,,,,,,,
+292,2026-09-24,FUSION meal,20,VEGAN,Soy Stroganoff,Soja-Stroganoff,vegan,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,8.9,12.9,16.9,,,,,,,
+293,2026-09-24,FUSION meal,20,VEGGIE,Stuffed Bell Peppers with Rice & Feta,Gefüllte Paprika mit Reis & Feta,vegetarian,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,7.0,11.5,14.5,,,,,,,
+1,2026-09-24,Mendokoro,16,Shi,Chicken Tonkatsu Bowl,Chicken Tonkatsu Bowl,meat,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,13.8,15.8,18.8,733,5.8,3.8,29,1.06,6.1,0.5
+3,2026-09-24,Mendokoro,16,Ichi,Miso Ramen,Miso Ramen,vegetarian,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,10.5,12.5,15.5,293,2.8,3.6,10,1.22,0.9,0.2
+4,2026-09-24,Mendokoro,16,Ni,Shoyu Ramen,Shoyu Ramen,vegetarian,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,10.5,12.5,15.5,308,2.9,3.7,11,1.30,0.8,0.2
+107,2026-09-24,Mendokoro,16,San,Tantanmen Ramen,Tantanmen Ramen,vegetarian,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,12.5,14.5,17.5,312,3.8,3.5,10,1.29,0.9,0.2
+5,2026-09-24,Mendokoro,16,Roku,Tori Ramen,Tori Ramen,meat,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,13.8,15.8,18.8,302,4.9,3.3,9.7,1.18,0.8,0.2
+294,2026-09-24,food market,19,grill,Chicken & Orzo,Chicken & Orzo,meat,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,12.5,15.5,18.5,610,10,6.0,12,0.95,1.5,1.1
+33,2026-09-24,food market,19,green delight,Choose 5,Choose 5,unclassified,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,9.9,13.9,16.9,0.0,0.0,0.0,0.0,0.00,0.0,0.0
+295,2026-09-24,food market,19,fire,Cod Loins à la Mer,Dorsch Loins à la Mer,fish,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,8.5,12.5,15.5,441,5.3,2.5,12,0.63,1.7,0.9
+296,2026-09-24,food market,19,green daily,Eggplant with Ricotta,Melanzane alla Ricotta,vegetarian,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,7.0,11.5,14.5,410,4.2,5.8,7.0,0.69,1.7,2.6
+297,2026-09-24,food market,19,pasta classica vegi,Farfalle with Pesto,Farfalle al pesto,unclassified,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,7.0,11.5,14.5,621,4.6,5.3,20,0.44,2.0,1.0
+298,2026-09-24,food market,19,pasta della nonna,Fried Mandu,Fried Mandu,vegan,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,9.5,13.5,16.5,576,2.3,1.9,27,1.49,5.0,0.2
+64,2026-09-24,food market,19,pizza classica,Pizza Margherita,Pizza Margherita,vegetarian,2026-09-24T03:10:47Z,2026-09-24T10:43:47Z,,7.0,11.5,14.5,859,9.6,5.3,29,1.28,1.2,2.5
+287,2026-09-24,food market,19,pizza mamma mia,Pizza with buffalo mozzarella,Pizza alla bufala,vegetarian,2026-09-24T03:10:47Z,2026-09-24T09:22:48Z,2026-09-24T10:43:47Z,10.5,13.5,16.5,851,11,7.6,22,1.13,1.2,4.2
