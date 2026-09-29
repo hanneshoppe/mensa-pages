@@ -646,3 +646,25 @@ dish_id,date,facility,facility_id,line,name_en,name_de,diet,first_seen_at,last_s
 325,2026-09-28,food market,19,pizza mamma mia,Prosciutto and Salami Pizza,Pizza Prosciutto e Salami,meat,2026-09-28T09:32:09Z,2026-09-28T09:51:44Z,,11.5,14.5,17.5,881,12,8.2,21,1.41,1.0,4.0
 326,2026-09-28,food market,19,pasta della nonna,Shirataki Noodless,Shirataki Noodless,vegan,2026-09-28T09:32:09Z,2026-09-28T09:51:44Z,,9.5,13.5,16.5,508,5.4,2.3,19,2.13,4.3,0.2
 319,2026-09-28,food market,19,pasta della nonna,novalue,Shirataki Noodless,vegan,2026-09-28T03:14:49Z,2026-09-28T08:04:00Z,,9.5,13.5,16.5,508,5.4,2.3,19,2.13,4.3,0.2
+327,2026-09-29,FUSION meal,20,WORLD OF ASIA,Cape Malay with Shrimp,Kap Malay mit Shrimps,fish,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,10.5,12.9,14.5,,,,,,,
+328,2026-09-29,FUSION meal,20,SOUL FOOD,Cheeseburger & Bacon,Cheeseburger & Bacon,meat,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,11.5,14.5,17.5,,,,,,,
+329,2026-09-29,FUSION meal,20,VEGGIE,Goat Cheese au Gratin ,Gratinierter Ziegenkäse ,vegetarian,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,7.0,11.5,14.5,,,,,,,
+330,2026-09-29,FUSION meal,20,VEGAN,Hawaii Bowl ,Hawaii-Bowl ,vegan,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,8.9,12.9,16.9,,,,,,,
+139,2026-09-29,FUSION meal,20,GLOBETROTTER,Hot Buffet,Warmes Buffet,vegetarian,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,2.5,2.9,3.4,,,,,,,
+141,2026-09-29,FUSION meal,20,POWER KITCHEN,Protein Buffet,Protein Buffet,vegan,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,2.5,2.9,3.4,,,,,,,
+142,2026-09-29,FUSION meal,20,FRESH ISLAND,Salad Buffet,Salat Buffet,vegan,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,2.5,2.9,3.4,,,,,,,
+331,2026-09-29,FUSION meal,20,WORLD OF ASIA VEGGIE,Spring Rolls,Spring Rolls,vegetarian,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,8.5,10.5,12.5,,,,,,,
+332,2026-09-29,FUSION meal,20,MEATWORKS,Turkey Cutlet,Truthuhn-Schnitzel,meat,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,8.5,12.5,15.5,,,,,,,
+1,2026-09-29,Mendokoro,16,Shi,Chicken Tonkatsu Bowl,Chicken Tonkatsu Bowl,meat,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,13.8,15.8,18.8,733,5.8,3.8,29,1.06,6.1,0.5
+318,2026-09-29,Mendokoro,16,Roku,Kimchi ramen,Kimchi Ramen,vegetarian,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,12.5,14.5,17.5,314,1.4,1.5,1.8,0.48,1.3,0.2
+3,2026-09-29,Mendokoro,16,Ichi,Miso Ramen,Miso Ramen,vegetarian,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,10.5,12.5,15.5,293,2.8,3.6,10,1.22,0.9,0.2
+4,2026-09-29,Mendokoro,16,Ni,Shoyu Ramen,Shoyu Ramen,vegetarian,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,10.5,12.5,15.5,308,2.9,3.7,11,1.30,0.8,0.2
+107,2026-09-29,Mendokoro,16,San,Tantanmen Ramen,Tantanmen Ramen,vegetarian,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,12.5,14.5,17.5,312,3.8,3.5,10,1.29,0.9,0.2
+333,2026-09-29,food market,19,pasta della nonna,Caprese Risotto with Buffalo Mozzarella,Risotto caprese con bufala,vegetarian,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,9.5,13.5,16.5,428,2.5,3.2,14,0.76,1.0,0.9
+334,2026-09-29,food market,19,grill,Chicken Spring Rolls,Poulet Frühlingsrollen,meat,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,11.5,14.5,17.5,676,4.7,5.0,24,1.99,8.2,0.8
+33,2026-09-29,food market,19,green delight,Choose 5,Choose 5,unclassified,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,9.9,13.9,16.9,0.0,0.0,0.0,0.0,0.00,0.0,0.0
+335,2026-09-29,food market,19,pasta classica vegi,Penne with Red Pesto,Penne al pesto rosso,vegan,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,7.0,11.5,14.5,756,5.2,5.4,28,0.64,1.9,1.0
+64,2026-09-29,food market,19,pizza classica,Pizza Margherita,Pizza Margherita,vegetarian,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,7.0,11.5,14.5,858,9.6,5.3,29,1.28,1.2,2.5
+325,2026-09-29,food market,19,pizza mamma mia,Prosciutto and Salami Pizza,Pizza Prosciutto e Salami,meat,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,11.5,14.5,17.5,858,11,7.2,23,1.29,1.1,3.5
+336,2026-09-29,food market,19,green daily,Rösti with a Fried Egg,Rösti mit Spiegelei,vegetarian,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,7.0,11.5,14.5,342,3.3,2.9,10,0.77,1.2,0.4
+337,2026-09-29,food market,19,fire,Szeged Goulash,Szegediner Gulasch,meat,2026-09-29T03:11:15Z,2026-09-29T03:11:15Z,,8.5,12.5,15.5,550,4.8,6.9,12,1.01,0.9,1.7
