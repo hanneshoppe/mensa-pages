@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-09-30T09:23:57Z",
+  "dataAsOf": "2026-09-30T10:48:11Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,11 +14,11 @@
     {
       "name": "food market",
       "days": 41,
-      "dishDays": 320,
+      "dishDays": 321,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-09-30",
       "diet": {
-        "vegan": 48,
+        "vegan": 49,
         "vegetarian": 74,
         "fish": 17,
         "meat": 128,
@@ -26,7 +26,7 @@
       },
       "prices": {
         "external": {
-          "n": 320,
+          "n": 321,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,7 +35,7 @@
           "mean": 15.86
         },
         "internal": {
-          "n": 320,
+          "n": 321,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
@@ -44,13 +44,13 @@
           "mean": 12.87
         },
         "students": {
-          "n": 320,
+          "n": 321,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
           "p75": 9.9,
           "max": 13.5,
-          "mean": 8.92
+          "mean": 8.91
         }
       }
     },
@@ -144,11 +144,11 @@
   "overall": {
     "name": "all",
     "days": 41,
-    "dishDays": 691,
+    "dishDays": 692,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-09-30",
     "diet": {
-      "vegan": 96,
+      "vegan": 97,
       "vegetarian": 261,
       "fish": 23,
       "meat": 258,
@@ -156,16 +156,16 @@
     },
     "prices": {
       "external": {
-        "n": 691,
+        "n": 692,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
         "p75": 17.5,
         "max": 19.5,
-        "mean": 15.18
+        "mean": 15.17
       },
       "internal": {
-        "n": 691,
+        "n": 692,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,9 +174,9 @@
         "mean": 12.42
       },
       "students": {
-        "n": 691,
+        "n": 692,
         "min": 2.5,
-        "p25": 8.0,
+        "p25": 7.38,
         "median": 9.5,
         "p75": 11.5,
         "max": 13.8,
@@ -16670,6 +16670,53 @@
       }
     },
     {
+      "id": 349,
+      "name": "Vegetable Nuggets",
+      "nameDe": "Gem\u00fcse Nuggets",
+      "facility": "food market",
+      "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-09-30",
+      "lastSeen": "2026-09-30",
+      "dates": [
+        "2026-09-30"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
+    },
+    {
       "id": 186,
       "name": "Vegetable Skewer",
       "nameDe": "Gem\u00fcse-Spiess",
@@ -17857,7 +17904,7 @@
     {
       "facility": "food market",
       "line": "green daily",
-      "dishDays": 44,
+      "dishDays": 45,
       "dishes": [
         {
           "id": 105,
@@ -18331,6 +18378,17 @@
           "lastSeen": "2026-08-13",
           "dates": [
             "2026-08-13"
+          ]
+        },
+        {
+          "id": 349,
+          "name": "Vegetable Nuggets",
+          "nameDe": "Gem\u00fcse Nuggets",
+          "count": 1,
+          "firstSeen": "2026-09-30",
+          "lastSeen": "2026-09-30",
+          "dates": [
+            "2026-09-30"
           ]
         }
       ]
