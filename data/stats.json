@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-01T03:15:43Z",
+  "dataAsOf": "2026-10-01T06:28:00Z",
   "priceGroups": [
     "students",
     "internal",
@@ -3494,7 +3494,7 @@
     {
       "id": 350,
       "name": "Beef Roll",
-      "nameDe": "Rindsfleischvogel",
+      "nameDe": "Rindfleischvogel",
       "facility": "FUSION meal",
       "diet": "meat",
       "dietDays": {
@@ -20734,7 +20734,7 @@
         {
           "id": 350,
           "name": "Beef Roll",
-          "nameDe": "Rindsfleischvogel",
+          "nameDe": "Rindfleischvogel",
           "count": 1,
           "firstSeen": "2026-10-01",
           "lastSeen": "2026-10-01",
