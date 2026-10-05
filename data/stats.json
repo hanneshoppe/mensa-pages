@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-05T03:17:08Z",
+  "dataAsOf": "2026-10-05T06:51:03Z",
   "priceGroups": [
     "students",
     "internal",
@@ -17788,7 +17788,7 @@
     {
       "id": 375,
       "name": "Vegetable Cutlets",
-      "nameDe": "Gem\u00fcseschnitzel",
+      "nameDe": "Gem\u00fcse-Schnitzel",
       "facility": "FUSION meal",
       "diet": "vegetarian",
       "dietDays": {
@@ -22900,7 +22900,7 @@
         {
           "id": 375,
           "name": "Vegetable Cutlets",
-          "nameDe": "Gem\u00fcseschnitzel",
+          "nameDe": "Gem\u00fcse-Schnitzel",
           "count": 1,
           "firstSeen": "2026-10-05",
           "lastSeen": "2026-10-05",
