@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-06T03:11:41Z",
+  "dataAsOf": "2026-10-06T05:47:11Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,43 +57,43 @@
     {
       "name": "FUSION meal",
       "days": 22,
-      "dishDays": 203,
+      "dishDays": 204,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-10-06",
       "diet": {
         "vegan": 58,
         "vegetarian": 75,
         "fish": 7,
-        "meat": 63,
+        "meat": 64,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 203,
+          "n": 204,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.37
+          "mean": 11.39
         },
         "internal": {
-          "n": 203,
+          "n": 204,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.35
+          "mean": 9.37
         },
         "students": {
-          "n": 203,
+          "n": 204,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
           "p75": 8.9,
           "max": 12.5,
-          "mean": 7.0
+          "mean": 7.01
         }
       }
     },
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 45,
-    "dishDays": 782,
+    "dishDays": 783,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-10-06",
     "diet": {
       "vegan": 111,
       "vegetarian": 301,
       "fish": 25,
-      "meat": 287,
+      "meat": 288,
       "unclassified": 58
     },
     "prices": {
       "external": {
-        "n": 782,
+        "n": 783,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 15.08
       },
       "internal": {
-        "n": 782,
+        "n": 783,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,13 +174,13 @@
         "mean": 12.34
       },
       "students": {
-        "n": 782,
+        "n": 783,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
         "p75": 11.5,
         "max": 13.8,
-        "mean": 9.37
+        "mean": 9.36
       }
     }
   },
@@ -4813,6 +4813,53 @@
       "lastSeen": "2026-09-21",
       "dates": [
         "2026-09-21"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    },
+    {
+      "id": 391,
+      "name": "Breaded Pork schnitzel",
+      "nameDe": "Paniertes Schweinsschnitzel",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-10-06",
+      "lastSeen": "2026-10-06",
+      "dates": [
+        "2026-10-06"
       ],
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
@@ -22489,7 +22536,7 @@
     {
       "facility": "FUSION meal",
       "line": "MEATWORKS",
-      "dishDays": 24,
+      "dishDays": 25,
       "dishes": [
         {
           "id": 138,
@@ -22556,6 +22603,17 @@
           "lastSeen": "2026-09-21",
           "dates": [
             "2026-09-21"
+          ]
+        },
+        {
+          "id": 391,
+          "name": "Breaded Pork schnitzel",
+          "nameDe": "Paniertes Schweinsschnitzel",
+          "count": 1,
+          "firstSeen": "2026-10-06",
+          "lastSeen": "2026-10-06",
+          "dates": [
+            "2026-10-06"
           ]
         },
         {
