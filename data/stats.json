@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-06T05:47:11Z",
+  "dataAsOf": "2026-10-06T05:56:33Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,43 +57,43 @@
     {
       "name": "FUSION meal",
       "days": 22,
-      "dishDays": 204,
+      "dishDays": 206,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-10-06",
       "diet": {
         "vegan": 58,
-        "vegetarian": 75,
+        "vegetarian": 76,
         "fish": 7,
-        "meat": 64,
+        "meat": 65,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 204,
+          "n": 206,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.39
+          "mean": 11.41
         },
         "internal": {
-          "n": 204,
+          "n": 206,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.37
+          "mean": 9.39
         },
         "students": {
-          "n": 204,
+          "n": 206,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
           "p75": 8.9,
           "max": 12.5,
-          "mean": 7.01
+          "mean": 7.03
         }
       }
     },
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 45,
-    "dishDays": 783,
+    "dishDays": 785,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-10-06",
     "diet": {
       "vegan": 111,
-      "vegetarian": 301,
+      "vegetarian": 302,
       "fish": 25,
-      "meat": 288,
+      "meat": 289,
       "unclassified": 58
     },
     "prices": {
       "external": {
-        "n": 783,
+        "n": 785,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 15.08
       },
       "internal": {
-        "n": 783,
+        "n": 785,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.34
       },
       "students": {
-        "n": 783,
+        "n": 785,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -15982,6 +15982,53 @@
       }
     },
     {
+      "id": 392,
+      "name": "Spicy Green Beef Curry",
+      "nameDe": "Spicy Green Beef Curry",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-10-06",
+      "lastSeen": "2026-10-06",
+      "dates": [
+        "2026-10-06"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.9,
+          "sd": null,
+          "min": 12.9,
+          "max": 12.9
+        },
+        "students": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
+        }
+      }
+    },
+    {
       "id": 149,
       "name": "Spicy Meatballs",
       "nameDe": "Spicy Meatballs",
@@ -17341,6 +17388,53 @@
           "sd": null,
           "min": 7.0,
           "max": 7.0
+        }
+      }
+    },
+    {
+      "id": 393,
+      "name": "Tofu Teriyaki ",
+      "nameDe": "Tofu-Teriyaki ",
+      "facility": "FUSION meal",
+      "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-10-06",
+      "lastSeen": "2026-10-06",
+      "dates": [
+        "2026-10-06"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
         }
       }
     },
@@ -23574,7 +23668,7 @@
     {
       "facility": "FUSION meal",
       "line": "WORLD OF ASIA",
-      "dishDays": 23,
+      "dishDays": 24,
       "dishes": [
         {
           "id": 152,
@@ -23776,6 +23870,17 @@
           ]
         },
         {
+          "id": 392,
+          "name": "Spicy Green Beef Curry",
+          "nameDe": "Spicy Green Beef Curry",
+          "count": 1,
+          "firstSeen": "2026-10-06",
+          "lastSeen": "2026-10-06",
+          "dates": [
+            "2026-10-06"
+          ]
+        },
+        {
           "id": 246,
           "name": "Sweet and Sour Pork",
           "nameDe": "S\u00fcss-Sauer Schweinefleisch",
@@ -23824,7 +23929,7 @@
     {
       "facility": "FUSION meal",
       "line": "WORLD OF ASIA VEGGIE",
-      "dishDays": 24,
+      "dishDays": 25,
       "dishes": [
         {
           "id": 218,
@@ -24067,6 +24172,17 @@
           "lastSeen": "2026-09-23",
           "dates": [
             "2026-09-23"
+          ]
+        },
+        {
+          "id": 393,
+          "name": "Tofu Teriyaki ",
+          "nameDe": "Tofu-Teriyaki ",
+          "count": 1,
+          "firstSeen": "2026-10-06",
+          "lastSeen": "2026-10-06",
+          "dates": [
+            "2026-10-06"
           ]
         },
         {
