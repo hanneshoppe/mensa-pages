@@ -2423,5 +2423,71 @@
       "FUSION meal",
       "Spicy Chicken Glabi"
     ]
+  ],
+  "405": [
+    [
+      "FUSION meal",
+      "Banh Mi "
+    ]
+  ],
+  "406": [
+    [
+      "FUSION meal",
+      "Chicken breast"
+    ]
+  ],
+  "407": [
+    [
+      "FUSION meal",
+      "Fried Rice & Fried Egg"
+    ]
+  ],
+  "408": [
+    [
+      "FUSION meal",
+      "Lamb Curry "
+    ]
+  ],
+  "409": [
+    [
+      "FUSION meal",
+      "Pork Cordon Bleu"
+    ]
+  ],
+  "410": [
+    [
+      "FUSION meal",
+      "Ritthal-Style Potato Noodles"
+    ]
+  ],
+  "411": [
+    [
+      "food market",
+      "Char Siu"
+    ]
+  ],
+  "412": [
+    [
+      "food market",
+      "Mozzarelline"
+    ]
+  ],
+  "413": [
+    [
+      "food market",
+      "Nonna's Meatballs"
+    ]
+  ],
+  "414": [
+    [
+      "food market",
+      "Orecchiette with Pancetta and Arugula"
+    ]
+  ],
+  "415": [
+    [
+      "food market",
+      "Taiwanese-Style Noodles"
+    ]
   ]
 }
