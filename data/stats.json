@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-09T03:14:55Z",
+  "dataAsOf": "2026-10-09T05:52:07Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,43 +57,43 @@
     {
       "name": "FUSION meal",
       "days": 25,
-      "dishDays": 234,
+      "dishDays": 235,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-10-09",
       "diet": {
         "vegan": 64,
         "vegetarian": 88,
         "fish": 8,
-        "meat": 74,
+        "meat": 75,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 234,
+          "n": 235,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.41
+          "mean": 11.43
         },
         "internal": {
-          "n": 234,
+          "n": 235,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.4
+          "mean": 9.42
         },
         "students": {
-          "n": 234,
+          "n": 235,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
           "p75": 8.9,
           "max": 12.5,
-          "mean": 7.04
+          "mean": 7.06
         }
       }
     },
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 48,
-    "dishDays": 851,
+    "dishDays": 852,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-10-09",
     "diet": {
       "vegan": 120,
       "vegetarian": 332,
       "fish": 27,
-      "meat": 311,
+      "meat": 312,
       "unclassified": 61
     },
     "prices": {
       "external": {
-        "n": 851,
+        "n": 852,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 15.02
       },
       "internal": {
-        "n": 851,
+        "n": 852,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.29
       },
       "students": {
-        "n": 851,
+        "n": 852,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -18451,6 +18451,53 @@
       }
     },
     {
+      "id": 426,
+      "name": "Thai Basil Beef",
+      "nameDe": "Thai-Basil Beef",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-10-09",
+      "lastSeen": "2026-10-09",
+      "dates": [
+        "2026-10-09"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.9,
+          "sd": null,
+          "min": 12.9,
+          "max": 12.9
+        },
+        "students": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
+        }
+      }
+    },
+    {
       "id": 418,
       "name": "Thai Basil Pork",
       "nameDe": "Thai-Basil Pork",
@@ -25538,7 +25585,7 @@
     {
       "facility": "FUSION meal",
       "line": "WORLD OF ASIA",
-      "dishDays": 28,
+      "dishDays": 29,
       "dishes": [
         {
           "id": 152,
@@ -25792,6 +25839,17 @@
           "lastSeen": "2026-09-18",
           "dates": [
             "2026-09-18"
+          ]
+        },
+        {
+          "id": 426,
+          "name": "Thai Basil Beef",
+          "nameDe": "Thai-Basil Beef",
+          "count": 1,
+          "firstSeen": "2026-10-09",
+          "lastSeen": "2026-10-09",
+          "dates": [
+            "2026-10-09"
           ]
         },
         {
