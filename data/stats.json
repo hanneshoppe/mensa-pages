@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-12T03:21:50Z",
+  "dataAsOf": "2026-10-12T05:52:13Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,43 +57,43 @@
     {
       "name": "FUSION meal",
       "days": 26,
-      "dishDays": 244,
+      "dishDays": 246,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-10-12",
       "diet": {
         "vegan": 66,
-        "vegetarian": 92,
+        "vegetarian": 93,
         "fish": 8,
-        "meat": 78,
+        "meat": 79,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 244,
+          "n": 246,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.42
+          "mean": 11.44
         },
         "internal": {
-          "n": 244,
+          "n": 246,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.41
+          "mean": 9.43
         },
         "students": {
-          "n": 244,
+          "n": 246,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
           "p75": 8.9,
           "max": 12.5,
-          "mean": 7.05
+          "mean": 7.07
         }
       }
     },
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 49,
-    "dishDays": 875,
+    "dishDays": 877,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-10-12",
     "diet": {
       "vegan": 123,
-      "vegetarian": 342,
+      "vegetarian": 343,
       "fish": 27,
-      "meat": 320,
+      "meat": 321,
       "unclassified": 63
     },
     "prices": {
       "external": {
-        "n": 875,
+        "n": 877,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 15.0
       },
       "internal": {
-        "n": 875,
+        "n": 877,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.28
       },
       "students": {
-        "n": 875,
+        "n": 877,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -12740,6 +12740,53 @@
       }
     },
     {
+      "id": 439,
+      "name": "Lentil Dal ",
+      "nameDe": "Linsen Dal ",
+      "facility": "FUSION meal",
+      "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-10-12",
+      "lastSeen": "2026-10-12",
+      "dates": [
+        "2026-10-12"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    },
+    {
       "id": 195,
       "name": "Loaded Baked Potatoes",
       "nameDe": "Loaded Baked Potatoes",
@@ -18303,6 +18350,53 @@
       "lastSeen": "2026-09-18",
       "dates": [
         "2026-09-18"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.9,
+          "sd": null,
+          "min": 12.9,
+          "max": 12.9
+        },
+        "students": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
+        }
+      }
+    },
+    {
+      "id": 440,
+      "name": "Sweet-and-Sour Turkey",
+      "nameDe": "Truthahn S\u00fcss-Sauer",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-10-12",
+      "lastSeen": "2026-10-12",
+      "dates": [
+        "2026-10-12"
       ],
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
@@ -26288,7 +26382,7 @@
     {
       "facility": "FUSION meal",
       "line": "WORLD OF ASIA",
-      "dishDays": 30,
+      "dishDays": 31,
       "dishes": [
         {
           "id": 152,
@@ -26556,6 +26650,17 @@
           ]
         },
         {
+          "id": 440,
+          "name": "Sweet-and-Sour Turkey",
+          "nameDe": "Truthahn S\u00fcss-Sauer",
+          "count": 1,
+          "firstSeen": "2026-10-12",
+          "lastSeen": "2026-10-12",
+          "dates": [
+            "2026-10-12"
+          ]
+        },
+        {
           "id": 426,
           "name": "Thai Basil Beef",
           "nameDe": "Thai-Basil Beef",
@@ -26615,7 +26720,7 @@
     {
       "facility": "FUSION meal",
       "line": "WORLD OF ASIA VEGGIE",
-      "dishDays": 29,
+      "dishDays": 30,
       "dishes": [
         {
           "id": 218,
@@ -26814,6 +26919,17 @@
           "lastSeen": "2026-10-01",
           "dates": [
             "2026-10-01"
+          ]
+        },
+        {
+          "id": 439,
+          "name": "Lentil Dal ",
+          "nameDe": "Linsen Dal ",
+          "count": 1,
+          "firstSeen": "2026-10-12",
+          "lastSeen": "2026-10-12",
+          "dates": [
+            "2026-10-12"
           ]
         },
         {
