@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-16T09:29:41Z",
+  "dataAsOf": "2026-10-16T10:53:23Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,19 +14,19 @@
     {
       "name": "food market",
       "days": 53,
-      "dishDays": 418,
+      "dishDays": 419,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-10-16",
       "diet": {
         "vegan": 62,
-        "vegetarian": 99,
+        "vegetarian": 100,
         "fish": 20,
         "meat": 169,
         "unclassified": 68
       },
       "prices": {
         "external": {
-          "n": 418,
+          "n": 419,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,7 +35,7 @@
           "mean": 15.89
         },
         "internal": {
-          "n": 418,
+          "n": 419,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
@@ -44,13 +44,13 @@
           "mean": 12.9
         },
         "students": {
-          "n": 418,
+          "n": 419,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
           "p75": 9.9,
           "max": 13.5,
-          "mean": 8.96
+          "mean": 8.95
         }
       }
     },
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 53,
-    "dishDays": 965,
+    "dishDays": 966,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-10-16",
     "diet": {
       "vegan": 136,
-      "vegetarian": 382,
+      "vegetarian": 383,
       "fish": 28,
       "meat": 351,
       "unclassified": 68
     },
     "prices": {
       "external": {
-        "n": 965,
+        "n": 966,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.93
       },
       "internal": {
-        "n": 965,
+        "n": 966,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,13 +174,13 @@
         "mean": 12.22
       },
       "students": {
-        "n": 965,
+        "n": 966,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
         "p75": 11.5,
         "max": 13.8,
-        "mean": 9.28
+        "mean": 9.27
       }
     }
   },
@@ -11844,6 +11844,53 @@
           "sd": null,
           "min": 8.5,
           "max": 8.5
+        }
+      }
+    },
+    {
+      "id": 484,
+      "name": "Gnocchi",
+      "nameDe": "Gnocchi",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-10-16",
+      "lastSeen": "2026-10-16",
+      "dates": [
+        "2026-10-16"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
         }
       }
     },
@@ -26336,7 +26383,7 @@
     {
       "facility": "food market",
       "line": "pasta classica vegi",
-      "dishDays": 26,
+      "dishDays": 27,
       "dishes": [
         {
           "id": 125,
@@ -26457,6 +26504,17 @@
           "lastSeen": "2026-09-14",
           "dates": [
             "2026-09-14"
+          ]
+        },
+        {
+          "id": 484,
+          "name": "Gnocchi",
+          "nameDe": "Gnocchi",
+          "count": 1,
+          "firstSeen": "2026-10-16",
+          "lastSeen": "2026-10-16",
+          "dates": [
+            "2026-10-16"
           ]
         },
         {
