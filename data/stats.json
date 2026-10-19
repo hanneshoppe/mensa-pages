@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-19T05:45:28Z",
+  "dataAsOf": "2026-10-19T05:55:09Z",
   "priceGroups": [
     "students",
     "internal",
@@ -93,7 +93,7 @@
           "median": 8.5,
           "p75": 8.9,
           "max": 12.5,
-          "mean": 7.05
+          "mean": 7.04
         }
       }
     },
@@ -162,7 +162,7 @@
         "median": 15.5,
         "p75": 17.5,
         "max": 19.5,
-        "mean": 14.92
+        "mean": 14.91
       },
       "internal": {
         "n": 988,
@@ -17395,24 +17395,24 @@
       "prices": {
         "external": {
           "n": 1,
-          "mean": 17.5,
+          "mean": 16.5,
           "sd": null,
-          "min": 17.5,
-          "max": 17.5
+          "min": 16.5,
+          "max": 16.5
         },
         "internal": {
           "n": 1,
-          "mean": 14.5,
+          "mean": 13.5,
           "sd": null,
-          "min": 14.5,
-          "max": 14.5
+          "min": 13.5,
+          "max": 13.5
         },
         "students": {
           "n": 1,
-          "mean": 11.5,
+          "mean": 10.5,
           "sd": null,
-          "min": 11.5,
-          "max": 11.5
+          "min": 10.5,
+          "max": 10.5
         }
       }
     },
