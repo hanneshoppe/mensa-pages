@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-20T03:10:33Z",
+  "dataAsOf": "2026-10-20T05:54:55Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,43 +57,43 @@
     {
       "name": "FUSION meal",
       "days": 32,
-      "dishDays": 300,
+      "dishDays": 303,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-10-20",
       "diet": {
-        "vegan": 78,
-        "vegetarian": 117,
+        "vegan": 79,
+        "vegetarian": 118,
         "fish": 8,
-        "meat": 97,
+        "meat": 98,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 300,
+          "n": 303,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.41
+          "mean": 11.45
         },
         "internal": {
-          "n": 300,
+          "n": 303,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.4
+          "mean": 9.43
         },
         "students": {
-          "n": 300,
+          "n": 303,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
           "p75": 8.9,
           "max": 12.5,
-          "mean": 7.04
+          "mean": 7.05
         }
       }
     },
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 55,
-    "dishDays": 1010,
+    "dishDays": 1013,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-10-20",
     "diet": {
-      "vegan": 141,
-      "vegetarian": 407,
+      "vegan": 142,
+      "vegetarian": 408,
       "fish": 28,
-      "meat": 364,
+      "meat": 365,
       "unclassified": 70
     },
     "prices": {
       "external": {
-        "n": 1010,
+        "n": 1013,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.9
       },
       "internal": {
-        "n": 1010,
+        "n": 1013,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.2
       },
       "students": {
-        "n": 1010,
+        "n": 1013,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -16221,6 +16221,53 @@
       }
     },
     {
+      "id": 506,
+      "name": "Pasta ",
+      "nameDe": "Pasta ",
+      "facility": "FUSION meal",
+      "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-10-20",
+      "lastSeen": "2026-10-20",
+      "dates": [
+        "2026-10-20"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
+    },
+    {
       "id": 261,
       "name": "Pasta Chat",
       "nameDe": "Pasta Plausch",
@@ -17157,6 +17204,53 @@
           "sd": null,
           "min": 11.5,
           "max": 11.5
+        }
+      }
+    },
+    {
+      "id": 507,
+      "name": "Plant-Based Kebab Platter",
+      "nameDe": "Plant Based Kebab-Teller",
+      "facility": "FUSION meal",
+      "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-10-20",
+      "lastSeen": "2026-10-20",
+      "dates": [
+        "2026-10-20"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.9,
+          "sd": null,
+          "min": 16.9,
+          "max": 16.9
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.9,
+          "sd": null,
+          "min": 12.9,
+          "max": 12.9
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.9,
+          "sd": null,
+          "min": 8.9,
+          "max": 8.9
         }
       }
     },
@@ -18668,6 +18762,53 @@
       "id": 499,
       "name": "Roast Pork & Herb Gravy",
       "nameDe": "Schweinsbraten & Kr\u00e4uterjus",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-10-20",
+      "lastSeen": "2026-10-20",
+      "dates": [
+        "2026-10-20"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    },
+    {
+      "id": 508,
+      "name": "Roast Pork & Red Wine Sauce",
+      "nameDe": "Schweinsbraten & Rotwein Sauce",
       "facility": "FUSION meal",
       "diet": "meat",
       "dietDays": {
@@ -28794,7 +28935,7 @@
     {
       "facility": "FUSION meal",
       "line": "MEATWORKS",
-      "dishDays": 35,
+      "dishDays": 36,
       "dishes": [
         {
           "id": 138,
@@ -29065,6 +29206,17 @@
           "id": 499,
           "name": "Roast Pork & Herb Gravy",
           "nameDe": "Schweinsbraten & Kr\u00e4uterjus",
+          "count": 1,
+          "firstSeen": "2026-10-20",
+          "lastSeen": "2026-10-20",
+          "dates": [
+            "2026-10-20"
+          ]
+        },
+        {
+          "id": 508,
+          "name": "Roast Pork & Red Wine Sauce",
+          "nameDe": "Schweinsbraten & Rotwein Sauce",
           "count": 1,
           "firstSeen": "2026-10-20",
           "lastSeen": "2026-10-20",
@@ -29565,7 +29717,7 @@
     {
       "facility": "FUSION meal",
       "line": "VEGAN",
-      "dishDays": 31,
+      "dishDays": 32,
       "dishes": [
         {
           "id": 300,
@@ -29811,6 +29963,17 @@
           ]
         },
         {
+          "id": 507,
+          "name": "Plant-Based Kebab Platter",
+          "nameDe": "Plant Based Kebab-Teller",
+          "count": 1,
+          "firstSeen": "2026-10-20",
+          "lastSeen": "2026-10-20",
+          "dates": [
+            "2026-10-20"
+          ]
+        },
+        {
           "id": 315,
           "name": "Plant-Based Kebab Wrap",
           "nameDe": "Plant Based-Kebab Wrap",
@@ -29903,7 +30066,7 @@
     {
       "facility": "FUSION meal",
       "line": "VEGGIE",
-      "dishDays": 32,
+      "dishDays": 33,
       "dishes": [
         {
           "id": 268,
@@ -30047,6 +30210,17 @@
           "lastSeen": "2026-09-25",
           "dates": [
             "2026-09-25"
+          ]
+        },
+        {
+          "id": 506,
+          "name": "Pasta ",
+          "nameDe": "Pasta ",
+          "count": 1,
+          "firstSeen": "2026-10-20",
+          "lastSeen": "2026-10-20",
+          "dates": [
+            "2026-10-20"
           ]
         },
         {
