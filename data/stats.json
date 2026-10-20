@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-20T06:44:10Z",
+  "dataAsOf": "2026-10-20T07:27:52Z",
   "priceGroups": [
     "students",
     "internal",
@@ -18808,7 +18808,7 @@
     {
       "id": 508,
       "name": "Roast Pork & Red Wine Sauce",
-      "nameDe": "Schweinsbraten & Rotwein Sauce",
+      "nameDe": "Schweinsbraten & Rotweinsauce",
       "facility": "FUSION meal",
       "diet": "meat",
       "dietDays": {
@@ -29216,7 +29216,7 @@
         {
           "id": 508,
           "name": "Roast Pork & Red Wine Sauce",
-          "nameDe": "Schweinsbraten & Rotwein Sauce",
+          "nameDe": "Schweinsbraten & Rotweinsauce",
           "count": 1,
           "firstSeen": "2026-10-20",
           "lastSeen": "2026-10-20",
