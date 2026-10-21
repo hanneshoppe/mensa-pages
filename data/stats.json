@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-21T03:11:03Z",
+  "dataAsOf": "2026-10-21T05:55:12Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,28 +57,28 @@
     {
       "name": "FUSION meal",
       "days": 33,
-      "dishDays": 312,
+      "dishDays": 313,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-10-21",
       "diet": {
         "vegan": 81,
-        "vegetarian": 122,
+        "vegetarian": 123,
         "fish": 8,
         "meat": 101,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 312,
+          "n": 313,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.45
+          "mean": 11.46
         },
         "internal": {
-          "n": 312,
+          "n": 313,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
@@ -87,7 +87,7 @@
           "mean": 9.43
         },
         "students": {
-          "n": 312,
+          "n": 313,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 56,
-    "dishDays": 1035,
+    "dishDays": 1036,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-10-21",
     "diet": {
       "vegan": 146,
-      "vegetarian": 418,
+      "vegetarian": 419,
       "fish": 28,
       "meat": 372,
       "unclassified": 71
     },
     "prices": {
       "external": {
-        "n": 1035,
+        "n": 1036,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.89
       },
       "internal": {
-        "n": 1035,
+        "n": 1036,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.18
       },
       "students": {
-        "n": 1035,
+        "n": 1036,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -19484,6 +19484,53 @@
       }
     },
     {
+      "id": 521,
+      "name": "R\u00f6sti Baked with Cheese",
+      "nameDe": "R\u00f6sti \u00fcberbacken mit K\u00e4se",
+      "facility": "FUSION meal",
+      "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-10-21",
+      "lastSeen": "2026-10-21",
+      "dates": [
+        "2026-10-21"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
+    },
+    {
       "id": 237,
       "name": "R\u00f6sti with Burratella",
       "nameDe": "R\u00f6sti Burratella",
@@ -30754,7 +30801,7 @@
     {
       "facility": "FUSION meal",
       "line": "VEGGIE",
-      "dishDays": 34,
+      "dishDays": 35,
       "dishes": [
         {
           "id": 268,
@@ -30986,6 +31033,17 @@
           "lastSeen": "2026-09-10",
           "dates": [
             "2026-09-10"
+          ]
+        },
+        {
+          "id": 521,
+          "name": "R\u00f6sti Baked with Cheese",
+          "nameDe": "R\u00f6sti \u00fcberbacken mit K\u00e4se",
+          "count": 1,
+          "firstSeen": "2026-10-21",
+          "lastSeen": "2026-10-21",
+          "dates": [
+            "2026-10-21"
           ]
         },
         {
