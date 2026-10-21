@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-21T05:55:12Z",
+  "dataAsOf": "2026-10-21T06:16:17Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,43 +57,43 @@
     {
       "name": "FUSION meal",
       "days": 33,
-      "dishDays": 313,
+      "dishDays": 314,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-10-21",
       "diet": {
         "vegan": 81,
         "vegetarian": 123,
         "fish": 8,
-        "meat": 101,
+        "meat": 102,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 313,
+          "n": 314,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.46
+          "mean": 11.47
         },
         "internal": {
-          "n": 313,
+          "n": 314,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.43
+          "mean": 9.44
         },
         "students": {
-          "n": 313,
+          "n": 314,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
           "p75": 8.9,
           "max": 12.5,
-          "mean": 7.05
+          "mean": 7.06
         }
       }
     },
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 56,
-    "dishDays": 1036,
+    "dishDays": 1037,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-10-21",
     "diet": {
       "vegan": 146,
       "vegetarian": 419,
       "fish": 28,
-      "meat": 372,
+      "meat": 373,
       "unclassified": 71
     },
     "prices": {
       "external": {
-        "n": 1036,
+        "n": 1037,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.89
       },
       "internal": {
-        "n": 1036,
+        "n": 1037,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.18
       },
       "students": {
-        "n": 1036,
+        "n": 1037,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -1985,6 +1985,56 @@
           "sd": 1.06,
           "min": 7.0,
           "max": 8.5
+        }
+      }
+    },
+    {
+      "id": 161,
+      "name": "Beef Stir-Fry",
+      "nameDe": "Beef Stir-Fry",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 2,
+        "unclassified": 0
+      },
+      "count": 2,
+      "firstSeen": "2026-09-09",
+      "lastSeen": "2026-10-21",
+      "dates": [
+        "2026-09-09",
+        "2026-10-21"
+      ],
+      "gapsWeekdays": [
+        30
+      ],
+      "meanGapWeekdays": 30.0,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 2,
+          "mean": 14.5,
+          "sd": 0.0,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 2,
+          "mean": 12.9,
+          "sd": 0.0,
+          "min": 12.9,
+          "max": 12.9
+        },
+        "students": {
+          "n": 2,
+          "mean": 10.5,
+          "sd": 0.0,
+          "min": 10.5,
+          "max": 10.5
         }
       }
     },
@@ -5662,53 +5712,6 @@
           "sd": null,
           "min": 8.5,
           "max": 8.5
-        }
-      }
-    },
-    {
-      "id": 161,
-      "name": "Beef Stir-Fry",
-      "nameDe": "Beef Stir Fry",
-      "facility": "FUSION meal",
-      "diet": "meat",
-      "dietDays": {
-        "vegan": 0,
-        "vegetarian": 0,
-        "fish": 0,
-        "meat": 1,
-        "unclassified": 0
-      },
-      "count": 1,
-      "firstSeen": "2026-09-09",
-      "lastSeen": "2026-09-09",
-      "dates": [
-        "2026-09-09"
-      ],
-      "gapsWeekdays": [],
-      "meanGapWeekdays": null,
-      "sdGapWeekdays": null,
-      "prediction": null,
-      "prices": {
-        "external": {
-          "n": 1,
-          "mean": 14.5,
-          "sd": null,
-          "min": 14.5,
-          "max": 14.5
-        },
-        "internal": {
-          "n": 1,
-          "mean": 12.9,
-          "sd": null,
-          "min": 12.9,
-          "max": 12.9
-        },
-        "students": {
-          "n": 1,
-          "mean": 10.5,
-          "sd": null,
-          "min": 10.5,
-          "max": 10.5
         }
       }
     },
@@ -31183,8 +31186,20 @@
     {
       "facility": "FUSION meal",
       "line": "WORLD OF ASIA",
-      "dishDays": 38,
+      "dishDays": 39,
       "dishes": [
+        {
+          "id": 161,
+          "name": "Beef Stir-Fry",
+          "nameDe": "Beef Stir-Fry",
+          "count": 2,
+          "firstSeen": "2026-09-09",
+          "lastSeen": "2026-10-21",
+          "dates": [
+            "2026-09-09",
+            "2026-10-21"
+          ]
+        },
         {
           "id": 313,
           "name": "Honey-Soy Chicken",
@@ -31251,17 +31266,6 @@
           "lastSeen": "2026-10-14",
           "dates": [
             "2026-10-14"
-          ]
-        },
-        {
-          "id": 161,
-          "name": "Beef Stir-Fry",
-          "nameDe": "Beef Stir Fry",
-          "count": 1,
-          "firstSeen": "2026-09-09",
-          "lastSeen": "2026-09-09",
-          "dates": [
-            "2026-09-09"
           ]
         },
         {
