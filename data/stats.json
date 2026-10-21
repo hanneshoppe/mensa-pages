@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-21T09:36:02Z",
+  "dataAsOf": "2026-10-21T09:49:00Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,11 +14,11 @@
     {
       "name": "food market",
       "days": 56,
-      "dishDays": 443,
+      "dishDays": 444,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-10-21",
       "diet": {
-        "vegan": 65,
+        "vegan": 66,
         "vegetarian": 110,
         "fish": 20,
         "meat": 177,
@@ -26,16 +26,16 @@
       },
       "prices": {
         "external": {
-          "n": 443,
+          "n": 444,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
           "p75": 16.9,
           "max": 19.5,
-          "mean": 15.89
+          "mean": 15.88
         },
         "internal": {
-          "n": 443,
+          "n": 444,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
@@ -44,7 +44,7 @@
           "mean": 12.89
         },
         "students": {
-          "n": 443,
+          "n": 444,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
@@ -144,11 +144,11 @@
   "overall": {
     "name": "all",
     "days": 56,
-    "dishDays": 1037,
+    "dishDays": 1038,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-10-21",
     "diet": {
-      "vegan": 146,
+      "vegan": 147,
       "vegetarian": 419,
       "fish": 28,
       "meat": 373,
@@ -156,7 +156,7 @@
     },
     "prices": {
       "external": {
-        "n": 1037,
+        "n": 1038,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.89
       },
       "internal": {
-        "n": 1037,
+        "n": 1038,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.18
       },
       "students": {
-        "n": 1037,
+        "n": 1038,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -7028,6 +7028,53 @@
           "sd": null,
           "min": 10.5,
           "max": 10.5
+        }
+      }
+    },
+    {
+      "id": 522,
+      "name": "B\u00f6rek",
+      "nameDe": "B\u00f6rekstange",
+      "facility": "food market",
+      "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-10-21",
+      "lastSeen": "2026-10-21",
+      "dates": [
+        "2026-10-21"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
         }
       }
     },
@@ -26516,7 +26563,7 @@
     {
       "facility": "food market",
       "line": "green daily",
-      "dishDays": 60,
+      "dishDays": 61,
       "dishes": [
         {
           "id": 105,
@@ -26616,6 +26663,17 @@
           "lastSeen": "2026-08-18",
           "dates": [
             "2026-08-18"
+          ]
+        },
+        {
+          "id": 522,
+          "name": "B\u00f6rek",
+          "nameDe": "B\u00f6rekstange",
+          "count": 1,
+          "firstSeen": "2026-10-21",
+          "lastSeen": "2026-10-21",
+          "dates": [
+            "2026-10-21"
           ]
         },
         {
