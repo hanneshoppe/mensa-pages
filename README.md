@@ -108,14 +108,20 @@ Stdlib only, ~1,450 lines, and the single writer of the three files under
 ### `index.html` — today's menu
 
 Reads `data/<today>.jsonl`, falls back to the live API, then re-checks live in
-the background. The parts worth knowing before editing:
+the background; the Today/Tomorrow toggle shows the next day straight from the
+API. The parts worth knowing before editing:
 
 - `zurichDateParts` / `nextDay` / `isoWeekday` / `zurichDateContext` — every
   date decision comes from one Europe/Zurich derivation. Don't add a second.
+  `zurichDateContext(day)` is where today/tomorrow is resolved, so the
+  snapshot filename, the API's date range and the weekday that picks the rota
+  entry can never point at different days.
 - `getFacilitiesData` / `refreshInBackground` — memoised per
   `` `${date}:${lang}` ``, with a monotonic `renderToken` so a slow response
   can't paint over a newer one, and rejected promises evicted so a failure
-  isn't cached forever.
+  isn't cached forever. Only today has a snapshot (the Action never fetches
+  ahead), so tomorrow goes straight to the live API and has no background
+  re-check to run.
 - `buildEnIdentityMap` / `resolveDishIdentity` / `renderRatingWidget` —
   ratings. The identity map is rebuilt per render and keyed by `line-id`
   *within one snapshot*, never globally.
@@ -399,15 +405,17 @@ Then open `http://localhost:8000/`.
 
 ## URL options
 
-Both are reflected in and settable via the URL query string:
+All three are reflected in and settable via the URL query string:
 
 - `?lang=de` / `?lang=en` — language (default `en`)
 - `?view=cards` / `?view=list` — image-grid cards or a compact list
+- `?day=today` / `?day=tomorrow` — which day's menu (default `today`); tomorrow
+  is the literal next calendar day, so a Friday shows an empty Saturday
 
-Example: `http://localhost:8000/?lang=de&view=list`
+Example: `http://localhost:8000/?lang=de&view=list&day=tomorrow`
 
 `stats.html` honours `?lang=` too, where it swaps dish names only — its
-headings and labels stay English. `?view=` does not apply there.
+headings and labels stay English. `?view=` and `?day=` do not apply there.
 
 ## Adding more facilities
 

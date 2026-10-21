@@ -273,6 +273,10 @@
       <button type="button" class="toggle-btn" data-view="cards">Cards</button>
       <button type="button" class="toggle-btn" data-view="list">List</button>
     </div>
+    <div class="toggle-group" role="group" aria-label="Day">
+      <button type="button" class="toggle-btn" data-day="today">Today</button>
+      <button type="button" class="toggle-btn" data-day="tomorrow">Tomorrow</button>
+    </div>
     <a class="stats-link" href="stats.html">Stats</a> <!-- href rewritten in JS to carry ?lang= -->
   </div>
   <div class="rating-note" id="ratingNote"></div>
@@ -362,6 +366,7 @@ const STRINGS = {
     title: 'Mensa Menüs',
     loading: 'Lade Menüs…',
     noMenuToday: 'Heute keine Menüs verfügbar.',
+    noMenuTomorrow: 'Morgen keine Menüs verfügbar.',
     loadError: 'Konnte websites.txt nicht laden.',
     noFacilities: 'Keine Mensen gefunden.',
     dateLocale: 'de-CH',
@@ -373,6 +378,7 @@ const STRINGS = {
     title: 'Mensa Menus',
     loading: 'Loading menus…',
     noMenuToday: 'No menus available today.',
+    noMenuTomorrow: 'No menus available tomorrow.',
     loadError: 'Could not load websites.txt.',
     noFacilities: 'No canteens found.',
     dateLocale: 'en-GB',
@@ -564,13 +570,15 @@ function buildEnIdentityMap(enFacilities) {
 // Bundles what renderMealCard needs to key a rating: the dish-id lookup, and
 // (only in German) the English-identity map to resolve the card's facility
 // id + line-id against it. Built once per render, reusing the already
-// memoized facilities fetch so this costs nothing extra in English.
-async function buildRatingCtx(lang, strings, todayStr, tomorrowStr, todayIso) {
+// memoized facilities fetch so this costs nothing extra in English. The date
+// args must be the rendered dishes' own: pairing another day's English
+// names against them would key ratings to the wrong dish ids.
+async function buildRatingCtx(lang, strings, dateStr, nextStr, iso, useSnapshot) {
   const dishIdLookup = await getDishIdLookupCached();
   let enIdentityMap = null;
   if (lang !== 'en') {
     try {
-      const { facilities: enFacilities } = await getFacilitiesData('en', todayStr, tomorrowStr, todayIso);
+      const { facilities: enFacilities } = await getFacilitiesData('en', dateStr, nextStr, iso, useSnapshot);
       enIdentityMap = buildEnIdentityMap(enFacilities);
     } catch (err) {
       enIdentityMap = null; // English data unavailable this render — rating widgets skip rather than mis-key
@@ -698,16 +706,18 @@ function isoWeekday(parts) {
   return ((day + 6) % 7) + 1;
 }
 
-// Bundles the Zurich "today" needed everywhere: the snapshot filename, the
-// API's valid-after/valid-before range, and the weekday used to pick
-// today's rota entry — all derived from one Zurich calendar date so they
-// can never disagree. `now` is the instant they were derived from, for
-// callers that also want to display it.
-function zurichDateContext() {
-  const now = new Date();
-  const today = zurichDateParts(now);
-  const tomorrow = nextDay(today);
-  return { now, todayStr: formatDate(today), tomorrowStr: formatDate(tomorrow), todayIso: isoWeekday(today) };
+// Bundles the Zurich target date (today or tomorrow) needed everywhere: the
+// snapshot filename, the API's valid-after/valid-before range, and the
+// weekday used to pick that day's rota entry — all derived from one Zurich
+// calendar date so they can never disagree. `todayStr` stays the real today
+// whichever day is shown; `parts` is the target date for display.
+function zurichDateContext(day = 'today') {
+  const today = zurichDateParts(new Date());
+  const target = day === 'tomorrow' ? nextDay(today) : today;
+  return {
+    todayStr: formatDate(today), dateStr: formatDate(target), nextStr: formatDate(nextDay(target)),
+    iso: isoWeekday(target), parts: target,
+  };
 }
 
 function getStateFromUrl() {
@@ -715,13 +725,15 @@ function getStateFromUrl() {
   const lang = params.get('lang') === 'de' ? 'de' : 'en';
   const view = params.get('view') === 'list' ? 'list' : 'cards';
   const easterEgg = params.get('ea') === '1';
-  return { lang, view, easterEgg };
+  const day = params.get('day') === 'tomorrow' ? 'tomorrow' : 'today';
+  return { lang, view, day, easterEgg };
 }
 
 function updateUrl(state) {
   const params = new URLSearchParams(window.location.search);
   params.set('lang', state.lang);
   params.set('view', state.view);
+  params.set('day', state.day);
   history.replaceState(null, '', `${window.location.pathname}?${params.toString()}`);
 }
 
@@ -752,9 +764,9 @@ function getFacilityIdsCached() {
 // can render from one fast static request instead of waiting on ETH's API
 // (~1s per call) on every visit. Snapshot entries are already in
 // {id, name, url, dayEntry} shape, so they need no further processing.
-async function getStaticSnapshot(todayStr) {
+async function getStaticSnapshot(dateStr) {
   try {
-    const res = await fetch(`data/${todayStr}.jsonl`);
+    const res = await fetch(`data/${dateStr}.jsonl`);
     if (!res.ok) return null;
     const lines = (await res.text()).split('\n').filter(Boolean);
     if (lines.length === 0) return null;
@@ -776,16 +788,16 @@ function sortFacilities(entries, ids) {
   return facilities;
 }
 
-async function fetchFacilitiesLive(lang, todayStr, tomorrowStr, todayIso, opts) {
+async function fetchFacilitiesLive(lang, dateStr, nextStr, iso, opts) {
   const ids = await getFacilityIdsCached();
   return Promise.all(ids.map(async id => {
     try {
       const [info, rota] = await Promise.all([
         CookpitClient.getFacility(id, lang, opts),
-        CookpitClient.getWeeklyRota(id, lang, todayStr, tomorrowStr, opts),
+        CookpitClient.getWeeklyRota(id, lang, dateStr, nextStr, opts),
       ]);
       if (!info) return null;
-      const dayEntry = findTodayEntry(rota, todayStr, todayIso);
+      const dayEntry = findDayEntry(rota, dateStr, iso);
       return { id, name: info['facility-name'] || `Mensa ${id}`, url: info['facility-url'], dayEntry };
     } catch (err) {
       return null;
@@ -799,17 +811,18 @@ async function fetchFacilitiesLive(lang, todayStr, tomorrowStr, todayIso, opts) 
 // yesterday's facilities once the date rolls over (the visibilitychange
 // handler in main() forces a fresh render on rollover too).
 // Reports whether the static snapshot was used, so the caller can decide to
-// double-check against live data in the background.
-function getFacilitiesData(lang, todayStr, tomorrowStr, todayIso) {
-  const key = `${todayStr}:${lang}`;
+// double-check against live data in the background. The Action only snapshots
+// today, so tomorrow (useSnapshot false) goes straight to the live API.
+function getFacilitiesData(lang, dateStr, nextStr, iso, useSnapshot) {
+  const key = `${dateStr}:${lang}`;
   if (!facilitiesPromises[key]) {
     // Same eviction-on-reject as getFacilityIdsCached, and for the same
     // reason: without it a transient failure at the midnight rollover would
     // wedge this date's key as a permanently-cached rejection.
     facilitiesPromises[key] = (async () => {
-      const snapshot = await getStaticSnapshot(todayStr);
+      const snapshot = useSnapshot ? await getStaticSnapshot(dateStr) : null;
       const snapshotFacilities = snapshot && snapshot.facilities && snapshot.facilities[lang];
-      const entries = snapshotFacilities || await fetchFacilitiesLive(lang, todayStr, tomorrowStr, todayIso);
+      const entries = snapshotFacilities || await fetchFacilitiesLive(lang, dateStr, nextStr, iso);
       const ids = await getFacilityIdsCached();
       return { facilities: sortFacilities(entries, ids), fromSnapshot: Boolean(snapshotFacilities) };
     })().catch(err => { delete facilitiesPromises[key]; throw err; });
@@ -820,14 +833,14 @@ function getFacilitiesData(lang, todayStr, tomorrowStr, todayIso) {
 // The static snapshot can be up to ~30 min stale. After the fast initial
 // render, quietly re-check against the live API and only touch the DOM if
 // something actually changed (e.g. an item sold out since the last run).
-async function refreshInBackground(state, token, lang, todayStr, tomorrowStr, todayIso, renderedFacilities) {
+async function refreshInBackground(state, token, lang, dateStr, nextStr, iso, renderedFacilities) {
   let fresh, ids;
   try {
     // force: true — this check exists specifically to catch things that
     // changed since the snapshot (e.g. a dish selling out), so it must never
     // be answered by the same 5-minute cache the snapshot itself predates.
     ids = await getFacilityIdsCached();
-    fresh = sortFacilities(await fetchFacilitiesLive(lang, todayStr, tomorrowStr, todayIso, { force: true }), ids);
+    fresh = sortFacilities(await fetchFacilitiesLive(lang, dateStr, nextStr, iso, { force: true }), ids);
   } catch (err) {
     return;
   }
@@ -846,7 +859,7 @@ async function refreshInBackground(state, token, lang, todayStr, tomorrowStr, to
   let enIdentityMap = null;
   if (lang !== 'en') {
     try {
-      const enFresh = sortFacilities(await fetchFacilitiesLive('en', todayStr, tomorrowStr, todayIso, { force: true }), ids);
+      const enFresh = sortFacilities(await fetchFacilitiesLive('en', dateStr, nextStr, iso, { force: true }), ids);
       enIdentityMap = buildEnIdentityMap(enFresh);
     } catch (err) {
       enIdentityMap = null;
@@ -855,16 +868,16 @@ async function refreshInBackground(state, token, lang, todayStr, tomorrowStr, to
   if (token !== renderToken) return; // superseded while awaiting the above
 
   const ratingCtx = { lang, strings: STRINGS[lang], dishIdLookup, enIdentityMap };
-  renderFacilities(fresh, STRINGS[lang], lang, state.easterEgg, ratingCtx);
+  renderFacilities(fresh, STRINGS[lang], lang, state.easterEgg, ratingCtx, state.day);
   applyView(state);
 }
 
-// Picks today's day-of-week entry out of the weekly-rota-array response.
-function findTodayEntry(rotaData, todayStr, todayIso) {
+// Picks the target day's day-of-week entry out of the weekly-rota-array response.
+function findDayEntry(rotaData, dateStr, iso) {
   if (!rotaData || !rotaData['weekly-rota-array']) return null;
   for (const rota of rotaData['weekly-rota-array']) {
-    if (todayStr < rota['valid-from'] || todayStr > rota['valid-to']) continue;
-    const day = (rota['day-of-week-array'] || []).find(d => d['day-of-week-code'] === todayIso);
+    if (dateStr < rota['valid-from'] || dateStr > rota['valid-to']) continue;
+    const day = (rota['day-of-week-array'] || []).find(d => d['day-of-week-code'] === iso);
     if (day) return day;
   }
   return null;
@@ -975,7 +988,7 @@ function renderMealCard(meal, facility, ratingCtx) {
   return card;
 }
 
-function renderFacility(id, name, url, dayEntry, strings, lang, easterEgg, ratingCtx) {
+function renderFacility(id, name, url, dayEntry, strings, lang, easterEgg, ratingCtx, day) {
   const section = el('section', 'facility');
 
   const heading = document.createElement('h2');
@@ -998,7 +1011,7 @@ function renderFacility(id, name, url, dayEntry, strings, lang, easterEgg, ratin
 
   const openingHours = dayEntry && dayEntry['opening-hour-array'];
   if (!openingHours || openingHours.length === 0) {
-    section.append(el('div', 'empty-note', strings.noMenuToday));
+    section.append(el('div', 'empty-note', day === 'tomorrow' ? strings.noMenuTomorrow : strings.noMenuToday));
     if (eggCard) {
       const cards = el('div', 'cards');
       cards.append(eggCard);
@@ -1026,7 +1039,7 @@ function renderFacility(id, name, url, dayEntry, strings, lang, easterEgg, ratin
   return section;
 }
 
-function renderFacilities(facilities, strings, lang, easterEgg, ratingCtx) {
+function renderFacilities(facilities, strings, lang, easterEgg, ratingCtx, day) {
   const app = document.getElementById('app');
   app.innerHTML = '';
   if (facilities.length === 0) {
@@ -1034,7 +1047,7 @@ function renderFacilities(facilities, strings, lang, easterEgg, ratingCtx) {
     return;
   }
   for (const f of facilities) {
-    app.append(renderFacility(f.id, f.name, f.url, f.dayEntry, strings, lang, easterEgg, ratingCtx));
+    app.append(renderFacility(f.id, f.name, f.url, f.dayEntry, strings, lang, easterEgg, ratingCtx, day));
   }
 }
 
@@ -1045,6 +1058,7 @@ function applyView(state) {
 function updateToggleButtons(state) {
   document.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('active', b.dataset.lang === state.lang));
   document.querySelectorAll('[data-view]').forEach(b => b.classList.toggle('active', b.dataset.view === state.view));
+  document.querySelectorAll('[data-day]').forEach(b => b.classList.toggle('active', b.dataset.day === state.day));
 }
 
 // A monotonic render token guards against a stale response painting over a
@@ -1061,18 +1075,22 @@ async function loadAndRender(state) {
   document.getElementById('titleText').textContent = strings.title;
   document.getElementById('ratingNote').textContent = strings.ratingNote;
 
-  const { now, todayStr, tomorrowStr, todayIso } = zurichDateContext();
+  const { dateStr, nextStr, iso, parts } = zurichDateContext(state.day);
+  // Date.UTC is a calendar placeholder here (as in nextDay), so format it in
+  // UTC: the target date's weekday and day must not shift with any timezone.
   document.getElementById('dateLine').textContent =
-    now.toLocaleDateString(strings.dateLocale, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Europe/Zurich' });
+    new Date(Date.UTC(Number(parts.year), Number(parts.month) - 1, Number(parts.day)))
+      .toLocaleDateString(strings.dateLocale, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 
   app.innerHTML = '';
   app.append(el('div', 'loading', strings.loading));
 
+  const useSnapshot = state.day === 'today';
   let facilities, fromSnapshot, ratingCtx;
   try {
     [{ facilities, fromSnapshot }, ratingCtx] = await Promise.all([
-      getFacilitiesData(lang, todayStr, tomorrowStr, todayIso),
-      buildRatingCtx(lang, strings, todayStr, tomorrowStr, todayIso),
+      getFacilitiesData(lang, dateStr, nextStr, iso, useSnapshot),
+      buildRatingCtx(lang, strings, dateStr, nextStr, iso, useSnapshot),
     ]);
   } catch (err) {
     if (token !== renderToken) return; // superseded by a newer render — discard
@@ -1085,13 +1103,13 @@ async function loadAndRender(state) {
   // Only mark this date as rendered once the DOM commit is actually going
   // to happen — the error path above returns without reaching here, so a
   // later visibilitychange still sees a stale renderedDateStr and retries.
-  renderedDateStr = todayStr;
+  renderedDateStr = dateStr;
 
-  renderFacilities(facilities, strings, lang, state.easterEgg, ratingCtx);
+  renderFacilities(facilities, strings, lang, state.easterEgg, ratingCtx, state.day);
   applyView(state);
 
   if (fromSnapshot) {
-    refreshInBackground(state, token, lang, todayStr, tomorrowStr, todayIso, facilities);
+    refreshInBackground(state, token, lang, dateStr, nextStr, iso, facilities);
   }
 }
 
@@ -1104,9 +1122,9 @@ function main() {
   loadAndRender(state);
 
   // Fetch the other language in the background too, so toggling never waits on a fetch.
-  const { todayStr, tomorrowStr, todayIso } = zurichDateContext();
+  const { dateStr, nextStr, iso } = zurichDateContext(state.day);
   const otherLang = state.lang === 'en' ? 'de' : 'en';
-  getFacilitiesData(otherLang, todayStr, tomorrowStr, todayIso).catch(() => {});
+  getFacilitiesData(otherLang, dateStr, nextStr, iso, state.day === 'today').catch(() => {});
 
   document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => {
     if (state.lang === btn.dataset.lang) return;
@@ -1125,12 +1143,21 @@ function main() {
     applyView(state);
   }));
 
+  // Unlike the view toggle, a different day is different data, so refetch.
+  document.querySelectorAll('[data-day]').forEach(btn => btn.addEventListener('click', () => {
+    if (state.day === btn.dataset.day) return;
+    state.day = btn.dataset.day;
+    updateUrl(state);
+    updateToggleButtons(state);
+    loadAndRender(state);
+  }));
+
   // A tab left open across a Zurich midnight would otherwise keep showing
   // the previous day's menu until something else happened to trigger a
   // render; catch that as soon as the tab is brought back into focus.
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState !== 'visible') return;
-    if (zurichDateContext().todayStr !== renderedDateStr) loadAndRender(state);
+    if (zurichDateContext(state.day).dateStr !== renderedDateStr) loadAndRender(state);
   });
 }
 
