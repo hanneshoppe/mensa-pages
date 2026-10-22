@@ -30,9 +30,25 @@
     font-size: 1.6rem;
   }
   .date-line {
+    display: flex;
+    align-items: center;
+    gap: 4px;
     color: var(--muted);
     font-size: 0.95rem;
   }
+  .day-arrow {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .day-arrow:hover, .day-arrow:focus-visible { color: var(--text); background: var(--border); }
   .controls {
     display: flex;
     align-items: center;
@@ -263,7 +279,12 @@
 <body>
 <header>
   <h1 id="titleText">Mensa Menus</h1>
-  <div class="date-line" id="dateLine"></div>
+  <div class="date-line" id="dateLine">
+    <span id="dateText"></span>
+    <!-- Only today and tomorrow exist, so only ever one of these is shown -->
+    <button type="button" class="day-arrow" id="prevDay">‹</button>
+    <button type="button" class="day-arrow" id="nextDay">›</button>
+  </div>
   <div class="controls">
     <div class="toggle-group" role="group" aria-label="Language">
       <button type="button" class="toggle-btn" data-lang="de">DE</button>
@@ -272,10 +293,6 @@
     <div class="toggle-group" role="group" aria-label="View">
       <button type="button" class="toggle-btn" data-view="cards">Cards</button>
       <button type="button" class="toggle-btn" data-view="list">List</button>
-    </div>
-    <div class="toggle-group" role="group" aria-label="Day">
-      <button type="button" class="toggle-btn" data-day="today">Today</button>
-      <button type="button" class="toggle-btn" data-day="tomorrow">Tomorrow</button>
     </div>
     <a class="stats-link" href="stats.html">Stats</a> <!-- href rewritten in JS to carry ?lang= -->
   </div>
@@ -370,6 +387,8 @@ const STRINGS = {
     loadError: 'Konnte websites.txt nicht laden.',
     noFacilities: 'Keine Mensen gefunden.',
     dateLocale: 'de-CH',
+    prevDay: 'Vorheriger Tag',
+    nextDay: 'Nächster Tag',
     rateLabel: 'Gericht bewerten',
     clearRating: 'Bewertung löschen',
     ratingNote: 'Bewertungen werden nur in diesem Browser gespeichert – nicht synchronisiert, weg wenn Website-Daten gelöscht werden.',
@@ -382,6 +401,8 @@ const STRINGS = {
     loadError: 'Could not load websites.txt.',
     noFacilities: 'No canteens found.',
     dateLocale: 'en-GB',
+    prevDay: 'Previous day',
+    nextDay: 'Next day',
     rateLabel: 'Rate this dish',
     clearRating: 'Clear rating',
     ratingNote: 'Ratings are stored only in this browser — not synced, gone if site data is cleared.',
@@ -1058,7 +1079,10 @@ function applyView(state) {
 function updateToggleButtons(state) {
   document.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('active', b.dataset.lang === state.lang));
   document.querySelectorAll('[data-view]').forEach(b => b.classList.toggle('active', b.dataset.view === state.view));
-  document.querySelectorAll('[data-day]').forEach(b => b.classList.toggle('active', b.dataset.day === state.day));
+  // Only two days exist, so the arrow that would lead nowhere is hidden
+  // rather than shown greyed out — there is only ever one way to go.
+  document.getElementById('prevDay').hidden = state.day === 'today';
+  document.getElementById('nextDay').hidden = state.day === 'tomorrow';
 }
 
 // A monotonic render token guards against a stale response painting over a
@@ -1074,11 +1098,13 @@ async function loadAndRender(state) {
   document.title = strings.title;
   document.getElementById('titleText').textContent = strings.title;
   document.getElementById('ratingNote').textContent = strings.ratingNote;
+  document.getElementById('prevDay').setAttribute('aria-label', strings.prevDay);
+  document.getElementById('nextDay').setAttribute('aria-label', strings.nextDay);
 
   const { dateStr, nextStr, iso, parts } = zurichDateContext(state.day);
   // Date.UTC is a calendar placeholder here (as in nextDay), so format it in
   // UTC: the target date's weekday and day must not shift with any timezone.
-  document.getElementById('dateLine').textContent =
+  document.getElementById('dateText').textContent =
     new Date(Date.UTC(Number(parts.year), Number(parts.month) - 1, Number(parts.day)))
       .toLocaleDateString(strings.dateLocale, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 
@@ -1144,13 +1170,21 @@ function main() {
   }));
 
   // Unlike the view toggle, a different day is different data, so refetch.
-  document.querySelectorAll('[data-day]').forEach(btn => btn.addEventListener('click', () => {
-    if (state.day === btn.dataset.day) return;
-    state.day = btn.dataset.day;
-    updateUrl(state);
-    updateToggleButtons(state);
-    loadAndRender(state);
-  }));
+  for (const [id, day, otherId] of [['prevDay', 'today', 'nextDay'], ['nextDay', 'tomorrow', 'prevDay']]) {
+    const btn = document.getElementById(id);
+    btn.addEventListener('click', () => {
+      if (state.day === day) return;
+      // Read this before updateToggleButtons: activating an arrow hides it
+      // (there are only two days), and focus on a hidden element falls back
+      // to the body, so a keyboard user would otherwise lose their place.
+      const hadFocus = document.activeElement === btn;
+      state.day = day;
+      updateUrl(state);
+      updateToggleButtons(state);
+      if (hadFocus) document.getElementById(otherId).focus();
+      loadAndRender(state);
+    });
+  }
 
   // A tab left open across a Zurich midnight would otherwise keep showing
   // the previous day's menu until something else happened to trigger a

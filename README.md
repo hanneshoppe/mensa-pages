@@ -108,8 +108,11 @@ Stdlib only, ~1,450 lines, and the single writer of the three files under
 ### `index.html` — today's menu
 
 Reads `data/<today>.jsonl`, falls back to the live API, then re-checks live in
-the background; the Today/Tomorrow toggle shows the next day straight from the
-API. The parts worth knowing before editing:
+the background; the arrow after the date flips between today and tomorrow —
+only ever the one that leads somewhere, and in the date line rather than a
+fourth toggle group, which is what kept the header row from wrapping on a
+phone. Tomorrow is read straight from the API. The parts worth knowing before
+editing:
 
 - `zurichDateParts` / `nextDay` / `isoWeekday` / `zurichDateContext` — every
   date decision comes from one Europe/Zurich derivation. Don't add a second.
