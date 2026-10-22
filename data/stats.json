@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-22T08:27:37Z",
+  "dataAsOf": "2026-10-22T08:58:45Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,43 +57,43 @@
     {
       "name": "FUSION meal",
       "days": 34,
-      "dishDays": 323,
+      "dishDays": 324,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-10-22",
       "diet": {
         "vegan": 83,
         "vegetarian": 127,
         "fish": 8,
-        "meat": 105,
+        "meat": 106,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 323,
+          "n": 324,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.47
+          "mean": 11.48
         },
         "internal": {
-          "n": 323,
+          "n": 324,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.44
+          "mean": 9.45
         },
         "students": {
-          "n": 323,
+          "n": 324,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
           "p75": 8.9,
           "max": 12.5,
-          "mean": 7.06
+          "mean": 7.07
         }
       }
     },
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 57,
-    "dishDays": 1060,
+    "dishDays": 1061,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-10-22",
     "diet": {
       "vegan": 151,
       "vegetarian": 428,
       "fish": 28,
-      "meat": 380,
+      "meat": 381,
       "unclassified": 73
     },
     "prices": {
       "external": {
-        "n": 1060,
+        "n": 1061,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.87
       },
       "internal": {
-        "n": 1060,
+        "n": 1061,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.17
       },
       "students": {
-        "n": 1060,
+        "n": 1061,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -12792,6 +12792,53 @@
       "id": 526,
       "name": "Gaeng Phet Nue Beef",
       "nameDe": "Gaeng Phet Nue Beef",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-10-22",
+      "lastSeen": "2026-10-22",
+      "dates": [
+        "2026-10-22"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.9,
+          "sd": null,
+          "min": 12.9,
+          "max": 12.9
+        },
+        "students": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
+        }
+      }
+    },
+    {
+      "id": 534,
+      "name": "Gaeng Phet Nue Turkey",
+      "nameDe": "Gaeng Phet Nue Truthahn",
       "facility": "FUSION meal",
       "diet": "meat",
       "dietDays": {
@@ -31899,7 +31946,7 @@
     {
       "facility": "FUSION meal",
       "line": "WORLD OF ASIA",
-      "dishDays": 40,
+      "dishDays": 41,
       "dishes": [
         {
           "id": 161,
@@ -32084,6 +32131,17 @@
           "id": 526,
           "name": "Gaeng Phet Nue Beef",
           "nameDe": "Gaeng Phet Nue Beef",
+          "count": 1,
+          "firstSeen": "2026-10-22",
+          "lastSeen": "2026-10-22",
+          "dates": [
+            "2026-10-22"
+          ]
+        },
+        {
+          "id": 534,
+          "name": "Gaeng Phet Nue Turkey",
+          "nameDe": "Gaeng Phet Nue Truthahn",
           "count": 1,
           "firstSeen": "2026-10-22",
           "lastSeen": "2026-10-22",
