@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-22T10:32:55Z",
+  "dataAsOf": "2026-10-22T11:04:58Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,11 +14,11 @@
     {
       "name": "food market",
       "days": 57,
-      "dishDays": 452,
+      "dishDays": 453,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-10-22",
       "diet": {
-        "vegan": 68,
+        "vegan": 69,
         "vegetarian": 111,
         "fish": 20,
         "meat": 180,
@@ -26,7 +26,7 @@
       },
       "prices": {
         "external": {
-          "n": 452,
+          "n": 453,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,7 +35,7 @@
           "mean": 15.88
         },
         "internal": {
-          "n": 452,
+          "n": 453,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
@@ -44,7 +44,7 @@
           "mean": 12.89
         },
         "students": {
-          "n": 452,
+          "n": 453,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
@@ -144,11 +144,11 @@
   "overall": {
     "name": "all",
     "days": 57,
-    "dishDays": 1061,
+    "dishDays": 1062,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-10-22",
     "diet": {
-      "vegan": 151,
+      "vegan": 152,
       "vegetarian": 428,
       "fish": 28,
       "meat": 381,
@@ -156,16 +156,16 @@
     },
     "prices": {
       "external": {
-        "n": 1061,
+        "n": 1062,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
         "p75": 17.5,
         "max": 19.5,
-        "mean": 14.87
+        "mean": 14.88
       },
       "internal": {
-        "n": 1061,
+        "n": 1062,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.17
       },
       "students": {
-        "n": 1061,
+        "n": 1062,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -15656,6 +15656,53 @@
       }
     },
     {
+      "id": 535,
+      "name": "Loaded Fries",
+      "nameDe": "Loaded Fries",
+      "facility": "food market",
+      "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-10-22",
+      "lastSeen": "2026-10-22",
+      "dates": [
+        "2026-10-22"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    },
+    {
       "id": 140,
       "name": "Loaded Fries & Pulled Pork",
       "nameDe": "Loaded Fries & Pulled Pork",
@@ -26470,7 +26517,7 @@
     {
       "facility": "food market",
       "line": "fire",
-      "dishDays": 64,
+      "dishDays": 65,
       "dishes": [
         {
           "id": 102,
@@ -26857,6 +26904,17 @@
           "lastSeen": "2026-09-09",
           "dates": [
             "2026-09-09"
+          ]
+        },
+        {
+          "id": 535,
+          "name": "Loaded Fries",
+          "nameDe": "Loaded Fries",
+          "count": 1,
+          "firstSeen": "2026-10-22",
+          "lastSeen": "2026-10-22",
+          "dates": [
+            "2026-10-22"
           ]
         },
         {
