@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-23T03:10:17Z",
+  "dataAsOf": "2026-10-23T06:16:24Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,37 +57,37 @@
     {
       "name": "FUSION meal",
       "days": 35,
-      "dishDays": 333,
+      "dishDays": 334,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-10-23",
       "diet": {
         "vegan": 85,
         "vegetarian": 131,
         "fish": 8,
-        "meat": 109,
+        "meat": 110,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 333,
+          "n": 334,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.47
+          "mean": 11.49
         },
         "internal": {
-          "n": 333,
+          "n": 334,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.45
+          "mean": 9.46
         },
         "students": {
-          "n": 333,
+          "n": 334,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 58,
-    "dishDays": 1083,
+    "dishDays": 1084,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-10-23",
     "diet": {
       "vegan": 156,
       "vegetarian": 438,
       "fish": 29,
-      "meat": 386,
+      "meat": 387,
       "unclassified": 74
     },
     "prices": {
       "external": {
-        "n": 1083,
+        "n": 1084,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.86
       },
       "internal": {
-        "n": 1083,
+        "n": 1084,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.16
       },
       "students": {
-        "n": 1083,
+        "n": 1084,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -20338,6 +20338,53 @@
       }
     },
     {
+      "id": 544,
+      "name": "Riz Casimir - Chicken",
+      "nameDe": "Riz Casimir - Poulet",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-10-23",
+      "lastSeen": "2026-10-23",
+      "dates": [
+        "2026-10-23"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    },
+    {
       "id": 499,
       "name": "Roast Pork & Herb Gravy",
       "nameDe": "Schweinsbraten & Kr\u00e4uterjus",
@@ -30856,7 +30903,7 @@
     {
       "facility": "FUSION meal",
       "line": "MEATWORKS",
-      "dishDays": 39,
+      "dishDays": 40,
       "dishes": [
         {
           "id": 138,
@@ -31154,6 +31201,17 @@
           "lastSeen": "2026-10-06",
           "dates": [
             "2026-10-06"
+          ]
+        },
+        {
+          "id": 544,
+          "name": "Riz Casimir - Chicken",
+          "nameDe": "Riz Casimir - Poulet",
+          "count": 1,
+          "firstSeen": "2026-10-23",
+          "lastSeen": "2026-10-23",
+          "dates": [
+            "2026-10-23"
           ]
         },
         {
