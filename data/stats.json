@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-27T11:19:03Z",
+  "dataAsOf": "2026-10-27T11:55:36Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,11 +14,11 @@
     {
       "name": "food market",
       "days": 60,
-      "dishDays": 477,
+      "dishDays": 478,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-10-27",
       "diet": {
-        "vegan": 74,
+        "vegan": 75,
         "vegetarian": 116,
         "fish": 21,
         "meat": 190,
@@ -26,7 +26,7 @@
       },
       "prices": {
         "external": {
-          "n": 477,
+          "n": 478,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,16 +35,16 @@
           "mean": 15.88
         },
         "internal": {
-          "n": 477,
+          "n": 478,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
           "p75": 13.9,
           "max": 16.5,
-          "mean": 12.89
+          "mean": 12.88
         },
         "students": {
-          "n": 477,
+          "n": 478,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
@@ -144,11 +144,11 @@
   "overall": {
     "name": "all",
     "days": 60,
-    "dishDays": 1122,
+    "dishDays": 1123,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-10-27",
     "diet": {
-      "vegan": 161,
+      "vegan": 162,
       "vegetarian": 453,
       "fish": 29,
       "meat": 403,
@@ -156,7 +156,7 @@
     },
     "prices": {
       "external": {
-        "n": 1122,
+        "n": 1123,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.82
       },
       "internal": {
-        "n": 1122,
+        "n": 1123,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.13
       },
       "students": {
-        "n": 1122,
+        "n": 1123,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -26634,6 +26634,53 @@
       }
     },
     {
+      "id": 564,
+      "name": "Vegetable Stir-Fry",
+      "nameDe": "Pflanzengeschnetzeltes",
+      "facility": "food market",
+      "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-10-27",
+      "lastSeen": "2026-10-27",
+      "dates": [
+        "2026-10-27"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
+    },
+    {
       "id": 558,
       "name": "Vegetables\u2014Zurich-style stir-fry",
       "nameDe": "Pflanzen -geschnetzeltes Z\u00fcrcher Art",
@@ -28632,7 +28679,7 @@
     {
       "facility": "food market",
       "line": "green daily",
-      "dishDays": 65,
+      "dishDays": 66,
       "dishes": [
         {
           "id": 181,
@@ -29316,6 +29363,17 @@
           "lastSeen": "2026-09-30",
           "dates": [
             "2026-09-30"
+          ]
+        },
+        {
+          "id": 564,
+          "name": "Vegetable Stir-Fry",
+          "nameDe": "Pflanzengeschnetzeltes",
+          "count": 1,
+          "firstSeen": "2026-10-27",
+          "lastSeen": "2026-10-27",
+          "dates": [
+            "2026-10-27"
           ]
         },
         {
