@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-27T10:21:44Z",
+  "dataAsOf": "2026-10-27T11:19:03Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,19 +14,19 @@
     {
       "name": "food market",
       "days": 60,
-      "dishDays": 476,
+      "dishDays": 477,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-10-27",
       "diet": {
         "vegan": 74,
         "vegetarian": 116,
         "fish": 21,
-        "meat": 189,
+        "meat": 190,
         "unclassified": 76
       },
       "prices": {
         "external": {
-          "n": 476,
+          "n": 477,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,7 +35,7 @@
           "mean": 15.88
         },
         "internal": {
-          "n": 476,
+          "n": 477,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
@@ -44,7 +44,7 @@
           "mean": 12.89
         },
         "students": {
-          "n": 476,
+          "n": 477,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 60,
-    "dishDays": 1121,
+    "dishDays": 1122,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-10-27",
     "diet": {
       "vegan": 161,
       "vegetarian": 453,
       "fish": 29,
-      "meat": 402,
+      "meat": 403,
       "unclassified": 76
     },
     "prices": {
       "external": {
-        "n": 1121,
+        "n": 1122,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.82
       },
       "internal": {
-        "n": 1121,
+        "n": 1122,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.13
       },
       "students": {
-        "n": 1121,
+        "n": 1122,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -18738,6 +18738,53 @@
       }
     },
     {
+      "id": 563,
+      "name": "Pasta with Lemon Chicken",
+      "nameDe": "Pasta al Pollo di Limone",
+      "facility": "food market",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-10-27",
+      "lastSeen": "2026-10-27",
+      "dates": [
+        "2026-10-27"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
+    },
+    {
       "id": 274,
       "name": "Pasta with Ratatouille",
       "nameDe": "Pasta con ratatouille",
@@ -30809,7 +30856,7 @@
     {
       "facility": "food market",
       "line": "pasta della nonna",
-      "dishDays": 63,
+      "dishDays": 64,
       "dishes": [
         {
           "id": 81,
@@ -31208,6 +31255,17 @@
           "lastSeen": "2026-09-09",
           "dates": [
             "2026-09-09"
+          ]
+        },
+        {
+          "id": 563,
+          "name": "Pasta with Lemon Chicken",
+          "nameDe": "Pasta al Pollo di Limone",
+          "count": 1,
+          "firstSeen": "2026-10-27",
+          "lastSeen": "2026-10-27",
+          "dates": [
+            "2026-10-27"
           ]
         },
         {
