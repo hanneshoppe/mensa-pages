@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-27T04:23:24Z",
+  "dataAsOf": "2026-10-27T06:59:46Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,37 +57,37 @@
     {
       "name": "FUSION meal",
       "days": 37,
-      "dishDays": 352,
+      "dishDays": 353,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-10-27",
       "diet": {
         "vegan": 87,
-        "vegetarian": 141,
+        "vegetarian": 142,
         "fish": 8,
         "meat": 116,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 352,
+          "n": 353,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.48
+          "mean": 11.49
         },
         "internal": {
-          "n": 352,
+          "n": 353,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.45
+          "mean": 9.46
         },
         "students": {
-          "n": 352,
+          "n": 353,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 60,
-    "dishDays": 1118,
+    "dishDays": 1119,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-10-27",
     "diet": {
       "vegan": 161,
-      "vegetarian": 451,
+      "vegetarian": 452,
       "fish": 29,
       "meat": 401,
       "unclassified": 76
     },
     "prices": {
       "external": {
-        "n": 1118,
+        "n": 1119,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.82
       },
       "internal": {
-        "n": 1118,
+        "n": 1119,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.13
       },
       "students": {
-        "n": 1118,
+        "n": 1119,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -17516,6 +17516,53 @@
       }
     },
     {
+      "id": 560,
+      "name": "Mushroom Risotto ",
+      "nameDe": "Pilz-Risotto ",
+      "facility": "FUSION meal",
+      "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-10-27",
+      "lastSeen": "2026-10-27",
+      "dates": [
+        "2026-10-27"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
+    },
+    {
       "id": 348,
       "name": "New Swiss Kitchen",
       "nameDe": "New Swiss Kitchen",
@@ -33025,7 +33072,7 @@
     {
       "facility": "FUSION meal",
       "line": "VEGGIE",
-      "dishDays": 39,
+      "dishDays": 40,
       "dishes": [
         {
           "id": 268,
@@ -33204,6 +33251,17 @@
           "lastSeen": "2026-09-25",
           "dates": [
             "2026-09-25"
+          ]
+        },
+        {
+          "id": 560,
+          "name": "Mushroom Risotto ",
+          "nameDe": "Pilz-Risotto ",
+          "count": 1,
+          "firstSeen": "2026-10-27",
+          "lastSeen": "2026-10-27",
+          "dates": [
+            "2026-10-27"
           ]
         },
         {
