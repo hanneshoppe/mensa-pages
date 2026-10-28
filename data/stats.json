@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-28T10:15:47Z",
+  "dataAsOf": "2026-10-28T10:40:54Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,7 +14,7 @@
     {
       "name": "food market",
       "days": 61,
-      "dishDays": 486,
+      "dishDays": 487,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-10-28",
       "diet": {
@@ -22,11 +22,11 @@
         "vegetarian": 117,
         "fish": 22,
         "meat": 192,
-        "unclassified": 79
+        "unclassified": 80
       },
       "prices": {
         "external": {
-          "n": 486,
+          "n": 487,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,7 +35,7 @@
           "mean": 15.88
         },
         "internal": {
-          "n": 486,
+          "n": 487,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
@@ -44,7 +44,7 @@
           "mean": 12.89
         },
         "students": {
-          "n": 486,
+          "n": 487,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
@@ -144,7 +144,7 @@
   "overall": {
     "name": "all",
     "days": 61,
-    "dishDays": 1140,
+    "dishDays": 1141,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-10-28",
     "diet": {
@@ -152,11 +152,11 @@
       "vegetarian": 459,
       "fish": 30,
       "meat": 408,
-      "unclassified": 79
+      "unclassified": 80
     },
     "prices": {
       "external": {
-        "n": 1140,
+        "n": 1141,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.8
       },
       "internal": {
-        "n": 1140,
+        "n": 1141,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.11
       },
       "students": {
-        "n": 1140,
+        "n": 1141,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -8269,6 +8269,53 @@
       "lastSeen": "2026-09-11",
       "dates": [
         "2026-09-11"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
+    },
+    {
+      "id": 569,
+      "name": "Cappelletti with Mushroom Filling",
+      "nameDe": "Cappelletti Pilzf\u00fcllung",
+      "facility": "food market",
+      "diet": "unclassified",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 1
+      },
+      "count": 1,
+      "firstSeen": "2026-10-28",
+      "lastSeen": "2026-10-28",
+      "dates": [
+        "2026-10-28"
       ],
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
@@ -31149,7 +31196,7 @@
     {
       "facility": "food market",
       "line": "pasta della nonna",
-      "dishDays": 65,
+      "dishDays": 66,
       "dishes": [
         {
           "id": 81,
@@ -31263,6 +31310,17 @@
           "lastSeen": "2026-09-11",
           "dates": [
             "2026-09-11"
+          ]
+        },
+        {
+          "id": 569,
+          "name": "Cappelletti with Mushroom Filling",
+          "nameDe": "Cappelletti Pilzf\u00fcllung",
+          "count": 1,
+          "firstSeen": "2026-10-28",
+          "lastSeen": "2026-10-28",
+          "dates": [
+            "2026-10-28"
           ]
         },
         {
