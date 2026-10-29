@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-29T10:24:45Z",
+  "dataAsOf": "2026-10-29T11:33:47Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,11 +14,11 @@
     {
       "name": "food market",
       "days": 62,
-      "dishDays": 495,
+      "dishDays": 496,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-10-29",
       "diet": {
-        "vegan": 77,
+        "vegan": 78,
         "vegetarian": 118,
         "fish": 23,
         "meat": 194,
@@ -26,7 +26,7 @@
       },
       "prices": {
         "external": {
-          "n": 495,
+          "n": 496,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,16 +35,16 @@
           "mean": 15.88
         },
         "internal": {
-          "n": 495,
+          "n": 496,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
           "p75": 13.9,
           "max": 16.5,
-          "mean": 12.89
+          "mean": 12.88
         },
         "students": {
-          "n": 495,
+          "n": 496,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
@@ -144,11 +144,11 @@
   "overall": {
     "name": "all",
     "days": 62,
-    "dishDays": 1158,
+    "dishDays": 1159,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-10-29",
     "diet": {
-      "vegan": 166,
+      "vegan": 167,
       "vegetarian": 465,
       "fish": 31,
       "meat": 413,
@@ -156,7 +156,7 @@
     },
     "prices": {
       "external": {
-        "n": 1158,
+        "n": 1159,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,16 +165,16 @@
         "mean": 14.78
       },
       "internal": {
-        "n": 1158,
+        "n": 1159,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
         "p75": 13.9,
         "max": 16.5,
-        "mean": 12.1
+        "mean": 12.09
       },
       "students": {
-        "n": 1158,
+        "n": 1159,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -14728,6 +14728,53 @@
       }
     },
     {
+      "id": 574,
+      "name": "Gnocchi with Saut\u00e9ed Vegetables",
+      "nameDe": "Gnocchi Pflanzengeschnetzeltes",
+      "facility": "food market",
+      "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-10-29",
+      "lastSeen": "2026-10-29",
+      "dates": [
+        "2026-10-29"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
+    },
+    {
       "id": 329,
       "name": "Goat Cheese au Gratin ",
       "nameDe": "Gratinierter Ziegenk\u00e4se ",
@@ -29183,7 +29230,7 @@
     {
       "facility": "food market",
       "line": "green daily",
-      "dishDays": 68,
+      "dishDays": 69,
       "dishes": [
         {
           "id": 36,
@@ -29462,6 +29509,17 @@
           "lastSeen": "2026-09-17",
           "dates": [
             "2026-09-17"
+          ]
+        },
+        {
+          "id": 574,
+          "name": "Gnocchi with Saut\u00e9ed Vegetables",
+          "nameDe": "Gnocchi Pflanzengeschnetzeltes",
+          "count": 1,
+          "firstSeen": "2026-10-29",
+          "lastSeen": "2026-10-29",
+          "dates": [
+            "2026-10-29"
           ]
         },
         {
