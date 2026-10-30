@@ -1159,20 +1159,20 @@ dish_id,date,facility,facility_id,line,name_en,name_de,diet,first_seen_at,last_s
 52,2026-10-29,food market,19,green daily,Lasagna,Lasagne,vegan,2026-10-29T04:11:22Z,2026-10-29T10:24:45Z,,7.0,11.5,14.5,460,4.6,4.0,12,0.96,2.2,0.9
 64,2026-10-29,food market,19,pizza classica,Pizza Margherita,Pizza Margherita,vegetarian,2026-10-29T04:11:22Z,2026-10-29T12:44:25Z,,7.0,11.5,14.5,858,9.6,5.3,29,1.28,1.2,2.5
 89,2026-10-29,food market,19,pasta della nonna,Tori Yakisoba Wok,Tori Yakisoba Wok,meat,2026-10-29T04:11:22Z,2026-10-29T12:44:25Z,,9.5,13.5,16.5,643,5.9,5.2,20,1.44,2.1,0.7
-193,2026-10-30,FUSION meal,20,WORLD OF ASIA,Beef Bulgogi,Beef-Bulgogi,meat,2026-10-30T04:10:40Z,2026-10-30T10:24:35Z,,10.5,12.9,14.5,,,,,,,
-139,2026-10-30,FUSION meal,20,GLOBETROTTER,Hot Buffet,Warmes Buffet,vegetarian,2026-10-30T04:10:40Z,2026-10-30T10:24:35Z,,2.5,2.9,3.4,,,,,,,
-576,2026-10-30,FUSION meal,20,MEATWORKS,Jerk Chicken Thighs,Jerk-Pouletschenkel,meat,2026-10-30T04:10:40Z,2026-10-30T10:24:35Z,,8.5,12.5,15.5,,,,,,,
+193,2026-10-30,FUSION meal,20,WORLD OF ASIA,Beef Bulgogi,Beef-Bulgogi,meat,2026-10-30T04:10:40Z,2026-10-30T12:03:03Z,,10.5,12.9,14.5,,,,,,,
+139,2026-10-30,FUSION meal,20,GLOBETROTTER,Hot Buffet,Warmes Buffet,vegetarian,2026-10-30T04:10:40Z,2026-10-30T12:03:03Z,,2.5,2.9,3.4,,,,,,,
+576,2026-10-30,FUSION meal,20,MEATWORKS,Jerk Chicken Thighs,Jerk-Pouletschenkel,meat,2026-10-30T04:10:40Z,2026-10-30T12:03:03Z,,8.5,12.5,15.5,,,,,,,
 577,2026-10-30,FUSION meal,20,WORLD OF ASIA VEGGIE,Kari Sayur,Kari Sayur,vegetarian,2026-10-30T04:10:40Z,2026-10-30T06:40:54Z,,8.5,10.5,12.5,,,,,,,
-584,2026-10-30,FUSION meal,20,WORLD OF ASIA VEGGIE,Kari Vegetable Curry,Kari Sayur Curry,vegetarian,2026-10-30T06:51:11Z,2026-10-30T10:24:35Z,,8.5,10.5,12.5,,,,,,,
-578,2026-10-30,FUSION meal,20,VEGGIE,Lentil Bolognese ,Linsen-Bolognese ,vegetarian,2026-10-30T04:10:40Z,2026-10-30T10:24:35Z,,7.0,11.5,14.5,,,,,,,
-341,2026-10-30,FUSION meal,20,SOUL FOOD,Norwegian salmon,Norwegischer Lachs,fish,2026-10-30T04:10:40Z,2026-10-30T10:24:35Z,,11.5,14.5,17.5,,,,,,,
-579,2026-10-30,FUSION meal,20,VEGAN,Planted Crispies,Planted Knusperli,vegan,2026-10-30T04:10:40Z,2026-10-30T10:24:35Z,,8.9,12.9,16.9,,,,,,,
-141,2026-10-30,FUSION meal,20,POWER KITCHEN,Protein Buffet,Protein Buffet,vegetarian,2026-10-30T04:10:40Z,2026-10-30T10:24:35Z,,2.5,2.9,3.4,,,,,,,
-142,2026-10-30,FUSION meal,20,FRESH ISLAND,Salad Buffet,Salat Buffet,vegetarian,2026-10-30T04:10:40Z,2026-10-30T10:24:35Z,,2.5,2.9,3.4,,,,,,,
-33,2026-10-30,food market,19,green delight,Choose 5,Choose 5,unclassified,2026-10-30T04:10:40Z,2026-10-30T10:24:35Z,,9.9,13.9,16.9,0.0,0.0,0.0,0.0,0.00,0.0,0.0
-44,2026-10-30,food market,19,pasta della nonna,Gnocchi with Giardinera,Gnocchi al Giardinera,vegetarian,2026-10-30T04:10:40Z,2026-10-30T10:24:35Z,,9.5,13.5,16.5,629,2.9,8.2,15,0.89,2.1,1.9
-580,2026-10-30,food market,19,grill,Haunted BBQ Feast,Haunted BBQ Feast,meat,2026-10-30T04:10:40Z,2026-10-30T10:24:35Z,,11.5,14.5,17.5,657,7.3,7.5,15,1.08,2.8,1.8
-64,2026-10-30,food market,19,pizza classica,Pizza Margherita,Pizza Margherita,vegetarian,2026-10-30T04:10:40Z,2026-10-30T10:24:35Z,,7.0,11.5,14.5,858,9.6,5.3,29,1.28,1.2,2.5
-581,2026-10-30,food market,19,fire,Szechuan Chicken,Poulet Szechuan,meat,2026-10-30T04:10:40Z,2026-10-30T10:24:35Z,,8.5,12.5,15.5,560,5.1,1.9,23,1.83,8.7,0.1
-582,2026-10-30,food market,19,pasta classica,The Black Magic of Pasta,Die schwarze Magie der Pasta,meat,2026-10-30T04:10:40Z,2026-10-30T10:24:35Z,,8.5,12.5,15.5,544,5.3,5.0,15,0.46,1.8,1.4
-583,2026-10-30,food market,19,green daily,Witch's Tandoori Bowl,Witch`s Tandoori Bowl,vegan,2026-10-30T04:10:40Z,2026-10-30T10:24:35Z,,7.0,11.5,14.5,542,4.0,4.5,18,1.77,2.3,3.1
+584,2026-10-30,FUSION meal,20,WORLD OF ASIA VEGGIE,Kari Vegetable Curry,Kari Sayur Curry,vegetarian,2026-10-30T06:51:11Z,2026-10-30T12:03:03Z,,8.5,10.5,12.5,,,,,,,
+578,2026-10-30,FUSION meal,20,VEGGIE,Lentil Bolognese ,Linsen-Bolognese ,vegetarian,2026-10-30T04:10:40Z,2026-10-30T12:03:03Z,,7.0,11.5,14.5,,,,,,,
+341,2026-10-30,FUSION meal,20,SOUL FOOD,Norwegian salmon,Norwegischer Lachs,fish,2026-10-30T04:10:40Z,2026-10-30T12:03:03Z,,11.5,14.5,17.5,,,,,,,
+579,2026-10-30,FUSION meal,20,VEGAN,Planted Crispies,Planted Knusperli,vegan,2026-10-30T04:10:40Z,2026-10-30T12:03:03Z,,8.9,12.9,16.9,,,,,,,
+141,2026-10-30,FUSION meal,20,POWER KITCHEN,Protein Buffet,Protein Buffet,vegetarian,2026-10-30T04:10:40Z,2026-10-30T12:03:03Z,,2.5,2.9,3.4,,,,,,,
+142,2026-10-30,FUSION meal,20,FRESH ISLAND,Salad Buffet,Salat Buffet,vegetarian,2026-10-30T04:10:40Z,2026-10-30T12:03:03Z,,2.5,2.9,3.4,,,,,,,
+33,2026-10-30,food market,19,green delight,Choose 5,Choose 5,unclassified,2026-10-30T04:10:40Z,2026-10-30T12:03:03Z,,9.9,13.9,16.9,0.0,0.0,0.0,0.0,0.00,0.0,0.0
+44,2026-10-30,food market,19,pasta della nonna,Gnocchi with Giardinera,Gnocchi al Giardinera,vegetarian,2026-10-30T04:10:40Z,2026-10-30T12:03:03Z,,9.5,13.5,16.5,629,2.9,8.2,15,0.89,2.1,1.9
+580,2026-10-30,food market,19,grill,Haunted BBQ Feast,Haunted BBQ Feast,meat,2026-10-30T04:10:40Z,2026-10-30T12:03:03Z,,11.5,14.5,17.5,657,7.3,7.5,15,1.08,2.8,1.8
+64,2026-10-30,food market,19,pizza classica,Pizza Margherita,Pizza Margherita,vegetarian,2026-10-30T04:10:40Z,2026-10-30T12:03:03Z,,7.0,11.5,14.5,858,9.6,5.3,29,1.28,1.2,2.5
+581,2026-10-30,food market,19,fire,Szechuan Chicken,Poulet Szechuan,meat,2026-10-30T04:10:40Z,2026-10-30T12:03:03Z,,8.5,12.5,15.5,560,5.1,1.9,23,1.83,8.7,0.1
+582,2026-10-30,food market,19,pasta classica,The Black Magic of Pasta,Die schwarze Magie der Pasta,meat,2026-10-30T04:10:40Z,2026-10-30T12:03:03Z,,8.5,12.5,15.5,544,5.3,5.0,15,0.46,1.8,1.4
+583,2026-10-30,food market,19,green daily,Witch's Tandoori Bowl,Witch`s Tandoori Bowl,vegan,2026-10-30T04:10:40Z,2026-10-30T12:03:03Z,,7.0,11.5,14.5,542,4.0,4.5,18,1.77,2.3,3.1
