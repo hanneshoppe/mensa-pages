@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-30T06:40:54Z",
+  "dataAsOf": "2026-10-30T06:51:11Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,19 +57,19 @@
     {
       "name": "FUSION meal",
       "days": 40,
-      "dishDays": 382,
+      "dishDays": 383,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-10-30",
       "diet": {
         "vegan": 90,
-        "vegetarian": 158,
+        "vegetarian": 159,
         "fish": 9,
         "meat": 125,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 382,
+          "n": 383,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
@@ -78,7 +78,7 @@
           "mean": 11.49
         },
         "internal": {
-          "n": 382,
+          "n": 383,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
@@ -87,13 +87,13 @@
           "mean": 9.46
         },
         "students": {
-          "n": 382,
+          "n": 383,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
           "p75": 8.9,
           "max": 12.5,
-          "mean": 7.07
+          "mean": 7.08
         }
       }
     },
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 63,
-    "dishDays": 1176,
+    "dishDays": 1177,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-10-30",
     "diet": {
       "vegan": 170,
-      "vegetarian": 472,
+      "vegetarian": 473,
       "fish": 32,
       "meat": 418,
       "unclassified": 84
     },
     "prices": {
       "external": {
-        "n": 1176,
+        "n": 1177,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.76
       },
       "internal": {
-        "n": 1176,
+        "n": 1177,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.08
       },
       "students": {
-        "n": 1176,
+        "n": 1177,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -16536,6 +16536,53 @@
       "id": 577,
       "name": "Kari Sayur",
       "nameDe": "Kari Sayur",
+      "facility": "FUSION meal",
+      "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-10-30",
+      "lastSeen": "2026-10-30",
+      "dates": [
+        "2026-10-30"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    },
+    {
+      "id": 584,
+      "name": "Kari Vegetable Curry",
+      "nameDe": "Kari Sayur Curry",
       "facility": "FUSION meal",
       "diet": "vegetarian",
       "dietDays": {
@@ -35392,7 +35439,7 @@
     {
       "facility": "FUSION meal",
       "line": "WORLD OF ASIA VEGGIE",
-      "dishDays": 45,
+      "dishDays": 46,
       "dishes": [
         {
           "id": 218,
@@ -35678,6 +35725,17 @@
           "id": 577,
           "name": "Kari Sayur",
           "nameDe": "Kari Sayur",
+          "count": 1,
+          "firstSeen": "2026-10-30",
+          "lastSeen": "2026-10-30",
+          "dates": [
+            "2026-10-30"
+          ]
+        },
+        {
+          "id": 584,
+          "name": "Kari Vegetable Curry",
+          "nameDe": "Kari Sayur Curry",
           "count": 1,
           "firstSeen": "2026-10-30",
           "lastSeen": "2026-10-30",
