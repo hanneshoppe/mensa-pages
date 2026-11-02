@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-10-30T12:03:03Z",
+  "dataAsOf": "2026-11-02T04:15:58Z",
   "priceGroups": [
     "students",
     "internal",
@@ -7,26 +7,26 @@
   ],
   "dateRange": {
     "from": "2026-08-05",
-    "to": "2026-10-30",
-    "days": 63
+    "to": "2026-11-02",
+    "days": 64
   },
   "facilities": [
     {
       "name": "food market",
-      "days": 63,
-      "dishDays": 504,
+      "days": 64,
+      "dishDays": 512,
       "firstSeen": "2026-08-05",
-      "lastSeen": "2026-10-30",
+      "lastSeen": "2026-11-02",
       "diet": {
-        "vegan": 80,
-        "vegetarian": 120,
+        "vegan": 82,
+        "vegetarian": 122,
         "fish": 23,
-        "meat": 197,
-        "unclassified": 84
+        "meat": 200,
+        "unclassified": 85
       },
       "prices": {
         "external": {
-          "n": 504,
+          "n": 512,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,41 +35,41 @@
           "mean": 15.88
         },
         "internal": {
-          "n": 504,
+          "n": 512,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
           "p75": 13.9,
           "max": 16.5,
-          "mean": 12.88
+          "mean": 12.89
         },
         "students": {
-          "n": 504,
+          "n": 512,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
           "p75": 9.9,
           "max": 13.5,
-          "mean": 8.93
+          "mean": 8.94
         }
       }
     },
     {
       "name": "FUSION meal",
-      "days": 40,
-      "dishDays": 383,
+      "days": 41,
+      "dishDays": 392,
       "firstSeen": "2026-09-07",
-      "lastSeen": "2026-10-30",
+      "lastSeen": "2026-11-02",
       "diet": {
-        "vegan": 90,
-        "vegetarian": 159,
+        "vegan": 93,
+        "vegetarian": 162,
         "fish": 9,
-        "meat": 125,
+        "meat": 128,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 383,
+          "n": 392,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
@@ -78,7 +78,7 @@
           "mean": 11.49
         },
         "internal": {
-          "n": 383,
+          "n": 392,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
@@ -87,7 +87,7 @@
           "mean": 9.46
         },
         "students": {
-          "n": 383,
+          "n": 392,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
@@ -99,20 +99,20 @@
     },
     {
       "name": "Mendokoro",
-      "days": 58,
-      "dishDays": 290,
+      "days": 59,
+      "dishDays": 295,
       "firstSeen": "2026-08-05",
-      "lastSeen": "2026-10-23",
+      "lastSeen": "2026-11-02",
       "diet": {
         "vegan": 0,
-        "vegetarian": 194,
+        "vegetarian": 198,
         "fish": 0,
-        "meat": 96,
+        "meat": 97,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 290,
+          "n": 295,
           "min": 15.5,
           "p25": 15.5,
           "median": 17.5,
@@ -121,7 +121,7 @@
           "mean": 17.13
         },
         "internal": {
-          "n": 290,
+          "n": 295,
           "min": 12.5,
           "p25": 12.5,
           "median": 14.5,
@@ -130,7 +130,7 @@
           "mean": 14.13
         },
         "students": {
-          "n": 290,
+          "n": 295,
           "min": 10.5,
           "p25": 10.5,
           "median": 12.5,
@@ -143,44 +143,44 @@
   ],
   "overall": {
     "name": "all",
-    "days": 63,
-    "dishDays": 1177,
+    "days": 64,
+    "dishDays": 1199,
     "firstSeen": "2026-08-05",
-    "lastSeen": "2026-10-30",
+    "lastSeen": "2026-11-02",
     "diet": {
-      "vegan": 170,
-      "vegetarian": 473,
+      "vegan": 175,
+      "vegetarian": 482,
       "fish": 32,
-      "meat": 418,
-      "unclassified": 84
+      "meat": 425,
+      "unclassified": 85
     },
     "prices": {
       "external": {
-        "n": 1177,
+        "n": 1199,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
         "p75": 16.9,
         "max": 19.5,
-        "mean": 14.76
+        "mean": 14.75
       },
       "internal": {
-        "n": 1177,
+        "n": 1199,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
         "p75": 13.9,
         "max": 16.5,
-        "mean": 12.08
+        "mean": 12.07
       },
       "students": {
-        "n": 1177,
+        "n": 1199,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
         "p75": 10.5,
         "max": 13.8,
-        "mean": 9.12
+        "mean": 9.11
       }
     }
   },
@@ -196,11 +196,11 @@
         "vegetarian": 0,
         "fish": 0,
         "meat": 0,
-        "unclassified": 58
+        "unclassified": 59
       },
-      "count": 63,
+      "count": 64,
       "firstSeen": "2026-08-05",
-      "lastSeen": "2026-10-30",
+      "lastSeen": "2026-11-02",
       "dates": [
         "2026-08-05",
         "2026-08-06",
@@ -264,9 +264,11 @@
         "2026-10-27",
         "2026-10-28",
         "2026-10-29",
-        "2026-10-30"
+        "2026-10-30",
+        "2026-11-02"
       ],
       "gapsWeekdays": [
+        1,
         1,
         1,
         1,
@@ -333,28 +335,28 @@
       "meanGapWeekdays": 1.0,
       "sdGapWeekdays": 0.0,
       "prediction": {
-        "nextDate": "2026-11-02",
+        "nextDate": "2026-11-03",
         "sigmaWeekdays": 0.0,
-        "earliest": "2026-11-02",
-        "latest": "2026-11-02"
+        "earliest": "2026-11-03",
+        "latest": "2026-11-03"
       },
       "prices": {
         "external": {
-          "n": 63,
+          "n": 64,
           "mean": 16.9,
           "sd": 0.0,
           "min": 16.9,
           "max": 16.9
         },
         "internal": {
-          "n": 63,
+          "n": 64,
           "mean": 13.9,
           "sd": 0.0,
           "min": 13.9,
           "max": 13.9
         },
         "students": {
-          "n": 63,
+          "n": 64,
           "mean": 9.9,
           "sd": 0.0,
           "min": 9.9,
@@ -372,12 +374,12 @@
         "vegan": 0,
         "vegetarian": 0,
         "fish": 0,
-        "meat": 58,
+        "meat": 59,
         "unclassified": 0
       },
-      "count": 58,
+      "count": 59,
       "firstSeen": "2026-08-05",
-      "lastSeen": "2026-10-23",
+      "lastSeen": "2026-11-02",
       "dates": [
         "2026-08-05",
         "2026-08-06",
@@ -436,7 +438,8 @@
         "2026-10-20",
         "2026-10-21",
         "2026-10-22",
-        "2026-10-23"
+        "2026-10-23",
+        "2026-11-02"
       ],
       "gapsWeekdays": [
         1,
@@ -495,33 +498,34 @@
         1,
         1,
         1,
-        1
+        1,
+        6
       ],
-      "meanGapWeekdays": 1.0,
-      "sdGapWeekdays": 0.0,
+      "meanGapWeekdays": 1.09,
+      "sdGapWeekdays": 0.66,
       "prediction": {
-        "nextDate": "2026-10-26",
-        "sigmaWeekdays": 0.0,
-        "earliest": "2026-10-26",
-        "latest": "2026-10-26"
+        "nextDate": "2026-11-03",
+        "sigmaWeekdays": 0.66,
+        "earliest": "2026-11-03",
+        "latest": "2026-11-04"
       },
       "prices": {
         "external": {
-          "n": 58,
+          "n": 59,
           "mean": 18.8,
           "sd": 0.0,
           "min": 18.8,
           "max": 18.8
         },
         "internal": {
-          "n": 58,
+          "n": 59,
           "mean": 15.8,
           "sd": 0.0,
           "min": 15.8,
           "max": 15.8
         },
         "students": {
-          "n": 58,
+          "n": 59,
           "mean": 13.8,
           "sd": 0.0,
           "min": 13.8,
@@ -537,14 +541,14 @@
       "diet": "vegetarian",
       "dietDays": {
         "vegan": 0,
-        "vegetarian": 58,
+        "vegetarian": 59,
         "fish": 0,
         "meat": 0,
         "unclassified": 0
       },
-      "count": 58,
+      "count": 59,
       "firstSeen": "2026-08-05",
-      "lastSeen": "2026-10-23",
+      "lastSeen": "2026-11-02",
       "dates": [
         "2026-08-05",
         "2026-08-06",
@@ -603,7 +607,8 @@
         "2026-10-20",
         "2026-10-21",
         "2026-10-22",
-        "2026-10-23"
+        "2026-10-23",
+        "2026-11-02"
       ],
       "gapsWeekdays": [
         1,
@@ -662,33 +667,34 @@
         1,
         1,
         1,
-        1
+        1,
+        6
       ],
-      "meanGapWeekdays": 1.0,
-      "sdGapWeekdays": 0.0,
+      "meanGapWeekdays": 1.09,
+      "sdGapWeekdays": 0.66,
       "prediction": {
-        "nextDate": "2026-10-26",
-        "sigmaWeekdays": 0.0,
-        "earliest": "2026-10-26",
-        "latest": "2026-10-26"
+        "nextDate": "2026-11-03",
+        "sigmaWeekdays": 0.66,
+        "earliest": "2026-11-03",
+        "latest": "2026-11-04"
       },
       "prices": {
         "external": {
-          "n": 58,
+          "n": 59,
           "mean": 15.5,
           "sd": 0.0,
           "min": 15.5,
           "max": 15.5
         },
         "internal": {
-          "n": 58,
+          "n": 59,
           "mean": 12.5,
           "sd": 0.0,
           "min": 12.5,
           "max": 12.5
         },
         "students": {
-          "n": 58,
+          "n": 59,
           "mean": 10.5,
           "sd": 0.0,
           "min": 10.5,
@@ -704,14 +710,14 @@
       "diet": "vegetarian",
       "dietDays": {
         "vegan": 0,
-        "vegetarian": 58,
+        "vegetarian": 59,
         "fish": 0,
         "meat": 0,
         "unclassified": 0
       },
-      "count": 58,
+      "count": 59,
       "firstSeen": "2026-08-05",
-      "lastSeen": "2026-10-23",
+      "lastSeen": "2026-11-02",
       "dates": [
         "2026-08-05",
         "2026-08-06",
@@ -770,7 +776,8 @@
         "2026-10-20",
         "2026-10-21",
         "2026-10-22",
-        "2026-10-23"
+        "2026-10-23",
+        "2026-11-02"
       ],
       "gapsWeekdays": [
         1,
@@ -829,33 +836,34 @@
         1,
         1,
         1,
-        1
+        1,
+        6
       ],
-      "meanGapWeekdays": 1.0,
-      "sdGapWeekdays": 0.0,
+      "meanGapWeekdays": 1.09,
+      "sdGapWeekdays": 0.66,
       "prediction": {
-        "nextDate": "2026-10-26",
-        "sigmaWeekdays": 0.0,
-        "earliest": "2026-10-26",
-        "latest": "2026-10-26"
+        "nextDate": "2026-11-03",
+        "sigmaWeekdays": 0.66,
+        "earliest": "2026-11-03",
+        "latest": "2026-11-04"
       },
       "prices": {
         "external": {
-          "n": 58,
+          "n": 59,
           "mean": 15.5,
           "sd": 0.0,
           "min": 15.5,
           "max": 15.5
         },
         "internal": {
-          "n": 58,
+          "n": 59,
           "mean": 12.5,
           "sd": 0.0,
           "min": 12.5,
           "max": 12.5
         },
         "students": {
-          "n": 58,
+          "n": 59,
           "mean": 10.5,
           "sd": 0.0,
           "min": 10.5,
@@ -871,14 +879,14 @@
       "diet": "vegetarian",
       "dietDays": {
         "vegan": 0,
-        "vegetarian": 57,
+        "vegetarian": 58,
         "fish": 0,
         "meat": 0,
         "unclassified": 0
       },
-      "count": 57,
+      "count": 58,
       "firstSeen": "2026-08-05",
-      "lastSeen": "2026-10-30",
+      "lastSeen": "2026-11-02",
       "dates": [
         "2026-08-05",
         "2026-08-06",
@@ -936,7 +944,8 @@
         "2026-10-27",
         "2026-10-28",
         "2026-10-29",
-        "2026-10-30"
+        "2026-10-30",
+        "2026-11-02"
       ],
       "gapsWeekdays": [
         1,
@@ -994,33 +1003,34 @@
         1,
         1,
         1,
+        1,
         1
       ],
       "meanGapWeekdays": 1.11,
-      "sdGapWeekdays": 0.68,
+      "sdGapWeekdays": 0.67,
       "prediction": {
-        "nextDate": "2026-11-02",
-        "sigmaWeekdays": 0.68,
-        "earliest": "2026-11-02",
-        "latest": "2026-11-03"
+        "nextDate": "2026-11-03",
+        "sigmaWeekdays": 0.67,
+        "earliest": "2026-11-03",
+        "latest": "2026-11-04"
       },
       "prices": {
         "external": {
-          "n": 57,
+          "n": 58,
           "mean": 14.5,
           "sd": 0.0,
           "min": 14.5,
           "max": 14.5
         },
         "internal": {
-          "n": 57,
+          "n": 58,
           "mean": 11.5,
           "sd": 0.0,
           "min": 11.5,
           "max": 11.5
         },
         "students": {
-          "n": 57,
+          "n": 58,
           "mean": 7.0,
           "sd": 0.0,
           "min": 7.0,
@@ -1033,17 +1043,17 @@
       "name": "Hot Buffet",
       "nameDe": "Warmes Buffet",
       "facility": "FUSION meal",
-      "diet": "vegetarian",
+      "diet": "vegan",
       "dietDays": {
-        "vegan": 5,
+        "vegan": 6,
         "vegetarian": 35,
         "fish": 0,
         "meat": 0,
         "unclassified": 0
       },
-      "count": 40,
+      "count": 41,
       "firstSeen": "2026-09-07",
-      "lastSeen": "2026-10-30",
+      "lastSeen": "2026-11-02",
       "dates": [
         "2026-09-07",
         "2026-09-08",
@@ -1084,9 +1094,11 @@
         "2026-10-27",
         "2026-10-28",
         "2026-10-29",
-        "2026-10-30"
+        "2026-10-30",
+        "2026-11-02"
       ],
       "gapsWeekdays": [
+        1,
         1,
         1,
         1,
@@ -1130,28 +1142,28 @@
       "meanGapWeekdays": 1.0,
       "sdGapWeekdays": 0.0,
       "prediction": {
-        "nextDate": "2026-11-02",
+        "nextDate": "2026-11-03",
         "sigmaWeekdays": 0.0,
-        "earliest": "2026-11-02",
-        "latest": "2026-11-02"
+        "earliest": "2026-11-03",
+        "latest": "2026-11-03"
       },
       "prices": {
         "external": {
-          "n": 40,
+          "n": 41,
           "mean": 3.4,
           "sd": 0.0,
           "min": 3.4,
           "max": 3.4
         },
         "internal": {
-          "n": 40,
+          "n": 41,
           "mean": 2.9,
           "sd": 0.0,
           "min": 2.9,
           "max": 2.9
         },
         "students": {
-          "n": 40,
+          "n": 41,
           "mean": 2.5,
           "sd": 0.0,
           "min": 2.5,
@@ -1167,14 +1179,14 @@
       "diet": "vegetarian",
       "dietDays": {
         "vegan": 15,
-        "vegetarian": 25,
+        "vegetarian": 26,
         "fish": 0,
         "meat": 0,
         "unclassified": 0
       },
-      "count": 40,
+      "count": 41,
       "firstSeen": "2026-09-07",
-      "lastSeen": "2026-10-30",
+      "lastSeen": "2026-11-02",
       "dates": [
         "2026-09-07",
         "2026-09-08",
@@ -1215,9 +1227,11 @@
         "2026-10-27",
         "2026-10-28",
         "2026-10-29",
-        "2026-10-30"
+        "2026-10-30",
+        "2026-11-02"
       ],
       "gapsWeekdays": [
+        1,
         1,
         1,
         1,
@@ -1261,28 +1275,28 @@
       "meanGapWeekdays": 1.0,
       "sdGapWeekdays": 0.0,
       "prediction": {
-        "nextDate": "2026-11-02",
+        "nextDate": "2026-11-03",
         "sigmaWeekdays": 0.0,
-        "earliest": "2026-11-02",
-        "latest": "2026-11-02"
+        "earliest": "2026-11-03",
+        "latest": "2026-11-03"
       },
       "prices": {
         "external": {
-          "n": 40,
+          "n": 41,
           "mean": 3.4,
           "sd": 0.0,
           "min": 3.4,
           "max": 3.4
         },
         "internal": {
-          "n": 40,
+          "n": 41,
           "mean": 2.9,
           "sd": 0.0,
           "min": 2.9,
           "max": 2.9
         },
         "students": {
-          "n": 40,
+          "n": 41,
           "mean": 2.5,
           "sd": 0.0,
           "min": 2.5,
@@ -1295,17 +1309,17 @@
       "name": "Salad Buffet",
       "nameDe": "Salat Buffet",
       "facility": "FUSION meal",
-      "diet": "vegetarian",
+      "diet": "vegan",
       "dietDays": {
-        "vegan": 30,
+        "vegan": 31,
         "vegetarian": 10,
         "fish": 0,
         "meat": 0,
         "unclassified": 0
       },
-      "count": 40,
+      "count": 41,
       "firstSeen": "2026-09-07",
-      "lastSeen": "2026-10-30",
+      "lastSeen": "2026-11-02",
       "dates": [
         "2026-09-07",
         "2026-09-08",
@@ -1346,9 +1360,11 @@
         "2026-10-27",
         "2026-10-28",
         "2026-10-29",
-        "2026-10-30"
+        "2026-10-30",
+        "2026-11-02"
       ],
       "gapsWeekdays": [
+        1,
         1,
         1,
         1,
@@ -1392,28 +1408,28 @@
       "meanGapWeekdays": 1.0,
       "sdGapWeekdays": 0.0,
       "prediction": {
-        "nextDate": "2026-11-02",
+        "nextDate": "2026-11-03",
         "sigmaWeekdays": 0.0,
-        "earliest": "2026-11-02",
-        "latest": "2026-11-02"
+        "earliest": "2026-11-03",
+        "latest": "2026-11-03"
       },
       "prices": {
         "external": {
-          "n": 40,
+          "n": 41,
           "mean": 3.4,
           "sd": 0.0,
           "min": 3.4,
           "max": 3.4
         },
         "internal": {
-          "n": 40,
+          "n": 41,
           "mean": 2.9,
           "sd": 0.0,
           "min": 2.9,
           "max": 2.9
         },
         "students": {
-          "n": 40,
+          "n": 41,
           "mean": 2.5,
           "sd": 0.0,
           "min": 2.5,
@@ -1429,14 +1445,14 @@
       "diet": "vegetarian",
       "dietDays": {
         "vegan": 0,
-        "vegetarian": 40,
+        "vegetarian": 41,
         "fish": 0,
         "meat": 0,
         "unclassified": 0
       },
-      "count": 40,
+      "count": 41,
       "firstSeen": "2026-08-31",
-      "lastSeen": "2026-10-23",
+      "lastSeen": "2026-11-02",
       "dates": [
         "2026-08-31",
         "2026-09-01",
@@ -1477,7 +1493,8 @@
         "2026-10-20",
         "2026-10-21",
         "2026-10-22",
-        "2026-10-23"
+        "2026-10-23",
+        "2026-11-02"
       ],
       "gapsWeekdays": [
         1,
@@ -1518,33 +1535,34 @@
         1,
         1,
         1,
-        1
+        1,
+        6
       ],
-      "meanGapWeekdays": 1.0,
-      "sdGapWeekdays": 0.0,
+      "meanGapWeekdays": 1.12,
+      "sdGapWeekdays": 0.79,
       "prediction": {
-        "nextDate": "2026-10-26",
-        "sigmaWeekdays": 0.0,
-        "earliest": "2026-10-26",
-        "latest": "2026-10-26"
+        "nextDate": "2026-11-03",
+        "sigmaWeekdays": 0.79,
+        "earliest": "2026-11-03",
+        "latest": "2026-11-04"
       },
       "prices": {
         "external": {
-          "n": 40,
+          "n": 41,
           "mean": 17.5,
           "sd": 0.0,
           "min": 17.5,
           "max": 17.5
         },
         "internal": {
-          "n": 40,
+          "n": 41,
           "mean": 14.5,
           "sd": 0.0,
           "min": 14.5,
           "max": 14.5
         },
         "students": {
-          "n": 40,
+          "n": 41,
           "mean": 12.5,
           "sd": 0.0,
           "min": 12.5,
@@ -1687,14 +1705,14 @@
       "diet": "vegetarian",
       "dietDays": {
         "vegan": 0,
-        "vegetarian": 20,
+        "vegetarian": 21,
         "fish": 0,
         "meat": 0,
         "unclassified": 0
       },
-      "count": 20,
+      "count": 21,
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-10-23",
+      "lastSeen": "2026-11-02",
       "dates": [
         "2026-09-28",
         "2026-09-29",
@@ -1715,7 +1733,8 @@
         "2026-10-20",
         "2026-10-21",
         "2026-10-22",
-        "2026-10-23"
+        "2026-10-23",
+        "2026-11-02"
       ],
       "gapsWeekdays": [
         1,
@@ -1736,33 +1755,34 @@
         1,
         1,
         1,
-        1
+        1,
+        6
       ],
-      "meanGapWeekdays": 1.0,
-      "sdGapWeekdays": 0.0,
+      "meanGapWeekdays": 1.25,
+      "sdGapWeekdays": 1.12,
       "prediction": {
-        "nextDate": "2026-10-26",
-        "sigmaWeekdays": 0.0,
-        "earliest": "2026-10-26",
-        "latest": "2026-10-26"
+        "nextDate": "2026-11-03",
+        "sigmaWeekdays": 1.12,
+        "earliest": "2026-11-03",
+        "latest": "2026-11-04"
       },
       "prices": {
         "external": {
-          "n": 20,
+          "n": 21,
           "mean": 17.5,
           "sd": 0.0,
           "min": 17.5,
           "max": 17.5
         },
         "internal": {
-          "n": 20,
+          "n": 21,
           "mean": 14.5,
           "sd": 0.0,
           "min": 14.5,
           "max": 14.5
         },
         "students": {
-          "n": 20,
+          "n": 21,
           "mean": 12.5,
           "sd": 0.0,
           "min": 12.5,
@@ -2088,6 +2108,120 @@
           "sd": 0.0,
           "min": 11.5,
           "max": 11.5
+        }
+      }
+    },
+    {
+      "id": 259,
+      "name": "Lahmacun",
+      "nameDe": "Lahmacun",
+      "facility": "food market",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 3,
+        "unclassified": 0
+      },
+      "count": 3,
+      "firstSeen": "2026-09-21",
+      "lastSeen": "2026-11-02",
+      "dates": [
+        "2026-09-21",
+        "2026-09-22",
+        "2026-11-02"
+      ],
+      "gapsWeekdays": [
+        1,
+        29
+      ],
+      "meanGapWeekdays": 15.0,
+      "sdGapWeekdays": 19.8,
+      "prediction": {
+        "nextDate": "2026-11-23",
+        "sigmaWeekdays": 19.8,
+        "earliest": "2026-11-03",
+        "latest": "2026-12-21"
+      },
+      "prices": {
+        "external": {
+          "n": 3,
+          "mean": 16.5,
+          "sd": 0.0,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 3,
+          "mean": 13.5,
+          "sd": 0.0,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 3,
+          "mean": 10.5,
+          "sd": 0.0,
+          "min": 10.5,
+          "max": 10.5
+        }
+      }
+    },
+    {
+      "id": 52,
+      "name": "Lasagna",
+      "nameDe": "Lasagne",
+      "facility": "food market",
+      "diet": "vegan",
+      "dietDays": {
+        "vegan": 3,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 3,
+      "firstSeen": "2026-08-10",
+      "lastSeen": "2026-11-02",
+      "dates": [
+        "2026-08-10",
+        "2026-10-29",
+        "2026-11-02"
+      ],
+      "gapsWeekdays": [
+        58,
+        2
+      ],
+      "meanGapWeekdays": 30.0,
+      "sdGapWeekdays": 39.6,
+      "prediction": {
+        "nextDate": "2026-12-14",
+        "sigmaWeekdays": 39.6,
+        "earliest": "2026-11-03",
+        "latest": "2027-02-08"
+      },
+      "prices": {
+        "external": {
+          "n": 3,
+          "mean": 14.5,
+          "sd": 0.0,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 3,
+          "mean": 11.5,
+          "sd": 0.0,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 3,
+          "mean": 7.0,
+          "sd": 0.0,
+          "min": 7.0,
+          "max": 7.0
         }
       }
     },
@@ -3706,56 +3840,6 @@
       }
     },
     {
-      "id": 259,
-      "name": "Lahmacun",
-      "nameDe": "Lahmacun",
-      "facility": "food market",
-      "diet": "meat",
-      "dietDays": {
-        "vegan": 0,
-        "vegetarian": 0,
-        "fish": 0,
-        "meat": 2,
-        "unclassified": 0
-      },
-      "count": 2,
-      "firstSeen": "2026-09-21",
-      "lastSeen": "2026-09-22",
-      "dates": [
-        "2026-09-21",
-        "2026-09-22"
-      ],
-      "gapsWeekdays": [
-        1
-      ],
-      "meanGapWeekdays": 1.0,
-      "sdGapWeekdays": null,
-      "prediction": null,
-      "prices": {
-        "external": {
-          "n": 2,
-          "mean": 16.5,
-          "sd": 0.0,
-          "min": 16.5,
-          "max": 16.5
-        },
-        "internal": {
-          "n": 2,
-          "mean": 13.5,
-          "sd": 0.0,
-          "min": 13.5,
-          "max": 13.5
-        },
-        "students": {
-          "n": 2,
-          "mean": 10.5,
-          "sd": 0.0,
-          "min": 10.5,
-          "max": 10.5
-        }
-      }
-    },
-    {
       "id": 463,
       "name": "Lamb Rogan Josh",
       "nameDe": "Lamm Rogan-Josh",
@@ -3852,56 +3936,6 @@
           "sd": 0.0,
           "min": 10.5,
           "max": 10.5
-        }
-      }
-    },
-    {
-      "id": 52,
-      "name": "Lasagna",
-      "nameDe": "Lasagne",
-      "facility": "food market",
-      "diet": "vegan",
-      "dietDays": {
-        "vegan": 2,
-        "vegetarian": 0,
-        "fish": 0,
-        "meat": 0,
-        "unclassified": 0
-      },
-      "count": 2,
-      "firstSeen": "2026-08-10",
-      "lastSeen": "2026-10-29",
-      "dates": [
-        "2026-08-10",
-        "2026-10-29"
-      ],
-      "gapsWeekdays": [
-        58
-      ],
-      "meanGapWeekdays": 58.0,
-      "sdGapWeekdays": null,
-      "prediction": null,
-      "prices": {
-        "external": {
-          "n": 2,
-          "mean": 14.5,
-          "sd": 0.0,
-          "min": 14.5,
-          "max": 14.5
-        },
-        "internal": {
-          "n": 2,
-          "mean": 11.5,
-          "sd": 0.0,
-          "min": 11.5,
-          "max": 11.5
-        },
-        "students": {
-          "n": 2,
-          "mean": 7.0,
-          "sd": 0.0,
-          "min": 7.0,
-          "max": 7.0
         }
       }
     },
@@ -4606,6 +4640,56 @@
       }
     },
     {
+      "id": 77,
+      "name": "Spaghetti & Spicy Vegetarian Balls",
+      "nameDe": "Spaghetti & Spicy Vegetrian Balls",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 2,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 2,
+      "firstSeen": "2026-08-10",
+      "lastSeen": "2026-11-02",
+      "dates": [
+        "2026-08-10",
+        "2026-11-02"
+      ],
+      "gapsWeekdays": [
+        60
+      ],
+      "meanGapWeekdays": 60.0,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 2,
+          "mean": 14.5,
+          "sd": 0.0,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 2,
+          "mean": 11.5,
+          "sd": 0.0,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 2,
+          "mean": 7.0,
+          "sd": 0.0,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
+    },
+    {
       "id": 181,
       "name": "Spring Rolls with Vegetables",
       "nameDe": "Fr\u00fchlingsrollen mit Gem\u00fcse",
@@ -4656,6 +4740,56 @@
       }
     },
     {
+      "id": 143,
+      "name": "Sweet Potato and Lentil Curry",
+      "nameDe": "S\u00fcsskartoffel-Linsen Curry",
+      "facility": "FUSION meal",
+      "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 2,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 2,
+      "firstSeen": "2026-09-07",
+      "lastSeen": "2026-11-02",
+      "dates": [
+        "2026-09-07",
+        "2026-11-02"
+      ],
+      "gapsWeekdays": [
+        40
+      ],
+      "meanGapWeekdays": 40.0,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 2,
+          "mean": 12.5,
+          "sd": 0.0,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "internal": {
+          "n": 2,
+          "mean": 10.5,
+          "sd": 0.0,
+          "min": 10.5,
+          "max": 10.5
+        },
+        "students": {
+          "n": 2,
+          "mean": 8.5,
+          "sd": 0.0,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    },
+    {
       "id": 118,
       "name": "Taco Bowl",
       "nameDe": "Taco Bowl",
@@ -4701,6 +4835,56 @@
           "mean": 7.75,
           "sd": 1.06,
           "min": 7.0,
+          "max": 8.5
+        }
+      }
+    },
+    {
+      "id": 84,
+      "name": "Teriyaki Chicken Balls",
+      "nameDe": "Teriyaki Chicken Balls",
+      "facility": "food market",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 2,
+        "unclassified": 0
+      },
+      "count": 2,
+      "firstSeen": "2026-08-10",
+      "lastSeen": "2026-11-02",
+      "dates": [
+        "2026-08-10",
+        "2026-11-02"
+      ],
+      "gapsWeekdays": [
+        60
+      ],
+      "meanGapWeekdays": 60.0,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 2,
+          "mean": 15.5,
+          "sd": 0.0,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 2,
+          "mean": 12.5,
+          "sd": 0.0,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 2,
+          "mean": 8.5,
+          "sd": 0.0,
+          "min": 8.5,
           "max": 8.5
         }
       }
@@ -5864,6 +6048,53 @@
       }
     },
     {
+      "id": 590,
+      "name": "Assari Ramen",
+      "nameDe": "Assari Ramen",
+      "facility": "food market",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-02",
+      "lastSeen": "2026-11-02",
+      "dates": [
+        "2026-11-02"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 18.5,
+          "sd": null,
+          "min": 18.5,
+          "max": 18.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        }
+      }
+    },
+    {
       "id": 215,
       "name": "Augustiner Sch\u00fcblig",
       "nameDe": "Augustiner Sch\u00fcblig",
@@ -6757,6 +6988,53 @@
       }
     },
     {
+      "id": 585,
+      "name": "Beef Cutlets with Balsamic Gravy",
+      "nameDe": "Rindspl\u00e4tzli mit Balsamico-Jus",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-02",
+      "lastSeen": "2026-11-02",
+      "dates": [
+        "2026-11-02"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 18.5,
+          "sd": null,
+          "min": 18.5,
+          "max": 18.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        }
+      }
+    },
+    {
       "id": 396,
       "name": "Beef Cutlets with Chili-Honey Gravy",
       "nameDe": "Rindspl\u00e4tzli mit Chili-Honig Jus",
@@ -7364,6 +7642,53 @@
           "sd": null,
           "min": 8.5,
           "max": 8.5
+        }
+      }
+    },
+    {
+      "id": 586,
+      "name": "Beet Falafel ",
+      "nameDe": "Randen-Falafel ",
+      "facility": "FUSION meal",
+      "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-02",
+      "lastSeen": "2026-11-02",
+      "dates": [
+        "2026-11-02"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.9,
+          "sd": null,
+          "min": 16.9,
+          "max": 16.9
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.9,
+          "sd": null,
+          "min": 12.9,
+          "max": 12.9
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.9,
+          "sd": null,
+          "min": 8.9,
+          "max": 8.9
         }
       }
     },
@@ -16439,6 +16764,53 @@
       }
     },
     {
+      "id": 591,
+      "name": "Japanese Drunken Noodles",
+      "nameDe": "Japan Drunken Noodles",
+      "facility": "food market",
+      "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-02",
+      "lastSeen": "2026-11-02",
+      "dates": [
+        "2026-11-02"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 18.5,
+          "sd": null,
+          "min": 18.5,
+          "max": 18.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        }
+      }
+    },
+    {
       "id": 576,
       "name": "Jerk Chicken Thighs",
       "nameDe": "Jerk-Pouletschenkel",
@@ -20011,6 +20383,53 @@
       }
     },
     {
+      "id": 587,
+      "name": "Penne with Basil Cream Sauce",
+      "nameDe": "Penne mit Basilikum-Rahmsauce",
+      "facility": "FUSION meal",
+      "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-02",
+      "lastSeen": "2026-11-02",
+      "dates": [
+        "2026-11-02"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
+    },
+    {
       "id": 63,
       "name": "Penne with Gorgonzola",
       "nameDe": "Penne al Gorgonzola",
@@ -20940,6 +21359,53 @@
           "sd": null,
           "min": 13.5,
           "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
+        }
+      }
+    },
+    {
+      "id": 588,
+      "name": "Pork Strips in Hoisin Sauce",
+      "nameDe": "Schweinsgeschnetzeltes an Hosinsauce",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-02",
+      "lastSeen": "2026-11-02",
+      "dates": [
+        "2026-11-02"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.9,
+          "sd": null,
+          "min": 12.9,
+          "max": 12.9
         },
         "students": {
           "n": 1,
@@ -23630,53 +24096,6 @@
       }
     },
     {
-      "id": 77,
-      "name": "Spaghetti & Spicy Vegetarian Balls",
-      "nameDe": "Spaghetti & Spicy Vegetrian Balls",
-      "facility": "food market",
-      "diet": "vegetarian",
-      "dietDays": {
-        "vegan": 0,
-        "vegetarian": 1,
-        "fish": 0,
-        "meat": 0,
-        "unclassified": 0
-      },
-      "count": 1,
-      "firstSeen": "2026-08-10",
-      "lastSeen": "2026-08-10",
-      "dates": [
-        "2026-08-10"
-      ],
-      "gapsWeekdays": [],
-      "meanGapWeekdays": null,
-      "sdGapWeekdays": null,
-      "prediction": null,
-      "prices": {
-        "external": {
-          "n": 1,
-          "mean": 14.5,
-          "sd": null,
-          "min": 14.5,
-          "max": 14.5
-        },
-        "internal": {
-          "n": 1,
-          "mean": 11.5,
-          "sd": null,
-          "min": 11.5,
-          "max": 11.5
-        },
-        "students": {
-          "n": 1,
-          "mean": 7.0,
-          "sd": null,
-          "min": 7.0,
-          "max": 7.0
-        }
-      }
-    },
-    {
       "id": 385,
       "name": "Spaghetti all'arrabbiata",
       "nameDe": "Spaghetti all\u2019arrabbiata",
@@ -24418,53 +24837,6 @@
           "sd": null,
           "min": 12.5,
           "max": 12.5
-        },
-        "students": {
-          "n": 1,
-          "mean": 8.5,
-          "sd": null,
-          "min": 8.5,
-          "max": 8.5
-        }
-      }
-    },
-    {
-      "id": 143,
-      "name": "Sweet Potato and Lentil Curry",
-      "nameDe": "S\u00fcsskartoffeln-Linsen Curry",
-      "facility": "FUSION meal",
-      "diet": "vegetarian",
-      "dietDays": {
-        "vegan": 0,
-        "vegetarian": 1,
-        "fish": 0,
-        "meat": 0,
-        "unclassified": 0
-      },
-      "count": 1,
-      "firstSeen": "2026-09-07",
-      "lastSeen": "2026-09-07",
-      "dates": [
-        "2026-09-07"
-      ],
-      "gapsWeekdays": [],
-      "meanGapWeekdays": null,
-      "sdGapWeekdays": null,
-      "prediction": null,
-      "prices": {
-        "external": {
-          "n": 1,
-          "mean": 12.5,
-          "sd": null,
-          "min": 12.5,
-          "max": 12.5
-        },
-        "internal": {
-          "n": 1,
-          "mean": 10.5,
-          "sd": null,
-          "min": 10.5,
-          "max": 10.5
         },
         "students": {
           "n": 1,
@@ -25278,53 +25650,6 @@
       "id": 83,
       "name": "Teriyaki Beef Balls",
       "nameDe": "Teriyaki Beef Balls",
-      "facility": "food market",
-      "diet": "meat",
-      "dietDays": {
-        "vegan": 0,
-        "vegetarian": 0,
-        "fish": 0,
-        "meat": 1,
-        "unclassified": 0
-      },
-      "count": 1,
-      "firstSeen": "2026-08-10",
-      "lastSeen": "2026-08-10",
-      "dates": [
-        "2026-08-10"
-      ],
-      "gapsWeekdays": [],
-      "meanGapWeekdays": null,
-      "sdGapWeekdays": null,
-      "prediction": null,
-      "prices": {
-        "external": {
-          "n": 1,
-          "mean": 15.5,
-          "sd": null,
-          "min": 15.5,
-          "max": 15.5
-        },
-        "internal": {
-          "n": 1,
-          "mean": 12.5,
-          "sd": null,
-          "min": 12.5,
-          "max": 12.5
-        },
-        "students": {
-          "n": 1,
-          "mean": 8.5,
-          "sd": null,
-          "min": 8.5,
-          "max": 8.5
-        }
-      }
-    },
-    {
-      "id": 84,
-      "name": "Teriyaki Chicken Balls",
-      "nameDe": "Teriyaki Chicken Balls",
       "facility": "food market",
       "diet": "meat",
       "dietDays": {
@@ -26937,6 +27262,53 @@
       "lastSeen": "2026-10-20",
       "dates": [
         "2026-10-20"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    },
+    {
+      "id": 589,
+      "name": "Veal Adrio",
+      "nameDe": "Kalbsadrio",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-02",
+      "lastSeen": "2026-11-02",
+      "dates": [
+        "2026-11-02"
       ],
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
@@ -28992,7 +29364,7 @@
     {
       "facility": "food market",
       "line": "fire",
-      "dishDays": 71,
+      "dishDays": 72,
       "dishes": [
         {
           "id": 17,
@@ -29040,6 +29412,18 @@
           "dates": [
             "2026-08-06",
             "2026-10-29"
+          ]
+        },
+        {
+          "id": 84,
+          "name": "Teriyaki Chicken Balls",
+          "nameDe": "Teriyaki Chicken Balls",
+          "count": 2,
+          "firstSeen": "2026-08-10",
+          "lastSeen": "2026-11-02",
+          "dates": [
+            "2026-08-10",
+            "2026-11-02"
           ]
         },
         {
@@ -29616,17 +30000,6 @@
           ]
         },
         {
-          "id": 84,
-          "name": "Teriyaki Chicken Balls",
-          "nameDe": "Teriyaki Chicken Balls",
-          "count": 1,
-          "firstSeen": "2026-08-10",
-          "lastSeen": "2026-08-10",
-          "dates": [
-            "2026-08-10"
-          ]
-        },
-        {
           "id": 90,
           "name": "Turkey Cream Goulash",
           "nameDe": "Truten Rahmgulasch",
@@ -29730,8 +30103,21 @@
     {
       "facility": "food market",
       "line": "green daily",
-      "dishDays": 71,
+      "dishDays": 72,
       "dishes": [
+        {
+          "id": 52,
+          "name": "Lasagna",
+          "nameDe": "Lasagne",
+          "count": 3,
+          "firstSeen": "2026-08-10",
+          "lastSeen": "2026-11-02",
+          "dates": [
+            "2026-08-10",
+            "2026-10-29",
+            "2026-11-02"
+          ]
+        },
         {
           "id": 36,
           "name": "Dal made from yellow peas",
@@ -29742,18 +30128,6 @@
           "dates": [
             "2026-08-05",
             "2026-10-28"
-          ]
-        },
-        {
-          "id": 52,
-          "name": "Lasagna",
-          "nameDe": "Lasagne",
-          "count": 2,
-          "firstSeen": "2026-08-10",
-          "lastSeen": "2026-10-29",
-          "dates": [
-            "2026-08-10",
-            "2026-10-29"
           ]
         },
         {
@@ -30478,15 +30852,15 @@
     {
       "facility": "food market",
       "line": "green delight",
-      "dishDays": 64,
+      "dishDays": 65,
       "dishes": [
         {
           "id": 33,
           "name": "Choose 5",
           "nameDe": "Choose 5",
-          "count": 63,
+          "count": 64,
           "firstSeen": "2026-08-05",
-          "lastSeen": "2026-10-30",
+          "lastSeen": "2026-11-02",
           "dates": [
             "2026-08-05",
             "2026-08-06",
@@ -30550,7 +30924,8 @@
             "2026-10-27",
             "2026-10-28",
             "2026-10-29",
-            "2026-10-30"
+            "2026-10-30",
+            "2026-11-02"
           ]
         },
         {
@@ -30569,7 +30944,7 @@
     {
       "facility": "food market",
       "line": "grill",
-      "dishDays": 70,
+      "dishDays": 71,
       "dishes": [
         {
           "id": 12,
@@ -30640,6 +31015,17 @@
           "lastSeen": "2026-08-24",
           "dates": [
             "2026-08-24"
+          ]
+        },
+        {
+          "id": 590,
+          "name": "Assari Ramen",
+          "nameDe": "Assari Ramen",
+          "count": 1,
+          "firstSeen": "2026-11-02",
+          "lastSeen": "2026-11-02",
+          "dates": [
+            "2026-11-02"
           ]
         },
         {
@@ -31690,7 +32076,7 @@
     {
       "facility": "food market",
       "line": "pasta classica vegi",
-      "dishDays": 32,
+      "dishDays": 33,
       "dishes": [
         {
           "id": 25,
@@ -31702,6 +32088,18 @@
           "dates": [
             "2026-08-06",
             "2026-10-29"
+          ]
+        },
+        {
+          "id": 77,
+          "name": "Spaghetti & Spicy Vegetarian Balls",
+          "nameDe": "Spaghetti & Spicy Vegetrian Balls",
+          "count": 2,
+          "firstSeen": "2026-08-10",
+          "lastSeen": "2026-11-02",
+          "dates": [
+            "2026-08-10",
+            "2026-11-02"
           ]
         },
         {
@@ -31969,17 +32367,6 @@
           ]
         },
         {
-          "id": 77,
-          "name": "Spaghetti & Spicy Vegetarian Balls",
-          "nameDe": "Spaghetti & Spicy Vegetrian Balls",
-          "count": 1,
-          "firstSeen": "2026-08-10",
-          "lastSeen": "2026-08-10",
-          "dates": [
-            "2026-08-10"
-          ]
-        },
-        {
           "id": 148,
           "name": "Spaghetti all\u2019Arrabbiata",
           "nameDe": "Spaghetti all\u2019Arrabbiata",
@@ -32039,7 +32426,7 @@
     {
       "facility": "food market",
       "line": "pasta della nonna",
-      "dishDays": 68,
+      "dishDays": 69,
       "dishes": [
         {
           "id": 81,
@@ -32389,6 +32776,17 @@
           ]
         },
         {
+          "id": 591,
+          "name": "Japanese Drunken Noodles",
+          "nameDe": "Japan Drunken Noodles",
+          "count": 1,
+          "firstSeen": "2026-11-02",
+          "lastSeen": "2026-11-02",
+          "dates": [
+            "2026-11-02"
+          ]
+        },
+        {
           "id": 236,
           "name": "Kimchi Noodle Soup & Dumplings",
           "nameDe": "Kimchi Noodle Soup & Dumplings",
@@ -32734,15 +33132,15 @@
     {
       "facility": "food market",
       "line": "pizza classica",
-      "dishDays": 58,
+      "dishDays": 59,
       "dishes": [
         {
           "id": 64,
           "name": "Pizza Margherita",
           "nameDe": "Pizza Margherita",
-          "count": 57,
+          "count": 58,
           "firstSeen": "2026-08-05",
-          "lastSeen": "2026-10-30",
+          "lastSeen": "2026-11-02",
           "dates": [
             "2026-08-05",
             "2026-08-06",
@@ -32800,7 +33198,8 @@
             "2026-10-27",
             "2026-10-28",
             "2026-10-29",
-            "2026-10-30"
+            "2026-10-30",
+            "2026-11-02"
           ]
         },
         {
@@ -32837,7 +33236,7 @@
     {
       "facility": "food market",
       "line": "pizza mamma mia",
-      "dishDays": 32,
+      "dishDays": 33,
       "dishes": [
         {
           "id": 126,
@@ -32869,6 +33268,19 @@
           ]
         },
         {
+          "id": 259,
+          "name": "Lahmacun",
+          "nameDe": "Lahmacun",
+          "count": 3,
+          "firstSeen": "2026-09-21",
+          "lastSeen": "2026-11-02",
+          "dates": [
+            "2026-09-21",
+            "2026-09-22",
+            "2026-11-02"
+          ]
+        },
+        {
           "id": 434,
           "name": "Cremoso Pizza",
           "nameDe": "Pizza Cremoso",
@@ -32890,18 +33302,6 @@
           "dates": [
             "2026-09-30",
             "2026-10-01"
-          ]
-        },
-        {
-          "id": 259,
-          "name": "Lahmacun",
-          "nameDe": "Lahmacun",
-          "count": 2,
-          "firstSeen": "2026-09-21",
-          "lastSeen": "2026-09-22",
-          "dates": [
-            "2026-09-21",
-            "2026-09-22"
           ]
         },
         {
@@ -33036,15 +33436,15 @@
     {
       "facility": "FUSION meal",
       "line": "FRESH ISLAND",
-      "dishDays": 40,
+      "dishDays": 41,
       "dishes": [
         {
           "id": 142,
           "name": "Salad Buffet",
           "nameDe": "Salat Buffet",
-          "count": 40,
+          "count": 41,
           "firstSeen": "2026-09-07",
-          "lastSeen": "2026-10-30",
+          "lastSeen": "2026-11-02",
           "dates": [
             "2026-09-07",
             "2026-09-08",
@@ -33085,7 +33485,8 @@
             "2026-10-27",
             "2026-10-28",
             "2026-10-29",
-            "2026-10-30"
+            "2026-10-30",
+            "2026-11-02"
           ]
         }
       ]
@@ -33093,15 +33494,15 @@
     {
       "facility": "FUSION meal",
       "line": "GLOBETROTTER",
-      "dishDays": 40,
+      "dishDays": 41,
       "dishes": [
         {
           "id": 139,
           "name": "Hot Buffet",
           "nameDe": "Warmes Buffet",
-          "count": 40,
+          "count": 41,
           "firstSeen": "2026-09-07",
-          "lastSeen": "2026-10-30",
+          "lastSeen": "2026-11-02",
           "dates": [
             "2026-09-07",
             "2026-09-08",
@@ -33142,7 +33543,8 @@
             "2026-10-27",
             "2026-10-28",
             "2026-10-29",
-            "2026-10-30"
+            "2026-10-30",
+            "2026-11-02"
           ]
         }
       ]
@@ -33150,7 +33552,7 @@
     {
       "facility": "FUSION meal",
       "line": "MEATWORKS",
-      "dishDays": 45,
+      "dishDays": 46,
       "dishes": [
         {
           "id": 138,
@@ -33573,6 +33975,17 @@
           ]
         },
         {
+          "id": 589,
+          "name": "Veal Adrio",
+          "nameDe": "Kalbsadrio",
+          "count": 1,
+          "firstSeen": "2026-11-02",
+          "lastSeen": "2026-11-02",
+          "dates": [
+            "2026-11-02"
+          ]
+        },
+        {
           "id": 342,
           "name": "Venison Meatloaf",
           "nameDe": "Hirsch-Hackbraten",
@@ -33632,15 +34045,15 @@
     {
       "facility": "FUSION meal",
       "line": "POWER KITCHEN",
-      "dishDays": 40,
+      "dishDays": 41,
       "dishes": [
         {
           "id": 141,
           "name": "Protein Buffet",
           "nameDe": "Protein Buffet",
-          "count": 40,
+          "count": 41,
           "firstSeen": "2026-09-07",
-          "lastSeen": "2026-10-30",
+          "lastSeen": "2026-11-02",
           "dates": [
             "2026-09-07",
             "2026-09-08",
@@ -33681,7 +34094,8 @@
             "2026-10-27",
             "2026-10-28",
             "2026-10-29",
-            "2026-10-30"
+            "2026-10-30",
+            "2026-11-02"
           ]
         }
       ]
@@ -33689,7 +34103,7 @@
     {
       "facility": "FUSION meal",
       "line": "SOUL FOOD",
-      "dishDays": 41,
+      "dishDays": 42,
       "dishes": [
         {
           "id": 172,
@@ -33750,6 +34164,17 @@
           "dates": [
             "2026-10-05",
             "2026-10-26"
+          ]
+        },
+        {
+          "id": 585,
+          "name": "Beef Cutlets with Balsamic Gravy",
+          "nameDe": "Rindspl\u00e4tzli mit Balsamico-Jus",
+          "count": 1,
+          "firstSeen": "2026-11-02",
+          "lastSeen": "2026-11-02",
+          "dates": [
+            "2026-11-02"
           ]
         },
         {
@@ -34087,7 +34512,7 @@
     {
       "facility": "FUSION meal",
       "line": "VEGAN",
-      "dishDays": 40,
+      "dishDays": 41,
       "dishes": [
         {
           "id": 474,
@@ -34156,6 +34581,17 @@
           "lastSeen": "2026-10-08",
           "dates": [
             "2026-10-08"
+          ]
+        },
+        {
+          "id": 586,
+          "name": "Beet Falafel ",
+          "nameDe": "Randen-Falafel ",
+          "count": 1,
+          "firstSeen": "2026-11-02",
+          "lastSeen": "2026-11-02",
+          "dates": [
+            "2026-11-02"
           ]
         },
         {
@@ -34504,7 +34940,7 @@
     {
       "facility": "FUSION meal",
       "line": "VEGGIE",
-      "dishDays": 43,
+      "dishDays": 44,
       "dishes": [
         {
           "id": 268,
@@ -34741,6 +35177,17 @@
           ]
         },
         {
+          "id": 587,
+          "name": "Penne with Basil Cream Sauce",
+          "nameDe": "Penne mit Basilikum-Rahmsauce",
+          "count": 1,
+          "firstSeen": "2026-11-02",
+          "lastSeen": "2026-11-02",
+          "dates": [
+            "2026-11-02"
+          ]
+        },
+        {
           "id": 571,
           "name": "Pizokel with Cheese Sauce",
           "nameDe": "Pizokel mit K\u00e4sesauce",
@@ -34954,7 +35401,7 @@
     {
       "facility": "FUSION meal",
       "line": "WORLD OF ASIA",
-      "dishDays": 48,
+      "dishDays": 49,
       "dishes": [
         {
           "id": 193,
@@ -35259,6 +35706,17 @@
           ]
         },
         {
+          "id": 588,
+          "name": "Pork Strips in Hoisin Sauce",
+          "nameDe": "Schweinsgeschnetzeltes an Hosinsauce",
+          "count": 1,
+          "firstSeen": "2026-11-02",
+          "lastSeen": "2026-11-02",
+          "dates": [
+            "2026-11-02"
+          ]
+        },
+        {
           "id": 291,
           "name": "Pork Vindaloo",
           "nameDe": "Schweins-Vindaloo",
@@ -35439,7 +35897,7 @@
     {
       "facility": "FUSION meal",
       "line": "WORLD OF ASIA VEGGIE",
-      "dishDays": 46,
+      "dishDays": 47,
       "dishes": [
         {
           "id": 218,
@@ -35488,6 +35946,18 @@
           "dates": [
             "2026-09-09",
             "2026-10-14"
+          ]
+        },
+        {
+          "id": 143,
+          "name": "Sweet Potato and Lentil Curry",
+          "nameDe": "S\u00fcsskartoffel-Linsen Curry",
+          "count": 2,
+          "firstSeen": "2026-09-07",
+          "lastSeen": "2026-11-02",
+          "dates": [
+            "2026-09-07",
+            "2026-11-02"
           ]
         },
         {
@@ -35799,17 +36269,6 @@
           ]
         },
         {
-          "id": 143,
-          "name": "Sweet Potato and Lentil Curry",
-          "nameDe": "S\u00fcsskartoffeln-Linsen Curry",
-          "count": 1,
-          "firstSeen": "2026-09-07",
-          "lastSeen": "2026-09-07",
-          "dates": [
-            "2026-09-07"
-          ]
-        },
-        {
           "id": 302,
           "name": "Tamarind and Jackfruit Curry ",
           "nameDe": "Tamarinden-Jackfruit Curry ",
@@ -35902,15 +36361,15 @@
     {
       "facility": "Mendokoro",
       "line": "Ichi",
-      "dishDays": 58,
+      "dishDays": 59,
       "dishes": [
         {
           "id": 3,
           "name": "Miso Ramen",
           "nameDe": "Miso Ramen",
-          "count": 58,
+          "count": 59,
           "firstSeen": "2026-08-05",
-          "lastSeen": "2026-10-23",
+          "lastSeen": "2026-11-02",
           "dates": [
             "2026-08-05",
             "2026-08-06",
@@ -35969,7 +36428,8 @@
             "2026-10-20",
             "2026-10-21",
             "2026-10-22",
-            "2026-10-23"
+            "2026-10-23",
+            "2026-11-02"
           ]
         }
       ]
@@ -35977,15 +36437,15 @@
     {
       "facility": "Mendokoro",
       "line": "Ni",
-      "dishDays": 58,
+      "dishDays": 59,
       "dishes": [
         {
           "id": 4,
           "name": "Shoyu Ramen",
           "nameDe": "Shoyu Ramen",
-          "count": 58,
+          "count": 59,
           "firstSeen": "2026-08-05",
-          "lastSeen": "2026-10-23",
+          "lastSeen": "2026-11-02",
           "dates": [
             "2026-08-05",
             "2026-08-06",
@@ -36044,7 +36504,8 @@
             "2026-10-20",
             "2026-10-21",
             "2026-10-22",
-            "2026-10-23"
+            "2026-10-23",
+            "2026-11-02"
           ]
         }
       ]
@@ -36052,7 +36513,7 @@
     {
       "facility": "Mendokoro",
       "line": "Roku",
-      "dishDays": 58,
+      "dishDays": 59,
       "dishes": [
         {
           "id": 5,
@@ -36131,13 +36592,24 @@
             "2026-10-22",
             "2026-10-23"
           ]
+        },
+        {
+          "id": 1,
+          "name": "Chicken Tonkatsu Bowl",
+          "nameDe": "Chicken Tonkatsu Bowl",
+          "count": 1,
+          "firstSeen": "2026-11-02",
+          "lastSeen": "2026-11-02",
+          "dates": [
+            "2026-11-02"
+          ]
         }
       ]
     },
     {
       "facility": "Mendokoro",
       "line": "San",
-      "dishDays": 58,
+      "dishDays": 59,
       "dishes": [
         {
           "id": 107,
@@ -36216,13 +36688,24 @@
             "2026-08-27",
             "2026-08-28"
           ]
+        },
+        {
+          "id": 318,
+          "name": "Kimchi ramen",
+          "nameDe": "Kimchi Ramen",
+          "count": 1,
+          "firstSeen": "2026-11-02",
+          "lastSeen": "2026-11-02",
+          "dates": [
+            "2026-11-02"
+          ]
         }
       ]
     },
     {
       "facility": "Mendokoro",
       "line": "Shi",
-      "dishDays": 58,
+      "dishDays": 59,
       "dishes": [
         {
           "id": 1,
@@ -36290,6 +36773,17 @@
             "2026-10-21",
             "2026-10-22",
             "2026-10-23"
+          ]
+        },
+        {
+          "id": 107,
+          "name": "Tantanmen Ramen",
+          "nameDe": "Tantanmen Ramen",
+          "count": 1,
+          "firstSeen": "2026-11-02",
+          "lastSeen": "2026-11-02",
+          "dates": [
+            "2026-11-02"
           ]
         }
       ]
