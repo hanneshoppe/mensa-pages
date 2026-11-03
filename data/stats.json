@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-11-03T04:13:02Z",
+  "dataAsOf": "2026-11-03T07:12:23Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,43 +57,43 @@
     {
       "name": "FUSION meal",
       "days": 42,
-      "dishDays": 401,
+      "dishDays": 403,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-11-03",
       "diet": {
-        "vegan": 96,
+        "vegan": 97,
         "vegetarian": 165,
         "fish": 9,
-        "meat": 131,
+        "meat": 132,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 401,
+          "n": 403,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.48
+          "mean": 11.51
         },
         "internal": {
-          "n": 401,
+          "n": 403,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.45
+          "mean": 9.47
         },
         "students": {
-          "n": 401,
+          "n": 403,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
           "p75": 8.9,
           "max": 12.5,
-          "mean": 7.07
+          "mean": 7.08
         }
       }
     },
@@ -144,37 +144,37 @@
   "overall": {
     "name": "all",
     "days": 65,
-    "dishDays": 1221,
+    "dishDays": 1223,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-11-03",
     "diet": {
-      "vegan": 179,
+      "vegan": 180,
       "vegetarian": 490,
       "fish": 33,
-      "meat": 432,
+      "meat": 433,
       "unclassified": 87
     },
     "prices": {
       "external": {
-        "n": 1221,
+        "n": 1223,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
         "p75": 16.9,
         "max": 19.5,
-        "mean": 14.74
+        "mean": 14.75
       },
       "internal": {
-        "n": 1221,
+        "n": 1223,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
         "p75": 13.9,
         "max": 16.5,
-        "mean": 12.06
+        "mean": 12.07
       },
       "students": {
-        "n": 1221,
+        "n": 1223,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -4922,6 +4922,56 @@
           "sd": 1.13,
           "min": 10.9,
           "max": 12.5
+        }
+      }
+    },
+    {
+      "id": 176,
+      "name": "Seitan Stroganoff",
+      "nameDe": "Seitan Stroganoff",
+      "facility": "FUSION meal",
+      "diet": "vegan",
+      "dietDays": {
+        "vegan": 2,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 2,
+      "firstSeen": "2026-09-10",
+      "lastSeen": "2026-11-03",
+      "dates": [
+        "2026-09-10",
+        "2026-11-03"
+      ],
+      "gapsWeekdays": [
+        38
+      ],
+      "meanGapWeekdays": 38.0,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 2,
+          "mean": 16.9,
+          "sd": 0.0,
+          "min": 16.9,
+          "max": 16.9
+        },
+        "internal": {
+          "n": 2,
+          "mean": 12.9,
+          "sd": 0.0,
+          "min": 12.9,
+          "max": 12.9
+        },
+        "students": {
+          "n": 2,
+          "mean": 8.9,
+          "sd": 0.0,
+          "min": 8.9,
+          "max": 8.9
         }
       }
     },
@@ -10158,6 +10208,53 @@
       "lastSeen": "2026-10-02",
       "dates": [
         "2026-10-02"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    },
+    {
+      "id": 596,
+      "name": "Chicken Breast - Caf\u00e9 de Paris Sauce",
+      "nameDe": "Pouletbrust - Caf\u00e9 de Paris Sauce",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-03",
+      "lastSeen": "2026-11-03",
+      "dates": [
+        "2026-11-03"
       ],
       "gapsWeekdays": [],
       "meanGapWeekdays": null,
@@ -23583,53 +23680,6 @@
       }
     },
     {
-      "id": 176,
-      "name": "Seitan Stroganoff",
-      "nameDe": "Seitan Stroganoff",
-      "facility": "FUSION meal",
-      "diet": "vegan",
-      "dietDays": {
-        "vegan": 1,
-        "vegetarian": 0,
-        "fish": 0,
-        "meat": 0,
-        "unclassified": 0
-      },
-      "count": 1,
-      "firstSeen": "2026-09-10",
-      "lastSeen": "2026-09-10",
-      "dates": [
-        "2026-09-10"
-      ],
-      "gapsWeekdays": [],
-      "meanGapWeekdays": null,
-      "sdGapWeekdays": null,
-      "prediction": null,
-      "prices": {
-        "external": {
-          "n": 1,
-          "mean": 16.9,
-          "sd": null,
-          "min": 16.9,
-          "max": 16.9
-        },
-        "internal": {
-          "n": 1,
-          "mean": 12.9,
-          "sd": null,
-          "min": 12.9,
-          "max": 12.9
-        },
-        "students": {
-          "n": 1,
-          "mean": 8.9,
-          "sd": null,
-          "min": 8.9,
-          "max": 8.9
-        }
-      }
-    },
-    {
       "id": 201,
       "name": "Seitan Stroganoff",
       "nameDe": "Seitan Stroganoff",
@@ -33811,7 +33861,7 @@
     {
       "facility": "FUSION meal",
       "line": "MEATWORKS",
-      "dishDays": 47,
+      "dishDays": 48,
       "dishes": [
         {
           "id": 527,
@@ -33968,6 +34018,17 @@
           "lastSeen": "2026-10-02",
           "dates": [
             "2026-10-02"
+          ]
+        },
+        {
+          "id": 596,
+          "name": "Chicken Breast - Caf\u00e9 de Paris Sauce",
+          "nameDe": "Pouletbrust - Caf\u00e9 de Paris Sauce",
+          "count": 1,
+          "firstSeen": "2026-11-03",
+          "lastSeen": "2026-11-03",
+          "dates": [
+            "2026-11-03"
           ]
         },
         {
@@ -34784,7 +34845,7 @@
     {
       "facility": "FUSION meal",
       "line": "VEGAN",
-      "dishDays": 42,
+      "dishDays": 43,
       "dishes": [
         {
           "id": 474,
@@ -34820,6 +34881,18 @@
           "dates": [
             "2026-09-25",
             "2026-10-06"
+          ]
+        },
+        {
+          "id": 176,
+          "name": "Seitan Stroganoff",
+          "nameDe": "Seitan Stroganoff",
+          "count": 2,
+          "firstSeen": "2026-09-10",
+          "lastSeen": "2026-11-03",
+          "dates": [
+            "2026-09-10",
+            "2026-11-03"
           ]
         },
         {
@@ -35128,17 +35201,6 @@
           "lastSeen": "2026-10-30",
           "dates": [
             "2026-10-30"
-          ]
-        },
-        {
-          "id": 176,
-          "name": "Seitan Stroganoff",
-          "nameDe": "Seitan Stroganoff",
-          "count": 1,
-          "firstSeen": "2026-09-10",
-          "lastSeen": "2026-09-10",
-          "dates": [
-            "2026-09-10"
           ]
         },
         {
