@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-11-09T06:48:27Z",
+  "dataAsOf": "2026-11-09T06:55:49Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,11 +57,11 @@
     {
       "name": "FUSION meal",
       "days": 46,
-      "dishDays": 440,
+      "dishDays": 441,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-11-09",
       "diet": {
-        "vegan": 108,
+        "vegan": 109,
         "vegetarian": 178,
         "fish": 10,
         "meat": 144,
@@ -69,25 +69,25 @@
       },
       "prices": {
         "external": {
-          "n": 440,
+          "n": 441,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.5
+          "mean": 11.51
         },
         "internal": {
-          "n": 440,
+          "n": 441,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.46
+          "mean": 9.47
         },
         "students": {
-          "n": 440,
+          "n": 441,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
@@ -144,11 +144,11 @@
   "overall": {
     "name": "all",
     "days": 69,
-    "dishDays": 1312,
+    "dishDays": 1313,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-11-09",
     "diet": {
-      "vegan": 195,
+      "vegan": 196,
       "vegetarian": 530,
       "fish": 36,
       "meat": 460,
@@ -156,16 +156,16 @@
     },
     "prices": {
       "external": {
-        "n": 1312,
+        "n": 1313,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
         "p75": 16.9,
         "max": 19.5,
-        "mean": 14.71
+        "mean": 14.72
       },
       "internal": {
-        "n": 1312,
+        "n": 1313,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.04
       },
       "students": {
-        "n": 1312,
+        "n": 1313,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -23200,6 +23200,53 @@
       }
     },
     {
+      "id": 621,
+      "name": "Protein Stir-Fry ",
+      "nameDe": "Proteingeschnetzeltes ",
+      "facility": "FUSION meal",
+      "diet": "vegan",
+      "dietDays": {
+        "vegan": 1,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-09",
+      "lastSeen": "2026-11-09",
+      "dates": [
+        "2026-11-09"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.9,
+          "sd": null,
+          "min": 16.9,
+          "max": 16.9
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.9,
+          "sd": null,
+          "min": 12.9,
+          "max": 12.9
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.9,
+          "sd": null,
+          "min": 8.9,
+          "max": 8.9
+        }
+      }
+    },
+    {
       "id": 196,
       "name": "Pulled Pork",
       "nameDe": "Pulled Pork",
@@ -36354,7 +36401,7 @@
     {
       "facility": "FUSION meal",
       "line": "VEGAN",
-      "dishDays": 47,
+      "dishDays": 48,
       "dishes": [
         {
           "id": 592,
@@ -36722,6 +36769,17 @@
           "lastSeen": "2026-10-30",
           "dates": [
             "2026-10-30"
+          ]
+        },
+        {
+          "id": 621,
+          "name": "Protein Stir-Fry ",
+          "nameDe": "Proteingeschnetzeltes ",
+          "count": 1,
+          "firstSeen": "2026-11-09",
+          "lastSeen": "2026-11-09",
+          "dates": [
+            "2026-11-09"
           ]
         },
         {
