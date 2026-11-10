@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-11-10T04:11:39Z",
+  "dataAsOf": "2026-11-10T06:57:38Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,43 +57,43 @@
     {
       "name": "FUSION meal",
       "days": 47,
-      "dishDays": 450,
+      "dishDays": 451,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-11-10",
       "diet": {
         "vegan": 111,
         "vegetarian": 182,
         "fish": 10,
-        "meat": 147,
+        "meat": 148,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 450,
+          "n": 451,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.51
+          "mean": 11.52
         },
         "internal": {
-          "n": 450,
+          "n": 451,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.47
+          "mean": 9.48
         },
         "students": {
-          "n": 450,
+          "n": 451,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
           "p75": 8.9,
           "max": 12.5,
-          "mean": 7.08
+          "mean": 7.09
         }
       }
     },
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 70,
-    "dishDays": 1335,
+    "dishDays": 1336,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-11-10",
     "diet": {
       "vegan": 199,
       "vegetarian": 539,
       "fish": 36,
-      "meat": 469,
+      "meat": 470,
       "unclassified": 92
     },
     "prices": {
       "external": {
-        "n": 1335,
+        "n": 1336,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.71
       },
       "internal": {
-        "n": 1335,
+        "n": 1336,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.04
       },
       "students": {
-        "n": 1335,
+        "n": 1336,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -30287,6 +30287,53 @@
       }
     },
     {
+      "id": 628,
+      "name": "Venison and Veal Burger ",
+      "nameDe": "Hirsch-Kalbburger ",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-10",
+      "lastSeen": "2026-11-10",
+      "dates": [
+        "2026-11-10"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 17.5,
+          "sd": null,
+          "min": 17.5,
+          "max": 17.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        }
+      }
+    },
+    {
       "id": 93,
       "name": "Viennese Cream Goulash",
       "nameDe": "Wiener Rahmgulasch",
@@ -36288,7 +36335,7 @@
     {
       "facility": "FUSION meal",
       "line": "SOUL FOOD",
-      "dishDays": 48,
+      "dishDays": 49,
       "dishes": [
         {
           "id": 172,
@@ -36723,6 +36770,17 @@
           "lastSeen": "2026-10-21",
           "dates": [
             "2026-10-21"
+          ]
+        },
+        {
+          "id": 628,
+          "name": "Venison and Veal Burger ",
+          "nameDe": "Hirsch-Kalbburger ",
+          "count": 1,
+          "firstSeen": "2026-11-10",
+          "lastSeen": "2026-11-10",
+          "dates": [
+            "2026-11-10"
           ]
         },
         {

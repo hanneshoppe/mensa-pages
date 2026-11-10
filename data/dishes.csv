@@ -1312,25 +1312,26 @@ dish_id,date,facility,facility_id,line,name_en,name_de,diet,first_seen_at,last_s
 61,2026-11-09,food market,19,pasta classica vegi,Pasta with Broccoli,Pasta ai Broccoli,vegetarian,2026-11-09T04:00:13Z,2026-11-09T11:12:06Z,,7.0,11.5,14.5,707,5.5,4.5,26,0.33,2.5,2.0
 64,2026-11-09,food market,19,pizza classica,Pizza Margherita,Pizza Margherita,vegetarian,2026-11-09T04:00:13Z,2026-11-09T11:12:06Z,,7.0,11.5,14.5,858,9.6,5.3,29,1.28,1.2,2.5
 325,2026-11-09,food market,19,pizza mamma mia,Prosciutto and Salami Pizza,Pizza Prosciutto Salami,meat,2026-11-09T04:00:13Z,2026-11-09T11:12:06Z,,11.5,14.5,17.5,833,10,6.2,25,1.21,1.3,3.1
-622,2026-11-10,FUSION meal,20,VEGGIE,Beet Risotto & Feta,Randen-Risotto & Feta,vegetarian,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,7.0,11.5,14.5,,,,,,,
-623,2026-11-10,FUSION meal,20,WORLD OF ASIA,Crispy Duck ,Crispy Duck ,meat,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,10.5,12.9,14.5,,,,,,,
-624,2026-11-10,FUSION meal,20,VEGAN,Crispy Tenders,Crispy Tenders,vegan,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,8.9,12.9,16.9,,,,,,,
-443,2026-11-10,FUSION meal,20,WORLD OF ASIA VEGGIE,Fried Noodles & Dumplings,Fried Noodles & Dumplings,vegetarian,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,8.5,10.5,12.5,,,,,,,
-139,2026-11-10,FUSION meal,20,GLOBETROTTER,Hot Buffet,Warmes Buffet,vegetarian,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,2.5,2.9,3.4,,,,,,,
-625,2026-11-10,FUSION meal,20,MEATWORKS,Meatloaf & Rösti,Fleischkäse & Rösti,meat,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,8.5,12.5,15.5,,,,,,,
-141,2026-11-10,FUSION meal,20,POWER KITCHEN,Protein Buffet,Protein Buffet,vegetarian,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,2.5,2.9,3.4,,,,,,,
-142,2026-11-10,FUSION meal,20,FRESH ISLAND,Salad Buffet,Salat Buffet,vegan,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,2.5,2.9,3.4,,,,,,,
+622,2026-11-10,FUSION meal,20,VEGGIE,Beet Risotto & Feta,Randen-Risotto & Feta,vegetarian,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,7.0,11.5,14.5,,,,,,,
+623,2026-11-10,FUSION meal,20,WORLD OF ASIA,Crispy Duck ,Crispy Duck ,meat,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,10.5,12.9,14.5,,,,,,,
+624,2026-11-10,FUSION meal,20,VEGAN,Crispy Tenders,Crispy Tenders,vegan,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,8.9,12.9,16.9,,,,,,,
+443,2026-11-10,FUSION meal,20,WORLD OF ASIA VEGGIE,Fried Noodles & Dumplings,Fried Noodles & Dumplings,vegetarian,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,8.5,10.5,12.5,,,,,,,
+139,2026-11-10,FUSION meal,20,GLOBETROTTER,Hot Buffet,Warmes Buffet,vegetarian,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,2.5,2.9,3.4,,,,,,,
+625,2026-11-10,FUSION meal,20,MEATWORKS,Meatloaf & Rösti,Fleischkäse & Rösti,meat,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,8.5,12.5,15.5,,,,,,,
+141,2026-11-10,FUSION meal,20,POWER KITCHEN,Protein Buffet,Protein Buffet,vegetarian,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,2.5,2.9,3.4,,,,,,,
+142,2026-11-10,FUSION meal,20,FRESH ISLAND,Salad Buffet,Salat Buffet,vegan,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,2.5,2.9,3.4,,,,,,,
 626,2026-11-10,FUSION meal,20,SOUL FOOD,Swiss Alpine Chicken Burger,Swiss Alpine Chickenburger,meat,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,11.5,14.5,17.5,,,,,,,
-1,2026-11-10,Mendokoro,16,Roku,Chicken Tonkatsu Bowl,Chicken Tonkatsu Bowl,meat,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,13.8,15.8,18.8,733,5.8,3.8,29,1.06,6.1,0.5
-318,2026-11-10,Mendokoro,16,San,Kimchi ramen,Kimchi Ramen,vegetarian,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,12.5,14.5,17.5,314,1.4,1.5,1.8,0.48,1.3,0.2
-3,2026-11-10,Mendokoro,16,Ichi,Miso Ramen,Miso Ramen,vegetarian,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,10.5,12.5,15.5,293,2.8,3.6,10,1.22,0.9,0.2
-4,2026-11-10,Mendokoro,16,Ni,Shoyu Ramen,Shoyu Ramen,vegetarian,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,10.5,12.5,15.5,308,2.9,3.7,11,1.30,0.8,0.2
-107,2026-11-10,Mendokoro,16,Shi,Tantanmen Ramen,Tantanmen Ramen,vegetarian,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,12.5,14.5,17.5,312,3.8,3.5,10,1.29,0.9,0.2
-32,2026-11-10,food market,19,fire,Chicken Thighs with Chili & Honey,Pouletschenkel mit Chili & Honig,meat,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,8.5,12.5,15.5,625,7.7,6.7,14,0.70,1.9,2.1
-33,2026-11-10,food market,19,green delight,Choose 5,Choose 5,unclassified,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,9.9,13.9,16.9,0.0,0.0,0.0,0.0,0.00,0.0,0.0
-41,2026-11-10,food market,19,pasta della nonna,Fancy Carbonara,Fancy Carbonara,meat,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,9.5,13.5,16.5,618,6.0,6.5,16,0.65,1.9,2.1
-62,2026-11-10,food market,19,pasta classica,Pasta with Chicken and Mushrooms,Pasta con Pollo e Funghi,meat,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,8.5,12.5,15.5,592,5.1,5.5,17,0.37,2.0,2.4
-64,2026-11-10,food market,19,pizza classica,Pizza Margherita,Pizza Margherita,vegetarian,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,7.0,11.5,14.5,858,9.6,5.3,29,1.28,1.2,2.5
-325,2026-11-10,food market,19,pizza mamma mia,Prosciutto and Salami Pizza,Pizza Prosciutto Salami,meat,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,11.5,14.5,17.5,833,10,6.2,25,1.21,1.3,3.1
-78,2026-11-10,food market,19,green daily,Spiced Lentils by Pascal Haag,Gewürzlinsen von Pascal Haag,vegan,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,7.0,11.5,14.5,333,4.1,3.5,7.5,0.21,1.7,1.3
-627,2026-11-10,food market,19,grill,Tonkatsu,Tonkatsu,meat,2026-11-10T04:11:39Z,2026-11-10T04:11:39Z,,12.5,15.5,18.5,653,7.9,4.6,22,0.85,4.9,1.0
+628,2026-11-10,FUSION meal,20,SOUL FOOD,Venison and Veal Burger ,Hirsch-Kalbburger ,meat,2026-11-10T06:57:38Z,2026-11-10T06:57:38Z,,11.5,14.5,17.5,,,,,,,
+1,2026-11-10,Mendokoro,16,Roku,Chicken Tonkatsu Bowl,Chicken Tonkatsu Bowl,meat,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,13.8,15.8,18.8,733,5.8,3.8,29,1.06,6.1,0.5
+318,2026-11-10,Mendokoro,16,San,Kimchi ramen,Kimchi Ramen,vegetarian,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,12.5,14.5,17.5,314,1.4,1.5,1.8,0.48,1.3,0.2
+3,2026-11-10,Mendokoro,16,Ichi,Miso Ramen,Miso Ramen,vegetarian,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,10.5,12.5,15.5,293,2.8,3.6,10,1.22,0.9,0.2
+4,2026-11-10,Mendokoro,16,Ni,Shoyu Ramen,Shoyu Ramen,vegetarian,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,10.5,12.5,15.5,308,2.9,3.7,11,1.30,0.8,0.2
+107,2026-11-10,Mendokoro,16,Shi,Tantanmen Ramen,Tantanmen Ramen,vegetarian,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,12.5,14.5,17.5,312,3.8,3.5,10,1.29,0.9,0.2
+32,2026-11-10,food market,19,fire,Chicken Thighs with Chili & Honey,Pouletschenkel mit Chili & Honig,meat,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,8.5,12.5,15.5,625,7.7,6.7,14,0.70,1.9,2.1
+33,2026-11-10,food market,19,green delight,Choose 5,Choose 5,unclassified,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,9.9,13.9,16.9,0.0,0.0,0.0,0.0,0.00,0.0,0.0
+41,2026-11-10,food market,19,pasta della nonna,Fancy Carbonara,Fancy Carbonara,meat,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,9.5,13.5,16.5,618,6.0,6.5,16,0.65,1.9,2.1
+62,2026-11-10,food market,19,pasta classica,Pasta with Chicken and Mushrooms,Pasta con Pollo e Funghi,meat,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,8.5,12.5,15.5,592,5.1,5.5,17,0.37,2.0,2.4
+64,2026-11-10,food market,19,pizza classica,Pizza Margherita,Pizza Margherita,vegetarian,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,7.0,11.5,14.5,858,9.6,5.3,29,1.28,1.2,2.5
+325,2026-11-10,food market,19,pizza mamma mia,Prosciutto and Salami Pizza,Pizza Prosciutto Salami,meat,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,11.5,14.5,17.5,833,10,6.2,25,1.21,1.3,3.1
+78,2026-11-10,food market,19,green daily,Spiced Lentils by Pascal Haag,Gewürzlinsen von Pascal Haag,vegan,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,7.0,11.5,14.5,333,4.1,3.5,7.5,0.21,1.7,1.3
+627,2026-11-10,food market,19,grill,Tonkatsu,Tonkatsu,meat,2026-11-10T04:11:39Z,2026-11-10T06:57:38Z,,12.5,15.5,18.5,653,7.9,4.6,22,0.85,4.9,1.0
