@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-11-11T09:13:53Z",
+  "dataAsOf": "2026-11-11T09:22:57Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,19 +14,19 @@
     {
       "name": "food market",
       "days": 71,
-      "dishDays": 568,
+      "dishDays": 569,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-11-11",
       "diet": {
         "vegan": 89,
-        "vegetarian": 137,
+        "vegetarian": 138,
         "fish": 26,
         "meat": 222,
         "unclassified": 94
       },
       "prices": {
         "external": {
-          "n": 568,
+          "n": 569,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,16 +35,16 @@
           "mean": 15.89
         },
         "internal": {
-          "n": 568,
+          "n": 569,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
           "p75": 13.9,
           "max": 16.5,
-          "mean": 12.9
+          "mean": 12.89
         },
         "students": {
-          "n": 568,
+          "n": 569,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 71,
-    "dishDays": 1358,
+    "dishDays": 1359,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-11-11",
     "diet": {
       "vegan": 202,
-      "vegetarian": 549,
+      "vegetarian": 550,
       "fish": 36,
       "meat": 477,
       "unclassified": 94
     },
     "prices": {
       "external": {
-        "n": 1358,
+        "n": 1359,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.7
       },
       "internal": {
-        "n": 1358,
+        "n": 1359,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.03
       },
       "students": {
-        "n": 1358,
+        "n": 1359,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -3495,6 +3495,56 @@
           "sd": 0.0,
           "min": 8.5,
           "max": 8.5
+        }
+      }
+    },
+    {
+      "id": 20,
+      "name": "Breaded Mushrooms",
+      "nameDe": "Panierte Champignons",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 2,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 2,
+      "firstSeen": "2026-08-18",
+      "lastSeen": "2026-11-11",
+      "dates": [
+        "2026-08-18",
+        "2026-11-11"
+      ],
+      "gapsWeekdays": [
+        61
+      ],
+      "meanGapWeekdays": 61.0,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 2,
+          "mean": 14.5,
+          "sd": 0.0,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 2,
+          "mean": 11.5,
+          "sd": 0.0,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 2,
+          "mean": 7.0,
+          "sd": 0.0,
+          "min": 7.0,
+          "max": 7.0
         }
       }
     },
@@ -10062,53 +10112,6 @@
           "sd": null,
           "min": 8.5,
           "max": 8.5
-        }
-      }
-    },
-    {
-      "id": 20,
-      "name": "Breaded Mushrooms",
-      "nameDe": "Panierte Champignons",
-      "facility": "food market",
-      "diet": "vegetarian",
-      "dietDays": {
-        "vegan": 0,
-        "vegetarian": 1,
-        "fish": 0,
-        "meat": 0,
-        "unclassified": 0
-      },
-      "count": 1,
-      "firstSeen": "2026-08-18",
-      "lastSeen": "2026-08-18",
-      "dates": [
-        "2026-08-18"
-      ],
-      "gapsWeekdays": [],
-      "meanGapWeekdays": null,
-      "sdGapWeekdays": null,
-      "prediction": null,
-      "prices": {
-        "external": {
-          "n": 1,
-          "mean": 14.5,
-          "sd": null,
-          "min": 14.5,
-          "max": 14.5
-        },
-        "internal": {
-          "n": 1,
-          "mean": 11.5,
-          "sd": null,
-          "min": 11.5,
-          "max": 11.5
-        },
-        "students": {
-          "n": 1,
-          "mean": 7.0,
-          "sd": null,
-          "min": 7.0,
-          "max": 7.0
         }
       }
     },
@@ -32530,7 +32533,7 @@
     {
       "facility": "food market",
       "line": "green daily",
-      "dishDays": 79,
+      "dishDays": 80,
       "dishes": [
         {
           "id": 52,
@@ -32555,6 +32558,18 @@
           "dates": [
             "2026-08-11",
             "2026-11-03"
+          ]
+        },
+        {
+          "id": 20,
+          "name": "Breaded Mushrooms",
+          "nameDe": "Panierte Champignons",
+          "count": 2,
+          "firstSeen": "2026-08-18",
+          "lastSeen": "2026-11-11",
+          "dates": [
+            "2026-08-18",
+            "2026-11-11"
           ]
         },
         {
@@ -32693,17 +32708,6 @@
           "lastSeen": "2026-08-26",
           "dates": [
             "2026-08-26"
-          ]
-        },
-        {
-          "id": 20,
-          "name": "Breaded Mushrooms",
-          "nameDe": "Panierte Champignons",
-          "count": 1,
-          "firstSeen": "2026-08-18",
-          "lastSeen": "2026-08-18",
-          "dates": [
-            "2026-08-18"
           ]
         },
         {
