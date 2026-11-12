@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-11-12T11:51:20Z",
+  "dataAsOf": "2026-11-12T12:31:40Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,19 +14,19 @@
     {
       "name": "food market",
       "days": 72,
-      "dishDays": 577,
+      "dishDays": 578,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-11-12",
       "diet": {
         "vegan": 91,
         "vegetarian": 139,
         "fish": 26,
-        "meat": 225,
+        "meat": 226,
         "unclassified": 96
       },
       "prices": {
         "external": {
-          "n": 577,
+          "n": 578,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,7 +35,7 @@
           "mean": 15.89
         },
         "internal": {
-          "n": 577,
+          "n": 578,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
@@ -44,7 +44,7 @@
           "mean": 12.9
         },
         "students": {
-          "n": 577,
+          "n": 578,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 72,
-    "dishDays": 1381,
+    "dishDays": 1382,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-11-12",
     "diet": {
       "vegan": 206,
       "vegetarian": 559,
       "fish": 36,
-      "meat": 484,
+      "meat": 485,
       "unclassified": 96
     },
     "prices": {
       "external": {
-        "n": 1381,
+        "n": 1382,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.7
       },
       "internal": {
-        "n": 1381,
+        "n": 1382,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.03
       },
       "students": {
-        "n": 1381,
+        "n": 1382,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -21212,6 +21212,53 @@
       }
     },
     {
+      "id": 640,
+      "name": "Mountaineer Sp\u00e4tzli with Diced Ham",
+      "nameDe": "Bergsteiger Sp\u00e4tzli mit Schinkenw\u00fcrfel",
+      "facility": "food market",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-12",
+      "lastSeen": "2026-11-12",
+      "dates": [
+        "2026-11-12"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    },
+    {
       "id": 110,
       "name": "Moussaka with Tahini Dip",
       "nameDe": "Moussaka mit Tahini Dip",
@@ -34390,7 +34437,7 @@
     {
       "facility": "food market",
       "line": "pasta classica",
-      "dishDays": 42,
+      "dishDays": 43,
       "dishes": [
         {
           "id": 22,
@@ -34655,6 +34702,17 @@
           "id": 639,
           "name": "Mountaineer Sp\u00e4tzli with Bacon",
           "nameDe": "Bergsteiger Sp\u00e4tzli mit Speck",
+          "count": 1,
+          "firstSeen": "2026-11-12",
+          "lastSeen": "2026-11-12",
+          "dates": [
+            "2026-11-12"
+          ]
+        },
+        {
+          "id": 640,
+          "name": "Mountaineer Sp\u00e4tzli with Diced Ham",
+          "nameDe": "Bergsteiger Sp\u00e4tzli mit Schinkenw\u00fcrfel",
           "count": 1,
           "firstSeen": "2026-11-12",
           "lastSeen": "2026-11-12",
