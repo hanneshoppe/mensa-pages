@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-11-16T04:15:48Z",
+  "dataAsOf": "2026-11-16T06:58:21Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,43 +57,43 @@
     {
       "name": "FUSION meal",
       "days": 51,
-      "dishDays": 487,
+      "dishDays": 488,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-11-16",
       "diet": {
         "vegan": 118,
         "vegetarian": 199,
         "fish": 10,
-        "meat": 160,
+        "meat": 161,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 487,
+          "n": 488,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.5
+          "mean": 11.52
         },
         "internal": {
-          "n": 487,
+          "n": 488,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.46
+          "mean": 9.48
         },
         "students": {
-          "n": 487,
+          "n": 488,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
           "p75": 8.9,
           "max": 12.5,
-          "mean": 7.08
+          "mean": 7.09
         }
       }
     },
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 74,
-    "dishDays": 1425,
+    "dishDays": 1426,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-11-16",
     "diet": {
       "vegan": 211,
       "vegetarian": 579,
       "fish": 36,
-      "meat": 501,
+      "meat": 502,
       "unclassified": 98
     },
     "prices": {
       "external": {
-        "n": 1425,
+        "n": 1426,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.69
       },
       "internal": {
-        "n": 1425,
+        "n": 1426,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,13 +174,13 @@
         "mean": 12.02
       },
       "students": {
-        "n": 1425,
+        "n": 1426,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
         "p75": 10.5,
         "max": 13.8,
-        "mean": 9.07
+        "mean": 9.08
       }
     }
   },
@@ -3226,6 +3226,63 @@
           "sd": 0.0,
           "min": 7.0,
           "max": 7.0
+        }
+      }
+    },
+    {
+      "id": 376,
+      "name": "Venison Stew",
+      "nameDe": "Rehpfeffer",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 3,
+        "unclassified": 0
+      },
+      "count": 3,
+      "firstSeen": "2026-10-05",
+      "lastSeen": "2026-11-16",
+      "dates": [
+        "2026-10-05",
+        "2026-10-26",
+        "2026-11-16"
+      ],
+      "gapsWeekdays": [
+        15,
+        15
+      ],
+      "meanGapWeekdays": 15.0,
+      "sdGapWeekdays": 0.0,
+      "prediction": {
+        "nextDate": "2026-12-07",
+        "sigmaWeekdays": 0.0,
+        "earliest": "2026-12-07",
+        "latest": "2026-12-07"
+      },
+      "prices": {
+        "external": {
+          "n": 3,
+          "mean": 18.5,
+          "sd": 0.0,
+          "min": 18.5,
+          "max": 18.5
+        },
+        "internal": {
+          "n": 3,
+          "mean": 15.5,
+          "sd": 0.0,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "students": {
+          "n": 3,
+          "mean": 12.5,
+          "sd": 0.0,
+          "min": 12.5,
+          "max": 12.5
         }
       }
     },
@@ -7960,56 +8017,6 @@
         16
       ],
       "meanGapWeekdays": 16.0,
-      "sdGapWeekdays": null,
-      "prediction": null,
-      "prices": {
-        "external": {
-          "n": 2,
-          "mean": 18.5,
-          "sd": 0.0,
-          "min": 18.5,
-          "max": 18.5
-        },
-        "internal": {
-          "n": 2,
-          "mean": 15.5,
-          "sd": 0.0,
-          "min": 15.5,
-          "max": 15.5
-        },
-        "students": {
-          "n": 2,
-          "mean": 12.5,
-          "sd": 0.0,
-          "min": 12.5,
-          "max": 12.5
-        }
-      }
-    },
-    {
-      "id": 376,
-      "name": "Venison Stew",
-      "nameDe": "Rehpfeffer",
-      "facility": "FUSION meal",
-      "diet": "meat",
-      "dietDays": {
-        "vegan": 0,
-        "vegetarian": 0,
-        "fish": 0,
-        "meat": 2,
-        "unclassified": 0
-      },
-      "count": 2,
-      "firstSeen": "2026-10-05",
-      "lastSeen": "2026-10-26",
-      "dates": [
-        "2026-10-05",
-        "2026-10-26"
-      ],
-      "gapsWeekdays": [
-        15
-      ],
-      "meanGapWeekdays": 15.0,
       "sdGapWeekdays": null,
       "prediction": null,
       "prices": {
@@ -37797,7 +37804,7 @@
     {
       "facility": "FUSION meal",
       "line": "SOUL FOOD",
-      "dishDays": 53,
+      "dishDays": 54,
       "dishes": [
         {
           "id": 172,
@@ -37810,6 +37817,19 @@
             "2026-09-10",
             "2026-10-01",
             "2026-10-29"
+          ]
+        },
+        {
+          "id": 376,
+          "name": "Venison Stew",
+          "nameDe": "Rehpfeffer",
+          "count": 3,
+          "firstSeen": "2026-10-05",
+          "lastSeen": "2026-11-16",
+          "dates": [
+            "2026-10-05",
+            "2026-10-26",
+            "2026-11-16"
           ]
         },
         {
@@ -37858,18 +37878,6 @@
           "dates": [
             "2026-10-21",
             "2026-11-12"
-          ]
-        },
-        {
-          "id": 376,
-          "name": "Venison Stew",
-          "nameDe": "Rehpfeffer",
-          "count": 2,
-          "firstSeen": "2026-10-05",
-          "lastSeen": "2026-10-26",
-          "dates": [
-            "2026-10-05",
-            "2026-10-26"
           ]
         },
         {
