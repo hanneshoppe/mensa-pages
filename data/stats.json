@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-11-17T04:15:13Z",
+  "dataAsOf": "2026-11-17T07:06:26Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,43 +57,43 @@
     {
       "name": "FUSION meal",
       "days": 52,
-      "dishDays": 497,
+      "dishDays": 499,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-11-17",
       "diet": {
         "vegan": 119,
         "vegetarian": 204,
         "fish": 10,
-        "meat": 164,
+        "meat": 166,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 497,
+          "n": 499,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.51
+          "mean": 11.53
         },
         "internal": {
-          "n": 497,
+          "n": 499,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.47
+          "mean": 9.49
         },
         "students": {
-          "n": 497,
+          "n": 499,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
           "p75": 8.9,
           "max": 12.5,
-          "mean": 7.08
+          "mean": 7.1
         }
       }
     },
@@ -144,43 +144,43 @@
   "overall": {
     "name": "all",
     "days": 75,
-    "dishDays": 1448,
+    "dishDays": 1450,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-11-17",
     "diet": {
       "vegan": 213,
       "vegetarian": 590,
       "fish": 36,
-      "meat": 509,
+      "meat": 511,
       "unclassified": 100
     },
     "prices": {
       "external": {
-        "n": 1448,
+        "n": 1450,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
         "p75": 16.9,
         "max": 19.5,
-        "mean": 14.68
+        "mean": 14.69
       },
       "internal": {
-        "n": 1448,
+        "n": 1450,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
         "p75": 13.9,
         "max": 16.5,
-        "mean": 12.01
+        "mean": 12.02
       },
       "students": {
-        "n": 1448,
+        "n": 1450,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
         "p75": 10.5,
         "max": 13.8,
-        "mean": 9.07
+        "mean": 9.08
       }
     }
   },
@@ -12794,6 +12794,53 @@
       }
     },
     {
+      "id": 658,
+      "name": "Chicken Burger",
+      "nameDe": "Pouletburger",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-17",
+      "lastSeen": "2026-11-17",
+      "dates": [
+        "2026-11-17"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 17.5,
+          "sd": null,
+          "min": 17.5,
+          "max": 17.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        }
+      }
+    },
+    {
       "id": 269,
       "name": "Chicken Butter Masala",
       "nameDe": "Chicken Butter-Masala",
@@ -13542,6 +13589,53 @@
           "sd": null,
           "min": 8.5,
           "max": 8.5
+        }
+      }
+    },
+    {
+      "id": 659,
+      "name": "Chicken Vindaloo",
+      "nameDe": "Poulet Vindaloo",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-17",
+      "lastSeen": "2026-11-17",
+      "dates": [
+        "2026-11-17"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.9,
+          "sd": null,
+          "min": 12.9,
+          "max": 12.9
+        },
+        "students": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
         }
       }
     },
@@ -38115,7 +38209,7 @@
     {
       "facility": "FUSION meal",
       "line": "SOUL FOOD",
-      "dishDays": 55,
+      "dishDays": 56,
       "dishes": [
         {
           "id": 172,
@@ -38299,6 +38393,17 @@
           "lastSeen": "2026-09-29",
           "dates": [
             "2026-09-29"
+          ]
+        },
+        {
+          "id": 658,
+          "name": "Chicken Burger",
+          "nameDe": "Pouletburger",
+          "count": 1,
+          "firstSeen": "2026-11-17",
+          "lastSeen": "2026-11-17",
+          "dates": [
+            "2026-11-17"
           ]
         },
         {
@@ -39740,7 +39845,7 @@
     {
       "facility": "FUSION meal",
       "line": "WORLD OF ASIA",
-      "dishDays": 60,
+      "dishDays": 61,
       "dishes": [
         {
           "id": 152,
@@ -39939,6 +40044,17 @@
           "lastSeen": "2026-09-16",
           "dates": [
             "2026-09-16"
+          ]
+        },
+        {
+          "id": 659,
+          "name": "Chicken Vindaloo",
+          "nameDe": "Poulet Vindaloo",
+          "count": 1,
+          "firstSeen": "2026-11-17",
+          "lastSeen": "2026-11-17",
+          "dates": [
+            "2026-11-17"
           ]
         },
         {
