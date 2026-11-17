@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-11-17T10:03:31Z",
+  "dataAsOf": "2026-11-17T10:15:28Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,19 +14,19 @@
     {
       "name": "food market",
       "days": 75,
-      "dishDays": 601,
+      "dishDays": 602,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-11-17",
       "diet": {
         "vegan": 94,
         "vegetarian": 144,
         "fish": 26,
-        "meat": 237,
+        "meat": 238,
         "unclassified": 100
       },
       "prices": {
         "external": {
-          "n": 601,
+          "n": 602,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,16 +35,16 @@
           "mean": 15.9
         },
         "internal": {
-          "n": 601,
+          "n": 602,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
           "p75": 13.9,
           "max": 16.5,
-          "mean": 12.9
+          "mean": 12.91
         },
         "students": {
-          "n": 601,
+          "n": 602,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 75,
-    "dishDays": 1450,
+    "dishDays": 1451,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-11-17",
     "diet": {
       "vegan": 213,
       "vegetarian": 590,
       "fish": 36,
-      "meat": 511,
+      "meat": 512,
       "unclassified": 100
     },
     "prices": {
       "external": {
-        "n": 1450,
+        "n": 1451,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.69
       },
       "internal": {
-        "n": 1450,
+        "n": 1451,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.02
       },
       "students": {
-        "n": 1450,
+        "n": 1451,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -21724,6 +21724,53 @@
       }
     },
     {
+      "id": 660,
+      "name": "Medium-rare venison medallions",
+      "nameDe": "Hirsch Medaillons medium gebraten",
+      "facility": "food market",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-17",
+      "lastSeen": "2026-11-17",
+      "dates": [
+        "2026-11-17"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 18.5,
+          "sd": null,
+          "min": 18.5,
+          "max": 18.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        }
+      }
+    },
+    {
       "id": 153,
       "name": "Mexican Beef Burger",
       "nameDe": "Mexican Beefburger",
@@ -34709,7 +34756,7 @@
     {
       "facility": "food market",
       "line": "grill",
-      "dishDays": 82,
+      "dishDays": 83,
       "dishes": [
         {
           "id": 12,
@@ -35258,6 +35305,17 @@
           "lastSeen": "2026-08-10",
           "dates": [
             "2026-08-10"
+          ]
+        },
+        {
+          "id": 660,
+          "name": "Medium-rare venison medallions",
+          "nameDe": "Hirsch Medaillons medium gebraten",
+          "count": 1,
+          "firstSeen": "2026-11-17",
+          "lastSeen": "2026-11-17",
+          "dates": [
+            "2026-11-17"
           ]
         },
         {
