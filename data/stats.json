@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-11-19T04:15:08Z",
+  "dataAsOf": "2026-11-19T07:14:10Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,43 +57,43 @@
     {
       "name": "FUSION meal",
       "days": 54,
-      "dishDays": 518,
+      "dishDays": 520,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-11-19",
       "diet": {
         "vegan": 122,
         "vegetarian": 214,
         "fish": 10,
-        "meat": 172,
+        "meat": 174,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 518,
+          "n": 520,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.53
+          "mean": 11.55
         },
         "internal": {
-          "n": 518,
+          "n": 520,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.49
+          "mean": 9.5
         },
         "students": {
-          "n": 518,
+          "n": 520,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
           "p75": 8.9,
           "max": 12.5,
-          "mean": 7.1
+          "mean": 7.11
         }
       }
     },
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 77,
-    "dishDays": 1497,
+    "dishDays": 1499,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-11-19",
     "diet": {
       "vegan": 218,
       "vegetarian": 611,
       "fish": 36,
-      "meat": 529,
+      "meat": 531,
       "unclassified": 103
     },
     "prices": {
       "external": {
-        "n": 1497,
+        "n": 1499,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.68
       },
       "internal": {
-        "n": 1497,
+        "n": 1499,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.01
       },
       "students": {
-        "n": 1497,
+        "n": 1499,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -13963,6 +13963,53 @@
       }
     },
     {
+      "id": 674,
+      "name": "Chicken Thigh Stir-Fry ",
+      "nameDe": "Pouletschenkel-Geschnetzeltes ",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-19",
+      "lastSeen": "2026-11-19",
+      "dates": [
+        "2026-11-19"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    },
+    {
       "id": 320,
       "name": "Chicken Thighs with Za'atar",
       "nameDe": "Zaatar Pouletschenkel",
@@ -25055,6 +25102,53 @@
       }
     },
     {
+      "id": 675,
+      "name": "Pork Red Thai",
+      "nameDe": "Pork-Red Thai",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-19",
+      "lastSeen": "2026-11-19",
+      "dates": [
+        "2026-11-19"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.9,
+          "sd": null,
+          "min": 12.9,
+          "max": 12.9
+        },
+        "students": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
+        }
+      }
+    },
+    {
       "id": 454,
       "name": "Pork Saltimbocca",
       "nameDe": "Schweins Saltimbocca",
@@ -26537,24 +26631,24 @@
       "prices": {
         "external": {
           "n": 1,
-          "mean": 16.5,
+          "mean": 18.5,
           "sd": null,
-          "min": 16.5,
-          "max": 16.5
+          "min": 18.5,
+          "max": 18.5
         },
         "internal": {
           "n": 1,
-          "mean": 13.5,
+          "mean": 15.5,
           "sd": null,
-          "min": 13.5,
-          "max": 13.5
+          "min": 15.5,
+          "max": 15.5
         },
         "students": {
           "n": 1,
-          "mean": 10.5,
+          "mean": 12.5,
           "sd": null,
-          "min": 10.5,
-          "max": 10.5
+          "min": 12.5,
+          "max": 12.5
         }
       }
     },
@@ -38342,7 +38436,7 @@
     {
       "facility": "FUSION meal",
       "line": "MEATWORKS",
-      "dishDays": 61,
+      "dishDays": 62,
       "dishes": [
         {
           "id": 194,
@@ -38599,6 +38693,17 @@
           "lastSeen": "2026-10-14",
           "dates": [
             "2026-10-14"
+          ]
+        },
+        {
+          "id": 674,
+          "name": "Chicken Thigh Stir-Fry ",
+          "nameDe": "Pouletschenkel-Geschnetzeltes ",
+          "count": 1,
+          "firstSeen": "2026-11-19",
+          "lastSeen": "2026-11-19",
+          "dates": [
+            "2026-11-19"
           ]
         },
         {
@@ -40754,7 +40859,7 @@
     {
       "facility": "FUSION meal",
       "line": "WORLD OF ASIA",
-      "dishDays": 63,
+      "dishDays": 64,
       "dishes": [
         {
           "id": 161,
@@ -41125,6 +41230,17 @@
           "id": 671,
           "name": "Porc-Red Thai",
           "nameDe": "Porc-Red Thai",
+          "count": 1,
+          "firstSeen": "2026-11-19",
+          "lastSeen": "2026-11-19",
+          "dates": [
+            "2026-11-19"
+          ]
+        },
+        {
+          "id": 675,
+          "name": "Pork Red Thai",
+          "nameDe": "Pork-Red Thai",
           "count": 1,
           "firstSeen": "2026-11-19",
           "lastSeen": "2026-11-19",
