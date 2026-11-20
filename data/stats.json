@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-11-20T06:53:21Z",
+  "dataAsOf": "2026-11-20T07:32:57Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,19 +57,19 @@
     {
       "name": "FUSION meal",
       "days": 55,
-      "dishDays": 530,
+      "dishDays": 531,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-11-20",
       "diet": {
         "vegan": 123,
-        "vegetarian": 220,
+        "vegetarian": 221,
         "fish": 11,
         "meat": 176,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 530,
+          "n": 531,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
@@ -78,16 +78,16 @@
           "mean": 11.55
         },
         "internal": {
-          "n": 530,
+          "n": 531,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.5
+          "mean": 9.51
         },
         "students": {
-          "n": 530,
+          "n": 531,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 78,
-    "dishDays": 1521,
+    "dishDays": 1522,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-11-20",
     "diet": {
       "vegan": 220,
-      "vegetarian": 623,
+      "vegetarian": 624,
       "fish": 39,
       "meat": 535,
       "unclassified": 104
     },
     "prices": {
       "external": {
-        "n": 1521,
+        "n": 1522,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.67
       },
       "internal": {
-        "n": 1521,
+        "n": 1522,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.01
       },
       "students": {
-        "n": 1521,
+        "n": 1522,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -13025,6 +13025,53 @@
       "id": 677,
       "name": "Chana Masala ",
       "nameDe": "Chana Masala ",
+      "facility": "FUSION meal",
+      "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-20",
+      "lastSeen": "2026-11-20",
+      "dates": [
+        "2026-11-20"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    },
+    {
+      "id": 682,
+      "name": "Chana Masala (Spicy)",
+      "nameDe": "Chana Masala (Spicy)",
       "facility": "FUSION meal",
       "diet": "vegetarian",
       "dietDays": {
@@ -41834,7 +41881,7 @@
     {
       "facility": "FUSION meal",
       "line": "WORLD OF ASIA VEGGIE",
-      "dishDays": 61,
+      "dishDays": 62,
       "dishes": [
         {
           "id": 240,
@@ -42029,6 +42076,17 @@
           "id": 677,
           "name": "Chana Masala ",
           "nameDe": "Chana Masala ",
+          "count": 1,
+          "firstSeen": "2026-11-20",
+          "lastSeen": "2026-11-20",
+          "dates": [
+            "2026-11-20"
+          ]
+        },
+        {
+          "id": 682,
+          "name": "Chana Masala (Spicy)",
+          "nameDe": "Chana Masala (Spicy)",
           "count": 1,
           "firstSeen": "2026-11-20",
           "lastSeen": "2026-11-20",
