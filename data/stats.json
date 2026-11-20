@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-11-20T04:15:03Z",
+  "dataAsOf": "2026-11-20T06:45:50Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,28 +57,28 @@
     {
       "name": "FUSION meal",
       "days": 55,
-      "dishDays": 529,
+      "dishDays": 530,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-11-20",
       "diet": {
         "vegan": 123,
-        "vegetarian": 219,
+        "vegetarian": 220,
         "fish": 11,
         "meat": 176,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 529,
+          "n": 530,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.54
+          "mean": 11.55
         },
         "internal": {
-          "n": 529,
+          "n": 530,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
@@ -87,7 +87,7 @@
           "mean": 9.5
         },
         "students": {
-          "n": 529,
+          "n": 530,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 78,
-    "dishDays": 1520,
+    "dishDays": 1521,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-11-20",
     "diet": {
       "vegan": 220,
-      "vegetarian": 622,
+      "vegetarian": 623,
       "fish": 39,
       "meat": 535,
       "unclassified": 104
     },
     "prices": {
       "external": {
-        "n": 1520,
+        "n": 1521,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.67
       },
       "internal": {
-        "n": 1520,
+        "n": 1521,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.01
       },
       "students": {
-        "n": 1520,
+        "n": 1521,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -30788,6 +30788,53 @@
       }
     },
     {
+      "id": 681,
+      "name": "Tofu Steak ",
+      "nameDe": "Tofu Steak ",
+      "facility": "FUSION meal",
+      "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-20",
+      "lastSeen": "2026-11-20",
+      "dates": [
+        "2026-11-20"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 11.5,
+          "sd": null,
+          "min": 11.5,
+          "max": 11.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 7.0,
+          "sd": null,
+          "min": 7.0,
+          "max": 7.0
+        }
+      }
+    },
+    {
       "id": 465,
       "name": "Tofu Stir-Fry",
       "nameDe": "Tofu Stir Fry",
@@ -40609,7 +40656,7 @@
     {
       "facility": "FUSION meal",
       "line": "VEGGIE",
-      "dishDays": 58,
+      "dishDays": 59,
       "dishes": [
         {
           "id": 375,
@@ -41111,6 +41158,17 @@
           "lastSeen": "2026-09-24",
           "dates": [
             "2026-09-24"
+          ]
+        },
+        {
+          "id": 681,
+          "name": "Tofu Steak ",
+          "nameDe": "Tofu Steak ",
+          "count": 1,
+          "firstSeen": "2026-11-20",
+          "lastSeen": "2026-11-20",
+          "dates": [
+            "2026-11-20"
           ]
         },
         {
