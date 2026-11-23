@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-11-23T06:53:19Z",
+  "dataAsOf": "2026-11-23T07:01:10Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,43 +57,43 @@
     {
       "name": "FUSION meal",
       "days": 56,
-      "dishDays": 540,
+      "dishDays": 541,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-11-23",
       "diet": {
         "vegan": 124,
         "vegetarian": 226,
         "fish": 11,
-        "meat": 179,
+        "meat": 180,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 540,
+          "n": 541,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.55
+          "mean": 11.56
         },
         "internal": {
-          "n": 540,
+          "n": 541,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.5
+          "mean": 9.51
         },
         "students": {
-          "n": 540,
+          "n": 541,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
           "p75": 8.9,
           "max": 12.5,
-          "mean": 7.1
+          "mean": 7.11
         }
       }
     },
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 79,
-    "dishDays": 1545,
+    "dishDays": 1546,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-11-23",
     "diet": {
       "vegan": 223,
       "vegetarian": 636,
       "fish": 40,
-      "meat": 542,
+      "meat": 543,
       "unclassified": 104
     },
     "prices": {
       "external": {
-        "n": 1545,
+        "n": 1546,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.67
       },
       "internal": {
-        "n": 1545,
+        "n": 1546,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.0
       },
       "students": {
-        "n": 1545,
+        "n": 1546,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -25852,6 +25852,53 @@
       }
     },
     {
+      "id": 690,
+      "name": "Pork Spare Ribs",
+      "nameDe": "Schweins-Spare Ribs",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-23",
+      "lastSeen": "2026-11-23",
+      "dates": [
+        "2026-11-23"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
+        }
+      }
+    },
+    {
       "id": 487,
       "name": "Pork Spareribs",
       "nameDe": "Pork Spareribs",
@@ -39970,7 +40017,7 @@
     {
       "facility": "FUSION meal",
       "line": "SOUL FOOD",
-      "dishDays": 60,
+      "dishDays": 61,
       "dishes": [
         {
           "id": 172,
@@ -40341,6 +40388,17 @@
           "lastSeen": "2026-10-14",
           "dates": [
             "2026-10-14"
+          ]
+        },
+        {
+          "id": 690,
+          "name": "Pork Spare Ribs",
+          "nameDe": "Schweins-Spare Ribs",
+          "count": 1,
+          "firstSeen": "2026-11-23",
+          "lastSeen": "2026-11-23",
+          "dates": [
+            "2026-11-23"
           ]
         },
         {
