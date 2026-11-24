@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-11-24T07:36:10Z",
+  "dataAsOf": "2026-11-24T08:37:11Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,19 +14,19 @@
     {
       "name": "food market",
       "days": 80,
-      "dishDays": 645,
+      "dishDays": 646,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-11-24",
       "diet": {
         "vegan": 101,
         "vegetarian": 156,
-        "fish": 31,
+        "fish": 32,
         "meat": 253,
         "unclassified": 104
       },
       "prices": {
         "external": {
-          "n": 645,
+          "n": 646,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,7 +35,7 @@
           "mean": 15.91
         },
         "internal": {
-          "n": 645,
+          "n": 646,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
@@ -44,7 +44,7 @@
           "mean": 12.91
         },
         "students": {
-          "n": 645,
+          "n": 646,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 80,
-    "dishDays": 1570,
+    "dishDays": 1571,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-11-24",
     "diet": {
       "vegan": 226,
       "vegetarian": 649,
-      "fish": 42,
+      "fish": 43,
       "meat": 549,
       "unclassified": 104
     },
     "prices": {
       "external": {
-        "n": 1570,
+        "n": 1571,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.66
       },
       "internal": {
-        "n": 1570,
+        "n": 1571,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.0
       },
       "students": {
-        "n": 1570,
+        "n": 1571,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -32098,6 +32098,53 @@
       }
     },
     {
+      "id": 698,
+      "name": "Tripe or \"Schlemmerfilet\" Bordelaise",
+      "nameDe": "Kutteln  oder Schlemmerfilet Bordelaise",
+      "facility": "food market",
+      "diet": "fish",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 1,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-24",
+      "lastSeen": "2026-11-24",
+      "dates": [
+        "2026-11-24"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    },
+    {
       "id": 610,
       "name": "Trout Fillet with Herb Sauce",
       "nameDe": "Forellenfilet mit Kr\u00e4utersauce",
@@ -35063,7 +35110,7 @@
     {
       "facility": "food market",
       "line": "fire",
-      "dishDays": 90,
+      "dishDays": 91,
       "dishes": [
         {
           "id": 102,
@@ -35765,6 +35812,17 @@
           "lastSeen": "2026-08-10",
           "dates": [
             "2026-08-10"
+          ]
+        },
+        {
+          "id": 698,
+          "name": "Tripe or \"Schlemmerfilet\" Bordelaise",
+          "nameDe": "Kutteln  oder Schlemmerfilet Bordelaise",
+          "count": 1,
+          "firstSeen": "2026-11-24",
+          "lastSeen": "2026-11-24",
+          "dates": [
+            "2026-11-24"
           ]
         },
         {
