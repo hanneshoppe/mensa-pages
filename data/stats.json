@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-11-24T10:30:04Z",
+  "dataAsOf": "2026-11-24T10:59:38Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,19 +14,19 @@
     {
       "name": "food market",
       "days": 80,
-      "dishDays": 646,
+      "dishDays": 647,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-11-24",
       "diet": {
         "vegan": 101,
-        "vegetarian": 156,
+        "vegetarian": 157,
         "fish": 32,
         "meat": 253,
         "unclassified": 104
       },
       "prices": {
         "external": {
-          "n": 646,
+          "n": 647,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,7 +35,7 @@
           "mean": 15.91
         },
         "internal": {
-          "n": 646,
+          "n": 647,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
@@ -44,7 +44,7 @@
           "mean": 12.91
         },
         "students": {
-          "n": 646,
+          "n": 647,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
@@ -144,28 +144,28 @@
   "overall": {
     "name": "all",
     "days": 80,
-    "dishDays": 1571,
+    "dishDays": 1572,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-11-24",
     "diet": {
       "vegan": 226,
-      "vegetarian": 649,
+      "vegetarian": 650,
       "fish": 43,
       "meat": 549,
       "unclassified": 104
     },
     "prices": {
       "external": {
-        "n": 1571,
+        "n": 1572,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
         "p75": 16.9,
         "max": 19.5,
-        "mean": 14.66
+        "mean": 14.67
       },
       "internal": {
-        "n": 1571,
+        "n": 1572,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.0
       },
       "students": {
-        "n": 1571,
+        "n": 1572,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -32098,6 +32098,53 @@
       }
     },
     {
+      "id": 699,
+      "name": "Tortelloni Cinque P",
+      "nameDe": "Tortelloni Cinque P",
+      "facility": "food market",
+      "diet": "vegetarian",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 1,
+        "fish": 0,
+        "meat": 0,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-24",
+      "lastSeen": "2026-11-24",
+      "dates": [
+        "2026-11-24"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 16.5,
+          "sd": null,
+          "min": 16.5,
+          "max": 16.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 13.5,
+          "sd": null,
+          "min": 13.5,
+          "max": 13.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 9.5,
+          "sd": null,
+          "min": 9.5,
+          "max": 9.5
+        }
+      }
+    },
+    {
       "id": 698,
       "name": "Tripe or \"Schlemmerfilet\" Bordelaise",
       "nameDe": "Kutteln  oder Schlemmerfilet Bordelaise",
@@ -38480,7 +38527,7 @@
     {
       "facility": "food market",
       "line": "pasta della nonna",
-      "dishDays": 86,
+      "dishDays": 87,
       "dishes": [
         {
           "id": 58,
@@ -39139,6 +39186,17 @@
           "lastSeen": "2026-09-22",
           "dates": [
             "2026-09-22"
+          ]
+        },
+        {
+          "id": 699,
+          "name": "Tortelloni Cinque P",
+          "nameDe": "Tortelloni Cinque P",
+          "count": 1,
+          "firstSeen": "2026-11-24",
+          "lastSeen": "2026-11-24",
+          "dates": [
+            "2026-11-24"
           ]
         },
         {
