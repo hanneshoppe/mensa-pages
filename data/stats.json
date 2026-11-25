@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-11-25T04:03:56Z",
+  "dataAsOf": "2026-11-25T06:56:37Z",
   "priceGroups": [
     "students",
     "internal",
@@ -57,37 +57,37 @@
     {
       "name": "FUSION meal",
       "days": 58,
-      "dishDays": 559,
+      "dishDays": 560,
       "firstSeen": "2026-09-07",
       "lastSeen": "2026-11-25",
       "diet": {
         "vegan": 126,
         "vegetarian": 236,
         "fish": 11,
-        "meat": 186,
+        "meat": 187,
         "unclassified": 0
       },
       "prices": {
         "external": {
-          "n": 559,
+          "n": 560,
           "min": 3.4,
           "p25": 3.4,
           "median": 14.5,
           "p75": 15.5,
           "max": 18.5,
-          "mean": 11.55
+          "mean": 11.56
         },
         "internal": {
-          "n": 559,
+          "n": 560,
           "min": 2.9,
           "p25": 2.9,
           "median": 11.5,
           "p75": 12.9,
           "max": 15.5,
-          "mean": 9.5
+          "mean": 9.51
         },
         "students": {
-          "n": 559,
+          "n": 560,
           "min": 2.5,
           "p25": 2.5,
           "median": 8.5,
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 81,
-    "dishDays": 1594,
+    "dishDays": 1595,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-11-25",
     "diet": {
       "vegan": 229,
       "vegetarian": 660,
       "fish": 43,
-      "meat": 557,
+      "meat": 558,
       "unclassified": 105
     },
     "prices": {
       "external": {
-        "n": 1594,
+        "n": 1595,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.66
       },
       "internal": {
-        "n": 1594,
+        "n": 1595,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.0
       },
       "students": {
-        "n": 1594,
+        "n": 1595,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -28140,6 +28140,53 @@
       }
     },
     {
+      "id": 706,
+      "name": "Roast Pork Shoulder with Rosemary Gravy",
+      "nameDe": "Schweinsschulterbraten mit Rosmarin Jus",
+      "facility": "FUSION meal",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-25",
+      "lastSeen": "2026-11-25",
+      "dates": [
+        "2026-11-25"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 15.5,
+          "sd": null,
+          "min": 15.5,
+          "max": 15.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 12.5,
+          "sd": null,
+          "min": 12.5,
+          "max": 12.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 8.5,
+          "sd": null,
+          "min": 8.5,
+          "max": 8.5
+        }
+      }
+    },
+    {
       "id": 703,
       "name": "Roast Pork with Rosemary Gravy",
       "nameDe": "Schweinsbraten mit Rosmarin Jus",
@@ -40131,7 +40178,7 @@
     {
       "facility": "FUSION meal",
       "line": "MEATWORKS",
-      "dishDays": 66,
+      "dishDays": 67,
       "dishes": [
         {
           "id": 194,
@@ -40652,6 +40699,17 @@
           "lastSeen": "2026-11-05",
           "dates": [
             "2026-11-05"
+          ]
+        },
+        {
+          "id": 706,
+          "name": "Roast Pork Shoulder with Rosemary Gravy",
+          "nameDe": "Schweinsschulterbraten mit Rosmarin Jus",
+          "count": 1,
+          "firstSeen": "2026-11-25",
+          "lastSeen": "2026-11-25",
+          "dates": [
+            "2026-11-25"
           ]
         },
         {
