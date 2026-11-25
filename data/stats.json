@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-11-25T10:52:57Z",
+  "dataAsOf": "2026-11-25T11:00:09Z",
   "priceGroups": [
     "students",
     "internal",
@@ -14,19 +14,19 @@
     {
       "name": "food market",
       "days": 81,
-      "dishDays": 656,
+      "dishDays": 657,
       "firstSeen": "2026-08-05",
       "lastSeen": "2026-11-25",
       "diet": {
         "vegan": 103,
         "vegetarian": 158,
         "fish": 32,
-        "meat": 257,
+        "meat": 258,
         "unclassified": 106
       },
       "prices": {
         "external": {
-          "n": 656,
+          "n": 657,
           "min": 7.5,
           "p25": 14.5,
           "median": 15.5,
@@ -35,7 +35,7 @@
           "mean": 15.91
         },
         "internal": {
-          "n": 656,
+          "n": 657,
           "min": 7.5,
           "p25": 11.5,
           "median": 12.5,
@@ -44,7 +44,7 @@
           "mean": 12.91
         },
         "students": {
-          "n": 656,
+          "n": 657,
           "min": 7.0,
           "p25": 7.0,
           "median": 8.5,
@@ -144,19 +144,19 @@
   "overall": {
     "name": "all",
     "days": 81,
-    "dishDays": 1596,
+    "dishDays": 1597,
     "firstSeen": "2026-08-05",
     "lastSeen": "2026-11-25",
     "diet": {
       "vegan": 229,
       "vegetarian": 660,
       "fish": 43,
-      "meat": 558,
+      "meat": 559,
       "unclassified": 106
     },
     "prices": {
       "external": {
-        "n": 1596,
+        "n": 1597,
         "min": 3.4,
         "p25": 14.5,
         "median": 15.5,
@@ -165,7 +165,7 @@
         "mean": 14.66
       },
       "internal": {
-        "n": 1596,
+        "n": 1597,
         "min": 2.9,
         "p25": 11.5,
         "median": 12.5,
@@ -174,7 +174,7 @@
         "mean": 12.0
       },
       "students": {
-        "n": 1596,
+        "n": 1597,
         "min": 2.5,
         "p25": 7.0,
         "median": 9.5,
@@ -18031,6 +18031,53 @@
           "sd": null,
           "min": 9.5,
           "max": 9.5
+        }
+      }
+    },
+    {
+      "id": 708,
+      "name": "Farfalle with Genoese-Style Braised Beef",
+      "nameDe": "Farfalle con Brasato alla Genovese",
+      "facility": "food market",
+      "diet": "meat",
+      "dietDays": {
+        "vegan": 0,
+        "vegetarian": 0,
+        "fish": 0,
+        "meat": 1,
+        "unclassified": 0
+      },
+      "count": 1,
+      "firstSeen": "2026-11-25",
+      "lastSeen": "2026-11-25",
+      "dates": [
+        "2026-11-25"
+      ],
+      "gapsWeekdays": [],
+      "meanGapWeekdays": null,
+      "sdGapWeekdays": null,
+      "prediction": null,
+      "prices": {
+        "external": {
+          "n": 1,
+          "mean": 17.5,
+          "sd": null,
+          "min": 17.5,
+          "max": 17.5
+        },
+        "internal": {
+          "n": 1,
+          "mean": 14.5,
+          "sd": null,
+          "min": 14.5,
+          "max": 14.5
+        },
+        "students": {
+          "n": 1,
+          "mean": 10.5,
+          "sd": null,
+          "min": 10.5,
+          "max": 10.5
         }
       }
     },
@@ -38956,7 +39003,7 @@
     {
       "facility": "food market",
       "line": "pasta della nonna",
-      "dishDays": 88,
+      "dishDays": 89,
       "dishes": [
         {
           "id": 58,
@@ -39308,6 +39355,17 @@
           "lastSeen": "2026-08-31",
           "dates": [
             "2026-08-31"
+          ]
+        },
+        {
+          "id": 708,
+          "name": "Farfalle with Genoese-Style Braised Beef",
+          "nameDe": "Farfalle con Brasato alla Genovese",
+          "count": 1,
+          "firstSeen": "2026-11-25",
+          "lastSeen": "2026-11-25",
+          "dates": [
+            "2026-11-25"
           ]
         },
         {
