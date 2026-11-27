@@ -1621,24 +1621,24 @@ dish_id,date,facility,facility_id,line,name_en,name_de,diet,first_seen_at,last_s
 705,2026-11-26,food market,19,pizza mamma mia,Pizza Kebab,Pizza Kebab,meat,2026-11-26T04:15:35Z,2026-11-26T11:51:48Z,2026-11-26T12:18:29Z,11.5,14.5,17.5,853,11,8.3,21,1.23,1.2,3.8
 64,2026-11-26,food market,19,pizza classica,Pizza Margherita,Pizza Margherita,vegetarian,2026-11-26T04:15:35Z,2026-11-26T12:18:29Z,,7.0,11.5,14.5,858,9.6,5.3,29,1.28,1.2,2.5
 182,2026-11-26,food market,19,fire,Veal Sausage,Kalbsbratwurst,meat,2026-11-26T04:15:35Z,2026-11-26T12:18:29Z,,8.5,12.5,15.5,607,4.4,10,8.2,1.04,1.2,2.7
-718,2026-11-27,FUSION meal,20,WORLD OF ASIA VEGGIE,Baingang Bharta,Baingang Bharta,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,8.5,10.5,12.5,,,,,,,
-139,2026-11-27,FUSION meal,20,GLOBETROTTER,Hot Buffet,Warmes Buffet,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,2.5,2.9,3.4,,,,,,,
-141,2026-11-27,FUSION meal,20,POWER KITCHEN,Protein Buffet,Protein Buffet,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,2.5,2.9,3.4,,,,,,,
-142,2026-11-27,FUSION meal,20,FRESH ISLAND,Salad Buffet,Salat Buffet,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,2.5,2.9,3.4,,,,,,,
-719,2026-11-27,FUSION meal,20,WORLD OF ASIA,Szechuan Pork,Szechuan Pork,meat,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,10.5,12.9,14.5,,,,,,,
-720,2026-11-27,FUSION meal,20,SOUL FOOD,Texas Chili-Cheese Fries,Texas Chili-Cheese Fries,meat,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,11.5,14.5,17.5,,,,,,,
-721,2026-11-27,FUSION meal,20,MEATWORKS,Turkey Cutlets ,Truten Schnitzel ,meat,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,8.5,12.5,15.5,,,,,,,
-722,2026-11-27,FUSION meal,20,VEGAN,Vegan Zurich-Style Stir-Fry,Veganes Geschnetzeltes Züri Art,vegan,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,8.9,12.9,16.9,,,,,,,
-723,2026-11-27,FUSION meal,20,VEGGIE,Vegetable Gersotto,Gemüse-Gersotto,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,7.0,11.5,14.5,,,,,,,
-1,2026-11-27,Mendokoro,16,Roku,Chicken Tonkatsu Bowl,Chicken Tonkatsu Bowl,meat,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,13.8,15.8,18.8,733,5.8,3.8,29,1.06,6.1,0.5
-318,2026-11-27,Mendokoro,16,San,Kimchi ramen,Kimchi Ramen,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,12.5,14.5,17.5,314,1.4,1.5,1.8,0.48,1.3,0.2
-3,2026-11-27,Mendokoro,16,Ichi,Miso Ramen,Miso Ramen,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,10.5,12.5,15.5,293,2.8,3.6,10,1.22,0.9,0.2
-4,2026-11-27,Mendokoro,16,Ni,Shoyu Ramen,Shoyu Ramen,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,10.5,12.5,15.5,308,2.9,3.7,11,1.30,0.8,0.2
-107,2026-11-27,Mendokoro,16,Shi,Tantanmen Ramen,Tantanmen Ramen,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,12.5,14.5,17.5,312,3.8,3.5,10,1.29,0.9,0.2
-724,2026-11-27,food market,19,pasta classica vegi,BLACK FRIDAY,BLACK FRIDAY,vegan,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,7.0,11.5,14.5,617,4.6,4.5,21,0.74,1.7,1.7
-725,2026-11-27,food market,19,fire,Chicken Strips with Mushroom Cream Sauce,Pouletgeschnetzeltes Champignonrahmsauce,meat,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,8.5,12.5,15.5,613,7.0,6.4,14,0.61,1.3,1.2
-33,2026-11-27,food market,19,green delight,Choose 5,Choose 5,vegan,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,9.9,13.9,16.9,252,2.9,3.8,2.3,0.00,2.2,0.4
-156,2026-11-27,food market,19,pasta della nonna,Gnocchi with Butter and Sage,Gnocchi al Burro e Salvia,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,9.5,13.5,16.5,1024,5.0,16,21,0.78,1.5,2.0
-189,2026-11-27,food market,19,green daily,Greek Moussaka,Griechische Moussaka,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,7.0,11.5,14.5,360,2.9,4.3,8.1,0.79,2.3,0.9
-190,2026-11-27,food market,19,grill,Gyros in Town,Gyros in Town,meat,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,11.5,14.5,17.5,765,7.2,7.6,20,0.71,2.0,1.1
-64,2026-11-27,food market,19,pizza classica,Pizza Margherita,Pizza Margherita,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:48:41Z,,7.0,11.5,14.5,858,9.6,5.3,29,1.28,1.2,2.5
+718,2026-11-27,FUSION meal,20,WORLD OF ASIA VEGGIE,Baingang Bharta,Baingang Bharta,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,8.5,10.5,12.5,,,,,,,
+139,2026-11-27,FUSION meal,20,GLOBETROTTER,Hot Buffet,Warmes Buffet,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,2.5,2.9,3.4,,,,,,,
+141,2026-11-27,FUSION meal,20,POWER KITCHEN,Protein Buffet,Protein Buffet,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,2.5,2.9,3.4,,,,,,,
+142,2026-11-27,FUSION meal,20,FRESH ISLAND,Salad Buffet,Salat Buffet,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,2.5,2.9,3.4,,,,,,,
+719,2026-11-27,FUSION meal,20,WORLD OF ASIA,Szechuan Pork,Szechuan Pork,meat,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,10.5,12.9,14.5,,,,,,,
+720,2026-11-27,FUSION meal,20,SOUL FOOD,Texas Chili-Cheese Fries,Texas Chili-Cheese Fries,meat,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,11.5,14.5,17.5,,,,,,,
+721,2026-11-27,FUSION meal,20,MEATWORKS,Turkey Cutlets ,Truten Schnitzel ,meat,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,8.5,12.5,15.5,,,,,,,
+722,2026-11-27,FUSION meal,20,VEGAN,Vegan Zurich-Style Stir-Fry,Veganes Geschnetzeltes Züri Art,vegan,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,8.9,12.9,16.9,,,,,,,
+723,2026-11-27,FUSION meal,20,VEGGIE,Vegetable Gersotto,Gemüse-Gersotto,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,7.0,11.5,14.5,,,,,,,
+1,2026-11-27,Mendokoro,16,Roku,Chicken Tonkatsu Bowl,Chicken Tonkatsu Bowl,meat,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,13.8,15.8,18.8,733,5.8,3.8,29,1.06,6.1,0.5
+318,2026-11-27,Mendokoro,16,San,Kimchi ramen,Kimchi Ramen,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,12.5,14.5,17.5,314,1.4,1.5,1.8,0.48,1.3,0.2
+3,2026-11-27,Mendokoro,16,Ichi,Miso Ramen,Miso Ramen,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,10.5,12.5,15.5,293,2.8,3.6,10,1.22,0.9,0.2
+4,2026-11-27,Mendokoro,16,Ni,Shoyu Ramen,Shoyu Ramen,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,10.5,12.5,15.5,308,2.9,3.7,11,1.30,0.8,0.2
+107,2026-11-27,Mendokoro,16,Shi,Tantanmen Ramen,Tantanmen Ramen,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,12.5,14.5,17.5,312,3.8,3.5,10,1.29,0.9,0.2
+724,2026-11-27,food market,19,pasta classica vegi,BLACK FRIDAY,BLACK FRIDAY,vegan,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,7.0,11.5,14.5,617,4.6,4.5,21,0.74,1.7,1.7
+725,2026-11-27,food market,19,fire,Chicken Strips with Mushroom Cream Sauce,Pouletgeschnetzeltes Champignonrahmsauce,meat,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,8.5,12.5,15.5,613,7.0,6.4,14,0.61,1.3,1.2
+33,2026-11-27,food market,19,green delight,Choose 5,Choose 5,vegan,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,9.9,13.9,16.9,252,2.9,3.8,2.3,0.00,2.2,0.4
+156,2026-11-27,food market,19,pasta della nonna,Gnocchi with Butter and Sage,Gnocchi al Burro e Salvia,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,9.5,13.5,16.5,1024,5.0,16,21,0.78,1.5,2.0
+189,2026-11-27,food market,19,green daily,Greek Moussaka,Griechische Moussaka,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,7.0,11.5,14.5,360,2.9,4.3,8.1,0.79,2.3,0.9
+190,2026-11-27,food market,19,grill,Gyros in Town,Gyros in Town,meat,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,11.5,14.5,17.5,765,7.2,7.6,20,0.71,2.0,1.1
+64,2026-11-27,food market,19,pizza classica,Pizza Margherita,Pizza Margherita,vegetarian,2026-11-27T04:00:05Z,2026-11-27T06:56:05Z,,7.0,11.5,14.5,858,9.6,5.3,29,1.28,1.2,2.5
