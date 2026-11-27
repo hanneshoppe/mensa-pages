@@ -1,5 +1,5 @@
 {
-  "dataAsOf": "2026-11-27T10:25:34Z",
+  "dataAsOf": "2026-11-27T10:41:23Z",
   "priceGroups": [
     "students",
     "internal",
@@ -11228,10 +11228,10 @@
         },
         "internal": {
           "n": 1,
-          "mean": 11.5,
+          "mean": 9.5,
           "sd": null,
-          "min": 11.5,
-          "max": 11.5
+          "min": 9.5,
+          "max": 9.5
         },
         "students": {
           "n": 1,
